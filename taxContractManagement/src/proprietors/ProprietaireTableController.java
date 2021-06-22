@@ -146,7 +146,7 @@ public class ProprietaireTableController implements Initializable {
 
                             try {
                                 proprietor = proprietorsTable.getSelectionModel().getSelectedItem();
-                                query = "DELETE FROM `student` WHERE id  =" + proprietor.getId();
+                                query = "DELETE FROM `proprietaire` WHERE id  =" + proprietor.getId();
                                 connection = DbConnect.getConnect();
                                 preparedStatement = connection.prepareStatement(query);
                                 preparedStatement.execute();
