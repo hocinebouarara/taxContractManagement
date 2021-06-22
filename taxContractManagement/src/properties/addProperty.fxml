@@ -21,7 +21,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="205.0" prefWidth="980.0">
                <children>
-                  <VBox prefWidth="455.0" style="-fx-border-color: #c7d1d1d1; -fx-border-width: 2px; -fx-border-radius: 8px;">
+                  <VBox prefWidth="455.0" style="-fx-border-color: #123456; -fx-border-width: 2px; -fx-border-radius: 8px;">
                      <children>
                         <HBox alignment="CENTER_RIGHT">
                            <children>
@@ -133,7 +133,7 @@
                         <Insets right="7.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox fx:id="AddProprietorAnchor" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefWidth="455.0" style="-fx-border-color: #c7d1d1d1; -fx-border-width: 2px; -fx-border-radius: 8px;">
+                  <VBox fx:id="AddProprietorAnchor" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefWidth="455.0" style="-fx-border-color: #123456; -fx-border-width: 2px; -fx-border-radius: 8px;">
                      <children>
                         <VBox fx:id="proprietor_property">
                            <children>
@@ -205,7 +205,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="980.0">
                <children>
-                  <VBox prefWidth="455.0" style="-fx-border-color: #c7d1d1d1; -fx-border-width: 2px; -fx-border-radius: 8px;">
+                  <VBox prefWidth="455.0" style="-fx-border-color: #123456; -fx-border-width: 2px; -fx-border-radius: 8px;">
                      <children>
                         <HBox alignment="CENTER">
                            <children>
@@ -292,7 +292,7 @@
                         <Insets right="7.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox layoutX="10.0" layoutY="10.0" prefWidth="455.0" style="-fx-border-color: #c7d1d1d1; -fx-border-width: 2px; -fx-border-radius: 8px;">
+                  <VBox layoutX="10.0" layoutY="10.0" prefWidth="455.0" style="-fx-border-color: #123456; -fx-border-width: 2px; -fx-border-radius: 8px;">
                      <children>
                         <HBox alignment="CENTER" layoutX="11.0" layoutY="17.0" prefHeight="18.0" prefWidth="435.0">
                            <children>

@@ -60,6 +60,8 @@ public class ProprietaireTableController implements Initializable {
     private TableColumn<Proprietor, String> phoneCol;
     @FXML
     private TableColumn<Proprietor, String> operationCol;
+    @FXML
+    private TableColumn<Proprietor, String> checkCol;
 
     String query = null;
     Connection connection = null;
@@ -68,7 +70,7 @@ public class ProprietaireTableController implements Initializable {
     Proprietor proprietor = null;
 
     ObservableList<Proprietor> proprietorsList = FXCollections.observableArrayList();
-
+    
     /**
      * Initializes the controller class.
      */
