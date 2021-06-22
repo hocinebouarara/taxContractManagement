@@ -15,9 +15,12 @@ and open the template in the editor.
 .btn:hover{
     -fx-border-color:#FFA000;
     -fx-padding:20px;
+    -fx-font-size:22px;
+    -fx-font-style:italic;
+    -fx-border-radius:18px;
     -fx-border-width:0 10 0 10;
-    -fx-text-fill:white;
-
+    -fx-text-fill:whitesmoke;
+    
 
 }
 .FontAwesomeIconView{
