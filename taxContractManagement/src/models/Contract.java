@@ -5,10 +5,131 @@
  */
 package models;
 
+import java.sql.Date;
+
 /**
  *
  * @author Deeplight
  */
 public class Contract {
+
+    int id, id_habitation, id_studio, id_proprietor, id_beneficiary;
+    String proprietorName, beneficiaryName, contractType;
+    Date date, endDate;
+    float amount;
+    String SteelNumber;
+
+    public Contract(int id, int id_habitation, int id_studio, int id_proprietor, int id_beneficiary, String proprietorName, String beneficiaryName, String contractType, Date date, Date endDate, float amount, String SteelNumber) {
+        this.id = id;
+        this.id_habitation = id_habitation;
+        this.id_studio = id_studio;
+        this.id_proprietor = id_proprietor;
+        this.id_beneficiary = id_beneficiary;
+        this.proprietorName = proprietorName;
+        this.beneficiaryName = beneficiaryName;
+        this.contractType = contractType;
+        this.date = date;
+        this.endDate = endDate;
+        this.amount = amount;
+        this.SteelNumber = SteelNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId_habitation() {
+        return id_habitation;
+    }
+
+    public void setId_habitation(int id_habitation) {
+        this.id_habitation = id_habitation;
+    }
+
+    public int getId_studio() {
+        return id_studio;
+    }
+
+    public void setId_studio(int id_studio) {
+        this.id_studio = id_studio;
+    }
+
+    public int getId_proprietor() {
+        return id_proprietor;
+    }
+
+    public void setId_proprietor(int id_proprietor) {
+        this.id_proprietor = id_proprietor;
+    }
+
+    public int getId_beneficiary() {
+        return id_beneficiary;
+    }
+
+    public void setId_beneficiary(int id_beneficiary) {
+        this.id_beneficiary = id_beneficiary;
+    }
+
+    public String getProprietorName() {
+        return proprietorName;
+    }
+
+    public void setProprietorName(String proprietorName) {
+        this.proprietorName = proprietorName;
+    }
+
+    public String getBeneficiaryName() {
+        return beneficiaryName;
+    }
+
+    public void setBeneficiaryName(String beneficiaryName) {
+        this.beneficiaryName = beneficiaryName;
+    }
+
+    public String getContractType() {
+        return contractType;
+    }
+
+    public void setContractType(String contractType) {
+        this.contractType = contractType;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(float amount) {
+        this.amount = amount;
+    }
+
+    public String getSteelNumber() {
+        return SteelNumber;
+    }
+
+    public void setSteelNumber(String SteelNumber) {
+        this.SteelNumber = SteelNumber;
+    }
     
+    
+
 }
