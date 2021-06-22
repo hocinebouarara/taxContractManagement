@@ -5,6 +5,7 @@
  */
 package contract;
 
+import helpres.Links;
 import home.HomeViewController;
 import java.io.IOException;
 import java.net.URL;
@@ -40,10 +41,12 @@ public class ContractsViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        loadViews(Links.CONTRACTTABLEVIEW);
     }    
 
     @FXML
     private void getContractsTable(MouseEvent event) {
+        loadViews(Links.CONTRACTTABLEVIEW);
     }
 
     @FXML
