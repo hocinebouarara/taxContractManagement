@@ -33,7 +33,7 @@
                               <Insets />
                            </VBox.margin>
                         </JFXButton>
-                        <Pane fx:id="editPane" prefHeight="3.0" prefWidth="190.0" style="-fx-background-color: #651FFF;">
+                        <Pane fx:id="editPane" prefHeight="3.0" prefWidth="190.0" style="-fx-background-color: #0277BD;">
                            <VBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </VBox.margin>
@@ -56,7 +56,7 @@
                               <Insets />
                            </VBox.margin>
                         </JFXButton>
-                        <Pane fx:id="editPane1" prefHeight="3.0" prefWidth="190.0" style="-fx-background-color: #651FFF;">
+                        <Pane fx:id="editPane1" prefHeight="3.0" prefWidth="190.0" style="-fx-background-color: #0277BD;">
                            <VBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </VBox.margin>

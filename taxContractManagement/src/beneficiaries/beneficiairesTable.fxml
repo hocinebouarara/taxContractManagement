@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="510.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="beneficiaries.BeneficiairesTableController">
+<AnchorPane prefHeight="510.0" prefWidth="933.0" stylesheets="@../home/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="beneficiaries.BeneficiairesTableController">
    <children>
       <VBox prefWidth="854.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -45,13 +45,14 @@
             </HBox>
             <TableView fx:id="beneficiairesTable" maxHeight="1.7976931348623157E308" prefHeight="399.0" prefWidth="980.0" style="-fx-alignment: center;">
                <columns>
+                  <TableColumn fx:id="checkCol" maxWidth="30.0" minWidth="0.0" prefWidth="30.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
                   <TableColumn fx:id="idCol" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="ID" />
-                  <TableColumn fx:id="nameCol" maxWidth="270.0" minWidth="175.33334350585938" prefWidth="192.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Nom et Prenom/R. S." />
-                  <TableColumn fx:id="dateCol" maxWidth="247.66665649414062" prefWidth="158.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Date d'anniversaire" />
-                  <TableColumn fx:id="wilayaCol" maxWidth="187.3333740234375" prefWidth="142.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Wilaya" />
-                  <TableColumn fx:id="communeCol" maxWidth="158.0" minWidth="8.66668701171875" prefWidth="138.66668701171875" style="-fx-alignment: center; -fx-font-size: 16px;" text="Commune" />
-                  <TableColumn fx:id="natCol" maxWidth="129.33331298828125" minWidth="8.66668701171875" prefWidth="124.66668701171875" style="-fx-alignment: center; -fx-font-size: 16px;" text="Nationnalité" />
-                  <TableColumn fx:id="operationCol" maxWidth="89.33331298828125" minWidth="0.0" prefWidth="86.66668701171875" style="-fx-alignment: center; -fx-font-size: 16px;" text="Operation" />
+                  <TableColumn fx:id="nameCol" maxWidth="210.0" minWidth="175.33334350585938" prefWidth="210.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Nom et Prenom/R. S." />
+                  <TableColumn fx:id="dateCol" maxWidth="160.0" prefWidth="160.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Date d'anniversaire" />
+                  <TableColumn fx:id="wilayaCol" maxWidth="150.0" prefWidth="150.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Wilaya" />
+                  <TableColumn fx:id="communeCol" maxWidth="150.0" minWidth="8.66668701171875" prefWidth="150.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Commune" />
+                  <TableColumn fx:id="natCol" maxWidth="125.0" minWidth="8.66668701171875" prefWidth="125.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Nationnalité" />
+                  <TableColumn fx:id="operationCol" maxWidth="90.0" minWidth="0.0" prefWidth="90.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Action" />
                </columns>
                <VBox.margin>
                   <Insets bottom="4.0" top="-1.0" />
