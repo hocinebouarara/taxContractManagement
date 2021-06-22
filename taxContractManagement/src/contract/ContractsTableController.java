@@ -25,6 +25,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import models.Contract;
@@ -71,7 +72,7 @@ public class ContractsTableController implements Initializable {
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-    Property property = null;
+    Contract contract = null;
 
     ObservableList<Contract> contractsList = FXCollections.observableArrayList();
 
@@ -178,6 +179,21 @@ public class ContractsTableController implements Initializable {
                                 + "-glyph-size:28px;"
                                 + "-fx-fill:#00E676;"
                         );
+                        deleteIcon.setOnMouseClicked((MouseEvent event) -> {
+
+                            try {
+                                contract = propertiesTable.getSelectionModel().getSelectedItem();
+                                query = "DELETE FROM `contrat` WHERE id  =" + contract.getId();
+                                connection = DbConnect.getConnect();
+                                preparedStatement = connection.prepareStatement(query);
+                                preparedStatement.execute();
+                                refreshTable();
+
+                            } catch (SQLException ex) {
+                                Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+
+                        });
 
                         HBox managebtn = new HBox(editIcon, deleteIcon);
                         managebtn.setStyle("-fx-alignment:center");
