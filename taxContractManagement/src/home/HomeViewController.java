@@ -28,29 +28,17 @@ public class HomeViewController implements Initializable {
 
     private Button btn1;
     @FXML
-    private JFXButton homeIcon;
-    @FXML
     private JFXButton homeBtn;
     @FXML
     private Button propaBtn;
     @FXML
-    private JFXButton propaIcon;
-    @FXML
     private Button proprBtn;
-    @FXML
-    private JFXButton proprIcon;
     @FXML
     private Button contratBtn;
     @FXML
-    private JFXButton contratIcon;
-    @FXML
     private Button benefiBtn;
     @FXML
-    private JFXButton benefiIcon;
-    @FXML
     private Button paymentBtn;
-    @FXML
-    private JFXButton paymentIcon;
     @FXML
     private AnchorPane anchor;
 
@@ -68,90 +56,62 @@ public class HomeViewController implements Initializable {
 
     @FXML
     private void getHomeView(MouseEvent event) {
-        propaIcon.setStyle("-fx-background-color:transparent;");
         propaBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        proprIcon.setStyle("-fx-background-color:transparent;");
         proprBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        benefiIcon.setStyle("-fx-background-color:transparent;");
         benefiBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        contratIcon.setStyle("-fx-background-color:transparent;");
         contratBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
+        paymentBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
 
-        homeIcon.setStyle("-fx-background-color:#81D4FA;-fx-background-radius:12 12 0 12;");
-        homeBtn.setStyle("-fx-text-fill:white;-fx-background-color:#0277BD;-fx-background-radius:20 0 0 20;");
+        homeBtn.setStyle("-fx-text-fill:#3f51b5;-fx-background-color:#FFA000;-fx-border-color:#FFA000;-fx-border-width:0 10 0 10;-fx-padding:0 0 0 16;");
     }
 
     @FXML
     private void getPropaView(MouseEvent event) {
-        proprIcon.setStyle("-fx-background-color:transparent;");
         proprBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        homeIcon.setStyle("-fx-background-color:transparent;");
         homeBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        benefiIcon.setStyle("-fx-background-color:transparent;");
         benefiBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        contratIcon.setStyle("-fx-background-color:transparent;");
         contratBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        paymentIcon.setStyle("-fx-background-color:transparent;");
         paymentBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
 
-        propaIcon.setStyle("-fx-background-color:#81D4FA;-fx-background-radius:12 12 0 12;");
-        propaBtn.setStyle("-fx-text-fill:white;-fx-background-color:#0277BD;-fx-background-radius:20 0 0 20;");
+        propaBtn.setStyle("-fx-text-fill:#3f51b5;-fx-background-color:#FFA000;-fx-border-color:#FFA000;-fx-border-width:0 10 0 10;-fx-padding:0 0 0 24;");
 
         loadViews(Links.PROPERTYVIEW);
     }
 
     @FXML
     private void getProprView(MouseEvent event) {
-        propaIcon.setStyle("-fx-background-color:transparent;");
         propaBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        homeIcon.setStyle("-fx-background-color:transparent;");
         homeBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        contratIcon.setStyle("-fx-background-color:transparent;");
         contratBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        benefiIcon.setStyle("-fx-background-color:transparent;");
         benefiBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        paymentIcon.setStyle("-fx-background-color:transparent;");
         paymentBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
 
-        proprIcon.setStyle("-fx-background-color:#81D4FA;-fx-background-radius:12 12 0 12;");
-        proprBtn.setStyle("-fx-text-fill:white;-fx-background-color:#0277BD;-fx-background-radius:20 0 0 20;");
+        proprBtn.setStyle("-fx-text-fill:#3f51b5;-fx-background-color:#FFA000;-fx-border-color:#FFA000;-fx-border-width:0 10 0 10;-fx-padding:0 0 0 18;");
         
         loadViews(Links.PROPIETORVIEW);
     }
 
     @FXML
     private void getContratsView(MouseEvent event) {
-        propaIcon.setStyle("-fx-background-color:transparent;");
         propaBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        homeIcon.setStyle("-fx-background-color:transparent;");
         homeBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        proprIcon.setStyle("-fx-background-color:transparent;");
         proprBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        benefiIcon.setStyle("-fx-background-color:transparent;");
         benefiBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        paymentIcon.setStyle("-fx-background-color:transparent;");
         paymentBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
 
-        contratIcon.setStyle("-fx-background-color:#81D4FA;-fx-background-radius:12 12 0 12;");
-        contratBtn.setStyle("-fx-text-fill:white;-fx-background-color:#0277BD;-fx-background-radius:20 0 0 20;");
+        contratBtn.setStyle("-fx-text-fill:#3f51b5;-fx-background-color:#FFA000;-fx-border-color:#FFA000;-fx-border-width:0 10 0 10;-fx-padding:0 0 0 25;");
 
     }
 
     @FXML
     private void getBenefisView(MouseEvent event) {
-        propaIcon.setStyle("-fx-background-color:transparent;");
         propaBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        homeIcon.setStyle("-fx-background-color:transparent;");
         homeBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        proprIcon.setStyle("-fx-background-color:transparent;");
         proprBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        contratIcon.setStyle("-fx-background-color:transparent;");
         contratBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        paymentIcon.setStyle("-fx-background-color:transparent;");
         paymentBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
 
-        benefiIcon.setStyle("-fx-background-color:#81D4FA;-fx-background-radius:12 12 0 12;");
-        benefiBtn.setStyle("-fx-text-fill:white;-fx-background-color:#0277BD;-fx-background-radius:20 0 0 20;");
+        benefiBtn.setStyle("-fx-text-fill:#3f51b5;-fx-background-color:#FFA000;-fx-border-color:#FFA000;-fx-border-width:0 10 0 10;-fx-padding:0 0 0 18;");
         
         loadViews(Links.BENEFICIAIREVIEW);
 
@@ -159,19 +119,13 @@ public class HomeViewController implements Initializable {
 
     @FXML
     private void getpaymentView(MouseEvent event) {
-        propaIcon.setStyle("-fx-background-color:transparent;");
         propaBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        homeIcon.setStyle("-fx-background-color:transparent;");
         homeBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        proprIcon.setStyle("-fx-background-color:transparent;");
         proprBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        contratIcon.setStyle("-fx-background-color:transparent;");
         contratBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
-        benefiIcon.setStyle("-fx-background-color:transparent;");
         benefiBtn.setStyle("-fx-text-fill:#6670a1;-fx-background-color:transparent;");
 
-        paymentIcon.setStyle("-fx-background-color:#81D4FA;-fx-background-radius:12 12 0 12;");
-        paymentBtn.setStyle("-fx-text-fill:white;-fx-background-color:#0277BD;-fx-background-radius:20 0 0 20;");
+        paymentBtn.setStyle("-fx-text-fill:white;-fx-background-color:#FFA000;-fx-border-color:#FFA000;-fx-border-width:0 10 0 10;-fx-padding:0 0 0 10;");
     }
 
     private void loadViews(String viewName) {
