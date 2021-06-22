@@ -29,6 +29,10 @@ public class Links {
     public static String BENEFICIAIREVIEW = "/beneficiaries/beneficiariesView.fxml";
     public static String BENEFICIAIRETABLEVIEW = "/beneficiaries/beneficiairesTable.fxml";
 
+    public static String ADDCONTRACTEVIEW = "/contract/addContract.fxml";
+    public static String CONTRACTVIEW = "/contract/contractsView.fxml";
+    public static String CONTRACTTABLEVIEW = "/contract/contractsTable.fxml";
+
     public static String DEMATERIALIZATIONVIEW = "/dematerialization/dematerializationView.fxml";
     public static String IMAGERECODNITION = "/dematerialization/imageRecognition.fxml";
 
