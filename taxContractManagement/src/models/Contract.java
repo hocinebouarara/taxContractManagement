@@ -13,18 +13,18 @@ import java.sql.Date;
  */
 public class Contract {
 
-    int id, id_habitation, id_studio, id_proprietor, id_beneficiary;
+    int id, id_proprietor, id_beneficiary, id_habitation, id_studio;
     String proprietorName, beneficiaryName, contractType;
     Date date, endDate;
     float amount;
     String SteelNumber;
 
-    public Contract(int id, int id_habitation, int id_studio, int id_proprietor, int id_beneficiary, String proprietorName, String beneficiaryName, String contractType, Date date, Date endDate, float amount, String SteelNumber) {
+    public Contract(int id, int id_proprietor, int id_beneficiary, int id_habitation, int id_studio, String proprietorName, String beneficiaryName, String contractType, Date date, Date endDate, float amount, String SteelNumber) {
         this.id = id;
-        this.id_habitation = id_habitation;
-        this.id_studio = id_studio;
         this.id_proprietor = id_proprietor;
         this.id_beneficiary = id_beneficiary;
+        this.id_habitation = id_habitation;
+        this.id_studio = id_studio;
         this.proprietorName = proprietorName;
         this.beneficiaryName = beneficiaryName;
         this.contractType = contractType;
@@ -33,6 +33,8 @@ public class Contract {
         this.amount = amount;
         this.SteelNumber = SteelNumber;
     }
+    
+    
 
     public int getId() {
         return id;
@@ -129,7 +131,5 @@ public class Contract {
     public void setSteelNumber(String SteelNumber) {
         this.SteelNumber = SteelNumber;
     }
-    
-    
 
 }
