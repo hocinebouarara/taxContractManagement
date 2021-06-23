@@ -5,6 +5,7 @@
  */
 package payments;
 
+import helpres.Links;
 import home.HomeViewController;
 import java.io.IOException;
 import java.net.URL;
@@ -32,9 +33,7 @@ public class PaymentsViewController implements Initializable {
     @FXML
     private Pane editPane1;
     @FXML
-    private Pane editPane2;
-    @FXML
-    private AnchorPane paymentsAnchor;
+    private AnchorPane versementsAnchor;
 
     /**
      * Initializes the controller class.
@@ -42,12 +41,13 @@ public class PaymentsViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        loadViews(Links.PAYMENTSTABLEVIEW);
     }    
     
     private void loadViews(String viewName) {
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource(viewName));
-            paymentsAnchor.getChildren().setAll(pane);
+            versementsAnchor.getChildren().setAll(pane);
         } catch (IOException ex) {
             Logger.getLogger(HomeViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -55,19 +55,18 @@ public class PaymentsViewController implements Initializable {
     }
 
     @FXML
-    private void getContractsTable(MouseEvent event) {
+    private void getVersementTable(MouseEvent event) {
+        loadViews(Links.PAYMENTSTABLEVIEW);
+        
     }
 
     @FXML
-    private void statView(MouseEvent event) {
+    private void getStat(MouseEvent event) {
     }
 
     @FXML
-    private void getDematerView(MouseEvent event) {
+    private void getAddVersementView(MouseEvent event) {
     }
 
-    @FXML
-    private void getAddContractsView(MouseEvent event) {
-    }
     
 }
