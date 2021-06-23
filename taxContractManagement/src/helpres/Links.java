@@ -35,5 +35,9 @@ public class Links {
 
     public static String DEMATERIALIZATIONVIEW = "/dematerialization/dematerializationView.fxml";
     public static String IMAGERECODNITION = "/dematerialization/imageRecognition.fxml";
+    
+    public static String ADDPAYMENTVIEW = "/payments/addPayment.fxml";
+    public static String PAYMENTSVIEW = "/payments/paymentsView.fxml";
+    public static String PAYMENTSTABLEVIEW = "/payments/versementsTable.fxml";
 
 }
