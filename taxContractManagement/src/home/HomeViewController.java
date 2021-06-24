@@ -127,6 +127,8 @@ public class HomeViewController implements Initializable {
         benefiBtn.setStyle("-fx-background-color:transparent;");
 
         paymentBtn.setStyle("-fx-text-fill:white;-fx-background-color:#FFA000;-fx-border-color:#FFA000;-fx-border-width:0 10 0 10;-fx-padding:0 0 0 10;-fx-border-radius:18px;");
+       
+        loadViews(Links.PAYMENTSVIEW);
     }
 
     private void loadViews(String viewName) {
