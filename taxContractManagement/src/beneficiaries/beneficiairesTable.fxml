@@ -47,12 +47,26 @@
                <columns>
                   <TableColumn fx:id="checkCol" maxWidth="30.0" minWidth="0.0" prefWidth="30.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
                   <TableColumn fx:id="idCol" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="ID" />
-                  <TableColumn fx:id="nameCol" maxWidth="210.0" minWidth="175.33334350585938" prefWidth="210.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Nom et Prenom/R. S." />
-                  <TableColumn fx:id="dateCol" maxWidth="160.0" prefWidth="160.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Date d'anniversaire" />
-                  <TableColumn fx:id="wilayaCol" maxWidth="150.0" prefWidth="150.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Wilaya" />
-                  <TableColumn fx:id="communeCol" maxWidth="150.0" minWidth="8.66668701171875" prefWidth="150.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Commune" />
-                  <TableColumn fx:id="natCol" maxWidth="125.0" minWidth="8.66668701171875" prefWidth="125.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Nationnalité" />
-                  <TableColumn fx:id="operationCol" maxWidth="90.0" minWidth="0.0" prefWidth="90.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Action" />
+                  <TableColumn fx:id="nameCol" maxWidth="210.0" minWidth="140.00003051757812" prefWidth="169.66665649414062" style="-fx-alignment: center; -fx-font-size: 16px;" text="Nom et Prenom" />
+                  <TableColumn fx:id="dateCol" maxWidth="229.99996948242188" prefWidth="114.66668701171875" style="-fx-alignment: center; -fx-font-size: 16px;" text="Nss" />
+                  <TableColumn fx:id="communeCol" maxWidth="150.0" minWidth="8.66668701171875" prefWidth="128.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Commune" />
+                  <TableColumn fx:id="wilayaCol" maxWidth="250.0" prefWidth="116.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Wilaya" />
+                  <TableColumn fx:id="prenom_pereCol" maxWidth="250.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
+                  <TableColumn fx:id="nom_mereCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
+                  <TableColumn fx:id="natCol" maxWidth="349.0" minWidth="8.66668701171875" prefWidth="114.33331298828125" style="-fx-alignment: center; -fx-font-size: 16px;" text="Nationnalité" />
+                  <TableColumn fx:id="adresseCol" maxWidth="349.0" minWidth="8.66668701171875" prefWidth="170.66668701171875" style="-fx-alignment: center; -fx-font-size: 16px;" text="Adresse " />
+                  <TableColumn fx:id="activitePrincCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
+                  <TableColumn fx:id="adresseActPrincCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
+                  <TableColumn fx:id="activiteSecnCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" text=" " />
+                  <TableColumn fx:id="adresseActiviteSecnCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
+                  <TableColumn fx:id="n_registreCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
+                  <TableColumn fx:id="date_registreCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
+                  <TableColumn fx:id="n_carteArtisanCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
+                  <TableColumn fx:id="date_carteArCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
+                  <TableColumn fx:id="n_argementCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
+                  <TableColumn fx:id="agrementDateCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
+                  <TableColumn fx:id="AutresCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
+                  <TableColumn fx:id="operationCol" maxWidth="102.6666259765625" minWidth="0.0" prefWidth="71.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Action" />
                </columns>
                <VBox.margin>
                   <Insets bottom="4.0" top="-1.0" />

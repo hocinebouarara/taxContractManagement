@@ -72,6 +72,36 @@ public class BeneficiairesTableController implements Initializable {
     Beneficiaire beneficiaire = null;
 
     ObservableList<Beneficiaire> beneficiairesList = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<Beneficiaire, String> checkCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> prenom_pereCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> nom_mereCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> adresseCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> activitePrincCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> adresseActPrincCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> activiteSecnCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> adresseActiviteSecnCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> n_registreCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> date_registreCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> n_carteArtisanCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> date_carteArCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> n_argementCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> agrementDateCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> AutresCol;
 
     /**
      * Initializes the controller class.
@@ -81,7 +111,7 @@ public class BeneficiairesTableController implements Initializable {
         // TODO
         loadDate();
     }
-    
+
     private void refreshTable() {
         try {
             beneficiairesList.clear();
@@ -95,9 +125,24 @@ public class BeneficiairesTableController implements Initializable {
                         resultSet.getInt("id"),
                         resultSet.getString("nom_prenom_or_RS"),
                         resultSet.getDate("date_nss"),
-                        resultSet.getString("wilaya"),
                         resultSet.getString("commune"),
-                        resultSet.getString("nationalite")));
+                        resultSet.getString("wilaya"),
+                        resultSet.getString("prenom_pere"),
+                        resultSet.getString("nom_mere"),
+                        resultSet.getString("nationalite"),
+                        resultSet.getString("adresse_domicile"),
+                        resultSet.getString("activite_prcpl"),
+                        resultSet.getString("adresse_act_prcpl"),
+                        resultSet.getString("activite_sec"),
+                        resultSet.getString("adresse_act_sec"),
+                        resultSet.getString("n_register_comrc"),
+                        resultSet.getString("date_registre_c"),
+                        resultSet.getString("n_cart_artisan"),
+                        resultSet.getString("date_carte_ar"),
+                        resultSet.getString("n_agrement"),
+                        resultSet.getString("date_agrement"),
+                        resultSet.getString("autres")
+                ));
                 beneficiairesTable.setItems(beneficiairesList);
 
             }
@@ -115,9 +160,23 @@ public class BeneficiairesTableController implements Initializable {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-        wilayaCol.setCellValueFactory(new PropertyValueFactory<>("wilaya"));
         communeCol.setCellValueFactory(new PropertyValueFactory<>("commune"));
+        wilayaCol.setCellValueFactory(new PropertyValueFactory<>("wilaya"));
+        prenom_pereCol.setCellValueFactory(new PropertyValueFactory<>("prenom_pere"));
+        nom_mereCol.setCellValueFactory(new PropertyValueFactory<>("nom_mere"));
         natCol.setCellValueFactory(new PropertyValueFactory<>("nationnalite"));
+        adresseCol.setCellValueFactory(new PropertyValueFactory<>("adresse_domicile"));
+        activitePrincCol.setCellValueFactory(new PropertyValueFactory<>("activite_prcpl"));
+        adresseActPrincCol.setCellValueFactory(new PropertyValueFactory<>("adresse_act_prcpl"));
+        activiteSecnCol.setCellValueFactory(new PropertyValueFactory<>("activite_sec"));
+        adresseActiviteSecnCol.setCellValueFactory(new PropertyValueFactory<>("adresse_act_sec"));
+        n_registreCol.setCellValueFactory(new PropertyValueFactory<>("n_register_comrc"));
+        date_registreCol.setCellValueFactory(new PropertyValueFactory<>("date_registre_c"));
+        n_carteArtisanCol.setCellValueFactory(new PropertyValueFactory<>("n_cart_artisan"));
+        date_carteArCol.setCellValueFactory(new PropertyValueFactory<>("date_carte_ar"));
+        n_argementCol.setCellValueFactory(new PropertyValueFactory<>("n_agrement"));
+        agrementDateCol.setCellValueFactory(new PropertyValueFactory<>("date_agrement"));
+        AutresCol.setCellValueFactory(new PropertyValueFactory<>("autres"));
 
         //add cell of button edit 
         Callback<TableColumn<Beneficiaire, String>, TableCell<Beneficiaire, String>> cellFoctory = (TableColumn<Beneficiaire, String> param) -> {
@@ -175,7 +234,7 @@ public class BeneficiairesTableController implements Initializable {
                             AddBeneficiaireController addBeneficiaireController = loader.getController();
                             addBeneficiaireController.setUpdate(true);
                             addBeneficiaireController.setTextField(beneficiaire.getId(), beneficiaire.getName(),
-                                    beneficiaire.getDate().toLocalDate(), beneficiaire.getWilaya(), beneficiaire.getCommune(),beneficiaire.getNationnalite());
+                                    beneficiaire.getDate().toLocalDate(), beneficiaire.getWilaya(), beneficiaire.getCommune(), beneficiaire.getNationnalite());
                             Parent parent = loader.getRoot();
                             Stage stage = new Stage();
                             stage.setScene(new Scene(parent));
