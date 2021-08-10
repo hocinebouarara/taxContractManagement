@@ -15,15 +15,21 @@ public class Beneficiaire {
 
     int id;
     String name;
-    Date date;
+    Date birthDate;
     String commune, wilaya, prenom_pere, nom_mere, nationnalite, adresse_domicile,
-            activite_prcpl, adresse_act_prcpl, activite_sec, adresse_act_sec, n_register_comrc,
-            date_registre_c, n_cart_artisan, date_carte_ar, n_agrement, date_agrement, autres;
+            activite_prcpl, adresse_act_prcpl, activite_sec, adresse_act_sec, n_register_comrc;
+    Date date_registre_c;
+    String n_cart_artisan;
+    Date date_carte_ar;
+    String n_agrement;
+    Date date_agrement;
+    String autres;
+    Date date;
 
-    public Beneficiaire(int id, String name, Date date, String commune, String wilaya, String prenom_pere, String nom_mere, String nationnalite, String adresse_domicile, String activite_prcpl, String adresse_act_prcpl, String activite_sec, String adresse_act_sec, String n_register_comrc, String date_registre_c, String n_cart_artisan, String date_carte_ar, String n_agrement, String date_agrement, String autres) {
+    public Beneficiaire(int id, String name, Date birthDate, String commune, String wilaya, String prenom_pere, String nom_mere, String nationnalite, String adresse_domicile, String activite_prcpl, String adresse_act_prcpl, String activite_sec, String adresse_act_sec, String n_register_comrc, Date date_registre_c, String n_cart_artisan, Date date_carte_ar, String n_agrement, Date date_agrement, String autres, Date date) {
         this.id = id;
         this.name = name;
-        this.date = date;
+        this.birthDate = birthDate;
         this.commune = commune;
         this.wilaya = wilaya;
         this.prenom_pere = prenom_pere;
@@ -41,6 +47,7 @@ public class Beneficiaire {
         this.n_agrement = n_agrement;
         this.date_agrement = date_agrement;
         this.autres = autres;
+        this.date = date;
     }
 
     public int getId() {
@@ -59,12 +66,12 @@ public class Beneficiaire {
         this.name = name;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getCommune() {
@@ -155,11 +162,11 @@ public class Beneficiaire {
         this.n_register_comrc = n_register_comrc;
     }
 
-    public String getDate_registre_c() {
+    public Date getDate_registre_c() {
         return date_registre_c;
     }
 
-    public void setDate_registre_c(String date_registre_c) {
+    public void setDate_registre_c(Date date_registre_c) {
         this.date_registre_c = date_registre_c;
     }
 
@@ -171,11 +178,11 @@ public class Beneficiaire {
         this.n_cart_artisan = n_cart_artisan;
     }
 
-    public String getDate_carte_ar() {
+    public Date getDate_carte_ar() {
         return date_carte_ar;
     }
 
-    public void setDate_carte_ar(String date_carte_ar) {
+    public void setDate_carte_ar(Date date_carte_ar) {
         this.date_carte_ar = date_carte_ar;
     }
 
@@ -187,11 +194,11 @@ public class Beneficiaire {
         this.n_agrement = n_agrement;
     }
 
-    public String getDate_agrement() {
+    public Date getDate_agrement() {
         return date_agrement;
     }
 
-    public void setDate_agrement(String date_agrement) {
+    public void setDate_agrement(Date date_agrement) {
         this.date_agrement = date_agrement;
     }
 
@@ -203,6 +210,12 @@ public class Beneficiaire {
         this.autres = autres;
     }
 
-   
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
 }
