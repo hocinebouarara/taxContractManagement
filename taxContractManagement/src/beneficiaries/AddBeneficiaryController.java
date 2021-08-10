@@ -106,7 +106,27 @@ public class AddBeneficiaryController implements Initializable {
 
     @FXML
     private void clean() {
-        
+        nameFld.setText(null);
+        birthDateFld.setValue(null);
+        communeFld.setText(null);
+        wilayaFld.setText(null);
+        nameFatherFld.setText(null);
+        nameMotherFld.setText(null);
+        nationFld.setText(null);
+        AdressFld.setText(null);
+        actPrincFld.setText(null);
+        adressActPricFld.setText(null);
+        actSecnFld.setText(null);
+        adressActSecnFld.setText(null);
+        numRegisFld.setText(null);
+        regisDateFld.setValue(null);
+        carteArtFld.setText(null);
+        cartDateFld.setValue(null);
+        agrementFld.setText(null);
+        agrementDateFld.setValue(null);
+        dateFld.setValue(null);
+        AutresFld.setText(null);
+
     }
 
     @FXML
