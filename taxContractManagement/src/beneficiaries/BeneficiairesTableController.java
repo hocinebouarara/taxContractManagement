@@ -64,14 +64,6 @@ public class BeneficiairesTableController implements Initializable {
     private TableColumn<Beneficiaire, String> natCol;
     @FXML
     private TableColumn<Beneficiaire, String> operationCol;
-
-    String query = null;
-    Connection connection = null;
-    PreparedStatement preparedStatement = null;
-    ResultSet resultSet = null;
-    Beneficiaire beneficiaire = null;
-
-    ObservableList<Beneficiaire> beneficiairesList = FXCollections.observableArrayList();
     @FXML
     private TableColumn<Beneficiaire, String> checkCol;
     @FXML
@@ -102,6 +94,16 @@ public class BeneficiairesTableController implements Initializable {
     private TableColumn<Beneficiaire, String> agrementDateCol;
     @FXML
     private TableColumn<Beneficiaire, String> AutresCol;
+    @FXML
+    private TableColumn<Beneficiaire, String> birthDateCol;
+
+    String query = null;
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
+    Beneficiaire beneficiaire = null;
+
+    ObservableList<Beneficiaire> beneficiairesList = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -136,12 +138,13 @@ public class BeneficiairesTableController implements Initializable {
                         resultSet.getString("activite_sec"),
                         resultSet.getString("adresse_act_sec"),
                         resultSet.getString("n_register_comrc"),
-                        resultSet.getString("date_registre_c"),
+                        resultSet.getDate("date_registre_c"),
                         resultSet.getString("n_cart_artisan"),
-                        resultSet.getString("date_carte_ar"),
+                        resultSet.getDate("date_carte_ar"),
                         resultSet.getString("n_agrement"),
-                        resultSet.getString("date_agrement"),
-                        resultSet.getString("autres")
+                        resultSet.getDate("date_agrement"),
+                        resultSet.getString("autres"),
+                        resultSet.getDate("date")
                 ));
                 beneficiairesTable.setItems(beneficiairesList);
 
@@ -159,7 +162,7 @@ public class BeneficiairesTableController implements Initializable {
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        birthDateCol.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
         communeCol.setCellValueFactory(new PropertyValueFactory<>("commune"));
         wilayaCol.setCellValueFactory(new PropertyValueFactory<>("wilaya"));
         prenom_pereCol.setCellValueFactory(new PropertyValueFactory<>("prenom_pere"));
@@ -177,6 +180,7 @@ public class BeneficiairesTableController implements Initializable {
         n_argementCol.setCellValueFactory(new PropertyValueFactory<>("n_agrement"));
         agrementDateCol.setCellValueFactory(new PropertyValueFactory<>("date_agrement"));
         AutresCol.setCellValueFactory(new PropertyValueFactory<>("autres"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
 
         //add cell of button edit 
         Callback<TableColumn<Beneficiaire, String>, TableCell<Beneficiaire, String>> cellFoctory = (TableColumn<Beneficiaire, String> param) -> {
