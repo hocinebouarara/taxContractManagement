@@ -7,6 +7,10 @@ package beneficiaries;
 
 import com.jfoenix.controls.JFXDatePicker;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import models.Beneficiaire;
 
 /**
  * FXML Controller class
@@ -70,6 +75,14 @@ public class AddBeneficiaryController implements Initializable {
     private TextField nationFld;
     @FXML
     private TextField AdressFld;
+
+    String query = null;
+    Connection connection = null;
+    ResultSet resultSet = null;
+    PreparedStatement preparedStatement;
+    Beneficiaire beneficiaire = null;
+    private boolean update;
+    int beneficiaireId;
 
     /**
      * Initializes the controller class.
@@ -131,6 +144,34 @@ public class AddBeneficiaryController implements Initializable {
 
     @FXML
     private void next(MouseEvent event) {
+    }
+
+    public void setTextFields(int id, String name, Date birth, String town, String wilaya, String fatherName,
+            String motherName, String nation, String adress, String actPrinc, String adressActP, String actSecon,
+            String adressActS, String numRegister, Date registerDate, String numCarte, Date carteDate,
+            String numAgrement,Date agrementDate,String autres ,Date date ) {
+        beneficiaireId = id;
+        nameFld.setText(null);
+        birthDateFld.setValue(null);
+        communeFld.setText(null);
+        wilayaFld.setText(null);
+        nameFatherFld.setText(null);
+        nameMotherFld.setText(null);
+        nationFld.setText(null);
+        AdressFld.setText(null);
+        actPrincFld.setText(null);
+        adressActPricFld.setText(null);
+        actSecnFld.setText(null);
+        adressActSecnFld.setText(null);
+        numRegisFld.setText(null);
+        regisDateFld.setValue(null);
+        carteArtFld.setText(null);
+        cartDateFld.setValue(null);
+        agrementFld.setText(null);
+        agrementDateFld.setValue(null);
+        dateFld.setValue(null);
+        AutresFld.setText(null);
+
     }
 
 }
