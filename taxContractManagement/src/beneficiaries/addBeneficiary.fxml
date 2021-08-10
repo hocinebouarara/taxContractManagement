@@ -635,7 +635,7 @@
                               <Insets right="1.0" />
                            </HBox.margin>
                         </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#next" prefWidth="186.0" styleClass="buttons" text="Continuer" textFill="#123456">
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#getMetierView" prefWidth="186.0" styleClass="buttons" text="Continuer" textFill="#123456">
                            <font>
                               <Font name="Ink Free" size="18.0" />
                            </font>
