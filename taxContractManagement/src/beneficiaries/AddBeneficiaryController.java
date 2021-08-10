@@ -191,10 +191,32 @@ public class AddBeneficiaryController implements Initializable {
     private void next(MouseEvent event) {
     }
 
-    public void setTextFields(int id, String name, Date birth, String town, String wilaya, String fatherName,
+    public void setTextFields(int id, String name, Date birth, String commune, String wilaya, String fatherName,
             String motherName, String nation, String adress, String actPrinc, String adressActP, String actSecon,
             String adressActS, String numRegister, Date registerDate, String numCarte, Date carteDate,
             String numAgrement, Date agrementDate, String autres, Date date) {
+
+        beneficiaireId = id;
+        nameFld.setText(name);
+        birthDateFld.setValue(birth.toLocalDate());
+        communeFld.setText(commune);
+        wilayaFld.setText(wilaya);
+        nameFatherFld.setText(fatherName);
+        nameMotherFld.setText(motherName);
+        nationFld.setText(nation);
+        AdressFld.setText(adress);
+        actPrincFld.setText(actPrinc);
+        adressActPricFld.setText(adressActP);
+        actSecnFld.setText(actSecon);
+        adressActSecnFld.setText(adressActS);
+        numRegisFld.setText(numRegister);
+        regisDateFld.setValue(registerDate.toLocalDate());
+        carteArtFld.setText(numCarte);
+        cartDateFld.setValue(carteDate.toLocalDate());
+        agrementFld.setText(numAgrement);
+        agrementDateFld.setValue(agrementDate.toLocalDate());
+        dateFld.setValue(date.toLocalDate());
+        AutresFld.setText(autres);
 
     }
 
