@@ -25,7 +25,7 @@ public class Links {
     public static String ADDPROPIETORVIEW = "/proprietors/addProprietor.fxml";
     public static String PROPRIETORTABLEVIEW = "/proprietors/proprietaireTable.fxml";
 
-    public static String ADDBENEFICIAIREVIEW = "/beneficiaries/addBeneficiaire.fxml";
+    public static String ADDBENEFICIAIREVIEW = "/beneficiaries/addBeneficiary.fxml";
     public static String BENEFICIAIREVIEW = "/beneficiaries/beneficiariesView.fxml";
     public static String BENEFICIAIRETABLEVIEW = "/beneficiaries/beneficiairesTable.fxml";
 
