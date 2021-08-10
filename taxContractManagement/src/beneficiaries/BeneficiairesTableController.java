@@ -235,10 +235,18 @@ public class BeneficiairesTableController implements Initializable {
                                 Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
                             }
 
-                            AddBeneficiaireController addBeneficiaireController = loader.getController();
-                            addBeneficiaireController.setUpdate(true);
-                            addBeneficiaireController.setTextField(beneficiaire.getId(), beneficiaire.getName(),
-                                    beneficiaire.getDate().toLocalDate(), beneficiaire.getWilaya(), beneficiaire.getCommune(), beneficiaire.getNationnalite());
+                            AddBeneficiaryController addBeneficiaryController = loader.getController();
+                            addBeneficiaryController.setUpdate(true);
+                            addBeneficiaryController.setTextFields(beneficiaire.getId(), beneficiaire.getName(),
+                                    beneficiaire.getDate(), beneficiaire.getCommune(),
+                                    beneficiaire.getWilaya(), beneficiaire.getPrenom_pere(), beneficiaire.getNom_mere(),
+                                    beneficiaire.getNationnalite(), beneficiaire.getAdresse_domicile(), beneficiaire.getActivite_prcpl(),
+                                    beneficiaire.getAdresse_act_prcpl(), beneficiaire.getActivite_sec(),
+                                    beneficiaire.getAdresse_act_sec(), beneficiaire.getN_register_comrc(),
+                                    beneficiaire.getDate_registre_c(), beneficiaire.getN_cart_artisan(),
+                                    beneficiaire.getDate_carte_ar(), beneficiaire.getN_agrement(), beneficiaire.getDate_agrement(),
+                                    beneficiaire.getAutres(),beneficiaire.getDate()
+                            );
                             Parent parent = loader.getRoot();
                             Stage stage = new Stage();
                             stage.setScene(new Scene(parent));
