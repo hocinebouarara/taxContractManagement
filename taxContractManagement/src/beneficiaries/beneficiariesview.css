@@ -5,3 +5,17 @@
 .mainFxmlClass {
 
 }
+.buttons{
+    -fx-background-color: transparent;
+    -fx-background-radius: 50px;
+    -fx-border-color: #123456;
+    -fx-border-radius: 50px;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+
+}
+.buttons:hover{
+    -fx-border-color: #FFA000;
+        -fx-border-width: 3px;
+
+}
