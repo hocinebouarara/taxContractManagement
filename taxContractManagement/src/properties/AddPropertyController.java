@@ -33,6 +33,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -48,7 +49,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import models.Beneficiaire;
-import models.Property;
 import models.Proprietor;
 import proprietors.AddProprietorController;
 import proprietors.ProprietorsViewController;
@@ -61,35 +61,34 @@ import proprietors.ProprietorsViewController;
 public class AddPropertyController implements Initializable {
 
     @FXML
-    private JFXTextField articleFld;
+    private TextField articleFld;
     @FXML
-    private JFXTextField wilayaFld;
+    private TextField wilayaFld;
     @FXML
-    private JFXTextField communeFld;
+    private TextField communeFld;
     @FXML
-    private JFXTextField reuFld;
+    private TextField reuFld;
     @FXML
-    private JFXTextField inspectionFld;
+    private TextField inspectionFld;
     @FXML
-    private JFXTextField nTerrainFld;
+    private TextField nTerrainFld;
     @FXML
-    private JFXTextField nImmeubleFld;
+    private TextField nImmeubleFld;
     @FXML
     private JFXRadioButton rezChaFld;
     @FXML
-    private JFXTextField nEtageFld;
-    @FXML
+    private TextField nEtageFld;
     private JFXTextField nApprtFld;
     @FXML
-    private JFXTextField nomProprFld;
+    private TextField nomProprFld;
     @FXML
-    private JFXTextField adresseProprFld;
+    private TextField adresseProprFld;
     @FXML
     private JFXComboBox<String> orignPropCombo;
     @FXML
-    private JFXTextField titreFld;
+    private TextField titreFld;
     @FXML
-    private JFXTextField acieFld;
+    private TextField acieFld;
     @FXML
     private JFXDatePicker dateAcieFld;
     @FXML
@@ -97,21 +96,21 @@ public class AddPropertyController implements Initializable {
     @FXML
     private JFXRadioButton induvidlBtn;
     @FXML
-    private JFXTextField superTotFld;
+    private TextField superTotFld;
     @FXML
-    private JFXTextField SuperBatieFld;
+    private TextField SuperBatieFld;
     @FXML
-    private JFXTextField superNonBatieFLd;
+    private TextField superNonBatieFLd;
     @FXML
-    private JFXTextField nbrPiecesFld;
+    private TextField nbrPiecesFld;
     @FXML
-    private JFXTextField nbrEtageFld;
+    private TextField nbrEtageFld;
     @FXML
     private JFXDatePicker dateAchevFld;
     @FXML
     private JFXComboBox<String> usageCombo;
     @FXML
-    private JFXTextField adresseResdcPrincpFld;
+    private TextField adresseResdcPrincpFld;
 
     String query = null;
     Connection connection = null;
@@ -122,8 +121,7 @@ public class AddPropertyController implements Initializable {
     int propertyId, proprietorId = 1;
     String type = null;
     boolean ground_floor = false;
-    @FXML
-    private VBox AddProprietorAnchor;
+    int position = 0;
     @FXML
     private TableView<Proprietor> proprietorsTable;
     @FXML
@@ -143,9 +141,23 @@ public class AddPropertyController implements Initializable {
 
     ObservableList<Proprietor> proprietorsList = FXCollections.observableArrayList();
     @FXML
-    private VBox proprietor_property;
+    private Button habitationBtn;
     @FXML
-    private VBox proprietorView;
+    private Button proprietaireBtn;
+    @FXML
+    private Button designationBtn;
+    @FXML
+    private Button affectationBtn;
+    @FXML
+    private AnchorPane habitationAnchor;
+    @FXML
+    private TextField nAppertFld;
+    @FXML
+    private AnchorPane proprietorAnchor;
+    @FXML
+    private AnchorPane designationAnchor;
+    @FXML
+    private AnchorPane affectationAnchor;
 
     /**
      * Initializes the controller class.
@@ -162,8 +174,6 @@ public class AddPropertyController implements Initializable {
         collectifBtn.setToggleGroup(group);
 
         loadData();
-        proprietor_property.setVisible(true);
-        proprietorView.setVisible(false);
     }
 
     String getTypeImmbeuble() {
@@ -203,12 +213,6 @@ public class AddPropertyController implements Initializable {
 
     @FXML
     private void clean(MouseEvent event) {
-    }
-
-    @FXML
-    private void getProprietorsView(MouseEvent event) {
-        proprietorView.setVisible(true);
-        proprietor_property.setVisible(false);
     }
 
     private void getQuery() {
@@ -276,16 +280,6 @@ public class AddPropertyController implements Initializable {
     @FXML
     private void groundFloor(MouseEvent event) {
         ground_floor = true;
-    }
-
-    private void loadViews(String viewName) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(viewName));
-            AddProprietorAnchor.getChildren().setAll(pane);
-        } catch (IOException ex) {
-            Logger.getLogger(HomeViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }
 
     @FXML
@@ -428,7 +422,7 @@ public class AddPropertyController implements Initializable {
     }
 
     @FXML
-    private void seletProprietor(MouseEvent event) {
+    private void selectProprietor(MouseEvent event) {
 
         proprietor = (Proprietor) proprietorsTable.getSelectionModel().getSelectedItem();
         if (proprietor == null) {
@@ -439,16 +433,59 @@ public class AddPropertyController implements Initializable {
             alert.showAndWait();
         } else {
             nomProprFld.setText(proprietor.getName());
-            proprietorView.setVisible(false);
-            proprietor_property.setVisible(true);
+            adresseProprFld.setText(proprietor.getAdresse());
+
         }
     }
 
     @FXML
-    private void back(MouseEvent event) {
-        proprietorView.setVisible(false);
-        proprietor_property.setVisible(true);
-        proprietor = null;
+    private void getHabitationView() {
+        habitationBtn.setStyle("-fx-background-color:white;-fx-border-width:1.6px;-fx-border-color:#123456;-fx-border-radius:5px;");
+        proprietaireBtn.setStyle("-fx-background-color:#DDD;");
+        designationBtn.setStyle("-fx-background-color:#DDD;");
+        affectationBtn.setStyle("-fx-background-color:#DDD;");
+        habitationAnchor.setVisible(true);
+        proprietorAnchor.setVisible(false);
+        designationAnchor.setVisible(false);
+        affectationAnchor.setVisible(false);
     }
+
+    @FXML
+    private void getProprietaireView() {
+        proprietaireBtn.setStyle("-fx-background-color:white;-fx-border-width:1.6px;-fx-border-color:#123456;-fx-border-radius:5px;");
+        habitationBtn.setStyle("-fx-background-color:#DDD;");
+        designationBtn.setStyle("-fx-background-color:#DDD;");
+        affectationBtn.setStyle("-fx-background-color:#DDD;");
+        habitationAnchor.setVisible(false);
+        proprietorAnchor.setVisible(true);
+        designationAnchor.setVisible(false);
+        affectationAnchor.setVisible(false);
+    }
+
+    @FXML
+    private void getDesignationView() {
+        designationBtn.setStyle("-fx-background-color:white;-fx-border-width:1.6px;-fx-border-color:#123456;-fx-border-radius:5px;");
+        proprietaireBtn.setStyle("-fx-background-color:#DDD;");
+        habitationBtn.setStyle("-fx-background-color:#DDD;");
+        affectationBtn.setStyle("-fx-background-color:#DDD;");
+        habitationAnchor.setVisible(false);
+        proprietorAnchor.setVisible(false);
+        designationAnchor.setVisible(true);
+        affectationAnchor.setVisible(false);
+    }
+
+    @FXML
+    private void getAffectationView() {
+        affectationBtn.setStyle("-fx-background-color:white;-fx-border-width:1.6px;-fx-border-color:#123456;-fx-border-radius:5px;");
+        proprietaireBtn.setStyle("-fx-background-color:#DDD;");
+        designationBtn.setStyle("-fx-background-color:#DDD;");
+        habitationBtn.setStyle("-fx-background-color:#DDD;");
+        habitationAnchor.setVisible(false);
+        proprietorAnchor.setVisible(false);
+        designationAnchor.setVisible(false);
+        affectationAnchor.setVisible(true);
+    }
+
+   
 
 }
