@@ -82,7 +82,7 @@
             </AnchorPane>
          </children>
       </VBox>
-      <AnchorPane fx:id="habitationAnchor" layoutX="10.0" layoutY="10.0" opacity="0.0" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+      <AnchorPane fx:id="habitationAnchor" layoutX="10.0" layoutY="10.0" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="367.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                <children>
@@ -385,7 +385,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="proprietorAnchor" layoutX="10.0" layoutY="10.0" opacity="0.0" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+      <AnchorPane fx:id="proprietorAnchor" layoutX="10.0" layoutY="10.0" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="367.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                <children>
@@ -875,7 +875,7 @@
                               <MaterialDesignIconView glyphName="NUMERIC_1_BOX" size="32" wrappingWidth="30.66668701171875" />
                               <HBox alignment="CENTER" prefHeight="51.0" prefWidth="414.0" spacing="10.0">
                                  <children>
-                                    <JFXComboBox fx:id="usageCombo" cache="true" focusColor="#12335400" prefHeight="42.0" prefWidth="305.0" promptText="Usage habitation" style="-fx-background-radius: 3px; -fx-border-color: #B2B1B9; -fx-font-size: 16px; -fx-border-radius: 3px;" unFocusColor="TRANSPARENT" visibleRowCount="14">
+                                    <JFXComboBox fx:id="usageCombo" cache="true" focusColor="#12335400" prefHeight="42.0" prefWidth="345.0" promptText="Usage habitation" style="-fx-background-radius: 3px; -fx-border-color: #B2B1B9; -fx-font-size: 16px; -fx-border-radius: 3px;" unFocusColor="TRANSPARENT" visibleRowCount="14">
                                        <padding>
                                           <Insets left="12.0" />
                                        </padding>
@@ -909,52 +909,6 @@
                                  </children>
                                  <VBox.margin>
                                     <Insets top="3.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox opacity="0.0">
-                                 <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse residence principale" wrappingWidth="161.13671875">
-                                       <font>
-                                          <Font name="Zilla Slab Light Italic" size="12.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </Text>
-                                    <TextField fx:id="adresseResdcPrincpFld1" prefHeight="42.0" prefWidth="468.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 3px; -fx-background-radius: 3px;" styleClass="textfld">
-                                       <font>
-                                          <Font name="Zilla Slab Medium" size="21.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </TextField>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox opacity="0.0">
-                                 <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse residence principale" wrappingWidth="161.13671875">
-                                       <font>
-                                          <Font name="Zilla Slab Light Italic" size="12.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </Text>
-                                    <TextField fx:id="adresseResdcPrincpFld11" prefHeight="42.0" prefWidth="468.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 3px; -fx-background-radius: 3px;" styleClass="textfld">
-                                       <font>
-                                          <Font name="Zilla Slab Medium" size="21.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </TextField>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
                                  </VBox.margin>
                               </VBox>
                            </children>

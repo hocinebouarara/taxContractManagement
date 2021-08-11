@@ -109,8 +109,6 @@ public class AddPropertyController implements Initializable {
     private JFXDatePicker dateAchevFld;
     @FXML
     private JFXComboBox<String> usageCombo;
-    @FXML
-    private TextField adresseResdcPrincpFld;
 
     String query = null;
     Connection connection = null;
@@ -158,6 +156,8 @@ public class AddPropertyController implements Initializable {
     private AnchorPane designationAnchor;
     @FXML
     private AnchorPane affectationAnchor;
+    @FXML
+    private TextField adresseResdcPrincpFld1;
 
     /**
      * Initializes the controller class.
@@ -165,8 +165,8 @@ public class AddPropertyController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        usageCombo.getItems().addAll("Héritage", "Donation", "Auto construction", "Acquisition");
-        orignPropCombo.getItems().addAll("Usage professionnel", "Usage Mixte ( Habitation & Professionnel )",
+        orignPropCombo.getItems().addAll("Héritage", "Donation", "Auto construction", "Acquisition");
+        usageCombo.getItems().addAll("Usage professionnel", "Usage Mixte ( Habitation & Professionnel )",
                 "Habitation", "Habitation principale", "Résidence secondaire");
 
         ToggleGroup group = new ToggleGroup();
@@ -174,6 +174,7 @@ public class AddPropertyController implements Initializable {
         collectifBtn.setToggleGroup(group);
 
         loadData();
+        getHabitationView();
     }
 
     String getTypeImmbeuble() {
