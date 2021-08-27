@@ -55,6 +55,7 @@ public class ContractsViewController implements Initializable {
 
     @FXML
     private void getAddContractsView(MouseEvent event) {
+        loadViews(Links.ADDCONTRACTEVIEW);
     }
     
     private void loadViews(String viewName) {
