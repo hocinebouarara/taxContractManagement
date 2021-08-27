@@ -220,7 +220,7 @@ public class AddBeneficiaryController implements Initializable {
 
     }
 
-    void setUpdate(boolean b) {
+   public void setUpdate(boolean b) {
         this.update = b;
 
     }
