@@ -143,9 +143,9 @@
             </VBox>
          </children>
       </VBox>
-      <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+      <VBox alignment="BOTTOM_CENTER">
          <children>
-            <AnchorPane fx:id="anchor" prefHeight="580.0" prefWidth="1000.0">
+            <AnchorPane fx:id="anchor" prefHeight="620.0" prefWidth="1000.0">
                <VBox.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </VBox.margin>

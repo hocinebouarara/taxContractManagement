@@ -79,7 +79,7 @@ public class VersementsTableController implements Initializable {
 
     ObservableList<Payment> paymentsList = FXCollections.observableArrayList();
     @FXML
-    private TableColumn<?, ?> takerAdressCol;
+    private TableColumn<Payment, String> takerAdressCol;
 
     /**
      * Initializes the controller class.
