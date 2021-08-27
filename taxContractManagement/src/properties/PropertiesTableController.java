@@ -69,7 +69,43 @@ public class PropertiesTableController implements Initializable {
 
     ObservableList<Property> propertyList = FXCollections.observableArrayList();
     @FXML
-    private TableColumn<?, ?> checkCol;
+    private TableColumn<Property, String> checkCol;
+    @FXML
+    private TableColumn<Property, String> birthdateCol;
+    @FXML
+    private TableColumn<Property, String> N_terrainCol;
+    @FXML
+    private TableColumn<Property, String> N_immeubleCol;
+    @FXML
+    private TableColumn<Property, String> N_etageCol;
+    @FXML
+    private TableColumn<Property, String> N_appartementCol;
+    @FXML
+    private TableColumn<Property, String> rezChausseeCol;
+    @FXML
+    private TableColumn<Property, String> NbrEtagesCol;
+    @FXML
+    private TableColumn<Property, String> NbrAppartementCol;
+    @FXML
+    private TableColumn<Property, String> typeImmbeubleCol;
+    @FXML
+    private TableColumn<Property, String> superficieTotalCol;
+    @FXML
+    private TableColumn<Property, String> superficieBatieCol;
+    @FXML
+    private TableColumn<Property, String> superficieNonBatieCol;
+    @FXML
+    private TableColumn<Property, String> dateAchevCol;
+    @FXML
+    private TableColumn<Property, String> wilayaCol;
+    @FXML
+    private TableColumn<Property, String> originProprietyCol;
+    @FXML
+    private TableColumn<Property, String> adressPrincipaleCol;
+    @FXML
+    private TableColumn<Property, String> inspectionCol;
+    @FXML
+    private TableColumn<Property, String> usageCol;
 
     /**
      * Initializes the controller class.
@@ -80,20 +116,42 @@ public class PropertiesTableController implements Initializable {
         loadDate();
     }
 
-    @FXML
     private void refreshTable() {
         try {
             propertyList.clear();
 
-            query = "SELECT fiche_habitation.id,proprietaire.id,"
-                    + "proprietaire.nom_prenom_or_RS,fiche_habitation.nbr_article,"
-                    + "fiche_habitation.titre_propriete,fiche_habitation.inspection,"
-                    + "fiche_habitation.wilaya,fiche_habitation.commune,"
-                    + "fiche_habitation.reu,fiche_habitation.n_acie,fiche_habitation.date "
-                    + "FROM "
-                    + "fiche_habitation "
-                    + "INNER JOIN proprietaire ON proprietaire.id = fiche_habitation.id_propr "
-                    + "ORDER BY fiche_habitation.id";
+            query = "SELECT\n"
+                    + "    fiche_habitation.id,\n"
+                    + "    fiche_habitation.nbr_article,\n"
+                    + "    fiche_habitation.inspection,\n"
+                    + "    fiche_habitation.wilaya,\n"
+                    + "    fiche_habitation.commune,\n"
+                    + "    fiche_habitation.reu,\n"
+                    + "    fiche_habitation.origin_propriete,\n"
+                    + "    fiche_habitation.n_terrain,\n"
+                    + "    fiche_habitation.n_immeuble,\n"
+                    + "    fiche_habitation.n_etage,\n"
+                    + "    fiche_habitation.n_appartement,\n"
+                    + "    fiche_habitation.rez_chaussee,\n"
+                    + "    fiche_habitation.nbr_etage,\n"
+                    + "    fiche_habitation.nbr_apparemment,\n"
+                    + "    fiche_habitation.type_immbeuble,\n"
+                    + "    fiche_habitation.superficie_tot,\n"
+                    + "    fiche_habitation.superficie_batie,\n"
+                    + "    fiche_habitation.superficie_non_batie,\n"
+                    + "    fiche_habitation.date_achev,\n"
+                    + "    fiche_habitation.usage,\n"
+                    + "    fiche_habitation.adresse_prcpl,\n"
+                    + "    proprietaire.id,\n"
+                    + "    proprietaire.nom_prenom_or_RS,\n"
+                    + "    proprietaire.date_nss,\n"
+                    + "    fiche_habitation.titre_propriete,\n"
+                    + "    fiche_habitation.n_acie,\n"
+                    + "    fiche_habitation.date\n"
+                    + "FROM\n"
+                    + "    fiche_habitation\n"
+                    + "INNER JOIN proprietaire ON proprietaire.id = fiche_habitation.id_propr\n"
+                    + "ORDER BY  fiche_habitation.id;";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
@@ -102,10 +160,28 @@ public class PropertiesTableController implements Initializable {
                         resultSet.getInt("fiche_habitation.id"),
                         resultSet.getInt("proprietaire.id"),
                         resultSet.getString("proprietaire.nom_prenom_or_RS"),
+                        resultSet.getDate("proprietaire.date_nss"),
                         resultSet.getString("fiche_habitation.nbr_article"),
                         resultSet.getString("fiche_habitation.titre_propriete"),
                         resultSet.getString("fiche_habitation.commune"),
+                        resultSet.getString("fiche_habitation.inspection"),
+                        resultSet.getString("fiche_habitation.wilaya"),
                         resultSet.getString("fiche_habitation.reu"),
+                        resultSet.getString("fiche_habitation.origin_propriete"),
+                        resultSet.getString("fiche_habitation.n_terrain"),
+                        resultSet.getString("fiche_habitation.n_immeuble"),
+                        resultSet.getString("fiche_habitation.n_etage"),
+                        resultSet.getString("fiche_habitation.n_appartement"),
+                        resultSet.getString("fiche_habitation.rez_chaussee"),
+                        resultSet.getString("fiche_habitation.nbr_etage"),
+                        resultSet.getString("fiche_habitation.nbr_apparemment"),
+                        resultSet.getString("fiche_habitation.type_immbeuble"),
+                        resultSet.getFloat("fiche_habitation.superficie_tot"),
+                        resultSet.getFloat("fiche_habitation.superficie_batie"),
+                        resultSet.getFloat("fiche_habitation.superficie_non_batie"),
+                        resultSet.getDate("fiche_habitation.date_achev"),
+                        resultSet.getString("fiche_habitation.usage"),
+                        resultSet.getString("fiche_habitation.adresse_prcpl"),
                         resultSet.getString("fiche_habitation.n_acie"),
                         resultSet.getDate("fiche_habitation.date")));
                 propertiesTable.setItems(propertyList);
@@ -126,10 +202,28 @@ public class PropertiesTableController implements Initializable {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         idProprCol.setCellValueFactory(new PropertyValueFactory<>("id_propr"));
         nomProprCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        birthdateCol.setCellValueFactory(new PropertyValueFactory<>("proprBirth"));
         articleCol.setCellValueFactory(new PropertyValueFactory<>("article"));
         titreCol.setCellValueFactory(new PropertyValueFactory<>("titre"));
+        inspectionCol.setCellValueFactory(new PropertyValueFactory<>("inspection"));
+        wilayaCol.setCellValueFactory(new PropertyValueFactory<>("wilaya"));
         communeCol.setCellValueFactory(new PropertyValueFactory<>("commune"));
         reuCol.setCellValueFactory(new PropertyValueFactory<>("reu"));
+        originProprietyCol.setCellValueFactory(new PropertyValueFactory<>("origin_propriete"));
+        N_terrainCol.setCellValueFactory(new PropertyValueFactory<>("n_terrain"));
+        N_immeubleCol.setCellValueFactory(new PropertyValueFactory<>("n_immeuble"));
+        N_etageCol.setCellValueFactory(new PropertyValueFactory<>("n_etage"));
+        N_appartementCol.setCellValueFactory(new PropertyValueFactory<>("n_appartement"));
+        rezChausseeCol.setCellValueFactory(new PropertyValueFactory<>("rez_chaussee"));
+        NbrEtagesCol.setCellValueFactory(new PropertyValueFactory<>("nbr_etage"));
+        NbrAppartementCol.setCellValueFactory(new PropertyValueFactory<>("nbr_apparemment"));
+        typeImmbeubleCol.setCellValueFactory(new PropertyValueFactory<>("type_immbeuble"));
+        superficieTotalCol.setCellValueFactory(new PropertyValueFactory<>("superficie_tot"));
+        superficieBatieCol.setCellValueFactory(new PropertyValueFactory<>("superficie_batie"));
+        superficieNonBatieCol.setCellValueFactory(new PropertyValueFactory<>("superficie_non_batie"));
+        dateAchevCol.setCellValueFactory(new PropertyValueFactory<>("date_achev"));
+        usageCol.setCellValueFactory(new PropertyValueFactory<>("usage"));
+        adressPrincipaleCol.setCellValueFactory(new PropertyValueFactory<>("adresse_prcpl"));
         acieCol.setCellValueFactory(new PropertyValueFactory<>("acie"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
 
@@ -152,20 +246,20 @@ public class PropertiesTableController implements Initializable {
 
                         deleteIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
+                                + "-glyph-size:25px;"
                                 + "-fx-fill:#ff1744;"
                         );
                         editIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
+                                + "-glyph-size:25px;"
                                 + "-fx-fill:#00E676;"
                         );
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
                             try {
                                 property = propertiesTable.getSelectionModel().getSelectedItem();
-                                query = "DELETE FROM `fiche_habitation` WHERE id = '" + property.getId()+ "'"
-                                        + " and id_propr = '" + property.getId_propr()+ "'";
+                                query = "DELETE FROM `fiche_habitation` WHERE id = '" + property.getId() + "'"
+                                        + " and id_propr = '" + property.getId_propr() + "'";
                                 connection = DbConnect.getConnect();
                                 preparedStatement = connection.prepareStatement(query);
                                 preparedStatement.execute();
