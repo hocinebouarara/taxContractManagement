@@ -91,10 +91,10 @@ public class ContractsTableController implements Initializable {
 
             query = "SELECT\n"
                     + "    contrat.id,\n"
-                    + "    proprietaire.id,\n"
+                    + "    fiche_habitation.id_propr,\n"
+                    + "    proprietaire.nom_prenom_or_RS,\n"
                     + "    beneficiaire.id,\n"
                     + "    fiche_habitation.id,\n"
-                    + "    proprietaire.nom_prenom_or_RS,\n"
                     + "    beneficiaire.nom_prenom_or_RS,\n"
                     + "    contrat.type_contr,\n"
                     + "    contrat.date,\n"
@@ -103,9 +103,10 @@ public class ContractsTableController implements Initializable {
                     + "    contrat.n_acie\n"
                     + "FROM\n"
                     + "    contrat\n"
-                    + "INNER JOIN proprietaire ON proprietaire.id = contrat.id_propr\n"
+                    + "\n"
                     + "INNER JOIN beneficiaire ON beneficiaire.id = contrat.id_benef\n"
                     + "INNER JOIN fiche_habitation ON fiche_habitation.id = contrat.id_fiche_hab\n"
+                    + "INNER JOIN proprietaire ON fiche_habitation.id_propr= proprietaire.id\n"
                     + "ORDER BY\n"
                     + "    contrat.id";
             preparedStatement = connection.prepareStatement(query);
@@ -114,7 +115,7 @@ public class ContractsTableController implements Initializable {
             while (resultSet.next()) {
                 contractsList.add(new Contract(
                         resultSet.getInt("contrat.id"),
-                        resultSet.getInt("proprietaire.id"),
+                        resultSet.getInt("fiche_habitation.id_propr"),
                         resultSet.getInt("beneficiaire.id"),
                         resultSet.getInt("fiche_habitation.id"),
                         resultSet.getString("proprietaire.nom_prenom_or_RS"),
