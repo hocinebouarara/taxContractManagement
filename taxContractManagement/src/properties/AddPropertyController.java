@@ -13,7 +13,6 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import helpres.DbConnect;
 import helpres.Links;
-import home.HomeViewController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -38,13 +37,11 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -157,7 +154,7 @@ public class AddPropertyController implements Initializable {
     @FXML
     private AnchorPane affectationAnchor;
     @FXML
-    private TextField adresseResdcPrincpFld1;
+    private TextField adresseResdcPrincpFld;
 
     /**
      * Initializes the controller class.
