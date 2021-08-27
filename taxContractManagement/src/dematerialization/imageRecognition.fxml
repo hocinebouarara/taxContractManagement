@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.validation.NumberValidator?>
@@ -113,9 +114,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <JFXComboBox fx:id="Fournisseur" layoutX="1.0" layoutY="366.0" prefHeight="25.0" prefWidth="95.0" promptText="Fournisseur" />
-                  <JFXComboBox fx:id="Facture" layoutX="117.0" layoutY="366.0" prefHeight="25.0" prefWidth="110.0" promptText="Facture" />
-                  <JFXComboBox fx:id="Produit" layoutX="241.0" layoutY="366.0" prefHeight="25.0" prefWidth="134.0" promptText="Produit" />
+                  <JFXComboBox fx:id="paymentFlds" layoutX="249.0" layoutY="360.0" prefHeight="25.0" prefWidth="117.0" promptText="Champs de Av. Vers." />
                   <JFXButton fx:id="Next" buttonType="RAISED" layoutX="137.0" layoutY="409.0" styleClass="button_gray" text="Next zone" />
                   <JFXTextField fx:id="nbr_ligne" focusColor="#183079" labelFloat="true" layoutX="19.0" layoutY="513.0" prefHeight="18.0" prefWidth="61.0" promptText="Nbr ligne " />
                   <JFXButton fx:id="deviser" buttonType="RAISED" layoutX="100.0" layoutY="513.0" onAction="#Devise_zone" prefHeight="25.0" prefWidth="144.0" styleClass="button_green" text="Scanner Multiple Lignes" />
@@ -141,6 +140,9 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
+                  <JFXRadioButton fx:id="contractBtn" layoutX="132.0" layoutY="367.0" text="Contrats" />
+                  <JFXRadioButton fx:id="avisVersementBtn" layoutX="-5.0" layoutY="367.0" prefHeight="17.0" prefWidth="125.0" text="Br. avis de vers" />
+                  <JFXComboBox fx:id="contractsFlds" layoutX="249.0" layoutY="360.0" prefHeight="25.0" prefWidth="117.0" promptText="Champs de contrat" />
                </children>
                <HBox.margin>
                   <Insets />

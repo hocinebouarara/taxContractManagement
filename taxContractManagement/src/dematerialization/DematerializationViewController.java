@@ -31,6 +31,10 @@ import javafx.stage.Stage;
  */
 public class DematerializationViewController implements Initializable {
 
+    public static String facturePath ;
+
+    public static FileChooser ch1;
+
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -67,7 +71,7 @@ public class DematerializationViewController implements Initializable {
 
         if (selectedFile != null) {
             listView.getItems().add(selectedFile.getAbsolutePath());
-            path = selectedFile.getAbsolutePath();
+            facturePath = selectedFile.getAbsolutePath();
             label.setText("");
             System.out.println("path : " + path);
         } else {
@@ -77,7 +81,7 @@ public class DematerializationViewController implements Initializable {
 
     @FXML
     private void NextBtn(ActionEvent event) throws IOException {
-        if (path != null && event.getSource() == next) {
+        if (facturePath != null && event.getSource() == next) {
 
             //stage.setMaximized(true);
             Stage stg = new Stage();
