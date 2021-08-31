@@ -24,7 +24,7 @@
                   </Text>
                   <VBox prefHeight="59.0" prefWidth="153.0">
                      <children>
-                        <JFXButton alignment="BOTTOM_CENTER" onMouseClicked="#getVersementTable" prefHeight="42.0" prefWidth="152.0" styleClass="MenuBar" text="Versements">
+                        <JFXButton alignment="BOTTOM_CENTER" onMouseClicked="#getControllerView" prefHeight="42.0" prefWidth="152.0" styleClass="MenuBar" text="Fiche Controle">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -50,7 +50,7 @@
                   </VBox>
                   <VBox layoutX="173.0" layoutY="10.0" prefHeight="59.0" prefWidth="153.0">
                      <children>
-                        <JFXButton alignment="BOTTOM_CENTER" onMouseClicked="#getStat" prefHeight="42.0" prefWidth="152.0" styleClass="MenuBar" text="Statistiques">
+                        <JFXButton alignment="BOTTOM_CENTER" onMouseClicked="#getVersementView" prefHeight="42.0" prefWidth="152.0" styleClass="MenuBar" text="Versement">
                            <font>
                               <Font size="16.0" />
                            </font>

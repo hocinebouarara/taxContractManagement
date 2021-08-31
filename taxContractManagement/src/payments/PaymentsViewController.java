@@ -41,9 +41,9 @@ public class PaymentsViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        loadViews(Links.PAYMENTSTABLEVIEW);
-    }    
-    
+        loadViews(Links.FICHEDECONTROLE);
+    }
+
     private void loadViews(String viewName) {
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource(viewName));
@@ -51,17 +51,6 @@ public class PaymentsViewController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(HomeViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-    }
-
-    @FXML
-    private void getVersementTable(MouseEvent event) {
-        loadViews(Links.PAYMENTSTABLEVIEW);
-        
-    }
-
-    @FXML
-    private void getStat(MouseEvent event) {
     }
 
     @FXML
@@ -69,5 +58,14 @@ public class PaymentsViewController implements Initializable {
         loadViews(Links.ADDPAYMENTVIEW);
     }
 
-    
+    @FXML
+    private void getControllerView(MouseEvent event) {
+        loadViews(Links.FICHEDECONTROLE);
+    }
+
+    @FXML
+    private void getVersementView(MouseEvent event) {
+        loadViews(Links.PAYMENTSTABLEVIEW);
+    }
+
 }
