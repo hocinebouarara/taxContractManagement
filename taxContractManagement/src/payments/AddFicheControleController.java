@@ -55,8 +55,6 @@ public class AddFicheControleController implements Initializable {
     @FXML
     private Button contractBtn;
     @FXML
-    private Button scanBtn;
-    @FXML
     private AnchorPane ficheControllerAnchor;
     @FXML
     private TextField inspectionFld;
@@ -98,6 +96,8 @@ public class AddFicheControleController implements Initializable {
     private TextField montantFld;
     @FXML
     private TextField numAcieFld;
+    @FXML
+    private Button ficheControleBtn;
 
     /**
      * Initializes the controller class.
@@ -105,14 +105,23 @@ public class AddFicheControleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        getContractView();
     }
 
     @FXML
-    private void getContractView(MouseEvent event) {
+    private void getContractView() {
+        contractBtn.setStyle("-fx-background-color:white;-fx-border-width:1.6px;-fx-border-color:#123456;-fx-border-radius:5px;");
+        ficheControleBtn.setStyle("-fx-background-color:#DDD;");
+        ContractAnchor.setVisible(true);
+        ficheControllerAnchor.setVisible(false);
     }
 
     @FXML
-    private void getFicheControllerView(MouseEvent event) {
+    private void getFicheControllerView() {
+        ficheControleBtn.setStyle("-fx-background-color:white;-fx-border-width:1.6px;-fx-border-color:#123456;-fx-border-radius:5px;");
+        contractBtn.setStyle("-fx-background-color:#DDD;");
+        ContractAnchor.setVisible(false);
+        ficheControllerAnchor.setVisible(true);
     }
 
     @FXML
