@@ -33,7 +33,7 @@
                         <Insets left="4.0" right="4.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="scanBtn" alignment="CENTER" contentDisplay="TOP" layoutX="677.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#getFicheControllerView" prefHeight="92.0" prefWidth="150.0" style="-fx-background-color: #DDD;" text="Fiche Controle">
+                  <Button fx:id="ficheControleBtn" alignment="CENTER" contentDisplay="TOP" layoutX="677.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#getFicheControllerView" prefHeight="92.0" prefWidth="150.0" style="-fx-background-color: #DDD;" text="Fiche Controle">
                      <graphic>
                         <FontAwesomeIconView glyphName="INFO_CIRCLE" size="40" />
                      </graphic>
