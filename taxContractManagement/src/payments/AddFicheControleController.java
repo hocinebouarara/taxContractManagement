@@ -22,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -33,6 +34,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import models.Contract;
+import models.Property;
+import proprietors.AddProprietorController;
 import proprietors.ProprietorsViewController;
 
 /**
@@ -104,8 +107,6 @@ public class AddFicheControleController implements Initializable {
     @FXML
     private TextField nomBenefiFld;
     @FXML
-    private TextField adressBeneficiaryFld;
-    @FXML
     private JFXDatePicker startDateFld;
     @FXML
     private JFXDatePicker finDateFld;
@@ -115,14 +116,17 @@ public class AddFicheControleController implements Initializable {
     private TextField numAcieFld;
     @FXML
     private Button ficheControleBtn;
-    
-     String query = null;
+
+    String query = null;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     Contract contract = null;
+    boolean update = false;
 
     ObservableList<Contract> contractsList = FXCollections.observableArrayList();
+    @FXML
+    private TextField contractTypeFld;
 
     /**
      * Initializes the controller class.
@@ -150,8 +154,65 @@ public class AddFicheControleController implements Initializable {
         ficheControllerAnchor.setVisible(true);
     }
 
+    private void getQuery() {
+
+        if (update == false) {
+
+            query = "INSERT INTO `fiche_de_control`(`inscpection`, `Recette`, `Annee`,"
+                    + " `Designation`, `NiS`, `NIF`, `Wilaya`, `Activity`,"
+                    + " `Code_d_activity`, `Forme_Juridique`, `Adress`,"
+                    + " `Article_imposition`, `id_fiscal`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+        } else {
+
+        }
+
+    }
+
+    private void insert() {
+        try {
+
+            connection = DbConnect.getConnect();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, inspectionFld.getText());
+            preparedStatement.setString(2, recetteFld.getText());
+            preparedStatement.setInt(3, Integer.valueOf(anneeFld.getText()));
+            preparedStatement.setString(4, designationFld.getText());
+            preparedStatement.setInt(5, Integer.valueOf(nifFld.getText()));
+            preparedStatement.setInt(6, Integer.valueOf(nisFld.getText()));
+            preparedStatement.setString(7, wilayaFld.getText());
+            preparedStatement.setString(8, activityFld.getText());
+            preparedStatement.setInt(9, Integer.valueOf(codeActivityFld.getText()));
+            preparedStatement.setString(10, FormJurdFld.getText());
+            preparedStatement.setString(11, adressFld.getText());
+            preparedStatement.setInt(12, Integer.valueOf(articleImpotFld.getText()));
+            preparedStatement.setInt(13, contract.getId());
+
+            preparedStatement.execute();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AddProprietorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     @FXML
     private void save(MouseEvent event) {
+
+        if (contract == null || inspectionFld.getText() == null || recetteFld.getText() == null
+                || anneeFld.getText() == null || designationFld.getText() == null
+                || nisFld.getText() == null || nifFld.getText() == null || nisFld.getText() == null || wilayaFld.getText() == null
+                || activityFld.getText() == null || codeActivityFld.getText() == null || FormJurdFld.getText() == null
+                || adressFld.getText() == null || articleImpotFld.getText() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please Fill All Data");
+            alert.showAndWait();
+
+        } else {
+            getQuery();
+            insert();
+
+        }
     }
 
     @FXML
@@ -160,11 +221,28 @@ public class AddFicheControleController implements Initializable {
 
     @FXML
     private void selectContract(MouseEvent event) {
+        contract = (Contract) contractTable.getSelectionModel().getSelectedItem();
+        if (contract == null) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez sélectionner une ligne");
+            alert.showAndWait();
+        } else {
+            ProprietaireFld.setText(contract.getProprietorName());
+            nomBenefiFld.setText(contract.getBeneficiaryName());
+            contractTypeFld.setText(contract.getContractType());
+            startDateFld.setValue(contract.getDate().toLocalDate());
+            finDateFld.setValue(contract.getEndDate().toLocalDate());
+            montantFld.setText(String.valueOf(contract.getAmount()));
+            numAcieFld.setText(contract.getSteelNumber());
+
+        }
     }
 
     @FXML
     private void refreshContractTable() {
-         try {
+        try {
             contractsList.clear();
 
             query = "SELECT\n"
@@ -213,8 +291,8 @@ public class AddFicheControleController implements Initializable {
         }
 
     }
-    
-     private void loadData() {
+
+    private void loadData() {
 
         connection = DbConnect.getConnect();
         refreshContractTable();
@@ -294,7 +372,6 @@ public class AddFicheControleController implements Initializable {
         contractTable.setItems(contractsList);
 
     }
-
 
     @FXML
     private void addContactView(MouseEvent event) {
