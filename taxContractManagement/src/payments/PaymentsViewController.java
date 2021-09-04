@@ -55,7 +55,7 @@ public class PaymentsViewController implements Initializable {
 
     @FXML
     private void getAddVersementView(MouseEvent event) {
-        loadViews(Links.ADDPAYMENTVIEW);
+        loadViews(Links.ADDFICHEDECONTROLE);
     }
 
     @FXML
