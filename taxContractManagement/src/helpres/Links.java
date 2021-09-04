@@ -40,5 +40,6 @@ public class Links {
     public static String PAYMENTSVIEW = "/payments/paymentsView.fxml";
     public static String PAYMENTSTABLEVIEW = "/payments/versementsTable.fxml";
     public static String FICHEDECONTROLE = "/payments/fileController.fxml";
+    public static String ADDFICHEDECONTROLE = "/payments/addFicheControle.fxml";
 
 }
