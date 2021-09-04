@@ -61,7 +61,7 @@
       </VBox>
       <AnchorPane fx:id="ficheControllerAnchor" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
-            <VBox alignment="TOP_CENTER" layoutX="50.0" layoutY="6.0" prefHeight="385.0" prefWidth="716.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
+            <VBox alignment="TOP_CENTER" layoutX="50.0" layoutY="6.0" prefHeight="385.0" prefWidth="716.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="229.0" prefWidth="880.0">
                      <children>
@@ -570,7 +570,7 @@
                                           <Insets />
                                        </VBox.margin>
                                     </Text>
-                                    <TextField fx:id="adressBeneficiaryFld" prefHeight="42.0" prefWidth="423.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                    <TextField fx:id="contractTypeFld" prefHeight="42.0" prefWidth="423.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
                                        <font>
                                           <Font name="Zilla Slab Medium" size="21.0" />
                                        </font>
