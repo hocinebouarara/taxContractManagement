@@ -132,8 +132,6 @@ public class AddContractController implements Initializable {
     @FXML
     private TableView<Property> propertiesTable;
     @FXML
-    private TableColumn<Property, String> checkCol;
-    @FXML
     private TableColumn<Property, String> idCol2;
     @FXML
     private TableColumn<Property, String> idProprCol;
@@ -145,10 +143,6 @@ public class AddContractController implements Initializable {
     private TableColumn<Property, String> articleCol;
     @FXML
     private TableColumn<Property, String> inspectionCol;
-    @FXML
-    private TableColumn<Property, String> communeCol1;
-    @FXML
-    private TableColumn<Property, String> wilayaCol1;
     @FXML
     private TableColumn<Property, String> titreCol;
     @FXML
