@@ -464,8 +464,8 @@
                                     <TableColumn fx:id="idProprietorCol" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Id prorietor" />
                                     <TableColumn fx:id="idBenefiCol" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Id beneficiaire" />
                                     <TableColumn fx:id="idProprietyCol" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Id propriety" />
-                                    <TableColumn fx:id="ProprietorNameCol" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Propriétaire" />
-                                    <TableColumn fx:id="beneficiaryNameCol" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Bénéficiaire" />
+                                    <TableColumn fx:id="ProprietorNameCol" maxWidth="120.0" minWidth="106.0" prefWidth="120.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Propriétaire" />
+                                    <TableColumn fx:id="beneficiaryNameCol" maxWidth="120.0" minWidth="110.0" prefWidth="120.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Bénéficiaire" />
                                     <TableColumn fx:id="typeCol" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Type" />
                                     <TableColumn fx:id="dateCol" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Date" />
                                     <TableColumn fx:id="endDateCol" maxWidth="303.33331298828125" minWidth="8.66668701171875" prefWidth="73.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Date de fine" />
