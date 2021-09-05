@@ -262,7 +262,8 @@ public class AddFicheControleController implements Initializable {
                     + "\n"
                     + "INNER JOIN beneficiaire ON beneficiaire.id = contrat.id_benef\n"
                     + "INNER JOIN fiche_habitation ON fiche_habitation.id = contrat.id_fiche_hab\n"
-                    + "INNER JOIN proprietaire ON fiche_habitation.id_propr= proprietaire.id\n"
+                    + "INNER JOIN proprietaire ON fiche_habitation.id_propr = proprietaire.id\n"
+                    + "WHERE contrat.type_contr = \"Bail\"\n"
                     + "ORDER BY\n"
                     + "    contrat.id";
             preparedStatement = connection.prepareStatement(query);
