@@ -8,7 +8,6 @@ package payments;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import helpres.DbConnect;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,23 +19,15 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import models.Payment;
-import models.Proprietor;
-import proprietors.AddProprietorController;
 import proprietors.ProprietorsViewController;
 
 /**
@@ -87,7 +78,7 @@ public class VersementsTableController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        loadDate();
+        loadData();
     }
 
     private void refreshTable() {
@@ -96,7 +87,7 @@ public class VersementsTableController implements Initializable {
 
             query = "SELECT\n"
                     + "    avis_versement.id,\n"
-                    + "    contrat.id,\n"
+                    + "    fiche_habitation.id,\n"
                     + "    avis_versement.nom_bailleur,\n"
                     + "    avis_versement.adresse_bailleur,\n"
                     + "    avis_versement.n_id_fiscal,\n"
@@ -107,7 +98,7 @@ public class VersementsTableController implements Initializable {
                     + "    avis_versement.occupation_preneur\n"
                     + "FROM\n"
                     + "    avis_versement\n"
-                    + "INNER JOIN contrat ON avis_versement.id = contrat.id\n"
+                    + "INNER JOIN fiche_habitation ON avis_versement.id = fiche_habitation.id\n"
                     + "ORDER BY\n"
                     + "    avis_versement.id";
             preparedStatement = connection.prepareStatement(query);
@@ -116,7 +107,7 @@ public class VersementsTableController implements Initializable {
             while (resultSet.next()) {
                 paymentsList.add(new Payment(
                         resultSet.getInt("avis_versement.id"),
-                        resultSet.getInt("contrat.id"),
+                        resultSet.getInt("fiche_habitation.id"),
                         resultSet.getString("avis_versement.nom_bailleur"),
                         resultSet.getString("avis_versement.adresse_bailleur"),
                         resultSet.getString("avis_versement.n_id_fiscal"),
@@ -134,7 +125,7 @@ public class VersementsTableController implements Initializable {
         }
     }
 
-    private void loadDate() {
+    private void loadData() {
 
         connection = DbConnect.getConnect();
         refreshTable();
