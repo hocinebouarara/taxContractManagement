@@ -5,6 +5,7 @@
  */
 package payments;
 
+import com.jfoenix.controls.JFXComboBox;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import helpres.DbConnect;
@@ -21,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -31,6 +33,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
+import models.Contract;
 import models.Controle;
 import proprietors.ProprietorsViewController;
 
@@ -50,31 +53,17 @@ public class AddPaymentController implements Initializable {
     @FXML
     private AnchorPane ficheControllerAnchor;
     @FXML
-    private TextField inspectionFld;
-    @FXML
     private TextField recetteFld;
     @FXML
     private TextField anneeFld;
-    @FXML
-    private TextField designationFld;
     @FXML
     private TextField nisFld;
     @FXML
     private TextField nifFld;
     @FXML
-    private TextField activityFld;
-    @FXML
-    private TextField codeActivityFld;
-    @FXML
-    private TextField FormJurdFld;
-    @FXML
     private TextField articleImpotFld;
     @FXML
-    private TextField wilayaFld;
-    @FXML
     private TextField adressFld;
-    @FXML
-    private AnchorPane ContractAnchor;
     @FXML
     private TableView<Controle> controleTable;
     @FXML
@@ -133,6 +122,28 @@ public class AddPaymentController implements Initializable {
     Controle controle = null;
 
     ObservableList<Controle> controlesList = FXCollections.observableArrayList();
+    @FXML
+    private TextField numIdenfFld;
+    @FXML
+    private TextField adresseLoueFld;
+    @FXML
+    private TextField montantMesFld;
+    @FXML
+    private JFXComboBox<String> occupationCombo;
+    @FXML
+    private JFXComboBox<String> periodeImpotCombo;
+    @FXML
+    private TextField montantBrutFld;
+    @FXML
+    private TextField tauxcommercialFld;
+    @FXML
+    private TextField tauxHabitationFld;
+    @FXML
+    private TextField tauxEtudaintFld;
+    @FXML
+    private TextField montantImpotFld;
+    @FXML
+    private AnchorPane periodeImpotAnchor;
 
     /**
      * Initializes the controller class.
@@ -141,9 +152,14 @@ public class AddPaymentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         loadData();
+        getFicheControllerView();
+        periodeImpotCombo.getItems().addAll("Premiere periode", "Deuxieme periode", "Troisieme periode", "Quatrieme periode");
+        occupationCombo.getItems().addAll("Etudaint", "Autres");
+
     }
 
-    private void refreshTable() {
+    @FXML
+    private void refreshFicheContTable() {
         try {
             controlesList.clear();
 
@@ -212,7 +228,7 @@ public class AddPaymentController implements Initializable {
     private void loadData() {
 
         connection = DbConnect.getConnect();
-        refreshTable();
+        refreshFicheContTable();
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         idContractCol.setCellValueFactory(new PropertyValueFactory<>("contractId"));
@@ -287,11 +303,21 @@ public class AddPaymentController implements Initializable {
     }
 
     @FXML
-    private void getFicheControllerView(MouseEvent event) {
+    private void getFicheControllerView() {
+        ficheControleBtn.setStyle("-fx-background-color:white;-fx-border-width:1.6px;-fx-border-color:#123456;-fx-border-radius:5px;");
+        paymentBtn.setStyle("-fx-background-color:#DDD;");
+        ScanBtn.setStyle("-fx-background-color:#DDD;");
+        periodeImpotAnchor.setVisible(false);
+        ficheControllerAnchor.setVisible(true);
     }
 
     @FXML
     private void getpaymentView(MouseEvent event) {
+        paymentBtn.setStyle("-fx-background-color:white;-fx-border-width:1.6px;-fx-border-color:#123456;-fx-border-radius:5px;");
+        ficheControleBtn.setStyle("-fx-background-color:#DDD;");
+        ScanBtn.setStyle("-fx-background-color:#DDD;");
+        periodeImpotAnchor.setVisible(true);
+        ficheControllerAnchor.setVisible(false);
     }
 
     @FXML
@@ -308,10 +334,25 @@ public class AddPaymentController implements Initializable {
 
     @FXML
     private void selectFicheController(MouseEvent event) {
-    }
+        controle = (Controle) controleTable.getSelectionModel().getSelectedItem();
+        if (controle == null) {
 
-    @FXML
-    private void refreshFicheContTable(MouseEvent event) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez sélectionner une ligne");
+            alert.showAndWait();
+        } else {
+            ProprietaireFld.setText(controle.getProprName());
+            nomBenefiFld.setText(controle.getBenefName());
+            anneeFld.setText(controle.getAnnee());
+            recetteFld.setText(controle.getRecette());
+            nisFld.setText(String.valueOf(controle.getNis()));
+            nifFld.setText(String.valueOf(controle.getNif()));
+            articleFld.setText(String.valueOf(controle.getArticleImpots()));
+            activiteFld.setText(controle.getActivite());
+            adressFld.setText(controle.getAdress());
+
+        }
     }
 
     @FXML
