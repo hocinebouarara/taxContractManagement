@@ -35,6 +35,8 @@ public class PaymentsViewController implements Initializable {
     @FXML
     private AnchorPane versementsAnchor;
 
+    boolean paymentAddView = false;
+
     /**
      * Initializes the controller class.
      */
@@ -42,6 +44,7 @@ public class PaymentsViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         loadViews(Links.FICHEDECONTROLE);
+
     }
 
     private void loadViews(String viewName) {
@@ -55,17 +58,24 @@ public class PaymentsViewController implements Initializable {
 
     @FXML
     private void getAddVersementView(MouseEvent event) {
-        loadViews(Links.ADDFICHEDECONTROLE);
+        if (paymentAddView == false) {
+            loadViews(Links.ADDFICHEDECONTROLE);
+
+        } else {
+            loadViews(Links.ADDPAYMENTVIEW);
+        }
     }
 
     @FXML
     private void getControllerView(MouseEvent event) {
         loadViews(Links.FICHEDECONTROLE);
+        paymentAddView = false;
     }
 
     @FXML
     private void getVersementView(MouseEvent event) {
         loadViews(Links.PAYMENTSTABLEVIEW);
+        paymentAddView = true;
     }
 
 }
