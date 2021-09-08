@@ -98,7 +98,7 @@ public class FileControllerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        loadDate();
+        loadData();
     }
 
     private void refreshTable() {
@@ -167,7 +167,7 @@ public class FileControllerController implements Initializable {
 
     }
 
-    private void loadDate() {
+    private void loadData() {
 
         connection = DbConnect.getConnect();
         refreshTable();
