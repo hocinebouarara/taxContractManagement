@@ -75,7 +75,6 @@ public class AddPropertyController implements Initializable {
     private JFXRadioButton rezChaFld;
     @FXML
     private TextField nEtageFld;
-    private JFXTextField nApprtFld;
     @FXML
     private TextField nomProprFld;
     @FXML
@@ -242,18 +241,18 @@ public class AddPropertyController implements Initializable {
             preparedStatement.setString(7, nTerrainFld.getText());
             preparedStatement.setString(8, nImmeubleFld.getText());
             preparedStatement.setString(9, nEtageFld.getText());
-            preparedStatement.setString(10, nApprtFld.getText());
+            preparedStatement.setString(10, nAppertFld.getText());
             preparedStatement.setBoolean(11, ground_floor);
-            preparedStatement.setString(12, nbrEtageFld.getText());
-            preparedStatement.setString(13, nbrPiecesFld.getText());
+            preparedStatement.setInt(12, Integer.valueOf(nbrEtageFld.getText()));
+            preparedStatement.setInt(13, Integer.valueOf(nbrPiecesFld.getText()));
             preparedStatement.setString(14, getTypeImmbeuble());
-            preparedStatement.setString(15, superTotFld.getText());
-            preparedStatement.setString(16, SuperBatieFld.getText());
-            preparedStatement.setString(17, superNonBatieFLd.getText());
+            preparedStatement.setFloat(15, Float.valueOf(superTotFld.getText()));
+            preparedStatement.setFloat(16, Float.valueOf(SuperBatieFld.getText()));
+            preparedStatement.setFloat(17, Float.valueOf(superNonBatieFLd.getText()));
             preparedStatement.setString(18, String.valueOf(dateAchevFld.getValue()));
             preparedStatement.setString(19, usageCombo.getValue());
-            preparedStatement.setString(21, String.valueOf(proprietor.getId()));
-            preparedStatement.setString(20, adresseProprFld.getText());
+             preparedStatement.setString(20, adresseProprFld.getText());
+            preparedStatement.setInt(21, proprietor.getId());
             preparedStatement.setString(22, titreFld.getText());
             preparedStatement.setString(23, acieFld.getText());
             preparedStatement.setString(24, String.valueOf(dateAcieFld.getValue()));
