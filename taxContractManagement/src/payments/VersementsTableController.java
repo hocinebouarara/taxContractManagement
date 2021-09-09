@@ -87,7 +87,7 @@ public class VersementsTableController implements Initializable {
 
             query = "SELECT\n"
                     + "    avis_versement.id,\n"
-                    + "    fiche_habitation.id,\n"
+                    + "    avis_versement.id_fiche_contr,\n"
                     + "    avis_versement.nom_bailleur,\n"
                     + "    avis_versement.adresse_bailleur,\n"
                     + "    avis_versement.n_id_fiscal,\n"
@@ -96,9 +96,8 @@ public class VersementsTableController implements Initializable {
                     + "    avis_versement.montant,\n"
                     + "    avis_versement.nom_preneur,\n"
                     + "    avis_versement.occupation_preneur\n"
-                    + "FROM\n"
-                    + "    avis_versement\n"
-                    + "INNER JOIN fiche_habitation ON avis_versement.id = fiche_habitation.id\n"
+                    + "    FROM avis_versement\n"
+                    + "INNER JOIN fiche_de_control ON avis_versement.id_fiche_contr = fiche_de_control.id\n"
                     + "ORDER BY\n"
                     + "    avis_versement.id";
             preparedStatement = connection.prepareStatement(query);
@@ -107,7 +106,7 @@ public class VersementsTableController implements Initializable {
             while (resultSet.next()) {
                 paymentsList.add(new Payment(
                         resultSet.getInt("avis_versement.id"),
-                        resultSet.getInt("fiche_habitation.id"),
+                        resultSet.getInt("avis_versement.id_fiche_contr"),
                         resultSet.getString("avis_versement.nom_bailleur"),
                         resultSet.getString("avis_versement.adresse_bailleur"),
                         resultSet.getString("avis_versement.n_id_fiscal"),
