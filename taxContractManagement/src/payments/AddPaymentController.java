@@ -6,6 +6,7 @@
 package payments;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.mysql.jdbc.ResultSetImpl;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import helpres.DbConnect;
@@ -35,6 +36,7 @@ import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import models.Contract;
 import models.Controle;
+import proprietors.AddProprietorController;
 import proprietors.ProprietorsViewController;
 
 /**
@@ -120,6 +122,7 @@ public class AddPaymentController implements Initializable {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     Controle controle = null;
+    boolean update = false;
 
     ObservableList<Controle> controlesList = FXCollections.observableArrayList();
     @FXML
@@ -144,6 +147,8 @@ public class AddPaymentController implements Initializable {
     private TextField montantImpotFld;
     @FXML
     private AnchorPane periodeImpotAnchor;
+    @FXML
+    private HBox addAnotherBtn;
 
     /**
      * Initializes the controller class.
@@ -155,6 +160,7 @@ public class AddPaymentController implements Initializable {
         getFicheControllerView();
         periodeImpotCombo.getItems().addAll("Premiere periode", "Deuxieme periode", "Troisieme periode", "Quatrieme periode");
         occupationCombo.getItems().addAll("Etudaint", "Autres");
+        addAnotherBtn.setVisible(false);
 
     }
 
@@ -324,8 +330,57 @@ public class AddPaymentController implements Initializable {
     private void getScanView(MouseEvent event) {
     }
 
+    private void getQuery() {
+
+        if (update == false) {
+
+            query = "INSERT INTO `avis_versement`(`nom_bailleur`, `adresse_bailleur`, `n_id_fiscal`, `n_articlage`, `adresse_du_bien`, `montant`, `nom_preneur`, `occupation_preneur`, `id_fiche_contr`) VALUES (?,?,?,?,?,?,?,?,?)";
+
+        } else {
+
+        }
+
+    }
+
+    private void insert() {
+        try {
+
+            connection = DbConnect.getConnect();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, controle.getProprName());
+            preparedStatement.setString(2, controle.getAdress());
+            preparedStatement.setInt(3, controle.getNif());
+            preparedStatement.setInt(4, controle.getArticleImpots());
+            preparedStatement.setString(5, controle.getAdress());
+            preparedStatement.setFloat(6, Float.valueOf(montantMesFld.getText()));
+            preparedStatement.setString(7, controle.getBenefName());
+            preparedStatement.setString(8, occupationCombo.getValue());
+            preparedStatement.setInt(9, controle.getId());
+
+            preparedStatement.execute();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AddProprietorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     @FXML
     private void save(MouseEvent event) {
+
+        if (controle == null) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please Fill All Data");
+            alert.showAndWait();
+
+        } else {
+            getQuery();
+            insert();
+            insertPeriod();
+            addAnotherBtn.setVisible(true);
+
+        }
     }
 
     @FXML
@@ -351,12 +406,78 @@ public class AddPaymentController implements Initializable {
             articleFld.setText(String.valueOf(controle.getArticleImpots()));
             activiteFld.setText(controle.getActivite());
             adressFld.setText(controle.getAdress());
+            numIdenfFld.setText(String.valueOf(controle.getNis()));
+            articleImpotFld.setText(String.valueOf(controle.getNis()));
 
         }
     }
 
     @FXML
     private void addFicheControllerView(MouseEvent event) {
+    }
+
+    @FXML
+    private void addAnother(MouseEvent event) {
+
+        if (periodeImpotCombo.getValue() == null || montantBrutFld.getText() == null
+                || tauxEtudaintFld.getText() == null || tauxHabitationFld.getText() == null
+                || tauxcommercialFld == null || montantImpotFld.getText() == null) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please Fill All Data");
+            alert.showAndWait();
+
+        } else {
+            insertPeriod();
+
+        }
+    }
+
+    public static int getLastIdPayment() {
+        int i = -1;
+        try {
+            String Sql = "SELECT id FROM `avis_versement` ORDER BY id DESC LIMIT 1";
+            Connection connection = (Connection) DbConnect.getConnect();
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(Sql);
+            ResultSetImpl resultSet = (ResultSetImpl) preparedStatement.executeQuery();
+            resultSet.next();
+            i = resultSet.getInt(1);
+
+        } catch (SQLException e) {
+
+        }
+        return i;
+    }
+
+    public void insertPeriod() {
+
+        if (update == false) {
+
+            query = "INSERT INTO `peroide_impots`(`periode_impot`, `Montant_brut_des_loyers`, `Commercial_taux`, `Hapitation_taux`, `Etudiant_taux`, `Montant_impots`, `id_versement`) VALUES (?,?,?,?,?,?,?)";
+
+            try {
+
+                connection = DbConnect.getConnect();
+                preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, periodeImpotCombo.getValue());
+                preparedStatement.setFloat(2, Float.valueOf(montantBrutFld.getText()));
+                preparedStatement.setFloat(3, Float.valueOf(tauxcommercialFld.getText()));
+                preparedStatement.setFloat(4, Float.valueOf(tauxHabitationFld.getText()));
+                preparedStatement.setFloat(5, Float.valueOf(tauxcommercialFld.getText()));
+                preparedStatement.setFloat(6, Float.valueOf(montantImpotFld.getText()));
+                preparedStatement.setInt(7, getLastIdPayment());
+
+                preparedStatement.execute();
+
+            } catch (SQLException ex) {
+                Logger.getLogger(AddProprietorController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+
+        }
+
     }
 
 }
