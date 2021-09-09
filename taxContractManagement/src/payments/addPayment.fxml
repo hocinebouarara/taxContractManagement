@@ -623,29 +623,6 @@
                                                 </TextField>
                                              </children>
                                           </VBox>
-                                          <VBox layoutX="10.0" layoutY="10.0" prefHeight="58.0" prefWidth="272.0">
-                                             <children>
-                                                <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Usage d'habitation taux  (...%)" wrappingWidth="161.13671875">
-                                                   <font>
-                                                      <Font name="Zilla Slab Light Italic" size="12.0" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets />
-                                                   </VBox.margin>
-                                                </Text>
-                                                <TextField fx:id="tauxHabitationFld" prefHeight="0.0" prefWidth="367.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                                   <font>
-                                                      <Font name="Zilla Slab Medium" size="21.0" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets />
-                                                   </VBox.margin>
-                                                </TextField>
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets top="4.0" />
-                                             </VBox.margin>
-                                          </VBox>
                                           <VBox layoutX="10.0" layoutY="68.0" prefHeight="58.0" prefWidth="272.0">
                                              <children>
                                                 <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Etudiant taux  (...%)" wrappingWidth="161.13671875">
@@ -675,6 +652,29 @@
                                        <children>
                                           <VBox prefHeight="58.0" prefWidth="272.0">
                                              <children>
+                                                <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Usage d'habitation taux  (...%)" wrappingWidth="161.13671875">
+                                                   <font>
+                                                      <Font name="Zilla Slab Light Italic" size="12.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </Text>
+                                                <TextField fx:id="tauxHabitationFld" prefHeight="0.0" prefWidth="367.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                                   <font>
+                                                      <Font name="Zilla Slab Medium" size="21.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </TextField>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="4.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="58.0" prefWidth="272.0">
+                                             <children>
                                                 <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant de l'impots " wrappingWidth="161.13671875">
                                                    <font>
                                                       <Font name="Zilla Slab Light Italic" size="12.0" />
@@ -685,7 +685,7 @@
                                                 </Text>
                                                 <TextField fx:id="montantImpotFld" prefHeight="0.0" prefWidth="367.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
                                                    <font>
-                                                      <Font name="Zilla Slab Medium" size="35.0" />
+                                                      <Font name="Zilla Slab Medium" size="21.0" />
                                                    </font>
                                                    <VBox.margin>
                                                       <Insets />
@@ -693,7 +693,7 @@
                                                 </TextField>
                                              </children>
                                              <VBox.margin>
-                                                <Insets top="43.0" />
+                                                <Insets />
                                              </VBox.margin>
                                           </VBox>
                                        </children>
@@ -701,6 +701,26 @@
                                  </children>
                                  <VBox.margin>
                                     <Insets top="-1.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox fx:id="addAnotherBtn" alignment="CENTER" prefHeight="39.0" prefWidth="721.0">
+                                 <children>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#addAnother" prefWidth="186.0" styleClass="buttons" text="ajouter un autre" textFill="#123456">
+                                       <font>
+                                          <Font name="Ink Free" size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
+                                       <font>
+                                          <Font name="Ink Free" size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
                                  </VBox.margin>
                               </HBox>
                            </children>
