@@ -28,7 +28,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
-import models.Contract;
 import models.Controle;
 import proprietors.ProprietorsViewController;
 
@@ -221,7 +220,16 @@ public class FileControllerController implements Initializable {
                         );
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
-                          
+                            try {
+                                controle = controleTable.getSelectionModel().getSelectedItem();
+                                query = "DELETE FROM `fiche_de_control` WHERE id  =" + controle.getId();
+                                connection = DbConnect.getConnect();
+                                preparedStatement = connection.prepareStatement(query);
+                                preparedStatement.execute();
+                                refreshTable();
+                            } catch (SQLException ex) {
+                                Logger.getLogger(FileControllerController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
 
                         });
 
@@ -246,4 +254,4 @@ public class FileControllerController implements Initializable {
 
     }
 
-    }
+}
