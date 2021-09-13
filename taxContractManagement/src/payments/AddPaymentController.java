@@ -6,6 +6,8 @@
 package payments;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXToggleButton;
 import com.mysql.jdbc.ResultSetImpl;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -34,10 +36,12 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -129,9 +133,12 @@ public class AddPaymentController implements Initializable {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     Controle controle = null;
+    Contract contract = null;
     boolean update = false;
 
     ObservableList<Controle> controlesList = FXCollections.observableArrayList();
+    ObservableList<Contract> contractsList = FXCollections.observableArrayList();
+
     @FXML
     private TextField numIdenfFld;
     @FXML
@@ -156,6 +163,44 @@ public class AddPaymentController implements Initializable {
     private AnchorPane periodeImpotAnchor;
     @FXML
     private HBox addAnotherBtn;
+    private JFXRadioButton contractRadioBtn;
+    private JFXRadioButton locationRadioBtn;
+    @FXML
+    private TableView<Contract> contractTable;
+    @FXML
+    private TableColumn<Contract, String> idCol1;
+    @FXML
+    private TableColumn<Contract, String> idProprietorCol;
+    @FXML
+    private TableColumn<Contract, String> idBenefiCol;
+    @FXML
+    private TableColumn<Contract, String> idProprietyCol;
+    @FXML
+    private TableColumn<Contract, String> ProprietorNameCol;
+    @FXML
+    private TableColumn<Contract, String> beneficiaryNameCol;
+    @FXML
+    private TableColumn<Contract, String> typeCol;
+    @FXML
+    private TableColumn<Contract, String> dateCol;
+    @FXML
+    private TableColumn<Contract, String> endDateCol;
+    @FXML
+    private TableColumn<Contract, String> amountCol;
+    @FXML
+    private TableColumn<Contract, String> SteelNumberCol;
+    @FXML
+    private TableColumn<Contract, String> actionCol;
+    @FXML
+    private VBox vBoxBail;
+    @FXML
+    private VBox vboxContracts;
+    @FXML
+    private TextField searchFicheControle;
+    @FXML
+    private JFXToggleButton locationBtn;
+    @FXML
+    private TextField searchContracts;
 
     /**
      * Initializes the controller class.
@@ -168,6 +213,29 @@ public class AddPaymentController implements Initializable {
         periodeImpotCombo.getItems().addAll("Premiere periode", "Deuxieme periode", "Troisieme periode", "Quatrieme periode");
         occupationCombo.getItems().addAll("Etudaint", "Autres");
         addAnotherBtn.setVisible(false);
+
+        searchContracts.setVisible(false);
+        searchFicheControle.setVisible(true);
+        contractTable.setVisible(false);
+        controleTable.setVisible(true);
+
+        locationBtn.setOnMouseClicked((event) -> {
+            if (locationBtn.isFocused()) {
+
+                searchContracts.setVisible(true);
+                searchFicheControle.setVisible(false);
+                contractTable.setVisible(true);
+                controleTable.setVisible(false);
+
+            } else {
+
+                searchContracts.setVisible(false);
+                searchFicheControle.setVisible(true);
+                contractTable.setVisible(false);
+                controleTable.setVisible(true);
+
+            }
+        });
 
     }
 
@@ -498,6 +566,18 @@ public class AddPaymentController implements Initializable {
 
         }
 
+    }
+
+    @FXML
+    private void selectContract(MouseEvent event) {
+    }
+
+    @FXML
+    private void refreshContractTable(MouseEvent event) {
+    }
+
+    @FXML
+    private void addContactView(MouseEvent event) {
     }
 
 }
