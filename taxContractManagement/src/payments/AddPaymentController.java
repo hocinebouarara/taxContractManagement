@@ -502,6 +502,7 @@ public class AddPaymentController implements Initializable {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, periodeImpotCombo.getValue());
                 preparedStatement.setFloat(2, Float.valueOf(montantBrutFld.getText()));
+                preparedStatement.setFloat(3, getTax(usageCombo.getValue()));
                 preparedStatement.setFloat(4, Float.valueOf(montantImpotFld.getText()));
                 preparedStatement.setInt(5, getLastIdPayment());
 
@@ -564,6 +565,23 @@ public class AddPaymentController implements Initializable {
                 period.getDays());
     }
 
-   
+    public float getTax(String value) {
+        switch (value) {
+
+            case "Usage commercial taux (15%)":
+                tax = (float) 0.15;
+                break;
+
+            case "Usage d'habitation taux (10%)":
+                tax = (float) 0.10;
+                break;
+
+            case "Etudiant taux (07%)":
+                tax = (float) 0.07;
+                break;
+        }
+
+        return tax;
+    }
 
 }
