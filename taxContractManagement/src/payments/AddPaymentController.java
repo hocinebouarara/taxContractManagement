@@ -135,6 +135,7 @@ public class AddPaymentController implements Initializable {
     Controle controle = null;
     Contract contract = null;
     boolean update = false;
+    boolean focused = false;
 
     ObservableList<Controle> controlesList = FXCollections.observableArrayList();
     ObservableList<Contract> contractsList = FXCollections.observableArrayList();
@@ -163,8 +164,6 @@ public class AddPaymentController implements Initializable {
     private AnchorPane periodeImpotAnchor;
     @FXML
     private HBox addAnotherBtn;
-    private JFXRadioButton contractRadioBtn;
-    private JFXRadioButton locationRadioBtn;
     @FXML
     private TableView<Contract> contractTable;
     @FXML
@@ -214,25 +213,21 @@ public class AddPaymentController implements Initializable {
         occupationCombo.getItems().addAll("Etudaint", "Autres");
         addAnotherBtn.setVisible(false);
 
-        searchContracts.setVisible(false);
-        searchFicheControle.setVisible(true);
-        contractTable.setVisible(false);
-        controleTable.setVisible(true);
+        vBoxBail.setVisible(false);
+        vboxContracts.setVisible(true);
 
         locationBtn.setOnMouseClicked((event) -> {
-            if (locationBtn.isFocused()) {
+            if (focused == false) {
 
-                searchContracts.setVisible(true);
-                searchFicheControle.setVisible(false);
-                contractTable.setVisible(true);
-                controleTable.setVisible(false);
+                vBoxBail.setVisible(true);
+                vboxContracts.setVisible(false);
+                focused = true;
 
             } else {
 
-                searchContracts.setVisible(false);
-                searchFicheControle.setVisible(true);
-                contractTable.setVisible(false);
-                controleTable.setVisible(true);
+                focused = false;
+                vBoxBail.setVisible(false);
+                vboxContracts.setVisible(true);
 
             }
         });
