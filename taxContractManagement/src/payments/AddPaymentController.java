@@ -17,9 +17,12 @@ import helpres.Links;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -152,42 +155,24 @@ public class AddPaymentController implements Initializable {
     @FXML
     private TextField montantBrutFld;
     @FXML
-    private TextField tauxcommercialFld;
-    @FXML
-    private TextField tauxHabitationFld;
-    @FXML
-    private TextField tauxEtudaintFld;
-    @FXML
     private TextField montantImpotFld;
     @FXML
     private AnchorPane periodeImpotAnchor;
     @FXML
     private HBox addAnotherBtn;
-    private TableView<Contract> contractTable;
-    private TableColumn<Contract, String> idProprietorCol;
-    private TableColumn<Contract, String> idBenefiCol;
-    private TableColumn<Contract, String> idProprietyCol;
-    private TableColumn<Contract, String> ProprietorNameCol;
-    private TableColumn<Contract, String> beneficiaryNameCol;
-    private TableColumn<Contract, String> typeCol;
-    private TableColumn<Contract, String> dateCol;
-    private TableColumn<Contract, String> endDateCol;
-    private TableColumn<Contract, String> amountCol;
-    private TableColumn<Contract, String> SteelNumberCol;
-    private TableColumn<Contract, String> actionCol;
+
     @FXML
     private VBox vBoxBail;
     @FXML
     private TextField searchFicheControle;
-    private TextField ProprietaireFld1;
-    private TextField nomBenefiFld1;
-    private TextField contractTypeFld;
-    private JFXDatePicker startDateFld;
-    private JFXDatePicker finDateFld;
-    private TextField montantFld;
-    private TextField numAcieFld;
     @FXML
     private VBox bailFields;
+    @FXML
+    private JFXComboBox<String> usageCombo;
+
+    int years = 0, months = 0, days = 0;
+
+    float tax = (float) 0.15;
 
     /**
      * Initializes the controller class.
@@ -197,9 +182,13 @@ public class AddPaymentController implements Initializable {
         // TODO
         loadData();
         getFicheControllerView();
-        periodeImpotCombo.getItems().addAll("Premiere periode", "Deuxieme periode", "Troisieme periode", "Quatrieme periode");
+        periodeImpotCombo.getItems().addAll("Payer en une fois", "Annuel", "trimestrielle", "Mensuel");
         occupationCombo.getItems().addAll("Etudaint", "Autres");
+        usageCombo.getItems().addAll("Usage commercial taux (15%)", "Usage d'habitation taux (10%)", "Etudiant taux (07%)");
         addAnotherBtn.setVisible(false);
+
+        getPeriodContract();
+
     }
 
     @FXML
@@ -471,8 +460,8 @@ public class AddPaymentController implements Initializable {
     private void addAnother(MouseEvent event) {
 
         if (periodeImpotCombo.getValue() == null || montantBrutFld.getText() == null
-                || tauxEtudaintFld.getText() == null || tauxHabitationFld.getText() == null
-                || tauxcommercialFld == null || montantImpotFld.getText() == null) {
+                || usageCombo.getValue() == null
+                || montantImpotFld.getText() == null) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -505,7 +494,7 @@ public class AddPaymentController implements Initializable {
 
         if (update == false) {
 
-            query = "INSERT INTO `peroide_impots`(`periode_impot`, `Montant_brut_des_loyers`, `Commercial_taux`, `Hapitation_taux`, `Etudiant_taux`, `Montant_impots`, `id_versement`) VALUES (?,?,?,?,?,?,?)";
+            query = "INSERT INTO `peroide_impots`(`periode_impot`, `Montant_brut_des_loyers`, `Commercial_taux`, `Montant_impots`, `id_versement`) VALUES (?,?,?,?,?)";
 
             try {
 
@@ -513,11 +502,8 @@ public class AddPaymentController implements Initializable {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, periodeImpotCombo.getValue());
                 preparedStatement.setFloat(2, Float.valueOf(montantBrutFld.getText()));
-                preparedStatement.setFloat(3, Float.valueOf(tauxcommercialFld.getText()));
-                preparedStatement.setFloat(4, Float.valueOf(tauxHabitationFld.getText()));
-                preparedStatement.setFloat(5, Float.valueOf(tauxcommercialFld.getText()));
-                preparedStatement.setFloat(6, Float.valueOf(montantImpotFld.getText()));
-                preparedStatement.setInt(7, getLastIdPayment());
+                preparedStatement.setFloat(4, Float.valueOf(montantImpotFld.getText()));
+                preparedStatement.setInt(5, getLastIdPayment());
 
                 preparedStatement.execute();
 
@@ -530,4 +516,54 @@ public class AddPaymentController implements Initializable {
         }
 
     }
+
+    public void getPeriodContract() {
+
+        try {
+            LocalDate startDate = null, endDate = null;
+            String Sql = "SELECT contrat.date,contrat.date_fin FROM `contrat` WHERE contrat.id=" + controle.getId() + ";";
+            Connection connection = (Connection) DbConnect.getConnect();
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(Sql);
+            ResultSetImpl resultSet = (ResultSetImpl) preparedStatement.executeQuery();
+            resultSet.next();
+            startDate = resultSet.getDate(1).toLocalDate();
+            endDate = resultSet.getDate(2).toLocalDate();
+
+            findDifference(startDate, endDate);
+
+            System.out.println("payments.AddPaymentController.getPeriodContract()" + startDate + "  " + endDate);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AddPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void findDifference(LocalDate start_date, LocalDate end_date) {
+
+        // find the period between
+        // the start and end date
+        Period period = Period.between(start_date, end_date);
+
+        years = period.getYears();
+        months = period.getMonths();
+        days = period.getDays();
+
+        // Print the date difference
+        // in years, months, and days
+        System.out.print(
+                "Difference "
+                + "between two dates is: ");
+
+        // Print the result
+        System.out.printf(
+                "%d years, %d months"
+                + " and %d days ",
+                period.getYears(),
+                period.getMonths(),
+                period.getDays());
+    }
+
+   
+
 }
