@@ -66,6 +66,8 @@ public class ContractsTableController implements Initializable {
     @FXML
     private TableColumn<Contract, String> SteelNumberCol;
     @FXML
+    private TableColumn<Contract, String> periodTypeCol;
+    @FXML
     private TableColumn<Contract, String> actionCol;
 
     String query = null;
@@ -100,7 +102,8 @@ public class ContractsTableController implements Initializable {
                     + "    contrat.date,\n"
                     + "    contrat.date_fin,\n"
                     + "    contrat.montant,\n"
-                    + "    contrat.n_acie\n"
+                    + "    contrat.n_acie,\n"
+                    + "    contrat.periodes_imposition\n"
                     + "FROM\n"
                     + "    contrat\n"
                     + "\n"
@@ -124,7 +127,8 @@ public class ContractsTableController implements Initializable {
                         resultSet.getDate("contrat.date"),
                         resultSet.getDate("contrat.date_fin"),
                         resultSet.getFloat("contrat.montant"),
-                        resultSet.getString("contrat.n_acie")
+                        resultSet.getString("contrat.n_acie"),
+                        resultSet.getString("contrat.periodes_imposition")
                 ));
                 propertiesTable.setItems(contractsList);
 
@@ -152,6 +156,7 @@ public class ContractsTableController implements Initializable {
         endDateCol.setCellValueFactory(new PropertyValueFactory<>("endDate"));
         amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
         SteelNumberCol.setCellValueFactory(new PropertyValueFactory<>("SteelNumber"));
+        periodTypeCol.setCellValueFactory(new PropertyValueFactory<>("periodesImposition"));
 
         //add cell of button edit 
         Callback<TableColumn<Contract, String>, TableCell<Contract, String>> cellFoctory = (TableColumn<Contract, String> param) -> {

@@ -45,19 +45,20 @@
             </HBox>
             <TableView fx:id="propertiesTable" maxHeight="1.7976931348623157E308" prefHeight="399.0" prefWidth="980.0" style="-fx-alignment: center;">
                <columns>
-                  <TableColumn fx:id="checkCol" maxWidth="30.0" prefWidth="30.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
-                  <TableColumn fx:id="idCol" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Id " />
-                  <TableColumn fx:id="idProprietorCol" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Id prorietor" />
-                  <TableColumn fx:id="idBenefiCol" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Id beneficiaire" />
-                  <TableColumn fx:id="idProprietyCol" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Id propriety" />
-                  <TableColumn fx:id="ProprietorNameCol" maxWidth="180.0" minWidth="8.66668701171875" prefWidth="180.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Propriétaire" />
-                  <TableColumn fx:id="beneficiaryNameCol" maxWidth="180.0" minWidth="75.66668701171875" prefWidth="180.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Bénéficiaire" />
-                  <TableColumn fx:id="typeCol" maxWidth="110.0" minWidth="8.66668701171875" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Type" />
-                  <TableColumn fx:id="dateCol" maxWidth="102.0" minWidth="0.0" prefWidth="102.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Date" />
-                  <TableColumn fx:id="endDateCol" maxWidth="102.0" minWidth="8.66668701171875" prefWidth="102.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Date de fine" />
-                  <TableColumn fx:id="amountCol" maxWidth="95.0" minWidth="0.66668701171875" prefWidth="95.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Montant" />
-                  <TableColumn fx:id="SteelNumberCol" maxWidth="95.0" minWidth="0.66668701171875" prefWidth="95.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="N° acie" />
-                  <TableColumn fx:id="actionCol" maxWidth="70.0" minWidth="0.0" prefWidth="70.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Action" />
+                  <TableColumn fx:id="checkCol" maxWidth="30.0" prefWidth="30.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
+                  <TableColumn fx:id="idCol" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Id " />
+                  <TableColumn fx:id="idProprietorCol" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Id prorietor" />
+                  <TableColumn fx:id="idBenefiCol" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Id beneficiaire" />
+                  <TableColumn fx:id="idProprietyCol" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Id propriety" />
+                  <TableColumn fx:id="ProprietorNameCol" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Propriétaire" />
+                  <TableColumn fx:id="beneficiaryNameCol" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Bénéficiaire" />
+                  <TableColumn fx:id="typeCol" maxWidth="90.0" minWidth="8.66668701171875" prefWidth="90.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Type" />
+                  <TableColumn fx:id="dateCol" maxWidth="90.0" minWidth="0.0" prefWidth="90.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Date" />
+                  <TableColumn fx:id="endDateCol" maxWidth="90.0" minWidth="8.66668701171875" prefWidth="90.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Date fine" />
+                  <TableColumn fx:id="amountCol" maxWidth="90.0" minWidth="0.66668701171875" prefWidth="90.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Montant" />
+                  <TableColumn fx:id="SteelNumberCol" maxWidth="90.0" minWidth="0.66668701171875" prefWidth="90.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="N° acie" />
+                  <TableColumn fx:id="periodTypeCol" maxWidth="98.0" minWidth="98.0" prefWidth="98.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Periode Type" />
+                  <TableColumn fx:id="actionCol" maxWidth="66.0" minWidth="0.0" prefWidth="66.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Action" />
                </columns>
                <VBox.margin>
                   <Insets bottom="4.0" top="-1.0" />

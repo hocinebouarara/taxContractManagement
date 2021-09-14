@@ -398,7 +398,6 @@
                               </HBox>
                               <TableView fx:id="propertiesTable" maxHeight="1.7976931348623157E308" prefHeight="399.0" prefWidth="980.0" style="-fx-alignment: center;" stylesheets="@../home/home.css">
                                  <columns>
-                                    <TableColumn fx:id="checkCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 12px;" />
                                     <TableColumn fx:id="idCol2" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Id " />
                                     <TableColumn fx:id="idProprCol" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Id pro" />
                                     <TableColumn fx:id="nomProprCol" maxWidth="100.0" minWidth="115.0" prefWidth="100.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Nom propr" />
@@ -677,11 +676,11 @@
       </AnchorPane>
       <AnchorPane fx:id="contarctDetailsAnchor" layoutX="10.0" layoutY="114.0" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="366.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
+            <VBox alignment="TOP_CENTER" prefHeight="356.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="279.0" prefWidth="880.0">
+                  <HBox alignment="CENTER" prefHeight="245.0" prefWidth="880.0">
                      <children>
-                        <VBox prefHeight="268.0" prefWidth="541.0">
+                        <VBox prefHeight="293.0" prefWidth="541.0">
                            <children>
                               <MaterialDesignIconView glyphName="NUMERIC_2_BOX" size="32" wrappingWidth="30.66668701171875" />
                               <HBox alignment="CENTER" spacing="8.0">
@@ -689,14 +688,23 @@
                                     <Insets />
                                  </VBox.margin>
                                  <children>
-                                    <JFXComboBox fx:id="contractTypeCombo" cache="true" focusColor="#12335400" prefHeight="41.0" prefWidth="273.0" promptText="Type de contrat" style="-fx-background-radius: 3px; -fx-border-color: #B2B1B9; -fx-font-size: 16px; -fx-border-radius: 3px;" unFocusColor="TRANSPARENT" visibleRowCount="14">
-                                       <padding>
-                                          <Insets bottom="1.0" left="15.0" top="1.0" />
-                                       </padding>
+                                    <VBox>
                                        <HBox.margin>
-                                          <Insets top="15.0" />
+                                          <Insets />
                                        </HBox.margin>
-                                    </JFXComboBox>
+                                       <children>
+                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Type de contrat" wrappingWidth="213.8033447265625">
+                                             <font>
+                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                             </font>
+                                          </Text>
+                                          <JFXComboBox fx:id="contractTypeCombo" cache="true" focusColor="#12335400" prefHeight="41.0" prefWidth="273.0" style="-fx-background-radius: 3px; -fx-border-color: #B2B1B9; -fx-font-size: 16px; -fx-border-radius: 3px;" unFocusColor="TRANSPARENT" visibleRowCount="14">
+                                             <padding>
+                                                <Insets bottom="1.0" left="15.0" top="1.0" />
+                                             </padding>
+                                          </JFXComboBox>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="171.0" spacing="8.0">
@@ -787,6 +795,30 @@
                                     </VBox>
                                  </children>
                               </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="42.0" prefHeight="54.0" prefWidth="541.0" spacing="8.0">
+                                 <children>
+                                    <VBox>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <children>
+                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Type de peroides" wrappingWidth="213.8033447265625">
+                                             <font>
+                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                             </font>
+                                          </Text>
+                                          <JFXComboBox fx:id="periodeTypeCombo" cache="true" focusColor="#12335400" prefHeight="41.0" prefWidth="273.0" style="-fx-background-radius: 3px; -fx-border-color: #B2B1B9; -fx-font-size: 16px; -fx-border-radius: 3px;" unFocusColor="TRANSPARENT" visibleRowCount="14">
+                                             <padding>
+                                                <Insets bottom="1.0" left="15.0" top="1.0" />
+                                             </padding>
+                                          </JFXComboBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
                            </children>
                            <HBox.margin>
                               <Insets left="20.0" />
@@ -797,7 +829,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="4.0" prefWidth="880.0">
+                  <HBox alignment="CENTER" prefHeight="19.0" prefWidth="880.0">
                      <children>
                         <Line endX="100.0" startX="-60.0" stroke="#123456" strokeWidth="1.6">
                            <HBox.margin>

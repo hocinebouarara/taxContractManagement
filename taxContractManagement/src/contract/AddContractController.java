@@ -216,13 +216,19 @@ public class AddContractController implements Initializable {
     PreparedStatement preparedStatement;
     Beneficiaire beneficiaire = null;
     private boolean update;
-    int propertyId, beneficiaireId = 1;
+    int propertyId, beneficiaireId;
     String type = null;
     boolean ground_floor = false;
 
     ObservableList<Property> propertyList = FXCollections.observableArrayList();
     Property property = null;
     ObservableList<Beneficiaire> beneficiairesList = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<Property, String> communeCol1;
+    @FXML
+    private TableColumn<Property, String> wilayaCol1;
+    @FXML
+    private JFXComboBox<String> periodeTypeCombo;
 
     /**
      * Initializes the controller class.
@@ -233,7 +239,9 @@ public class AddContractController implements Initializable {
         getProprietyView();
         loadBeneficiaryData();
         loadPropertyDate();
-        contractTypeCombo.getItems().addAll("Vente", "Bail", "Donation", "échange");
+        contractTypeCombo.getItems().addAll("Vente", "Location", "Donation", "échange");
+        periodeTypeCombo.getItems().addAll("Payer en une fois", "Annuel", "trimestrielle", "Mensuel");
+
         property = null;
         beneficiaire = null;
 
@@ -361,8 +369,8 @@ public class AddContractController implements Initializable {
         articleCol.setCellValueFactory(new PropertyValueFactory<>("article"));
         titreCol.setCellValueFactory(new PropertyValueFactory<>("titre"));
         inspectionCol.setCellValueFactory(new PropertyValueFactory<>("inspection"));
-        wilayaCol.setCellValueFactory(new PropertyValueFactory<>("wilaya"));
-        communeCol.setCellValueFactory(new PropertyValueFactory<>("commune"));
+        wilayaCol1.setCellValueFactory(new PropertyValueFactory<>("wilaya"));
+        communeCol1.setCellValueFactory(new PropertyValueFactory<>("commune"));
         reuCol.setCellValueFactory(new PropertyValueFactory<>("reu"));
         originProprietyCol.setCellValueFactory(new PropertyValueFactory<>("origin_propriete"));
         N_terrainCol.setCellValueFactory(new PropertyValueFactory<>("n_terrain"));
@@ -715,7 +723,7 @@ public class AddContractController implements Initializable {
 
         if (update == false) {
 
-            query = "INSERT INTO `contrat`(`id_benef`, `id_fiche_hab`, `type_contr`, `date`, `date_fin`, `montant`, `n_acie`) VALUES (?,?,?,?,?,?,?)";
+            query = "INSERT INTO `contrat`(`id_benef`, `id_fiche_hab`, `type_contr`, `date`, `date_fin`, `montant`, `n_acie`, `periodes_imposition`) VALUES (?,?,?,?,?,?,?,?)";
 
         } else {
 
@@ -734,6 +742,7 @@ public class AddContractController implements Initializable {
             preparedStatement.setString(5, String.valueOf(endDateFld.getValue()));
             preparedStatement.setFloat(6, Float.valueOf(montantContrFld.getText()));
             preparedStatement.setString(7, nbrAcieFld.getText());
+            preparedStatement.setString(8, periodeTypeCombo.getValue());
 
             preparedStatement.execute();
 
@@ -748,8 +757,8 @@ public class AddContractController implements Initializable {
 
         if (property == null || beneficiaire == null || contractTypeCombo.getValue() == null
                 || startDateFld.getValue() == null || endDateFld.getValue() == null
-                || startDateFld.getValue() == null || montantContrFld.getText()== null
-                || nbrAcieFld.getText()== null) {
+                || startDateFld.getValue() == null || montantContrFld.getText() == null
+                || nbrAcieFld.getText() == null || periodeTypeCombo.getValue()== null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Please Fill All Data");
