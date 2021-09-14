@@ -17,9 +17,9 @@ public class Contract {
     String proprietorName, beneficiaryName, contractType;
     Date date, endDate;
     float amount;
-    String SteelNumber, periodesImpositiom;
+    String SteelNumber, periodesImposition;
 
-    public Contract(int id, int id_proprietor, int id_beneficiary, int id_habitation, String proprietorName, String beneficiaryName, String contractType, Date date, Date endDate, float amount, String SteelNumber, String periodesImpositiom) {
+    public Contract(int id, int id_proprietor, int id_beneficiary, int id_habitation, String proprietorName, String beneficiaryName, String contractType, Date date, Date endDate, float amount, String SteelNumber, String periodesImposition) {
         this.id = id;
         this.id_proprietor = id_proprietor;
         this.id_beneficiary = id_beneficiary;
@@ -31,7 +31,7 @@ public class Contract {
         this.endDate = endDate;
         this.amount = amount;
         this.SteelNumber = SteelNumber;
-        this.periodesImpositiom = periodesImpositiom;
+        this.periodesImposition = periodesImposition;
     }
 
     public int getId() {
@@ -122,12 +122,12 @@ public class Contract {
         this.SteelNumber = SteelNumber;
     }
 
-    public String getPeriodesImpositiom() {
-        return periodesImpositiom;
+    public String getPeriodesImposition() {
+        return periodesImposition;
     }
 
-    public void setPeriodesImpositiom(String periodesImpositiom) {
-        this.periodesImpositiom = periodesImpositiom;
+    public void setPeriodesImposition(String periodesImposition) {
+        this.periodesImposition = periodesImposition;
     }
 
 }
