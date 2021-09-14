@@ -134,6 +134,8 @@ public class AddFicheControleController implements Initializable {
     ObservableList<Contract> contractsList = FXCollections.observableArrayList();
     @FXML
     private TextField contractTypeFld;
+    @FXML
+    private TableColumn<Contract, String> periodTypeCol;
 
     /**
      * Initializes the controller class.
@@ -263,14 +265,15 @@ public class AddFicheControleController implements Initializable {
                     + "    contrat.date,\n"
                     + "    contrat.date_fin,\n"
                     + "    contrat.montant,\n"
-                    + "    contrat.n_acie\n"
+                    + "    contrat.n_acie,\n"
+                    + "    contrat.periodes_imposition\n"
                     + "FROM\n"
                     + "    contrat\n"
                     + "\n"
                     + "INNER JOIN beneficiaire ON beneficiaire.id = contrat.id_benef\n"
                     + "INNER JOIN fiche_habitation ON fiche_habitation.id = contrat.id_fiche_hab\n"
                     + "INNER JOIN proprietaire ON fiche_habitation.id_propr = proprietaire.id\n"
-                    + "WHERE contrat.type_contr = \"Bail\"\n"
+                    + "WHERE contrat.type_contr = \"Location\"\n"
                     + "ORDER BY\n"
                     + "    contrat.id";
             preparedStatement = connection.prepareStatement(query);
@@ -288,7 +291,8 @@ public class AddFicheControleController implements Initializable {
                         resultSet.getDate("contrat.date"),
                         resultSet.getDate("contrat.date_fin"),
                         resultSet.getFloat("contrat.montant"),
-                        resultSet.getString("contrat.n_acie")
+                        resultSet.getString("contrat.n_acie"),
+                        resultSet.getString("contrat.periodes_imposition")
                 ));
                 contractTable.setItems(contractsList);
 
@@ -316,6 +320,7 @@ public class AddFicheControleController implements Initializable {
         endDateCol.setCellValueFactory(new PropertyValueFactory<>("endDate"));
         amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
         SteelNumberCol.setCellValueFactory(new PropertyValueFactory<>("SteelNumber"));
+        periodTypeCol.setCellValueFactory(new PropertyValueFactory<>("periodesImposition"));
 
         //add cell of button edit 
         Callback<TableColumn<Contract, String>, TableCell<Contract, String>> cellFoctory = (TableColumn<Contract, String> param) -> {

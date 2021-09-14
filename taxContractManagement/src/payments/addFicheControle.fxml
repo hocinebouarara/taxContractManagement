@@ -471,6 +471,7 @@
                                     <TableColumn fx:id="endDateCol" maxWidth="303.33331298828125" minWidth="8.66668701171875" prefWidth="73.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Date de fine" />
                                     <TableColumn fx:id="amountCol" maxWidth="64.0" minWidth="64.0" prefWidth="64.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Montant" />
                                     <TableColumn fx:id="SteelNumberCol" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="N° acie" />
+                                    <TableColumn fx:id="periodTypeCol" maxWidth="80.0" minWidth="80.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="periode type" />
                                     <TableColumn fx:id="actionCol" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Action" />
                                  </columns>
                                  <VBox.margin>
