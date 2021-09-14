@@ -187,7 +187,6 @@ public class AddPaymentController implements Initializable {
         usageCombo.getItems().addAll("Usage commercial taux (15%)", "Usage d'habitation taux (10%)", "Etudiant taux (07%)");
         addAnotherBtn.setVisible(false);
 
-        getPeriodContract();
 
     }
 
@@ -494,7 +493,7 @@ public class AddPaymentController implements Initializable {
 
         if (update == false) {
 
-            query = "INSERT INTO `peroide_impots`(`periode_impot`, `Montant_brut_des_loyers`, `Commercial_taux`, `Montant_impots`, `id_versement`) VALUES (?,?,?,?,?)";
+            query = "INSERT INTO `peroide_impots`(`periode_impot`, `Montant_brut_des_loyers`, `usage_taux`, `Montant_impots`, `id_versement`) VALUES (?,?,?,?,?)";
 
             try {
 
