@@ -441,15 +441,15 @@
                                           <Insets />
                                        </HBox.margin>
                                     </MaterialDesignIconView>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="420.0">
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="394.0">
                                        <children>
                                           <FontAwesomeIconView fill="#123456" glyphName="SEARCH" size="25" wrappingWidth="31.0" />
-                                          <TextField fx:id="searchFicheControle" prefWidth="248.0" promptText="Searching for Item" style="-fx-background-radius: 20px;">
+                                          <TextField fx:id="searchFicheControle" prefHeight="33.0" prefWidth="246.0" promptText="Searching for Item" style="-fx-background-radius: 20px;">
                                              <font>
                                                 <Font name="Ink Free" size="13.0" />
                                              </font>
                                              <HBox.margin>
-                                                <Insets right="12.0" />
+                                                <Insets />
                                              </HBox.margin>
                                           </TextField>
                                        </children>
@@ -485,6 +485,9 @@
                                     <TableColumn fx:id="articleImpotCol" maxWidth="80.0" minWidth="80.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Article Impot" />
                                     <TableColumn fx:id="actionsCol" maxWidth="102.6666259765625" minWidth="0.0" prefWidth="71.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Action" />
                                  </columns>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
                               </TableView>
                               <HBox alignment="CENTER" prefHeight="39.0" prefWidth="486.0" style="-fx-background-color: #ffa000; -fx-background-radius: 16 16 0 16;">
                                  <children>
@@ -774,7 +777,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox fx:id="vboxContracts" prefHeight="284.0" prefWidth="442.0" translateX="50.0" translateY="19.0">
+            <VBox fx:id="vboxContracts" prefHeight="280.0" prefWidth="442.0" translateX="50.0" translateY="19.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="930.0">
                      <children>
@@ -783,20 +786,15 @@
                               <Insets />
                            </HBox.margin>
                         </MaterialDesignIconView>
-                        <JFXToggleButton fx:id="locationBtn" prefHeight="33.0" prefWidth="229.0" size="5.0" text="Seuls locations">
-                           <font>
-                              <Font name="Zilla Slab Medium" size="11.0" />
-                           </font>
-                        </JFXToggleButton>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="402.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="397.0">
                            <children>
                               <FontAwesomeIconView fill="#123456" glyphName="SEARCH" size="25" wrappingWidth="31.0" />
-                              <TextField fx:id="searchContracts" prefHeight="33.0" prefWidth="263.0" promptText="Searching for Item" style="-fx-background-radius: 20px;">
+                              <TextField fx:id="searchContracts" prefHeight="33.0" prefWidth="250.0" promptText="Searching for Item" style="-fx-background-radius: 20px;" translateY="1.0">
                                  <font>
                                     <Font name="Ink Free" size="13.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets right="12.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </TextField>
                            </children>
@@ -806,7 +804,7 @@
                         <Insets bottom="4.0" />
                      </VBox.margin>
                   </HBox>
-                  <TableView fx:id="contractTable" maxHeight="1.7976931348623157E308" prefHeight="399.0" prefWidth="980.0" style="-fx-alignment: center;">
+                  <TableView fx:id="contractTable" maxHeight="1.7976931348623157E308" prefHeight="199.0" prefWidth="442.0" style="-fx-alignment: center;">
                      <columns>
                         <TableColumn fx:id="idCol1" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Id " />
                         <TableColumn fx:id="idProprietorCol" maxWidth="112.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 12px;" text="Id prorietor" />
@@ -857,6 +855,11 @@
             </VBox>
          </children>
       </AnchorPane>
+      <JFXToggleButton fx:id="locationBtn" prefHeight="43.0" prefWidth="150.0" size="8.0" text="Seuls locations" translateX="62.0" translateY="117.0">
+         <font>
+            <Font name="Zilla Slab Medium" size="11.0" />
+         </font>
+      </JFXToggleButton>
    </children>
    <stylesheets>
       <URL value="@../home/home.css" />
