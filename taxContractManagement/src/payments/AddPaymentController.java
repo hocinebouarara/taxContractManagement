@@ -434,7 +434,7 @@ public class AddPaymentController implements Initializable {
             adressFld.setText(controle.getAdress());
             numIdenfFld.setText(String.valueOf(controle.getNis()));
             articleImpotFld.setText(String.valueOf(controle.getNis()));
-
+            
         }
     }
 
@@ -521,7 +521,7 @@ public class AddPaymentController implements Initializable {
 
         try {
             LocalDate startDate = null, endDate = null;
-            String Sql = "SELECT contrat.date,contrat.date_fin FROM `contrat` WHERE contrat.id=" + controle.getId() + ";";
+            String Sql = "SELECT contrat.date,contrat.date_fin FROM `contrat` WHERE contrat.id=" + controle.getContractId() + ";";
             Connection connection = (Connection) DbConnect.getConnect();
             PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(Sql);
             ResultSetImpl resultSet = (ResultSetImpl) preparedStatement.executeQuery();
