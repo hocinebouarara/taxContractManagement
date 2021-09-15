@@ -42,6 +42,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -171,6 +172,7 @@ public class AddPaymentController implements Initializable {
     private JFXComboBox<String> usageCombo;
 
     int years = 0, months = 0, days = 0;
+    float onlyMonths = (float) 0.0;
 
     float tax = (float) 0.15;
 
@@ -186,7 +188,6 @@ public class AddPaymentController implements Initializable {
         occupationCombo.getItems().addAll("Etudaint", "Autres");
         usageCombo.getItems().addAll("Usage commercial taux (15%)", "Usage d'habitation taux (10%)", "Etudiant taux (07%)");
         addAnotherBtn.setVisible(false);
-
 
     }
 
@@ -434,7 +435,7 @@ public class AddPaymentController implements Initializable {
             adressFld.setText(controle.getAdress());
             numIdenfFld.setText(String.valueOf(controle.getNis()));
             articleImpotFld.setText(String.valueOf(controle.getNis()));
-            
+
         }
     }
 
@@ -517,7 +518,7 @@ public class AddPaymentController implements Initializable {
 
     }
 
-    public void getPeriodContract() {
+    public float getPeriodContract() {
 
         try {
             LocalDate startDate = null, endDate = null;
@@ -537,6 +538,10 @@ public class AddPaymentController implements Initializable {
             Logger.getLogger(AddPaymentController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        System.out.println("payments.AddPaymentController.getPeriodContract() " + onlyMonths);
+
+        return onlyMonths;
+
     }
 
     public void findDifference(LocalDate start_date, LocalDate end_date) {
@@ -548,6 +553,8 @@ public class AddPaymentController implements Initializable {
         years = period.getYears();
         months = period.getMonths();
         days = period.getDays();
+
+        onlyMonths = 12 * years + months + days / 30;
 
         // Print the date difference
         // in years, months, and days
@@ -581,6 +588,82 @@ public class AddPaymentController implements Initializable {
         }
 
         return tax;
+    }
+
+    @FXML
+    private void calculMontantBrut() {
+        float periodMontant = Float.valueOf(montantMesFld.getText());
+        String periodselected = periodeImpotCombo.getValue();
+
+        if (periodselected != null && montantBrutFld != null) {
+
+            switch (periodselected) {
+                case "Payer en une fois":
+
+                    montantBrutFld.setText(String.valueOf(periodMontant * getPeriodContract()));
+                    break;
+                case "Annuel":
+                    if (onlyMonths < 12) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setHeaderText(null);
+                        alert.setContentText(onlyMonths + " La période est inférieure à une annee, essayez une autre méthode");
+                        alert.showAndWait();
+
+                        break;
+
+                    } else {
+                        montantBrutFld.setText(String.valueOf(periodMontant * 12));
+                        break;
+                    }
+
+                case "trimestrielle":
+                    montantBrutFld.setText(String.valueOf(periodMontant * 3));
+                    break;
+                case "Mensuel":
+                    montantBrutFld.setText(String.valueOf(periodMontant * 1));
+                    break;
+            }
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("enter montant mensuel et periode imposition");
+            alert.showAndWait();
+        }
+
+    }
+
+    @FXML
+    private void calculTax() {
+        float MontantBrut = Float.valueOf(montantBrutFld.getText());
+        String usageSelected = usageCombo.getValue();
+
+        if (usageSelected != null && montantBrutFld.getText() != null) {
+
+            switch (usageSelected) {
+                case "Usage commercial taux (15%)":
+                    montantImpotFld.setText(String.valueOf(MontantBrut * 0.15));
+                    System.out.println(usageSelected);
+                    break;
+
+                case "Usage d'habitation taux (10%)":
+                    montantImpotFld.setText(String.valueOf(MontantBrut * 0.10));
+                    System.out.println(usageSelected);
+                    break;
+
+                case "Etudiant taux (07%)":
+                    montantImpotFld.setText(String.valueOf(MontantBrut * 0.07));
+                    System.out.println(usageSelected);
+                    break;
+
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("enter montant brut et usage ..%");
+            alert.showAndWait();
+        }
+
     }
 
 }
