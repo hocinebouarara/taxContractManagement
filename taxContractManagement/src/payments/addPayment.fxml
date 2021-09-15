@@ -580,7 +580,34 @@
                                           <Insets top="1.0" />
                                        </HBox.margin>
                                     </VBox>
-                                    <VBox layoutX="10.0" layoutY="11.0" prefHeight="58.0" prefWidth="272.0">
+                                    <VBox prefHeight="63.0" prefWidth="162.0">
+                                       <children>
+                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant brut des loyers" wrappingWidth="203.80340576171875">
+                                             <font>
+                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="montantBrutFld" editable="false" onMouseClicked="#calculMontantBrut" prefHeight="0.0" prefWidth="367.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="42.0" spacing="8.0">
+                                 <children>
+                                    <VBox prefHeight="58.0" prefWidth="272.0">
                                        <children>
                                           <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Usage (...%)" wrappingWidth="161.13671875">
                                              <font>
@@ -600,33 +627,6 @@
                                           </JFXComboBox>
                                        </children>
                                     </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="4.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox alignment="CENTER" layoutX="10.0" layoutY="42.0" spacing="8.0">
-                                 <children>
-                                    <VBox prefHeight="63.0" prefWidth="162.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant brut des loyers" wrappingWidth="203.80340576171875">
-                                             <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="montantBrutFld" prefHeight="0.0" prefWidth="367.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
                                     <VBox layoutX="82.0" layoutY="10.0" prefHeight="58.0" prefWidth="272.0">
                                        <children>
                                           <VBox prefHeight="58.0" prefWidth="272.0">
@@ -639,7 +639,7 @@
                                                       <Insets />
                                                    </VBox.margin>
                                                 </Text>
-                                                <TextField fx:id="montantImpotFld" prefHeight="0.0" prefWidth="367.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                                <TextField fx:id="montantImpotFld" editable="false" onMouseClicked="#calculTax" prefHeight="0.0" prefWidth="367.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
                                                    <font>
                                                       <Font name="Zilla Slab Medium" size="21.0" />
                                                    </font>
