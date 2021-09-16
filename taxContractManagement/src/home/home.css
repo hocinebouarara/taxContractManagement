@@ -19,7 +19,7 @@ and open the template in the editor.
     -fx-font-style:italic;
     -fx-border-width:0 10 0 10;
     -fx-text-fill:whitesmoke;
-    
+
 
 }
 .FontAwesomeIconView{
@@ -72,3 +72,16 @@ and open the template in the editor.
     -fx-cursor:hand;
 }
 
+
+.buttons{
+    -fx-background-radius: 10px 10px 0px 0px;
+    -fx-border-width: 0 0 12 0;
+    -fx-cursor: hand;
+}
+.buttons:hover{   
+    -fx-background-radius: 10px 10px 0px 0px;
+    -fx-border-width: 0 0 12 0;
+    -fx-border-color:#FFA000;
+    
+
+}
