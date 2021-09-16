@@ -5,6 +5,7 @@
  */
 package beneficiaries;
 
+import com.jfoenix.controls.JFXButton;
 import helpres.Links;
 import home.HomeViewController;
 import java.io.IOException;
@@ -29,11 +30,11 @@ public class BeneficiariesViewController implements Initializable {
     @FXML
     private AnchorPane anchorPane;
     @FXML
-    private Pane editPane;
-    @FXML
-    private Pane editPane1;
-    @FXML
     private AnchorPane beneficAnchor;
+    @FXML
+    private JFXButton beneficiaryBtn;
+    @FXML
+    private JFXButton statBtn;
 
     /**
      * Initializes the controller class.
@@ -42,9 +43,9 @@ public class BeneficiariesViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         getBeneficTable();
-    }    
-    
-     private void loadViews(String viewName) {
+    }
+
+    private void loadViews(String viewName) {
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource(viewName));
             beneficAnchor.getChildren().setAll(pane);
@@ -57,15 +58,20 @@ public class BeneficiariesViewController implements Initializable {
     @FXML
     private void getBeneficTable() {
         loadViews(Links.BENEFICIAIRETABLEVIEW);
+        statBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:transparent;");
+        beneficiaryBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:#FFA000;");
     }
 
     @FXML
     private void statView(MouseEvent event) {
+        beneficiaryBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:transparent;");
+        statBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:#FFA000;");
+
     }
 
     @FXML
     private void getAddBeneficView(MouseEvent event) {
         loadViews(Links.ADDBENEFICIAIREVIEW);
     }
-    
+
 }
