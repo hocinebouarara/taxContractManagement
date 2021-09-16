@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -21,11 +22,11 @@
                         <Font name="Comic Sans MS Bold" size="26.0" />
                      </font>
                   </Text>
-                  <VBox prefHeight="65.0" prefWidth="153.0">
+                  <VBox prefWidth="153.0">
                      <children>
-                        <JFXButton fx:id="ficheContBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getControllerView" prefHeight="26.0" prefWidth="152.0" ripplerFill="#123456" styleClass="buttons" text="Fiche Controle">
+                        <JFXButton fx:id="ficheContBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getControllerView" prefWidth="153.0" ripplerFill="#123456" styleClass="buttons" text="Fiche Controle">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Zilla Slab Medium" size="18.0" />
                            </font>
                            <padding>
                               <Insets top="10.0" />
@@ -42,25 +43,29 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox layoutX="173.0" layoutY="10.0" prefHeight="59.0" prefWidth="153.0">
+                  <VBox layoutX="173.0" layoutY="10.0" prefWidth="153.0">
                      <children>
-                        <JFXButton fx:id="versementBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getVersementView" prefHeight="27.0" prefWidth="153.0" ripplerFill="#123456" styleClass="buttons" text="Versement">
+                        <JFXButton fx:id="versementBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getVersementView" prefHeight="25.0" prefWidth="153.0" ripplerFill="#123456" text="Versement">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="Zilla Slab Medium" size="18.0" />
                            </font>
-                           <padding>
-                              <Insets top="10.0" />
-                           </padding>
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                            <graphic>
                               <FontAwesomeIconView glyphName="LINE_CHART" size="30" />
                            </graphic>
+                           <styleClass>
+                              <String fx:value="buttons" />
+                              <String fx:value="bnt1" />
+                           </styleClass>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
                         </JFXButton>
                      </children>
                   </VBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="507.0">
+                  <HBox alignment="CENTER_RIGHT" prefWidth="507.0">
                      <HBox.margin>
                         <Insets top="3.0" />
                      </HBox.margin>

@@ -73,7 +73,7 @@ public class PaymentsViewController implements Initializable {
         paymentAddView = false;
         versementBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:transparent;");
         ficheContBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:#FFA000;");
-    }
+       }
 
     @FXML
     private void getVersementView(MouseEvent event) {

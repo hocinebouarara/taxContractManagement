@@ -5,6 +5,7 @@
  */
 package payments;
 
+import beneficiaries.AddBeneficiaryController;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import helpres.DbConnect;
@@ -115,13 +116,16 @@ public class FileControllerController implements Initializable {
 
                 if (controle != null) {
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource(Links.ADDCONTRACTEVIEW));
+                    loader.setLocation(getClass().getResource(Links.ADDBENEFICIAIREVIEW));
                     try {
                         loader.load();
                     } catch (IOException ex) {
                         Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
+                    PeriodTaxController periodTaxController = loader.getController();
+                    periodTaxController.setUpdate(true);
+                    periodTaxController.setTextFields();
                     Parent parent = loader.getRoot();
                     Stage stage = new Stage();
                     stage.setScene(new Scene(parent));

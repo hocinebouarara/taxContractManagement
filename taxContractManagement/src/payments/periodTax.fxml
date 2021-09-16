@@ -1,11 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="payments.PeriodTaxController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1150.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="payments.PeriodTaxController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefWidth="1150.0" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <children>
+                  <VBox layoutX="26.0" layoutY="28.0" prefWidth="570.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
+                     <children>
+                        <TableView fx:id="periodsTable" maxHeight="1.7976931348623157E308" prefHeight="282.0" prefWidth="570.0" style="-fx-alignment: center;">
+                           <columns>
+                              <TableColumn fx:id="checkCol" maxWidth="30.0" prefWidth="30.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
+                              <TableColumn fx:id="idCol" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Id " />
+                              <TableColumn fx:id="idVersementCol" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Id versement" />
+                              <TableColumn fx:id="periodTypeCol" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Periode Type" />
+                              <TableColumn fx:id="montantBrutCol" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Montant des loyers" />
+                              <TableColumn fx:id="usageTauxCol" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Usage taux" />
+                              <TableColumn fx:id="montantImpotCol" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Montant impot" />
+                              <TableColumn fx:id="actionCol" maxWidth="62.0" minWidth="62.0" prefWidth="62.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Action" />
+                           </columns>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="120.0" prefWidth="1150.0" style="-fx-background-color: #123456;">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+               <children>
+                  <HBox alignment="CENTER" spacing="30.0">
+                     <children>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <FontAwesomeIconView fill="WHITE" glyphName="PRINT" size="85" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="imprimer" wrappingWidth="85.58462524414062">
+                                 <font>
+                                    <Font name="Ink Free" size="22.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="4.0" top="34.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
+                           <children>
+                              <FontAwesomeIconView fill="WHITE" glyphName="PRINT" size="85" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="imprimer" wrappingWidth="85.58462524414062">
+                                 <font>
+                                    <Font name="Ink Free" size="22.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="4.0" top="34.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <MaterialDesignIconView fill="WHITE" glyphName="NOTE_PLUS" size="85" text="" wrappingWidth="74.33331298828125" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter " wrappingWidth="76.25131225585938">
+                                 <font>
+                                    <Font name="Ink Free" size="22.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="34.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@paymentsview.css" />
+      <URL value="@../home/home.css" />
+   </stylesheets>
 </AnchorPane>
