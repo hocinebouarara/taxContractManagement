@@ -5,6 +5,7 @@
  */
 package payments;
 
+import com.jfoenix.controls.JFXButton;
 import helpres.Links;
 import home.HomeViewController;
 import java.io.IOException;
@@ -29,13 +30,13 @@ public class PaymentsViewController implements Initializable {
     @FXML
     private AnchorPane anchorPane;
     @FXML
-    private Pane editPane;
-    @FXML
-    private Pane editPane1;
-    @FXML
     private AnchorPane versementsAnchor;
 
     boolean paymentAddView = false;
+    @FXML
+    private JFXButton ficheContBtn;
+    @FXML
+    private JFXButton versementBtn;
 
     /**
      * Initializes the controller class.
@@ -43,7 +44,7 @@ public class PaymentsViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        loadViews(Links.FICHEDECONTROLE);
+        getControllerView();
 
     }
 
@@ -67,15 +68,20 @@ public class PaymentsViewController implements Initializable {
     }
 
     @FXML
-    private void getControllerView(MouseEvent event) {
+    private void getControllerView() {
         loadViews(Links.FICHEDECONTROLE);
         paymentAddView = false;
+        versementBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:transparent;");
+        ficheContBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:#FFA000;");
     }
 
     @FXML
     private void getVersementView(MouseEvent event) {
         loadViews(Links.PAYMENTSTABLEVIEW);
         paymentAddView = true;
+        ficheContBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:transparent;");
+        versementBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:#FFA000;");
+
     }
 
 }
