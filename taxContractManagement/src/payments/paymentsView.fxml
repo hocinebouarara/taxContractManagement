@@ -65,12 +65,12 @@
                         <Insets top="3.0" />
                      </HBox.margin>
                      <children>
-                        <JFXButton alignment="CENTER_RIGHT" onMouseClicked="#getAddVersementView" prefHeight="42.0" prefWidth="39.0" style="-fx-background-color: #123456; -fx-background-radius: 8 8 0 8;" styleClass="MenuBar">
+                        <JFXButton alignment="CENTER_RIGHT" onMouseClicked="#getAddVersementView" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #123456; -fx-background-radius: 8 8 0 8;" styleClass="MenuBar">
                            <font>
                               <Font size="1.0" />
                            </font>
                            <graphic>
-                              <MaterialDesignIconView fill="WHITE" glyphName="NOTE_PLUS" size="30" translateX="-2.0" />
+                              <MaterialDesignIconView fill="WHITE" glyphName="NOTE_PLUS" size="36" translateX="-2.0" />
                            </graphic>
                         </JFXButton>
                      </children>
