@@ -29,6 +29,9 @@ public class Payment {
         this.occupationTaker = occupationTaker;
     }
 
+    public Payment() {
+    }
+
     public int getId() {
         return id;
     }
@@ -107,6 +110,22 @@ public class Payment {
 
     public void setOccupationTaker(String occupationTaker) {
         this.occupationTaker = occupationTaker;
+    }
+
+    public void setRecette(String recognition) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setInspectoin(String recognition) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setWilaya(String recognition) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setDeriction(String recognition) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
