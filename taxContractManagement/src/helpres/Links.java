@@ -33,7 +33,7 @@ public class Links {
     public static String CONTRACTVIEW = "/contract/contractsView.fxml";
     public static String CONTRACTTABLEVIEW = "/contract/contractsTable.fxml";
 
-    public static String DEMATERIALIZATIONVIEW = "/dematerialization/dematerializationView.fxml";
+    public static String DEMATERIALIZATIONVIEW = "/dematerialization/addDocument.fxml";
     public static String IMAGERECODNITION = "/dematerialization/imageRecognition.fxml";
 
     public static String ADDPAYMENTVIEW = "/payments/addPayment.fxml";
@@ -42,5 +42,8 @@ public class Links {
     public static String FICHEDECONTROLE = "/payments/fileController.fxml";
     public static String ADDFICHEDECONTROLE = "/payments/addFicheControle.fxml";
     public static String PERIODSVIEW = "/payments/periodTax.fxml";
+    public static String SCANVIEW = "/payments/scanFile.fxml";
+
+    public static String PAYMENTSDEMATERIALIZATIONVIEW = "/Paiements/Paiement.fxml";
 
 }
