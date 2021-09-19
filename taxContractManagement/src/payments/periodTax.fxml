@@ -8,12 +8,13 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1150.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="payments.PeriodTaxController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="payments.PeriodTaxController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -22,18 +23,17 @@
                   <Insets />
                </VBox.margin>
                <children>
-                  <VBox layoutX="26.0" layoutY="28.0" prefWidth="570.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
+                  <VBox layoutX="26.0" layoutY="28.0" prefHeight="231.0" prefWidth="570.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="35.0">
                      <children>
-                        <TableView fx:id="periodsTable" maxHeight="1.7976931348623157E308" prefHeight="282.0" prefWidth="570.0" style="-fx-alignment: center;">
+                        <TableView fx:id="periodsTable" maxHeight="1.7976931348623157E308" prefHeight="266.0" prefWidth="570.0" style="-fx-alignment: center;">
                            <columns>
-                              <TableColumn fx:id="checkCol" maxWidth="30.0" prefWidth="30.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
                               <TableColumn fx:id="idCol" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Id " />
                               <TableColumn fx:id="idVersementCol" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Id versement" />
-                              <TableColumn fx:id="periodTypeCol" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Periode Type" />
-                              <TableColumn fx:id="montantBrutCol" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Montant des loyers" />
-                              <TableColumn fx:id="usageTauxCol" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Usage taux" />
-                              <TableColumn fx:id="montantImpotCol" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Montant impot" />
-                              <TableColumn fx:id="actionCol" maxWidth="62.0" minWidth="62.0" prefWidth="62.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Action" />
+                              <TableColumn fx:id="periodTypeCol" maxWidth="137.0" minWidth="137.0" prefWidth="137.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Periode Type" />
+                              <TableColumn fx:id="montantBrutCol" maxWidth="147.0" minWidth="147.0" prefWidth="147.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Montant des loyers" />
+                              <TableColumn fx:id="usageTauxCol" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Usage taux" />
+                              <TableColumn fx:id="montantImpotCol" maxWidth="115.0" minWidth="115.0" prefWidth="115.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Montant impot" />
+                              <TableColumn fx:id="actionCol" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Action" />
                            </columns>
                            <VBox.margin>
                               <Insets />
@@ -41,18 +41,476 @@
                         </TableView>
                      </children>
                   </VBox>
+                  <Pane layoutX="15.0" layoutY="20.0" prefHeight="460.0" prefWidth="528.0">
+                     <children>
+                        <VBox layoutX="19.0" layoutY="35.0" prefHeight="117.0" prefWidth="498.0" spacing="8.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom et prenom :" wrappingWidth="128.25135132670403">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="proprName" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="140.91797730326653">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="63.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Né (e)  le  :" wrappingWidth="82.25125977396965">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="7.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <Text fx:id="proprBith" layoutX="116.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="116.91800782084465">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="60.0" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Commune de  :" wrappingWidth="98.91797730326653">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="proprCommBirth" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="142.25135132670403">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wilaya  de   :" wrappingWidth="89.58466431498528">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="proprWilayaBirth" layoutX="109.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="142.25135132670403">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom du pere :" wrappingWidth="126.91797730326653">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="proprPere" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="119.58472535014153">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="63.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de mere  :" wrappingWidth="112.91788575053215">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="7.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <Text fx:id="proprMere" layoutX="116.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="130.2513208091259">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="45.0" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nationalite  :" wrappingWidth="114.91797730326653">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="proprNatio" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="192.91803833842278">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="75.0" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse de domicile  :" wrappingWidth="124.25129029154778">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="proprAdresse" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="154.25141236186028">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="10.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone  :" wrappingWidth="78.25129029154778">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="proprPhone" layoutX="135.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="126.25141236186028">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Text layoutX="6.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proprietaire   :" wrappingWidth="129.58466431498528">
+                           <font>
+                              <Font name="Zilla Slab Medium" size="20.0" />
+                           </font>
+                        </Text>
+                        <Line endX="340.66668701171875" layoutX="172.0" layoutY="157.0" startX="-162.0" startY="0.166656494140625" />
+                        <Line endX="340.66668701171875" layoutX="172.0" layoutY="25.0" startX="-36.41534423828125" startY="-7.62939453125E-6" />
+                        <Line endX="-147.0" endY="-189.6666717529297" layoutX="157.0" layoutY="230.0" startX="-147.0" startY="-74.0" />
+                        <Line endX="263.16668701171875" endY="-200.33334350585938" layoutX="250.0" layoutY="226.0" startX="263.16668701171875" startY="-69.0" />
+                        <Text layoutX="6.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beneficiaire   :" wrappingWidth="129.58466431498528">
+                           <font>
+                              <Font name="Zilla Slab Medium" size="20.0" />
+                           </font>
+                        </Text>
+                        <Line endX="340.66668701171875" layoutX="172.0" layoutY="304.0" startX="-162.0" startY="0.166656494140625" />
+                        <Line endX="340.66668701171875" layoutX="172.0" layoutY="172.0" startX="-36.41534423828125" startY="-7.62939453125E-6" />
+                        <Line endX="-147.0" endY="-189.6666717529297" layoutX="157.0" layoutY="377.0" startX="-147.0" startY="-74.0" />
+                        <Line endX="263.16668701171875" endY="-200.33334350585938" layoutX="250.0" layoutY="373.0" startX="263.16668701171875" startY="-69.0" />
+                        <Text layoutX="6.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contrat   :" wrappingWidth="129.58466431498528">
+                           <font>
+                              <Font name="Zilla Slab Medium" size="20.0" />
+                           </font>
+                        </Text>
+                        <Line endX="340.66668701171875" layoutX="172.0" layoutY="442.0" startX="-162.0" startY="0.166656494140625" />
+                        <Line endX="340.66668701171875" layoutX="172.0" layoutY="321.0" startX="-77.41534423828125" startY="-7.62939453125E-6" />
+                        <Line endX="-147.0" endY="-189.6666717529297" layoutX="157.0" layoutY="526.0" startX="-147.70712280273438" startY="-84.70709228515625" />
+                        <Line endX="263.16668701171875" endY="-200.33334350585938" layoutX="250.0" layoutY="522.0" startX="263.373779296875" startY="-80.70709228515625" />
+                        <VBox layoutX="19.0" layoutY="335.0" spacing="8.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type de contrat  :" wrappingWidth="121.58466431498528">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="contractType" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="174.91797730326653">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de debut  :" wrappingWidth="97.5846948325634">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="startDate" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="128.91803833842278">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="63.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de fine  :" wrappingWidth="92.91788575053215">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="7.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <Text fx:id="endDate" layoutX="116.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="109.5846948325634">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="45.0" prefHeight="20.0" prefWidth="482.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Montant    :" wrappingWidth="86.91797730326653">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="montantContrat" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="192.91803833842278">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="75.0" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Periode imposition  :" wrappingWidth="121.58460327982903">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="periodeImpot" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="140.25141236186028">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="10.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° acie  :" wrappingWidth="74.91797730326653">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="numContrat" layoutX="163.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="113.58472535014153">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="19.0" layoutY="182.0" prefHeight="117.0" prefWidth="498.0" spacing="8.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom et prenom :" wrappingWidth="128.25135132670403">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="benefName" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="140.91797730326653">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="63.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Né (e)  le  :" wrappingWidth="82.25125977396965">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="7.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <Text fx:id="benefBith" layoutX="116.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="116.91800782084465">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="60.0" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Commune de  :" wrappingWidth="98.91797730326653">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="benefCommBirth" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="142.25135132670403">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wilaya  de   :" wrappingWidth="89.58466431498528">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="benefWilayaBirth" layoutX="109.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="142.25135132670403">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom du pere :" wrappingWidth="109.58463379740715">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="benefPere" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="135.58472535014153">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="63.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de mere  :" wrappingWidth="112.91788575053215">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="7.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <Text fx:id="benefMere" layoutX="116.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="130.2513208091259">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="45.0" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nationalite  :" wrappingWidth="114.91797730326653">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="benefNatio" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="192.91803833842278">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="75.0" prefHeight="15.0" prefWidth="433.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse de domicile  :" wrappingWidth="138.91797730326653">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="benefAdresse" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="192.91803833842278">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="565.0" layoutY="282.0" prefHeight="163.0" prefWidth="570.0" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-border-radius: 10px; -fx-border-color: #ddd;">
+                     <children>
+                        <VBox layoutX="14.0" layoutY="20.0" prefHeight="132.0" prefWidth="542.0" spacing="10.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="40.0" prefHeight="15.0" prefWidth="433.0" spacing="3.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero d'identification fiscal  :" wrappingWidth="195.58463379740715">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="nif" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="208.25135132670403">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="15.0" prefWidth="433.0" spacing="3.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero d'article foncier   :" wrappingWidth="172.25125977396965">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="article" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="223.58466431498528">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="433.0" spacing="3.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de périodes payées   :" wrappingWidth="180.25135132670403">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="nbrPeriodPay" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="130.25129029154778">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Montant    :" wrappingWidth="84.25122925639153">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="montantPay" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="118.25129029154778">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="15.0" prefWidth="433.0" spacing="3.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de périodes impayées  :" wrappingWidth="189.58463379740715">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="nbrPeriodNoPay" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="127.58466431498528">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Montant    :" wrappingWidth="87.58460327982903">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="montantNoPay" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="102.91803833842278">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
                </children>
             </AnchorPane>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="120.0" prefWidth="1150.0" style="-fx-background-color: #123456;">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="91.0" prefWidth="1150.0" style="-fx-background-color: #123456;">
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets bottom="12.0" />
                </VBox.margin>
                <children>
                   <HBox alignment="CENTER" spacing="30.0">
                      <children>
                         <HBox alignment="CENTER">
                            <children>
-                              <FontAwesomeIconView fill="WHITE" glyphName="PRINT" size="85" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="PRINT" onMouseClicked="#getData" size="85" />
                               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="imprimer" wrappingWidth="85.58462524414062">
                                  <font>
                                     <Font name="Ink Free" size="22.0" />
