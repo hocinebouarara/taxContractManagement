@@ -21,12 +21,15 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import models.Controle;
 import models.Period;
@@ -63,6 +66,73 @@ public class PeriodTaxController implements Initializable {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     Period period = null;
+    Controle controle = null;
+    @FXML
+    private Text proprName;
+    @FXML
+    private Text proprBith;
+    @FXML
+    private Text proprCommBirth;
+    @FXML
+    private Text proprWilayaBirth;
+    @FXML
+    private Text proprPere;
+    @FXML
+    private Text proprMere;
+    @FXML
+    private Text proprNatio;
+    @FXML
+    private Text proprAdresse;
+    @FXML
+    private Text contractType;
+    @FXML
+    private Text startDate;
+    @FXML
+    private Text endDate;
+    @FXML
+    private Text montantContrat;
+    @FXML
+    private Text periodeImpot;
+    @FXML
+    private Text numContrat;
+    @FXML
+    private Text benefName;
+    @FXML
+    private Text benefBith;
+    @FXML
+    private Text benefCommBirth;
+    @FXML
+    private Text benefWilayaBirth;
+    @FXML
+    private Text benefPere;
+    @FXML
+    private Text benefMere;
+    @FXML
+    private Text benefNatio;
+    @FXML
+    private Text benefAdresse;
+    @FXML
+    private Text nif;
+    @FXML
+    private Text article;
+    @FXML
+    private Text nbrPeriodPay;
+    @FXML
+    private Text montantPay;
+    @FXML
+    private Text nbrPeriodNoPay;
+    @FXML
+    private Text montantNoPay;
+    @FXML
+    private Text proprPhone;
+
+    public Controle getControle() {
+        return controle;
+    }
+
+    public void setControle(Controle controle) {
+        this.controle = controle;
+    }
 
     ObservableList<Period> periodsList = FXCollections.observableArrayList();
 
@@ -199,6 +269,40 @@ public class PeriodTaxController implements Initializable {
 
     void setTextFields() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @FXML
+    private void getData(MouseEvent event) {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        Controle c = (Controle) stage.getUserData();
+
+        proprName.setText(c.getProprName());
+        proprAdresse.setText(c.getProprAdress());
+        proprBith.setText(c.getProprbirth().toString());
+        proprCommBirth.setText(c.getProprCommuneBirth());
+        proprMere.setText(c.getProprNationalite());
+        proprPere.setText(c.getProprPere());
+        proprPhone.setText(c.getProprPhone());
+        proprWilayaBirth.setText(c.getProprWilayaBirth());
+
+        benefAdresse.setText(c.getBenefAdress());
+        benefBith.setText(c.getBenefBirth().toString());
+        benefCommBirth.setText(c.getBenefCommuneBirth());
+        benefMere.setText(c.getBenefMere());
+        benefName.setText(c.getBenefName());
+        benefNatio.setText(c.getBenefNationalite());
+        benefPere.setText(c.getBenefPere());
+        benefWilayaBirth.setText(c.getBenefWilayaBirth());
+
+        contractType.setText(c.getContractType());
+        startDate.setText(c.getStartDate().toString());
+        endDate.setText(c.getEndDate().toString());
+        montantContrat.setText(c.getMontant().toString());
+        periodeImpot.setText(c.getPeriodImpot());
+        numContrat.setText(c.getNumAcie());
+        
+
     }
 
 }
