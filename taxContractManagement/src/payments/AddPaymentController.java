@@ -355,6 +355,20 @@ public class AddPaymentController implements Initializable {
 
     @FXML
     private void getScanView(MouseEvent event) {
+
+         FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(Links.SCANVIEW));
+        try {
+            loader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Parent parent = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(parent));
+        stage.initStyle(StageStyle.UTILITY);
+        stage.show();
     }
 
     private void getQuery() {
