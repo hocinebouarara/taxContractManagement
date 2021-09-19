@@ -5,6 +5,8 @@
  */
 package models;
 
+import java.sql.Date;
+
 /**
  *
  * @author Deeplight
@@ -13,8 +15,19 @@ public class Controle {
 
     int id, contractId, ficheHabId, proprId;
     String proprName;
+    Date proprbirth;
+    String proprCommuneBirth, proprWilayaBirth, proprPere, proprMere, proprNationalite, proprAdress, proprPhone;
     int benefID;
-    String benefName, inspection,
+    String benefName;
+    Date benefBirth;
+    String benefCommuneBirth, benefWilayaBirth, benefPere, benefMere, benefNationalite, benefAdress;
+
+    String contractType;
+    Date startDate, endDate;
+    Float montant;
+    String periodImpot, numAcie;
+
+    String inspection,
             recette, annee, designation;
     int nis, nif;
     String wilaya, activite;
@@ -43,6 +56,180 @@ public class Controle {
         this.Adress = Adress;
         this.articleImpots = articleImpots;
     }
+
+    public Controle() {
+    }
+
+    public Date getProprbirth() {
+        return proprbirth;
+    }
+
+    public void setProprbirth(Date proprbirth) {
+        this.proprbirth = proprbirth;
+    }
+
+    public String getProprCommuneBirth() {
+        return proprCommuneBirth;
+    }
+
+    public void setProprCommuneBirth(String proprCommuneBirth) {
+        this.proprCommuneBirth = proprCommuneBirth;
+    }
+
+    public String getProprWilayaBirth() {
+        return proprWilayaBirth;
+    }
+
+    public void setProprWilayaBirth(String proprWilayaBirth) {
+        this.proprWilayaBirth = proprWilayaBirth;
+    }
+
+    public String getProprPere() {
+        return proprPere;
+    }
+
+    public void setProprPere(String proprPere) {
+        this.proprPere = proprPere;
+    }
+
+    public String getProprMere() {
+        return proprMere;
+    }
+
+    public void setProprMere(String proprMere) {
+        this.proprMere = proprMere;
+    }
+
+    public String getProprNationalite() {
+        return proprNationalite;
+    }
+
+    public void setProprNationalite(String proprNationalite) {
+        this.proprNationalite = proprNationalite;
+    }
+
+    public String getProprAdress() {
+        return proprAdress;
+    }
+
+    public void setProprAdress(String proprAdress) {
+        this.proprAdress = proprAdress;
+    }
+
+    public String getProprPhone() {
+        return proprPhone;
+    }
+
+    public void setProprPhone(String proprPhone) {
+        this.proprPhone = proprPhone;
+    }
+
+    public Date getBenefBirth() {
+        return benefBirth;
+    }
+
+    public void setBenefBirth(Date benefBirth) {
+        this.benefBirth = benefBirth;
+    }
+
+    public String getBenefCommuneBirth() {
+        return benefCommuneBirth;
+    }
+
+    public void setBenefCommuneBirth(String benefCommuneBirth) {
+        this.benefCommuneBirth = benefCommuneBirth;
+    }
+
+    public String getBenefWilayaBirth() {
+        return benefWilayaBirth;
+    }
+
+    public void setBenefWilayaBirth(String benefWilayaBirth) {
+        this.benefWilayaBirth = benefWilayaBirth;
+    }
+
+    public String getBenefPere() {
+        return benefPere;
+    }
+
+    public void setBenefPere(String benefPere) {
+        this.benefPere = benefPere;
+    }
+
+    public String getBenefMere() {
+        return benefMere;
+    }
+
+    public void setBenefMere(String benefMere) {
+        this.benefMere = benefMere;
+    }
+
+    public String getBenefNationalite() {
+        return benefNationalite;
+    }
+
+    public void setBenefNationalite(String benefNationalite) {
+        this.benefNationalite = benefNationalite;
+    }
+
+    public String getBenefAdress() {
+        return benefAdress;
+    }
+
+    public void setBenefAdress(String benefAdress) {
+        this.benefAdress = benefAdress;
+    }
+
+    public String getContractType() {
+        return contractType;
+    }
+
+    public void setContractType(String contractType) {
+        this.contractType = contractType;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Float getMontant() {
+        return montant;
+    }
+
+    public void setMontant(Float montant) {
+        this.montant = montant;
+    }
+
+    public String getPeriodImpot() {
+        return periodImpot;
+    }
+
+    public void setPeriodImpot(String periodImpot) {
+        this.periodImpot = periodImpot;
+    }
+
+    public String getNumAcie() {
+        return numAcie;
+    }
+
+    public void setNumAcie(String numAcie) {
+        this.numAcie = numAcie;
+    }
+    
+    
+    
 
     public int getId() {
         return id;
