@@ -113,10 +113,114 @@ public class FileControllerController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 controle = controleTable.getSelectionModel().getSelectedItem();
+                Controle c = new Controle();
+                try {
+
+                    query = "SELECT\n"
+                            + "    fiche_de_control.id,\n"
+                            + "    contrat.id,\n"
+                            + "    contrat.type_contr,\n"
+                            + "    contrat.date,\n"
+                            + "    contrat.date_fin,\n"
+                            + "    contrat.montant,\n"
+                            + "    contrat.n_acie,\n"
+                            + "    contrat.periodes_imposition,\n"
+                            + "    contrat.id_fiche_hab,\n"
+                            + "    proprietaire.id,\n"
+                            + "    proprietaire.nom_prenom_or_RS,\n"
+                            + "    proprietaire.date_nss,\n"
+                            + "    proprietaire.commune,\n"
+                            + "    proprietaire.wilaya,\n"
+                            + "    proprietaire.pere,\n"
+                            + "    proprietaire.mere,\n"
+                            + "    proprietaire.nationalite,\n"
+                            + "    proprietaire.telephone,\n"
+                            + "    proprietaire.adress,\n"
+                            + "    beneficiaire.id,\n"
+                            + "    beneficiaire.nom_prenom_or_RS,\n"
+                            + "    beneficiaire.date_nss,\n"
+                            + "    beneficiaire.commune,\n"
+                            + "    beneficiaire.wilaya,\n"
+                            + "    beneficiaire.prenom_pere,\n"
+                            + "    beneficiaire.nom_mere,\n"
+                            + "    beneficiaire.nationalite,\n"
+                            + "    beneficiaire.adresse_domicile,\n"
+                            + "    fiche_de_control.inscpection,\n"
+                            + "    fiche_de_control.Recette,\n"
+                            + "    fiche_de_control.Annee,\n"
+                            + "    fiche_de_control.Designation,\n"
+                            + "    fiche_de_control.NiS,\n"
+                            + "    fiche_de_control.NIF,\n"
+                            + "    fiche_de_control.Wilaya,\n"
+                            + "    fiche_de_control.Activity,\n"
+                            + "    fiche_de_control.Code_d_activity,\n"
+                            + "    fiche_de_control.Forme_Juridique,\n"
+                            + "    fiche_de_control.Adress,\n" + "    fiche_de_control.Article_imposition\n"
+                            + "FROM\n"
+                            + "    fiche_de_control\n"
+                            + "INNER JOIN contrat ON contrat.id = fiche_de_control.id_fiscal\n"
+                            + "INNER JOIN beneficiaire ON beneficiaire.id = contrat.id_benef\n"
+                            + "INNER JOIN fiche_habitation ON fiche_habitation.id = contrat.id_fiche_hab\n"
+                            + "INNER JOIN proprietaire ON fiche_habitation.id_propr = proprietaire.id\n"
+                            + "ORDER BY\n"
+                            + "    fiche_de_control.id;";
+                    preparedStatement = connection.prepareStatement(query);
+                    resultSet = preparedStatement.executeQuery();
+
+                    while (resultSet.next()) {
+                        c.setId(resultSet.getInt("fiche_de_control.id"));
+                        c.setContractId(resultSet.getInt("contrat.id"));
+                        c.setContractType(resultSet.getString("contrat.type_contr"));
+                        c.setStartDate(resultSet.getDate("contrat.date"));
+                        c.setEndDate(resultSet.getDate("contrat.date_fin"));
+                        c.setMontant(resultSet.getFloat("contrat.montant"));
+                        c.setNumAcie(resultSet.getString("contrat.n_acie"));
+                        c.setPeriodImpot(resultSet.getString("contrat.periodes_imposition"));
+                        c.setFicheHabId(resultSet.getInt("contrat.id_fiche_hab"));
+
+                        c.setProprId(resultSet.getInt("proprietaire.id"));
+                        c.setProprName(resultSet.getString("proprietaire.nom_prenom_or_RS"));
+                        c.setProprbirth(resultSet.getDate("proprietaire.date_nss"));
+                        c.setProprCommuneBirth(resultSet.getString("proprietaire.commune"));
+                        c.setProprWilayaBirth(resultSet.getString("proprietaire.wilaya"));
+                        c.setProprPere(resultSet.getString("proprietaire.pere"));
+                        c.setProprMere(resultSet.getString("proprietaire.mere"));
+                        c.setProprNationalite(resultSet.getString("proprietaire.nationalite"));
+                        c.setAdress(resultSet.getString("proprietaire.adress"));
+                        c.setProprPhone(resultSet.getString("proprietaire.telephone"));
+
+                        c.setBenefID(resultSet.getInt("beneficiaire.id"));
+                        c.setBenefName(resultSet.getString("beneficiaire.nom_prenom_or_RS"));
+                        c.setBenefBirth(resultSet.getDate("beneficiaire.date_nss"));
+                        c.setBenefCommuneBirth(resultSet.getString("beneficiaire.commune"));
+                        c.setBenefWilayaBirth(resultSet.getString("beneficiaire.wilaya"));
+                        c.setBenefPere(resultSet.getString("beneficiaire.prenom_pere"));
+                        c.setBenefMere(resultSet.getString("beneficiaire.nom_mere"));
+                        c.setBenefNationalite(resultSet.getString("beneficiaire.nationalite"));
+                        c.setBenefAdress(resultSet.getString("beneficiaire.adresse_domicile"));
+
+                        c.setInspection(resultSet.getString("fiche_de_control.inscpection"));
+                        c.setRecette(resultSet.getString("fiche_de_control.Recette"));
+                        c.setAnnee(resultSet.getString("fiche_de_control.Annee"));
+                        c.setDesignation(resultSet.getString("fiche_de_control.Designation"));
+                        c.setNis(resultSet.getInt("fiche_de_control.NiS"));
+                        c.setNif(resultSet.getInt("fiche_de_control.NIF"));
+                        c.setWilaya(resultSet.getString("fiche_de_control.Wilaya"));
+                        c.setActivite(resultSet.getString("fiche_de_control.Activity"));
+                        c.setCodeActivite(resultSet.getInt("fiche_de_control.Code_d_activity"));
+                        c.setFormJuridique(resultSet.getString("fiche_de_control.Forme_Juridique"));
+                        c.setAdress(resultSet.getString("fiche_de_control.Adress"));
+                        c.setArticleImpots(resultSet.getInt("fiche_de_control.Article_imposition"));
+
+                    }
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(FileControllerController.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 if (controle != null) {
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource(Links.ADDBENEFICIAIREVIEW));
+                    loader.setLocation(getClass().getResource(Links.PERIODSVIEW));
                     try {
                         loader.load();
                     } catch (IOException ex) {
@@ -124,12 +228,12 @@ public class FileControllerController implements Initializable {
                     }
 
                     PeriodTaxController periodTaxController = loader.getController();
-                    periodTaxController.setUpdate(true);
-                    periodTaxController.setTextFields();
+                    periodTaxController.setControle(c);
                     Parent parent = loader.getRoot();
                     Stage stage = new Stage();
                     stage.setScene(new Scene(parent));
                     stage.initStyle(StageStyle.UTILITY);
+                    stage.setUserData(c);
                     stage.show();
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -137,6 +241,7 @@ public class FileControllerController implements Initializable {
                     alert.setContentText("Veuillez sélectionner une ligne");
                     alert.showAndWait();
                 }
+
             }
         });
     }
@@ -189,7 +294,8 @@ public class FileControllerController implements Initializable {
                         resultSet.getString("fiche_de_control.recette"),
                         resultSet.getString("fiche_de_control.annee"),
                         resultSet.getString("fiche_de_control.designation"),
-                        resultSet.getInt("fiche_de_control.NiS"), resultSet.getInt("fiche_de_control.NIF"),
+                        resultSet.getInt("fiche_de_control.NiS"),
+                        resultSet.getInt("fiche_de_control.NIF"),
                         resultSet.getString("fiche_de_control.wilaya"),
                         resultSet.getString("fiche_de_control.activity"),
                         resultSet.getInt("fiche_de_control.Code_d_activity"),
