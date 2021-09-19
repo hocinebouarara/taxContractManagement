@@ -15,6 +15,8 @@ public class Payment {
     String lessorName, lessorAdress, nif, nbrAtricle, takerAdress;
     float amount;
     String takerName, occupationTaker;
+    
+    String recette, inspection,wilaya,direction;
 
     public Payment(int id, int idContract, String lessorName, String lessorAdress, String nif, String nbrAtricle, String takerAdress, float amount, String takerName, String occupationTaker) {
         this.id = id;
@@ -112,21 +114,39 @@ public class Payment {
         this.occupationTaker = occupationTaker;
     }
 
-    public void setRecette(String recognition) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getRecette() {
+        return recette;
     }
 
-    public void setInspectoin(String recognition) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setRecette(String recette) {
+        this.recette = recette;
     }
 
-    public void setWilaya(String recognition) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getInspection() {
+        return inspection;
     }
 
-    public void setDeriction(String recognition) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setInspection(String inspection) {
+        this.inspection = inspection;
     }
+
+    public String getWilaya() {
+        return wilaya;
+    }
+
+    public void setWilaya(String wilaya) {
+        this.wilaya = wilaya;
+    }
+
+    public String getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
+   
 
     
 
