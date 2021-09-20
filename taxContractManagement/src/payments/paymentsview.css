@@ -44,3 +44,6 @@
     -fx-border-radius: 8px;
     -fx-border-width: 3px;
 }
+.tooltip {
+    -fx-show-delay: 100ms;
+}

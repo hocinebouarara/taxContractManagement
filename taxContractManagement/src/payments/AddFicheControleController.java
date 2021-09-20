@@ -187,14 +187,14 @@ public class AddFicheControleController implements Initializable {
             preparedStatement.setString(2, recetteFld.getText());
             preparedStatement.setInt(3, Integer.valueOf(anneeFld.getText()));
             preparedStatement.setString(4, designationFld.getText());
-            preparedStatement.setInt(5, Integer.valueOf(nifFld.getText()));
-            preparedStatement.setInt(6, Integer.valueOf(nisFld.getText()));
+            preparedStatement.setString(5, nifFld.getText());
+            preparedStatement.setString(6, nisFld.getText());
             preparedStatement.setString(7, wilayaFld.getText());
             preparedStatement.setString(8, activityFld.getText());
             preparedStatement.setInt(9, Integer.valueOf(codeActivityFld.getText()));
             preparedStatement.setString(10, FormJurdFld.getText());
             preparedStatement.setString(11, adressFld.getText());
-            preparedStatement.setInt(12, Integer.valueOf(articleImpotFld.getText()));
+            preparedStatement.setString(12, articleImpotFld.getText());
             preparedStatement.setInt(13, contract.getId());
 
             preparedStatement.execute();

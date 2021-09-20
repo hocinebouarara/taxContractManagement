@@ -240,13 +240,14 @@ public class AddPaymentController implements Initializable {
                         resultSet.getString("fiche_de_control.recette"),
                         resultSet.getString("fiche_de_control.annee"),
                         resultSet.getString("fiche_de_control.designation"),
-                        resultSet.getInt("fiche_de_control.NiS"), resultSet.getInt("fiche_de_control.NIF"),
+                        resultSet.getString("fiche_de_control.NiS"),
+                        resultSet.getString("fiche_de_control.NIF"),
                         resultSet.getString("fiche_de_control.wilaya"),
                         resultSet.getString("fiche_de_control.activity"),
                         resultSet.getInt("fiche_de_control.Code_d_activity"),
                         resultSet.getString("fiche_de_control.Forme_Juridique"),
                         resultSet.getString("fiche_de_control.adress"),
-                        resultSet.getInt("fiche_de_control.Article_imposition")
+                        resultSet.getString("fiche_de_control.Article_imposition")
                 ));
                 controleTable.setItems(controlesList);
 
@@ -390,8 +391,8 @@ public class AddPaymentController implements Initializable {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, controle.getProprName());
             preparedStatement.setString(2, controle.getAdress());
-            preparedStatement.setInt(3, controle.getNif());
-            preparedStatement.setInt(4, controle.getArticleImpots());
+            preparedStatement.setString(3, controle.getNif());
+            preparedStatement.setString(4, controle.getArticleImpots());
             preparedStatement.setString(5, controle.getAdress());
             preparedStatement.setFloat(6, Float.valueOf(montantMesFld.getText()));
             preparedStatement.setString(7, controle.getBenefName());

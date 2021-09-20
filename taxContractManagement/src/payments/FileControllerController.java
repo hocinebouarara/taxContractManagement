@@ -203,14 +203,14 @@ public class FileControllerController implements Initializable {
                         c.setRecette(resultSet.getString("fiche_de_control.Recette"));
                         c.setAnnee(resultSet.getString("fiche_de_control.Annee"));
                         c.setDesignation(resultSet.getString("fiche_de_control.Designation"));
-                        c.setNis(resultSet.getInt("fiche_de_control.NiS"));
-                        c.setNif(resultSet.getInt("fiche_de_control.NIF"));
+                        c.setNis(resultSet.getString("fiche_de_control.NiS"));
+                        c.setNif(resultSet.getString("fiche_de_control.NIF"));
                         c.setWilaya(resultSet.getString("fiche_de_control.Wilaya"));
                         c.setActivite(resultSet.getString("fiche_de_control.Activity"));
                         c.setCodeActivite(resultSet.getInt("fiche_de_control.Code_d_activity"));
                         c.setFormJuridique(resultSet.getString("fiche_de_control.Forme_Juridique"));
                         c.setAdress(resultSet.getString("fiche_de_control.Adress"));
-                        c.setArticleImpots(resultSet.getInt("fiche_de_control.Article_imposition"));
+                        c.setArticleImpots(resultSet.getString("fiche_de_control.Article_imposition"));
 
                     }
 
@@ -294,14 +294,14 @@ public class FileControllerController implements Initializable {
                         resultSet.getString("fiche_de_control.recette"),
                         resultSet.getString("fiche_de_control.annee"),
                         resultSet.getString("fiche_de_control.designation"),
-                        resultSet.getInt("fiche_de_control.NiS"),
-                        resultSet.getInt("fiche_de_control.NIF"),
+                        resultSet.getString("fiche_de_control.NiS"),
+                        resultSet.getString("fiche_de_control.NIF"),
                         resultSet.getString("fiche_de_control.wilaya"),
                         resultSet.getString("fiche_de_control.activity"),
                         resultSet.getInt("fiche_de_control.Code_d_activity"),
                         resultSet.getString("fiche_de_control.Forme_Juridique"),
                         resultSet.getString("fiche_de_control.adress"),
-                        resultSet.getInt("fiche_de_control.Article_imposition")
+                        resultSet.getString("fiche_de_control.Article_imposition")
                 ));
                 controleTable.setItems(controlesList);
 

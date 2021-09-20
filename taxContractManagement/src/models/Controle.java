@@ -29,13 +29,13 @@ public class Controle {
 
     String inspection,
             recette, annee, designation;
-    int nis, nif;
+    String nis, nif;
     String wilaya, activite;
     int codeActivite;
     String formJuridique, Adress;
-    int articleImpots;
+    String articleImpots;
 
-    public Controle(int id, int contractId, int ficheHabId, int proprId, String proprName, int benefID, String benefName, String inspection, String recette, String annee, String designation, int nis, int nif, String wilaya, String activite, int codeActivite, String formJuridique, String Adress, int articleImpots) {
+    public Controle(int id, int contractId, int ficheHabId, int proprId, String proprName, int benefID, String benefName, String inspection, String recette, String annee, String designation, String nis, String nif, String wilaya, String activite, int codeActivite, String formJuridique, String Adress, String articleImpots) {
         this.id = id;
         this.contractId = contractId;
         this.ficheHabId = ficheHabId;
@@ -319,19 +319,19 @@ public class Controle {
         this.designation = designation;
     }
 
-    public int getNis() {
+    public String getNis() {
         return nis;
     }
 
-    public void setNis(int nis) {
+    public void setNis(String nis) {
         this.nis = nis;
     }
 
-    public int getNif() {
+    public String getNif() {
         return nif;
     }
 
-    public void setNif(int nif) {
+    public void setNif(String nif) {
         this.nif = nif;
     }
 
@@ -375,11 +375,11 @@ public class Controle {
         this.Adress = Adress;
     }
 
-    public int getArticleImpots() {
+    public String getArticleImpots() {
         return articleImpots;
     }
 
-    public void setArticleImpots(int articleImpots) {
+    public void setArticleImpots(String articleImpots) {
         this.articleImpots = articleImpots;
     }
 
