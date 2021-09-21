@@ -30,12 +30,12 @@ and open the template in the editor.
     -fx-border-width: 0px 0px 4px 0px ;
 }
 .table-view {
-    -fx-background-color: #123456;
+    -fx-background-color: #0746A6;
     -fx-background-radius:14 14 0 0;
 
 }
 .table-view .column-header-background{
-    -fx-background-color:  #123456;
+    -fx-background-color:  #0746A6;
     -fx-background-radius:14;
     -fx-background-insets: 0 0 10 0;
 
