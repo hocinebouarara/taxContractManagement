@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXRadioButton?>
@@ -17,15 +18,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="980.0" stylesheets="@propertiesview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="properties.AddPropertyController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="980.0" style="-fx-background-color: white;" stylesheets="@propertiesview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="properties.AddPropertyController">
    <children>
-      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+      <VBox style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
          <children>
             <HBox alignment="CENTER" prefHeight="67.0" prefWidth="980.0">
                <children>
                   <Button fx:id="habitationBtn" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#getHabitationView" prefHeight="92.0" prefWidth="160.0" style="-fx-background-color: #DDD;" text="Habitation ">
                      <graphic>
-                        <FontAwesomeIconView glyphName="INFO_CIRCLE" size="40" />
+                        <FontAwesomeIconView glyphName="BUILDING" size="40" />
                      </graphic>
                      <font>
                         <Font name="Ink Free" size="20.0" />
@@ -82,7 +83,7 @@
             </AnchorPane>
          </children>
       </VBox>
-      <AnchorPane fx:id="proprietorAnchor" layoutX="10.0" layoutY="10.0" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+      <AnchorPane fx:id="proprietorAnchor" layoutX="10.0" layoutY="10.0" prefHeight="406.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="367.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                <children>
@@ -332,7 +333,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="designationAnchor" layoutX="20.0" layoutY="20.0" prefHeight="406.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+      <AnchorPane fx:id="designationAnchor" layoutX="20.0" layoutY="20.0" prefHeight="406.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="370.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                <children>
@@ -561,7 +562,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="affectationAnchor" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+      <AnchorPane fx:id="affectationAnchor" prefHeight="406.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="370.0" prefWidth="880.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                <children>
@@ -657,7 +658,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="habitationAnchor" layoutX="10.0" layoutY="10.0" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+      <AnchorPane fx:id="habitationAnchor" layoutX="10.0" layoutY="10.0" prefHeight="406.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="367.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                <children>
@@ -960,5 +961,13 @@
             </VBox>
          </children>
       </AnchorPane>
+      <JFXButton fx:id="getDataBtn" onAction="#getData" prefHeight="92.0" prefWidth="77.0" styleClass="FontAwesomeIconView" stylesheets="@../home/home.css">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="PASTE" size="50" />
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

@@ -8,6 +8,8 @@ package properties;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import helpres.DbConnect;
+import helpres.Links;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,14 +21,19 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import models.Property;
 import proprietors.ProprietorsViewController;
@@ -65,7 +72,8 @@ public class PropertiesTableController implements Initializable {
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-    Property property = null;
+    Property property = null, proprty = null;
+    public static Stage stage = null;
 
     ObservableList<Property> propertyList = FXCollections.observableArrayList();
     @FXML
@@ -270,29 +278,51 @@ public class PropertiesTableController implements Initializable {
                             }
 
                         });
-                        /*editIcon.setOnMouseClicked((MouseEvent event) -> {
-
+                        editIcon.setOnMouseClicked((MouseEvent event) -> {
                             property = propertiesTable.getSelectionModel().getSelectedItem();
-                            FXMLLoader loader = new FXMLLoader();
-                            loader.setLocation(getClass().getResource(Links.ADDPROPIETORVIEW));
+
+                            proprty = new Property();
+                            proprty.setAcie(property.getAcie());
+                            proprty.setAdresse_prcpl(property.getAdresse_prcpl());
+                            proprty.setArticle(property.getArticle());
+                            proprty.setCommune(property.getCommune());
+                            proprty.setDate(property.getDate());
+                            proprty.setDate_achev(property.getDate_achev());
+                            proprty.setId(property.getId());
+                            proprty.setId_propr(property.getId_propr());
+                            proprty.setInspection(property.getInspection());
+                            proprty.setN_appartement(property.getN_appartement());
+                            proprty.setN_etage(property.getN_etage());
+                            proprty.setN_immeuble(property.getN_immeuble());
+                            proprty.setN_terrain(property.getN_terrain());
+                            proprty.setNbr_apparemment(property.getNbr_apparemment());
+                            proprty.setNbr_etage(property.getNbr_etage());
+                            proprty.setNom(property.getNom());
+                            proprty.setOrigin_propriete(property.getOrigin_propriete());
+                            proprty.setProprBirth(property.getProprBirth());
+                            proprty.setReu(property.getReu());
+                            proprty.setRez_chaussee(property.getRez_chaussee());
+                            proprty.setSuperficie_batie(property.getSuperficie_batie());
+                            proprty.setSuperficie_non_batie(property.getSuperficie_non_batie());
+                            proprty.setSuperficie_tot(property.getSuperficie_tot());
+                            proprty.setTitre(property.getTitre());
+                            proprty.setType_immbeuble(property.getType_immbeuble());
+                            proprty.setUsage(property.getUsage());
+                            proprty.setWilaya(property.getWilaya());
                             try {
-                                loader.load();
+                                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource(Links.ADDPROPERTYVIEW));
+                                Scene scene = new Scene(anchorPane);
+                                Stage s = new Stage();
+                                s.setScene(scene);
+                                s.setUserData(propertiesTable.getSelectionModel().getSelectedItem());
+                                s.initStyle(StageStyle.TRANSPARENT);
+                                s.show();
+                                stage = s;
                             } catch (IOException ex) {
-                                Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(PropertiesTableController.class.getName()).log(Level.SEVERE, null, ex);
                             }
 
-                            AddPropertyController addPropertyController = loader.getController();
-                            addPropertyController.setUpdate(true);
-                            addPropertyController.setTextField(property.getId(), property.getId_propr(),
-                                    property.getNom(),property.getArticle(),property.getTitre(),property.getCommune(),
-                                    property.getReu(),property.getAcie(),property.getDate());
-                            Parent parent = loader.getRoot();
-                            Stage stage = new Stage();
-                            stage.setScene(new Scene(parent));
-                            stage.initStyle(StageStyle.UTILITY);
-                            stage.show();
-
-                        });*/
+                        });
 
                         HBox managebtn = new HBox(editIcon, deleteIcon);
                         managebtn.setStyle("-fx-alignment:center");

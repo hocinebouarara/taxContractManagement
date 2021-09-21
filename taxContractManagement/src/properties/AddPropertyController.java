@@ -5,6 +5,7 @@
  */
 package properties;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
@@ -25,10 +26,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -38,6 +41,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -46,6 +50,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import models.Beneficiaire;
+import models.Property;
 import models.Proprietor;
 import proprietors.AddProprietorController;
 import proprietors.ProprietorsViewController;
@@ -133,6 +138,8 @@ public class AddPropertyController implements Initializable {
 
     Proprietor proprietor = null;
 
+    Property property = null, p = null;
+
     ObservableList<Proprietor> proprietorsList = FXCollections.observableArrayList();
     @FXML
     private Button habitationBtn;
@@ -154,6 +161,8 @@ public class AddPropertyController implements Initializable {
     private AnchorPane affectationAnchor;
     @FXML
     private TextField adresseResdcPrincpFld;
+    @FXML
+    private JFXButton getDataBtn;
 
     /**
      * Initializes the controller class.
@@ -169,8 +178,17 @@ public class AddPropertyController implements Initializable {
         induvidlBtn.setToggleGroup(group);
         collectifBtn.setToggleGroup(group);
 
-        loadData();
+        if (update == true) {
+
+        } else {
+            getDataBtn.isDisabled();
+
+        }
+
+        getDataBtn.setTooltip(new Tooltip("Coller les donnees "));
+
         getHabitationView();
+
     }
 
     String getTypeImmbeuble() {
@@ -222,7 +240,17 @@ public class AddPropertyController implements Initializable {
                     + " `superficie_batie`, `superficie_non_batie`, `date_achev`,`usage`, `adresse_prcpl`, `id_propr`, `titre_propriete`,"
                     + " `n_acie`, `date`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Ajouté avec succés");
+            alert.showAndWait();
+
         } else {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("modifier avec succés");
+            alert.showAndWait();
 
         }
 
@@ -251,7 +279,7 @@ public class AddPropertyController implements Initializable {
             preparedStatement.setFloat(17, Float.valueOf(superNonBatieFLd.getText()));
             preparedStatement.setString(18, String.valueOf(dateAchevFld.getValue()));
             preparedStatement.setString(19, usageCombo.getValue());
-             preparedStatement.setString(20, adresseProprFld.getText());
+            preparedStatement.setString(20, adresseProprFld.getText());
             preparedStatement.setInt(21, proprietor.getId());
             preparedStatement.setString(22, titreFld.getText());
             preparedStatement.setString(23, acieFld.getText());
@@ -483,6 +511,43 @@ public class AddPropertyController implements Initializable {
         affectationAnchor.setVisible(true);
     }
 
-   
+    @FXML
+    void getData(ActionEvent event) {
+
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        Property property1 = (Property) stage.getUserData();
+        articleFld.setText(property1.getArticle());
+        wilayaFld.setText(property1.getWilaya());
+        communeFld.setText(property1.getCommune());
+        reuFld.setText(property1.getReu());
+        inspectionFld.setText(property1.getInspection());
+        nTerrainFld.setText(property1.getN_terrain());
+        nImmeubleFld.setText(property1.getN_immeuble());
+        rezChaFld.setText(property1.getRez_chaussee());
+        nEtageFld.setText(property1.getNbr_etage());
+        nomProprFld.setText(property1.getNom());
+        adresseProprFld.setText(property1.getAdresse_prcpl());
+        orignPropCombo.setValue(property1.getOrigin_propriete());
+        titreFld.setText(property1.getTitre());
+        acieFld.setText(property1.getAcie());
+        dateAcieFld.setValue(property1.getDate().toLocalDate());
+
+        if (property1.getType_immbeuble() == "Cellectif") {
+
+            collectifBtn.isPressed();
+        } else {
+            induvidlBtn.isPressed();
+        }
+
+        superTotFld.setText(String.valueOf(property1.getSuperficie_tot()));
+        SuperBatieFld.setText(String.valueOf(property1.getSuperficie_batie()));
+        superNonBatieFLd.setText(String.valueOf(property1.getSuperficie_non_batie()));
+        nbrPiecesFld.setText(property1.getNbr_apparemment());
+        nbrEtageFld.setText(property1.getNbr_etage());
+        dateAchevFld.setValue(property1.getDate_achev().toLocalDate());
+        usageCombo.setValue(property1.getUsage());
+
+    }
 
 }
