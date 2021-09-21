@@ -8,7 +8,7 @@
 .buttons{
     -fx-background-color: transparent;
     -fx-background-radius: 50px;
-    -fx-border-color: #123456;
+    -fx-border-color: black;
     -fx-border-radius: 50px;
     -fx-border-width: 2px;
     -fx-cursor: hand;
