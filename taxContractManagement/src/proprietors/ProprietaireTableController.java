@@ -8,6 +8,7 @@ package proprietors;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import helpres.DbConnect;
+import helpres.Links;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -35,6 +36,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import models.Beneficiaire;
 import models.Proprietor;
 
 /**
@@ -47,17 +49,9 @@ public class ProprietaireTableController implements Initializable {
     @FXML
     private AnchorPane proprAnchor;
     @FXML
-    private TableView<Proprietor> proprietorsTable;
-    @FXML
     private TableColumn<Proprietor, String> idCol;
     @FXML
     private TableColumn<Proprietor, String> nameCol;
-    @FXML
-    private TableColumn<Proprietor, String> dateCol;
-    @FXML
-    private TableColumn<Proprietor, String> adressCol;
-    @FXML
-    private TableColumn<Proprietor, String> phoneCol;
     @FXML
     private TableColumn<Proprietor, String> operationCol;
     @FXML
@@ -68,9 +62,28 @@ public class ProprietaireTableController implements Initializable {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     Proprietor proprietor = null;
+    Stage stage = null;
 
     ObservableList<Proprietor> proprietorsList = FXCollections.observableArrayList();
-    
+    @FXML
+    private TableView<Proprietor> proprietaireTable;
+    @FXML
+    private TableColumn<Proprietor, String> birthDateCol;
+    @FXML
+    private TableColumn<Proprietor, String> communeCol;
+    @FXML
+    private TableColumn<Proprietor, String> wilayaCol;
+    @FXML
+    private TableColumn<Proprietor, String> prenom_pereCol;
+    @FXML
+    private TableColumn<Proprietor, String> nom_mereCol;
+    @FXML
+    private TableColumn<Proprietor, String> natCol;
+    @FXML
+    private TableColumn<Proprietor, String> adresseCol;
+    @FXML
+    private TableColumn<Proprietor, String> telephoneCol;
+
     /**
      * Initializes the controller class.
      */
@@ -78,10 +91,13 @@ public class ProprietaireTableController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         loadDate();
+        
+        
     }
 
     private void refreshTable() {
         try {
+
             proprietorsList.clear();
 
             query = "SELECT * FROM `proprietaire`";
@@ -93,9 +109,15 @@ public class ProprietaireTableController implements Initializable {
                         resultSet.getInt("id"),
                         resultSet.getString("nom_prenom_or_RS"),
                         resultSet.getDate("date_nss"),
+                        resultSet.getString("commune"),
+                        resultSet.getString("wilaya"),
+                        resultSet.getString("pere"),
+                        resultSet.getString("mere"),
+                        resultSet.getString("nationalite"),
                         resultSet.getString("adress"),
-                        resultSet.getString("telephone")));
-                proprietorsTable.setItems(proprietorsList);
+                        resultSet.getString("telephone")
+                ));
+                proprietaireTable.setItems(proprietorsList);
 
             }
 
@@ -111,9 +133,14 @@ public class ProprietaireTableController implements Initializable {
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-        adressCol.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        birthDateCol.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+        communeCol.setCellValueFactory(new PropertyValueFactory<>("commune"));
+        wilayaCol.setCellValueFactory(new PropertyValueFactory<>("wilaya"));
+        prenom_pereCol.setCellValueFactory(new PropertyValueFactory<>("prenom_pere"));
+        nom_mereCol.setCellValueFactory(new PropertyValueFactory<>("nom_mere"));
+        natCol.setCellValueFactory(new PropertyValueFactory<>("nationnalite"));
+        adresseCol.setCellValueFactory(new PropertyValueFactory<>("adresse_domicile"));
+        telephoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
 
         //add cell of button edit 
         Callback<TableColumn<Proprietor, String>, TableCell<Proprietor, String>> cellFoctory = (TableColumn<Proprietor, String> param) -> {
@@ -145,7 +172,7 @@ public class ProprietaireTableController implements Initializable {
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
                             try {
-                                proprietor = proprietorsTable.getSelectionModel().getSelectedItem();
+                                proprietor = proprietaireTable.getSelectionModel().getSelectedItem();
                                 query = "DELETE FROM `proprietaire` WHERE id  =" + proprietor.getId();
                                 connection = DbConnect.getConnect();
                                 preparedStatement = connection.prepareStatement(query);
@@ -159,24 +186,20 @@ public class ProprietaireTableController implements Initializable {
                         });
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
 
-                            proprietor = proprietorsTable.getSelectionModel().getSelectedItem();
-                            FXMLLoader loader = new FXMLLoader();
-                            loader.setLocation(getClass().getResource("/proprietors/addProprietor.fxml"));
+                            proprietor = proprietaireTable.getSelectionModel().getSelectedItem();
+                            proprietor.setUpdate(true);
                             try {
-                                loader.load();
-                            } catch (IOException ex) {
-                                Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
+                                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource(Links.ADDPROPIETORVIEW));
+                                Scene scene = new Scene(anchorPane);
+                                Stage s = new Stage();
+                                s.setScene(scene);
+                                s.setUserData(proprietaireTable.getSelectionModel().getSelectedItem());
+                                s.initStyle(StageStyle.TRANSPARENT);
+                                s.show();
+                                stage = s;
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
-
-                            AddProprietorController addProprietorController = loader.getController();
-                            addProprietorController.setUpdate(true);
-                            addProprietorController.setTextField(proprietor.getId(), proprietor.getName(),
-                                    proprietor.getDate().toLocalDate(), proprietor.getAdresse(), proprietor.getPhone());
-                            Parent parent = loader.getRoot();
-                            Stage stage = new Stage();
-                            stage.setScene(new Scene(parent));
-                            stage.initStyle(StageStyle.UTILITY);
-                            stage.show();
 
                         });
 
@@ -197,7 +220,7 @@ public class ProprietaireTableController implements Initializable {
             return cell;
         };
         operationCol.setCellFactory(cellFoctory);
-        proprietorsTable.setItems(proprietorsList);
+        proprietaireTable.setItems(proprietorsList);
 
     }
 

@@ -5,6 +5,7 @@
  */
 package proprietors;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import helpres.DbConnect;
 import java.net.URL;
@@ -16,11 +17,17 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import models.Proprietor;
 
 /**
@@ -30,22 +37,37 @@ import models.Proprietor;
  */
 public class AddProprietorController implements Initializable {
 
-    @FXML
-    private TextField nameField;
-    @FXML
-    private JFXDatePicker dateFld;
-    @FXML
-    private TextField adressField;
-    @FXML
-    private TextField telephoneField;
-
     String query = null;
     Connection connection = null;
     ResultSet resultSet = null;
     PreparedStatement preparedStatement;
     Proprietor proprietor = null;
-    private boolean update;
-    int proprietorId;
+    private boolean update = false;
+    int proprietorId = -1;
+    @FXML
+    private Button personnelsBtn;
+    @FXML
+    private AnchorPane personnelsInfoAnchor;
+    @FXML
+    private TextField nameFld;
+    @FXML
+    private JFXDatePicker birthDateFld;
+    @FXML
+    private TextField communeFld;
+    @FXML
+    private TextField wilayaFld;
+    @FXML
+    private TextField nameFatherFld;
+    @FXML
+    private TextField nameMotherFld;
+    @FXML
+    private TextField nationFld;
+    @FXML
+    private TextField phoneFld;
+    @FXML
+    private TextField AdressFld;
+    @FXML
+    private JFXButton getDataBtn;
 
     /**
      * Initializes the controller class.
@@ -53,6 +75,9 @@ public class AddProprietorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
+       getDataBtn.setTooltip(new Tooltip("Coller les donnees"));
+
     }
 
     public void setUpdate(boolean b) {
@@ -63,25 +88,28 @@ public class AddProprietorController implements Initializable {
     public void setTextField(int id, String name, LocalDate toLocalDate, String adress, String email) {
 
         proprietorId = id;
-        nameField.setText(name);
-        dateFld.setValue(toLocalDate);
-        adressField.setText(adress);
-        telephoneField.setText(email);
 
     }
 
     @FXML
     private void save(MouseEvent event) {
         connection = DbConnect.getConnect();
-        String name = nameField.getText();
-        String birth = String.valueOf(dateFld.getValue());
-        String adress = adressField.getText();
-        String phone = telephoneField.getText();
+        String name = nameFld.getText();
+        String birth = String.valueOf(birthDateFld.getValue());
+        String adress = AdressFld.getText();
+        String commune = communeFld.getText();
+        String wilaya = wilayaFld.getText();
+        String father = nameFatherFld.getText();
+        String mother = nameMotherFld.getText();
+        String nationalite = nationFld.getText();
+        String phone = phoneFld.getText();
 
-        if (name.isEmpty() || birth.isEmpty() || adress.isEmpty() || phone.isEmpty()) {
+        if (name.isEmpty() || birth.isEmpty() || adress.isEmpty() || phone.isEmpty()
+                || commune.isEmpty()|| wilaya.isEmpty()|| father.isEmpty()
+                || nationalite.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("Please Fill All DATA");
+            alert.setContentText("Veuillez remplir toutes les données");
             alert.showAndWait();
 
         } else {
@@ -95,23 +123,43 @@ public class AddProprietorController implements Initializable {
 
     @FXML
     private void clean() {
-        nameField.setText(null);
-        dateFld.setValue(null);
-        adressField.setText(null);
-        telephoneField.setText(null);
+        nameFatherFld.setText(null);
+        birthDateFld.setValue(null);
+        AdressFld.setText(null);
+        nationFld.setText(null);
+        wilayaFld.setText(null);
+        communeFld.setText(null);
+        nameMotherFld.setText(null);
+        nameFld.setText(null);
+        phoneFld.setText(null);
     }
 
     private void getQuery() {
-        if (update == false) {
 
-            query = "INSERT INTO `proprietaire`(`nom_prenom_or_RS`, `date_nss`, `adress`, `telephone`) VALUES (?,?,?,?)";
+        if (proprietorId == -1) {
+
+            query = "INSERT INTO `proprietaire`(`nom_prenom_or_RS`, `date_nss`, `adress`, `commune`, `wilaya`, `pere`, `mere`, `nationalite`, `telephone`) VALUES (?,?,?,?,?,?,?,?,?)";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Ajouté avec succes");
+            alert.showAndWait();
 
         } else {
             query = "UPDATE `proprietaire` SET "
                     + "`nom_prenom_or_RS`=?,"
                     + "`date_nss`=?,"
                     + "`adress`=?,"
+                    + "`commune`=?,"
+                    + "`wilaya`=?,"
+                    + "`pere`=?,"
+                    + "`mere`=?,"
+                    + "`nationalite`=?,"
                     + "`telephone`=? WHERE id = '" + proprietorId + "'";
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Modifier avec succes");
+            alert.showAndWait();
 
         }
     }
@@ -121,16 +169,44 @@ public class AddProprietorController implements Initializable {
         try {
 
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, nameField.getText());
-            preparedStatement.setString(2, String.valueOf(dateFld.getValue()));
-            preparedStatement.setString(3, adressField.getText());
-            preparedStatement.setString(4, telephoneField.getText());
+            preparedStatement.setString(1, nameFld.getText());
+            preparedStatement.setString(2, String.valueOf(birthDateFld.getValue()));
+            preparedStatement.setString(3, AdressFld.getText());
+            preparedStatement.setString(4, communeFld.getText());
+            preparedStatement.setString(5, wilayaFld.getText());
+            preparedStatement.setString(6, nameFatherFld.getText());
+            preparedStatement.setString(7, nameFatherFld.getText());
+            preparedStatement.setString(8, nationFld.getText());
+
+            preparedStatement.setString(9, phoneFld.getText());
             preparedStatement.execute();
 
         } catch (SQLException ex) {
             Logger.getLogger(AddProprietorController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    @FXML
+    private void getPersonnelsView(MouseEvent event) {
+    }
+
+    @FXML
+    private void getData(ActionEvent event) {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+
+        Proprietor proprietor1 = (Proprietor) stage.getUserData();
+        proprietorId = proprietor1.getId();
+        nameFld.setText(proprietor1.getName());
+        birthDateFld.setValue(proprietor1.getBirthDate().toLocalDate());
+        communeFld.setText(proprietor1.getCommune());
+        wilayaFld.setText(proprietor1.getWilaya());
+        nameFatherFld.setText(proprietor1.getPrenom_pere());
+        nameMotherFld.setText(proprietor1.getNom_mere());
+        nationFld.setText(proprietor1.getNationnalite());
+        phoneFld.setText(proprietor1.getPhone());
+        AdressFld.setText(proprietor1.getAdresse_domicile());
     }
 
 }

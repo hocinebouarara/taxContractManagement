@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXToggleButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
@@ -10,7 +9,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="proprAnchor" prefHeight="510.0" prefWidth="933.0" stylesheets="@../home/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proprietors.ProprietaireTableController">
    <children>
@@ -43,72 +41,22 @@
                   <Insets bottom="5.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="proprietorsTable" maxHeight="1.7976931348623157E308" prefHeight="399.0" prefWidth="980.0" style="-fx-alignment: center;">
+            <TableView fx:id="proprietaireTable" maxHeight="1.7976931348623157E308" prefHeight="425.0" prefWidth="933.0" style="-fx-alignment: center;">
                <columns>
-                  <TableColumn fx:id="checkCol" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" style="-fx-alignment: center; -fx-font-size: 16px;" />
-                  <TableColumn fx:id="idCol" maxWidth="95.0" prefWidth="95.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="ID" />
-                  <TableColumn fx:id="nameCol" maxWidth="200.0" prefWidth="200.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Nom et Prenom/R. S." />
-                  <TableColumn fx:id="dateCol" maxWidth="160.0" prefWidth="160.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Date d'anniversaire" />
-                  <TableColumn fx:id="adressCol" maxWidth="200.0" prefWidth="200.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Adresse" />
-                  <TableColumn fx:id="phoneCol" maxWidth="144.0" minWidth="8.66668701171875" prefWidth="144.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Telephone" />
-                  <TableColumn fx:id="operationCol" maxWidth="89.0" minWidth="0.0" prefWidth="89.0" style="-fx-alignment: center; -fx-font-size: 16px;" text="Action" />
+                  <TableColumn fx:id="checkCol" maxWidth="30.0" minWidth="0.0" prefWidth="30.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
+                  <TableColumn fx:id="idCol" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="ID" />
+                  <TableColumn fx:id="nameCol" maxWidth="155.0" minWidth="155.0" prefWidth="155.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Nom et Prenom" />
+                  <TableColumn fx:id="birthDateCol" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Nss" />
+                  <TableColumn fx:id="communeCol" maxWidth="150.0" minWidth="8.66668701171875" prefWidth="128.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Commune" />
+                  <TableColumn fx:id="wilayaCol" maxWidth="250.0" prefWidth="116.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Wilaya" />
+                  <TableColumn fx:id="prenom_pereCol" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="nom de pere" />
+                  <TableColumn fx:id="nom_mereCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
+                  <TableColumn fx:id="natCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
+                  <TableColumn fx:id="adresseCol" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Adresse " />
+                  <TableColumn fx:id="telephoneCol" maxWidth="80.0" minWidth="80.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Telephone" />
+                  <TableColumn fx:id="operationCol" maxWidth="102.6666259765625" minWidth="0.0" prefWidth="67.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Action" />
                </columns>
-               <VBox.margin>
-                  <Insets bottom="4.0" top="-1.0" />
-               </VBox.margin>
             </TableView>
-            <HBox alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="980.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="477.0" style="-fx-background-color: #123456; -fx-background-radius: 16 16 0 16;">
-                     <children>
-                        <Text fill="#6670a1" strokeType="OUTSIDE" strokeWidth="0.0" text=" 0  choisie" wrappingWidth="75.8638916015625">
-                           <HBox.margin>
-                              <Insets left="25.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="Andalus" size="18.0" />
-                           </font>
-                        </Text>
-                        <HBox alignment="CENTER" prefHeight="26.0" prefWidth="121.0" style="-fx-border-width: 0 1 0 1; -fx-border-color: #565c78;">
-                           <children>
-                              <FontAwesomeIconView fill="#6670a1" glyphName="CLONE" size="26">
-                                 <HBox.margin>
-                                    <Insets right="11.0" />
-                                 </HBox.margin>
-                              </FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#6670a1" glyphName="PRINT" scaleY="1.1" size="27.5" wrappingWidth="22.785715103149414">
-                                 <HBox.margin>
-                                    <Insets right="11.0" />
-                                 </HBox.margin>
-                              </FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#6670a1" glyphName="TRASH" layoutX="73.0" layoutY="42.0" size="27.5" wrappingWidth="22.785715103149414" />
-                           </children>
-                           <HBox.margin>
-                              <Insets left="30.0" />
-                           </HBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <JFXToggleButton contentDisplay="RIGHT" prefHeight="40.0" prefWidth="227.0" size="6.5" text=" uniquement la sélection" textFill="#6670a1">
-                                 <font>
-                                    <Font name="Andalus" size="16.0" />
-                                 </font>
-                              </JFXToggleButton>
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" top="5.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </HBox>
-               </children>
-               <VBox.margin>
-                  <Insets top="2.0" />
-               </VBox.margin>
-            </HBox>
          </children>
       </VBox>
    </children>
