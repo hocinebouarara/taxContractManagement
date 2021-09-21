@@ -151,13 +151,17 @@ public class AddBeneficiaryController implements Initializable {
                 || agrement.isEmpty() || agrementDate.isEmpty() || autres.isEmpty() || date.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("Please Fill All Data");
+            alert.setContentText("Veuillez remplir toutes les données");
             alert.showAndWait();
 
         } else {
             getQuery();
             insert();
             clean();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Ajouté avec succès");
+            alert.showAndWait();
 
         }
     }
@@ -220,7 +224,7 @@ public class AddBeneficiaryController implements Initializable {
 
     }
 
-   public void setUpdate(boolean b) {
+    public void setUpdate(boolean b) {
         this.update = b;
 
     }
@@ -233,6 +237,11 @@ public class AddBeneficiaryController implements Initializable {
                     + " `adresse_act_prcpl`, `activite_sec`, `adresse_act_sec`,`n_register_comrc`, `date_registre_c`,"
                     + " `n_cart_artisan`, `date_carte_ar`,`n_agrement`, `date_agrement`, `autres`, `date`) "
                     + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Ajouté avec succès");
+            alert.showAndWait();
 
         } else {
             query = "UPDATE `beneficiaire` SET "
@@ -256,6 +265,11 @@ public class AddBeneficiaryController implements Initializable {
                     + "`date_agrement`=?,"
                     + "`autres`=?,"
                     + "`date`=? WHERE id = '" + beneficiaireId + "'";
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("modifier avec succès");
+                alert.showAndWait();
 
         }
     }

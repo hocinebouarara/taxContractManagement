@@ -26,6 +26,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -212,12 +213,17 @@ public class BeneficiairesTableController implements Initializable {
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
                             try {
+
                                 beneficiaire = beneficiairesTable.getSelectionModel().getSelectedItem();
                                 query = "DELETE FROM `beneficiaire` WHERE id  =" + beneficiaire.getId();
                                 connection = DbConnect.getConnect();
                                 preparedStatement = connection.prepareStatement(query);
                                 preparedStatement.execute();
                                 refreshTable();
+                                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setHeaderText(null);
+                                alert.setContentText("supprimé avec succès");
+                                alert.showAndWait();
 
                             } catch (SQLException ex) {
                                 Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
@@ -245,7 +251,7 @@ public class BeneficiairesTableController implements Initializable {
                                     beneficiaire.getAdresse_act_sec(), beneficiaire.getN_register_comrc(),
                                     beneficiaire.getDate_registre_c(), beneficiaire.getN_cart_artisan(),
                                     beneficiaire.getDate_carte_ar(), beneficiaire.getN_agrement(), beneficiaire.getDate_agrement(),
-                                    beneficiaire.getAutres(),beneficiaire.getDate()
+                                    beneficiaire.getAutres(), beneficiaire.getDate()
                             );
                             Parent parent = loader.getRoot();
                             Stage stage = new Stage();
