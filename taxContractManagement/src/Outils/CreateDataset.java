@@ -7,7 +7,7 @@ public class CreateDataset {
     public static void createCSV(String name){
         StringBuilder builder=new StringBuilder();
         builder.append("imageswidth").append(",").append("imagesheight").append(",").append("Name").append(",").append("XOffset").append(",").append("YOffset").append(",").append("width").append(",").append("height");
-        try (FileWriter fileWriter = new FileWriter("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement\\taxContractManagement\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+name)){
+        try (FileWriter fileWriter = new FileWriter("C:\\Users\\Abdelhamid\\Desktop\\taxContractManagementh\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+name)){
 
             fileWriter.write(builder.toString());
 
@@ -29,7 +29,7 @@ public class CreateDataset {
     public static void addtoCsv(double imgw, double imgh, String Name, float x, float y, float w, float h){
 
         try {
-            FileWriter fileWriter=new FileWriter("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement\\taxContractManagement\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\Dataset.csv",true);
+            FileWriter fileWriter=new FileWriter("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagementh\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\Dataset.csv",true);
             BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
             PrintWriter printWriter=new PrintWriter(bufferedWriter);
             printWriter.println(imgw+","+imgh+","+Name+","+x+","+y+","+w+","+h);
