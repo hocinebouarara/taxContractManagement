@@ -13,7 +13,7 @@
 
 <HBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.HomeViewController">
    <children>
-      <VBox alignment="BOTTOM_CENTER" prefHeight="650.0" prefWidth="225.0" style="-fx-background-color: #123456; -fx-background-radius: 0 20 0 20;">
+      <VBox alignment="BOTTOM_CENTER" prefHeight="650.0" prefWidth="225.0" style="-fx-background-color: #0746a6; -fx-background-radius: 0 20 0 20;">
          <children>
             <VBox prefHeight="509.0" prefWidth="225.0">
                <VBox.margin>
@@ -22,33 +22,12 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="65.0" prefWidth="230.0">
                      <children>
-                        <JFXButton fx:id="homeBtn" accessibleText="homeMenu" alignment="BASELINE_LEFT" maxHeight="75.0" maxWidth="280.0" onMouseClicked="#getHomeView" prefHeight="90.0" prefWidth="272.0" style="-fx-background-radius: 25 0 0 25;" styleClass="btn" stylesheets="@home.css" text="Dashboard" textFill="#6670a1f7">
+                        <Button fx:id="propaBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getPropaView" prefHeight="90.0" prefWidth="288.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Propriétés" textFill="#fffffff7">
                            <font>
-                              <Font name="MingLiU_HKSCS-ExtB" size="20.0" />
+                              <Font name="MV Boli" size="22.0" />
                            </font>
                            <graphic>
-                              <FontAwesomeIconView fill="#3f51b5" glyphName="BANK" size="30" translateX="-5.0" />
-                           </graphic>
-                           <padding>
-                              <Insets left="26.0" />
-                           </padding>
-                           <effect>
-                              <MotionBlur angle="171.42" />
-                           </effect>
-                        </JFXButton>
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="230.0">
-                     <children>
-                        <Button fx:id="propaBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getPropaView" prefHeight="90.0" prefWidth="288.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Propriétés" textFill="#6670a1">
-                           <font>
-                              <Font name="MingLiU_HKSCS-ExtB" size="20.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIconView fill="#3f51b5" glyphName="BUILDING" scaleX="1.18" size="30" translateX="-8.7" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="BUILDING" scaleX="1.18" size="30" translateX="-8.7" />
                            </graphic>
                            <padding>
                               <Insets left="34.0" />
@@ -61,15 +40,15 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="65.0" prefWidth="230.0">
                      <children>
-                        <Button fx:id="proprBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getProprView" prefHeight="90.0" prefWidth="321.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Propriétaires" textFill="#6670a1">
+                        <Button fx:id="proprBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getProprView" prefHeight="90.0" prefWidth="321.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Propriétaires" textFill="#fffffff7">
                            <font>
-                              <Font name="MingLiU_HKSCS-ExtB" size="20.0" />
+                              <Font name="MV Boli" size="22.0" />
                            </font>
                            <padding>
                               <Insets left="28.0" />
                            </padding>
                            <graphic>
-                              <FontAwesomeIconView fill="#3f51b5" glyphName="USERS" scaleX="1.1" size="30" translateX="-7.0" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="USERS" scaleX="1.1" size="30" translateX="-7.0" />
                            </graphic>
                            <opaqueInsets>
                               <Insets left="54.0" />
@@ -82,15 +61,15 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" prefHeight="65.0" prefWidth="230.0">
                      <children>
-                        <Button fx:id="contratBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getContratsView" prefHeight="90.0" prefWidth="312.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Contrats" textFill="#6670a1">
+                        <Button fx:id="contratBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getContratsView" prefHeight="90.0" prefWidth="312.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Contrats" textFill="#fffffff7">
                            <font>
-                              <Font name="MingLiU_HKSCS-ExtB" size="20.0" />
+                              <Font name="MV Boli" size="22.0" />
                            </font>
                            <padding>
                               <Insets left="35.0" />
                            </padding>
                            <graphic>
-                              <FontAwesomeIconView fill="#3f51b5" glyphName="FILE_TEXT" scaleX="1.1" size="30" translateX="-10.0" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="FILE_TEXT" scaleX="1.1" size="30" translateX="-10.0" />
                            </graphic>
                         </Button>
                      </children>
@@ -100,9 +79,9 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="205.0" prefHeight="65.0" prefWidth="230.0">
                      <children>
-                        <Button fx:id="benefiBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getBenefisView" prefHeight="90.0" prefWidth="310.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Bénéficiaires" textFill="#6670a1">
+                        <Button fx:id="benefiBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getBenefisView" prefHeight="90.0" prefWidth="310.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Locateurs" textFill="#fffffff7">
                            <font>
-                              <Font name="MingLiU_HKSCS-ExtB" size="20.0" />
+                              <Font name="MV Boli" size="22.0" />
                            </font>
                            <HBox.margin>
                               <Insets />
@@ -111,7 +90,7 @@
                               <Insets left="28.0" />
                            </padding>
                            <graphic>
-                              <FontAwesomeIconView fill="#3f51b5" glyphName="USERS" scaleX="1.1" size="30" translateX="-7.0" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="USERS" scaleX="1.1" size="30" translateX="-7.0" />
                            </graphic>
                         </Button>
                      </children>
@@ -121,9 +100,9 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="270.0" prefHeight="65.0" prefWidth="230.0">
                      <children>
-                        <Button fx:id="paymentBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getpaymentView" prefHeight="90.0" prefWidth="275.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Paiements" textFill="#6670a1">
+                        <Button fx:id="paymentBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getpaymentView" prefHeight="90.0" prefWidth="275.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Paiements" textFill="#fffffff7">
                            <font>
-                              <Font name="MingLiU_HKSCS-ExtB" size="20.0" />
+                              <Font name="MV Boli" size="22.0" />
                            </font>
                            <HBox.margin>
                               <Insets />
@@ -132,7 +111,7 @@
                               <Insets left="21.0" />
                            </padding>
                            <graphic>
-                              <FontAwesomeIconView fill="#3f51b5" glyphName="CREDIT_CARD_ALT" scaleX="0.91" size="30" translateX="-3.0" translateY="1.0" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="CREDIT_CARD_ALT" scaleX="0.91" size="30" translateX="-3.0" translateY="1.0" />
                            </graphic>
                         </Button>
                      </children>
@@ -142,9 +121,9 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="415.0" prefHeight="65.0" prefWidth="230.0">
                      <children>
-                        <Button fx:id="documentsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getDocumentsView" prefHeight="90.0" prefWidth="275.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Documents" textFill="#6670a1">
+                        <Button fx:id="documentsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getDocumentsView" prefHeight="90.0" prefWidth="275.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Approntisage" textFill="#fffffff7">
                            <font>
-                              <Font name="MingLiU_HKSCS-ExtB" size="20.0" />
+                              <Font name="MV Boli" size="22.0" />
                            </font>
                            <HBox.margin>
                               <Insets />
@@ -153,12 +132,33 @@
                               <Insets left="21.0" />
                            </padding>
                            <graphic>
-                              <MaterialDesignIconView fill="#3f51b5" glyphName="SHREDDER" scaleX="1.1" size="40" translateX="-4.0" />
+                              <MaterialDesignIconView fill="WHITE" glyphName="SHREDDER" scaleX="1.1" size="40" translateX="-4.0" />
                            </graphic>
                         </Button>
                      </children>
                      <VBox.margin>
                         <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="230.0">
+                     <children>
+                        <JFXButton fx:id="homeBtn" accessibleText="homeMenu" alignment="BASELINE_LEFT" maxHeight="75.0" maxWidth="280.0" onMouseClicked="#getHomeView" prefHeight="90.0" prefWidth="272.0" style="-fx-background-radius: 25 0 0 25;" styleClass="btn" stylesheets="@home.css" text="Statistiques" textFill="#fffffff7">
+                           <font>
+                              <Font name="MV Boli" size="22.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="BAR_CHART" size="30" translateX="-5.0" />
+                           </graphic>
+                           <padding>
+                              <Insets left="26.0" />
+                           </padding>
+                           <effect>
+                              <MotionBlur angle="171.42" />
+                           </effect>
+                        </JFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
                      </VBox.margin>
                   </HBox>
                </children>
