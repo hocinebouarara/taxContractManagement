@@ -42,35 +42,17 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox layoutX="173.0" layoutY="10.0" prefWidth="153.0">
-                     <children>
-                        <JFXButton fx:id="statBtn" alignment="BOTTOM_CENTER" onMouseClicked="#statView" prefWidth="153.0" styleClass="buttons" text="Statistiques">
-                           <font>
-                              <Font name="Zilla Slab Medium" size="18.0" />
-                           </font>
-                           <padding>
-                              <Insets top="10.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <graphic>
-                              <FontAwesomeIconView glyphName="LINE_CHART" size="30" />
-                           </graphic>
-                        </JFXButton>
-                     </children>
-                  </VBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="507.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="49.0" prefWidth="659.0">
                      <HBox.margin>
                         <Insets top="3.0" />
                      </HBox.margin>
                      <children>
-                        <JFXButton alignment="CENTER_RIGHT" onMouseClicked="#getAddBeneficView" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #123456; -fx-background-radius: 8 8 0 8;" styleClass="MenuBar">
+                        <JFXButton fx:id="addBenefBtn" alignment="CENTER_RIGHT" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#getAddBeneficView" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: black; -fx-background-radius: 8 8 0 8;" styleClass="MenuBar">
                            <font>
-                              <Font size="1.0" />
+                              <Font size="10.0" />
                            </font>
                            <graphic>
-                              <MaterialDesignIconView fill="WHITE" glyphName="NOTE_PLUS" size="36" translateX="-2.0" />
+                              <MaterialDesignIconView fill="WHITE" glyphName="NOTE_PLUS" size="36" />
                            </graphic>
                         </JFXButton>
                      </children>
