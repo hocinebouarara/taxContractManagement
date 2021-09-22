@@ -26,7 +26,7 @@ public class TaxContractManagement extends Application {
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
-        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.initStyle(StageStyle.DECORATED);
         stage.show();
     }
 
