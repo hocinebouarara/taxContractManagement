@@ -216,8 +216,8 @@ public class BeneficiairesTableController implements Initializable {
                         Tooltip.install(deleteIcon, new Tooltip("Supprimer cet élément"));
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
-                            ButtonType ok = new ButtonType("d'accord");
-                            ButtonType cancel = new ButtonType("Rook");
+                            ButtonType ok = new ButtonType("D'accord");
+                            ButtonType cancel = new ButtonType("Annuler");
                             Alert a = new Alert(AlertType.CONFIRMATION, "Promote pawn to:", ok, cancel);
                             a.setResizable(true);
                             a.setContentText("Voulez-vous supprimer cet élément");
