@@ -244,11 +244,11 @@ public class AddPropertyController implements Initializable {
         return type;
     }
 
-    void setUpdate(boolean b) {
+    public void setUpdate(boolean b) {
         this.update = b;
     }
 
-    void setTextFields(int id, int id_propr, String nom, Date proprBirth, String article, String titre,
+     public void setTextFields(int id, int id_propr, String nom, Date proprBirth, String article, String titre,
             String commune, String inspection, String wilaya, String reu, String origin_propriete,
             String n_terrain, String n_immeuble, String n_etage, String n_appartement, String rez_chaussee,
             String nbr_etage, String nbr_apparemment, String type_immbeuble, Float superficie_tot,
