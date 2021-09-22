@@ -136,6 +136,8 @@ public class AddFicheControleController implements Initializable {
     private TextField contractTypeFld;
     @FXML
     private TableColumn<Contract, String> periodTypeCol;
+    @FXML
+    private TextField directionFld;
 
     /**
      * Initializes the controller class.
@@ -167,10 +169,10 @@ public class AddFicheControleController implements Initializable {
 
         if (update == false) {
 
-            query = "INSERT INTO `fiche_de_control`(`inscpection`, `Recette`, `Annee`,"
+            query = "INSERT INTO `fiche_de_control`(`direction`,`inscpection`, `Recette`, `Annee`,"
                     + " `Designation`, `NiS`, `NIF`, `Wilaya`, `Activity`,"
                     + " `Code_d_activity`, `Forme_Juridique`, `Adress`,"
-                    + " `Article_imposition`, `id_fiscal`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + " `Article_imposition`, `id_fiscal`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         } else {
 
@@ -183,19 +185,20 @@ public class AddFicheControleController implements Initializable {
 
             connection = DbConnect.getConnect();
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, inspectionFld.getText());
-            preparedStatement.setString(2, recetteFld.getText());
-            preparedStatement.setInt(3, Integer.valueOf(anneeFld.getText()));
-            preparedStatement.setString(4, designationFld.getText());
-            preparedStatement.setString(5, nifFld.getText());
-            preparedStatement.setString(6, nisFld.getText());
-            preparedStatement.setString(7, wilayaFld.getText());
-            preparedStatement.setString(8, activityFld.getText());
-            preparedStatement.setInt(9, Integer.valueOf(codeActivityFld.getText()));
-            preparedStatement.setString(10, FormJurdFld.getText());
-            preparedStatement.setString(11, adressFld.getText());
-            preparedStatement.setString(12, articleImpotFld.getText());
-            preparedStatement.setInt(13, contract.getId());
+            preparedStatement.setString(1, directionFld.getText());
+            preparedStatement.setString(2, inspectionFld.getText());
+            preparedStatement.setString(3, recetteFld.getText());
+            preparedStatement.setInt(4, Integer.valueOf(anneeFld.getText()));
+            preparedStatement.setString(5, designationFld.getText());
+            preparedStatement.setString(6, nifFld.getText());
+            preparedStatement.setString(7, nisFld.getText());
+            preparedStatement.setString(8, wilayaFld.getText());
+            preparedStatement.setString(9, activityFld.getText());
+            preparedStatement.setInt(10, Integer.valueOf(codeActivityFld.getText()));
+            preparedStatement.setString(11, FormJurdFld.getText());
+            preparedStatement.setString(12, adressFld.getText());
+            preparedStatement.setString(13, articleImpotFld.getText());
+            preparedStatement.setInt(14, contract.getId());
 
             preparedStatement.execute();
 
@@ -207,14 +210,14 @@ public class AddFicheControleController implements Initializable {
     @FXML
     private void save(MouseEvent event) {
 
-        if (contract == null || inspectionFld.getText() == null || recetteFld.getText() == null
+        if (contract == null || designationFld.getText() == null || inspectionFld.getText() == null || recetteFld.getText() == null
                 || anneeFld.getText() == null || designationFld.getText() == null
                 || nisFld.getText() == null || nifFld.getText() == null || nisFld.getText() == null || wilayaFld.getText() == null
                 || activityFld.getText() == null || codeActivityFld.getText() == null || FormJurdFld.getText() == null
                 || adressFld.getText() == null || articleImpotFld.getText() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("Please Fill All Data");
+            alert.setContentText("Veuillez remplir toutes les données");
             alert.showAndWait();
 
         } else {
@@ -352,6 +355,11 @@ public class AddFicheControleController implements Initializable {
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
                             try {
+
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.setHeaderText(null);
+                                alert.setContentText("Verification avec succès");
+                                alert.showAndWait();
                                 contract = contractTable.getSelectionModel().getSelectedItem();
                                 query = "DELETE FROM `contrat` WHERE id  =" + contract.getId();
                                 connection = DbConnect.getConnect();

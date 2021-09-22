@@ -15,7 +15,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="580.0" prefWidth="1000.0">
          <children>
-            <HBox prefHeight="52.0" prefWidth="980.0">
+            <HBox fx:id="addPaymentBtn" prefHeight="52.0" prefWidth="980.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Versements" wrappingWidth="162.13674926757812">
                      <font>
@@ -70,7 +70,7 @@
                         <Insets top="3.0" />
                      </HBox.margin>
                      <children>
-                        <JFXButton alignment="CENTER_RIGHT" onMouseClicked="#getAddVersementView" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #123456; -fx-background-radius: 8 8 0 8;" styleClass="MenuBar">
+                        <JFXButton alignment="CENTER_RIGHT" onMouseClicked="#getAddVersementView" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: Black; -fx-background-radius: 8 8 0 8;" styleClass="MenuBar">
                            <font>
                               <Font size="1.0" />
                            </font>

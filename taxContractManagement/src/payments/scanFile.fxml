@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -14,48 +15,64 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="647.0" prefWidth="1240.0" stylesheets="@paymentsview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="payments.ScanFileController">
+<AnchorPane id="AnchorPane" prefHeight="647.0" prefWidth="1240.0" style="-fx-background-color: white;" stylesheets="@paymentsview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="payments.ScanFileController">
    <children>
-      <AnchorPane fx:id="anchor1" prefHeight="630.0" prefWidth="1164.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="anchor1" prefHeight="630.0" prefWidth="1164.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ScrollPane fx:id="scrollp1" prefHeight="520.0" prefWidth="785.0" style="-fx-background-color: #fff;" styleClass="JFXScrollPane">
+            <ScrollPane fx:id="scrollp1" prefHeight="520.0" prefWidth="785.0" style="-fx-background-color: white;" styleClass="JFXScrollPane">
                <content>
                   <ImageView fx:id="imageView" fitHeight="513.0" fitWidth="841.0" pickOnBounds="true" preserveRatio="true" />
                </content>
             </ScrollPane>
-            <HBox alignment="CENTER" layoutY="538.0" prefHeight="92.0" prefWidth="1042.0" spacing="20.0" style="-fx-background-color: #123456;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <HBox alignment="CENTER" layoutY="538.0" prefHeight="92.0" prefWidth="1042.0" spacing="20.0" style="-fx-background-color: #0746a6;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <JFXButton fx:id="Parcourir" contentDisplay="GRAPHIC_ONLY" prefHeight="90.0" prefWidth="90.0" styleClass="tooltip" text="Parcourir" textFill="#0746a6">
+                  <JFXButton fx:id="Parcourir" contentDisplay="GRAPHIC_ONLY" prefHeight="90.0" prefWidth="90.0" text="Parcourir" textFill="#0746a6">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="FOLDER_OPEN" size="65" text="" wrappingWidth="67.04765892028809" />
                      </graphic>
                      <font>
                         <Font name="Tahoma Bold" size="24.0" />
                      </font>
+                     <styleClass>
+                        <String fx:value="tooltip" />
+                        <String fx:value="FontAwesomeIconView" />
+                     </styleClass>
                   </JFXButton>
-                  <JFXButton fx:id="Scanner" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="11.0" layoutY="11.0" prefHeight="90.0" prefWidth="105.0" styleClass="tooltip" text="Parcourir" textFill="#0746a6">
+                  <JFXButton fx:id="Scanner" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="11.0" layoutY="11.0" prefHeight="90.0" prefWidth="105.0" text="Parcourir" textFill="#0746a6">
                      <font>
                         <Font name="Tahoma Bold" size="24.0" />
                      </font>
                      <graphic>
                         <MaterialDesignIconView fill="WHITE" glyphName="FULLSCREEN" scaleX="1.2" scaleY="1.3" size="73" wrappingWidth="64.3333740234375" />
                      </graphic>
+                     <styleClass>
+                        <String fx:value="tooltip" />
+                        <String fx:value="FontAwesomeIconView" />
+                     </styleClass>
                   </JFXButton>
-                  <JFXButton fx:id="edit" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="706.0" layoutY="11.0" prefHeight="90.0" prefWidth="96.0" styleClass="tooltip" text="Parcourir" textAlignment="CENTER" textFill="#0746a6">
+                  <JFXButton fx:id="edit" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="706.0" layoutY="11.0" prefHeight="90.0" prefWidth="96.0" text="Parcourir" textAlignment="CENTER" textFill="#0746a6">
                      <font>
                         <Font name="Tahoma Bold" size="24.0" />
                      </font>
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="65" translateX="2.0" translateY="4.0" wrappingWidth="66.33331298828125" />
                      </graphic>
+                     <styleClass>
+                        <String fx:value="tooltip" />
+                        <String fx:value="FontAwesomeIconView" />
+                     </styleClass>
                   </JFXButton>
-                  <JFXButton fx:id="save" contentDisplay="GRAPHIC_ONLY" layoutX="530.0" layoutY="11.0" prefHeight="90.0" prefWidth="90.0" styleClass="tooltip" text="Parcourir" textFill="#0746a6">
+                  <JFXButton fx:id="save" contentDisplay="GRAPHIC_ONLY" layoutX="530.0" layoutY="11.0" prefHeight="90.0" prefWidth="90.0" text="Parcourir" textFill="#0746a6">
                      <font>
                         <Font name="Tahoma Bold" size="24.0" />
                      </font>
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="SAVE" size="65" />
                      </graphic>
+                     <styleClass>
+                        <String fx:value="tooltip" />
+                        <String fx:value="FontAwesomeIconView" />
+                     </styleClass>
                   </JFXButton>
                </children>
             </HBox>
@@ -65,7 +82,7 @@
                      <children>
                         <VBox prefHeight="48.0" prefWidth="360.0">
                            <children>
-                              <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Direction des impots" wrappingWidth="161.13671875">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Direction des impots" wrappingWidth="161.13671875">
                                  <font>
                                     <Font name="Zilla Slab Light Italic" size="12.0" />
                                  </font>
@@ -85,7 +102,7 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="360.0">
                            <children>
-                              <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Wilaya de" wrappingWidth="161.13671875">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wilaya de" wrappingWidth="161.13671875">
                                  <font>
                                     <Font name="Zilla Slab Light Italic" size="12.0" />
                                  </font>
@@ -112,7 +129,7 @@
                      <children>
                         <VBox prefHeight="48.0" prefWidth="360.0">
                            <children>
-                              <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Inspection des impots" wrappingWidth="161.13671875">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inspection des impots" wrappingWidth="161.13671875">
                                  <font>
                                     <Font name="Zilla Slab Light Italic" size="12.0" />
                                  </font>
@@ -132,7 +149,7 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="360.0">
                            <children>
-                              <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Recette des impots" wrappingWidth="161.13671875">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recette des impots" wrappingWidth="161.13671875">
                                  <font>
                                     <Font name="Zilla Slab Light Italic" size="12.0" />
                                  </font>
@@ -159,7 +176,7 @@
                      <children>
                         <VBox prefHeight="48.0" prefWidth="360.0">
                            <children>
-                              <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome et prenom du bailleur " wrappingWidth="161.13671875">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome et prenom du bailleur " wrappingWidth="161.13671875">
                                  <font>
                                     <Font name="Zilla Slab Light Italic" size="12.0" />
                                  </font>
@@ -179,7 +196,7 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="360.0">
                            <children>
-                              <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse du bailleur" wrappingWidth="161.13671875">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse du bailleur" wrappingWidth="161.13671875">
                                  <font>
                                     <Font name="Zilla Slab Light Italic" size="12.0" />
                                  </font>
@@ -208,7 +225,7 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero d'identification fiscale" wrappingWidth="161.13671875">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero d'identification fiscale" wrappingWidth="161.13671875">
                                        <font>
                                           <Font name="Zilla Slab Light Italic" size="12.0" />
                                        </font>
@@ -228,7 +245,7 @@
                               </VBox>
                               <VBox layoutX="94.0" layoutY="10.0">
                                  <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero d'article foncier" wrappingWidth="161.13671875">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero d'article foncier" wrappingWidth="161.13671875">
                                        <font>
                                           <Font name="Zilla Slab Light Italic" size="12.0" />
                                        </font>
@@ -248,7 +265,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse du bien loue" wrappingWidth="161.13671875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse du bien loue" wrappingWidth="161.13671875">
                            <font>
                               <Font name="Zilla Slab Light Italic" size="12.0" />
                            </font>
@@ -273,7 +290,7 @@
                      <children>
                         <VBox>
                            <children>
-                              <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant" wrappingWidth="161.13671875">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Montant" wrappingWidth="161.13671875">
                                  <font>
                                     <Font name="Zilla Slab Light Italic" size="12.0" />
                                  </font>
@@ -293,7 +310,7 @@
                         </VBox>
                         <VBox layoutX="94.0" layoutY="10.0">
                            <children>
-                              <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom et prenom du preneur " wrappingWidth="161.13671875">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom et prenom du preneur " wrappingWidth="161.13671875">
                                  <font>
                                     <Font name="Zilla Slab Light Italic" size="12.0" />
                                  </font>
@@ -315,7 +332,7 @@
                   </HBox>
                   <VBox layoutX="10.0" layoutY="109.0" prefHeight="54.0" prefWidth="410.0">
                      <children>
-                        <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Occupation du preneur " wrappingWidth="161.13671875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Occupation du preneur " wrappingWidth="161.13671875">
                            <font>
                               <Font name="Zilla Slab Light Italic" size="12.0" />
                            </font>

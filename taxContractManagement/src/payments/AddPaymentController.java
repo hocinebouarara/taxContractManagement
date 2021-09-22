@@ -175,6 +175,8 @@ public class AddPaymentController implements Initializable {
     float onlyMonths = (float) 0.0;
 
     float tax = (float) 0.15;
+    @FXML
+    private TableColumn<Controle, String> directionCol;
 
     /**
      * Initializes the controller class.
@@ -204,6 +206,7 @@ public class AddPaymentController implements Initializable {
                     + "    proprietaire.nom_prenom_or_RS,\n"
                     + "    contrat.id_benef,\n"
                     + "    beneficiaire.nom_prenom_or_RS,\n"
+                    + "    fiche_de_control.direction,\n"
                     + "    fiche_de_control.inscpection,\n"
                     + "    fiche_de_control.Recette,\n"
                     + "    fiche_de_control.Annee,\n"
@@ -236,6 +239,7 @@ public class AddPaymentController implements Initializable {
                         resultSet.getString("proprietaire.nom_prenom_or_RS"),
                         resultSet.getInt("proprietaire.id"),
                         resultSet.getString("beneficiaire.nom_prenom_or_RS"),
+                        resultSet.getString("fiche_de_control.direction"),
                         resultSet.getString("fiche_de_control.inscpection"),
                         resultSet.getString("fiche_de_control.recette"),
                         resultSet.getString("fiche_de_control.annee"),
@@ -271,6 +275,7 @@ public class AddPaymentController implements Initializable {
         proprNameCol.setCellValueFactory(new PropertyValueFactory<>("proprName"));
         idBenefCol.setCellValueFactory(new PropertyValueFactory<>("benefID"));
         beneNameCol.setCellValueFactory(new PropertyValueFactory<>("benefName"));
+        directionCol.setCellValueFactory(new PropertyValueFactory<>("direction"));
         inspectionCol.setCellValueFactory(new PropertyValueFactory<>("inspection"));
         recetteCol.setCellValueFactory(new PropertyValueFactory<>("recette"));
         anneeCol.setCellValueFactory(new PropertyValueFactory<>("annee"));
@@ -357,7 +362,7 @@ public class AddPaymentController implements Initializable {
     @FXML
     private void getScanView(MouseEvent event) {
 
-         FXMLLoader loader = new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(Links.SCANVIEW));
         try {
             loader.load();
@@ -368,7 +373,7 @@ public class AddPaymentController implements Initializable {
         Parent parent = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(parent));
-        stage.initStyle(StageStyle.UTILITY);
+        stage.initStyle(StageStyle.DECORATED);
         stage.show();
     }
 

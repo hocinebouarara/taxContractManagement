@@ -100,6 +100,8 @@ public class FileControllerController implements Initializable {
     Controle controle = null;
 
     ObservableList<Controle> controlesList = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<Controle, String> directionCol;
 
     /**
      * Initializes the controller class.
@@ -258,6 +260,7 @@ public class FileControllerController implements Initializable {
                     + "    proprietaire.nom_prenom_or_RS,\n"
                     + "    contrat.id_benef,\n"
                     + "    beneficiaire.nom_prenom_or_RS,\n"
+                    + "    fiche_de_control.direction,\n"
                     + "    fiche_de_control.inscpection,\n"
                     + "    fiche_de_control.Recette,\n"
                     + "    fiche_de_control.Annee,\n"
@@ -290,6 +293,7 @@ public class FileControllerController implements Initializable {
                         resultSet.getString("proprietaire.nom_prenom_or_RS"),
                         resultSet.getInt("proprietaire.id"),
                         resultSet.getString("beneficiaire.nom_prenom_or_RS"),
+                        resultSet.getString("fiche_de_control.direction"),
                         resultSet.getString("fiche_de_control.inscpection"),
                         resultSet.getString("fiche_de_control.recette"),
                         resultSet.getString("fiche_de_control.annee"),
@@ -325,6 +329,8 @@ public class FileControllerController implements Initializable {
         proprNameCol.setCellValueFactory(new PropertyValueFactory<>("proprName"));
         idBenefCol.setCellValueFactory(new PropertyValueFactory<>("benefID"));
         beneNameCol.setCellValueFactory(new PropertyValueFactory<>("benefName"));
+        directionCol.setCellValueFactory(new PropertyValueFactory<>("direction"));
+
         inspectionCol.setCellValueFactory(new PropertyValueFactory<>("inspection"));
         recetteCol.setCellValueFactory(new PropertyValueFactory<>("recette"));
         anneeCol.setCellValueFactory(new PropertyValueFactory<>("annee"));

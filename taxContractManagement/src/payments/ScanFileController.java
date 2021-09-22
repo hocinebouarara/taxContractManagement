@@ -3,25 +3,14 @@ package payments;
 import Outils.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
 import com.mysql.jdbc.ResultSetImpl;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import helpres.DbConnect;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.Light;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,11 +18,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import net.sourceforge.tess4j.TesseractException;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -45,7 +32,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.EventHandler;
 import javafx.scene.control.Tooltip;
 import models.Controle;
 import models.Payment;
@@ -72,26 +58,26 @@ public class ScanFileController implements Initializable {
     private Group group = new Group();
     FileChooser Brows = new FileChooser();
     File file;
-    
+
     Controle c;
 
     List<Rectangle> list = new ArrayList<>();
     @FXML
     private AnchorPane anchor1;
     @FXML
-    private TextField ProprietaireFld;
+    private JFXButton edit;
     @FXML
-    private TextField montantFld;
+    private JFXButton save;
     @FXML
     private TextField directionFld;
     @FXML
     private TextField wilayaFld;
     @FXML
-    private JFXComboBox<String> occupationCombo;
-    @FXML
     private TextField inspectionFld;
     @FXML
     private TextField recetteFld;
+    @FXML
+    private TextField ProprietaireFld;
     @FXML
     private TextField proprAdressFld;
     @FXML
@@ -101,9 +87,11 @@ public class ScanFileController implements Initializable {
     @FXML
     private TextField adresseLoueFld;
     @FXML
+    private TextField montantFld;
+    @FXML
     private TextField preneurFld;
     @FXML
-    private JFXButton save;
+    private JFXComboBox<String> occupationCombo;
 
     String query = null;
     Connection connection = null;
@@ -112,23 +100,14 @@ public class ScanFileController implements Initializable {
     Payment payment = null;
 
     int controleID;
-    @FXML
-    private JFXButton edit;
-    @FXML
-    private FontAwesomeIconView parcourIcon;
-    @FXML
-    private MaterialDesignIconView scanIcon;
-    @FXML
-    private FontAwesomeIconView editIcon;
-    @FXML
-    private FontAwesomeIconView saveIcon;
-    @FXML
-    private FontAwesomeIconView fileIcon;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         occupationCombo.getItems().addAll("Etudaint", "Autres");
+
+        Scanner.setTooltip(new Tooltip("Extraction de données"));
+        save.setTooltip(new Tooltip("La sauvegarde des données"));
 
         Parcourir.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             /*for (Node node:scrollContent.getChildren()) {
@@ -153,6 +132,8 @@ public class ScanFileController implements Initializable {
                 imageView.setFitWidth(image.getWidth());
                 imageView.setFitHeight(image.getHeight());
                 imageView.setImage(image);
+                //imgh.setText("Height :"+image.getHeight());
+                //imgw.setText("Width :"+image.getWidth());
 
                 for (String s : foldersnameList.list) {
                     Rectangle rectangle = LinearRegression.posinnement(s, imageView);
@@ -179,99 +160,136 @@ public class ScanFileController implements Initializable {
             }
 
         });
-        Parcourir.setTooltip(new Tooltip("sélectionner un document"));
-        Scanner.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-                try {
-                    payment = new Payment();
-                    //     List<String> Champlist=new ArrayList<>();
+        Scanner.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            try {
+                payment = new Payment();
+                //     List<String> Champlist=new ArrayList<>();
 
-                    /* int i = 0;
-                    for (Rectangle R : list) {
-                        System.out.println(Outils.Recognition.recognition((int) Math.round(list.get(i).getLayoutX()), (int) Math.round(list.get(i).getLayoutY()), (int) Math.round(list.get(i).getWidth()), (int) Math.round(list.get(i).getHeight()), path));
-                        i++;
-                    }*/
-                    //Champlist.add(Outils.Recognition.recognition((int)list.get(4).getX(),(int)list.get(4).getY(),(int)list.get(4).getWidth(),(int)list.get(4).getHeight(),path));
-                    payment.setDirection(Outils.Recognition.recognition((int) Math.round(list.get(0).getLayoutX()), (int) Math.round(list.get(0).getLayoutY()), (int) Math.round(list.get(0).getWidth()), (int) Math.round(list.get(0).getHeight()), path));
-                    payment.setWilaya(Outils.Recognition.recognition((int) Math.round(list.get(1).getLayoutX()), (int) Math.round(list.get(1).getLayoutY()), (int) Math.round(list.get(1).getWidth()), (int) Math.round(list.get(1).getHeight()), path));
-                    payment.setInspection(Outils.Recognition.recognition((int) Math.round(list.get(2).getLayoutX()), (int) Math.round(list.get(2).getLayoutY()), (int) Math.round(list.get(2).getWidth()), (int) Math.round(list.get(2).getHeight()), path));
-                    payment.setRecette(Outils.Recognition.recognition((int) Math.round(list.get(3).getLayoutX()), (int) Math.round(list.get(3).getLayoutY()), (int) Math.round(list.get(3).getWidth()), (int) Math.round(list.get(3).getHeight()), path));
-                    payment.setLessorName(Outils.Recognition.recognition((int) Math.round(list.get(4).getLayoutX()), (int) Math.round(list.get(4).getLayoutY()), (int) Math.round(list.get(4).getWidth()) / 2, (int) Math.round(list.get(4).getHeight()), path));
-                    payment.setLessorAdress(Outils.Recognition.recognition((int) Math.round(list.get(5).getLayoutX()), (int) Math.round(list.get(5).getLayoutY()), (int) Math.round(list.get(5).getWidth()) / 2, (int) Math.round(list.get(5).getHeight()), path));
-                    payment.setNif(Outils.Recognition.recognition((int) Math.round(list.get(6).getLayoutX()), (int) Math.round(list.get(6).getLayoutY()), (int) Math.round(list.get(6).getWidth()) / 2, (int) Math.round(list.get(6).getHeight()), path));
-                    payment.setNbrAtricle(Outils.Recognition.recognition((int) Math.round(list.get(7).getLayoutX()), (int) Math.round(list.get(7).getLayoutY()), (int) Math.round(list.get(7).getWidth()) / 2, (int) Math.round(list.get(7).getHeight()), path));
-                    payment.setTakerAdress(Outils.Recognition.recognition((int) Math.round(list.get(8).getLayoutX()), (int) Math.round(list.get(8).getLayoutY()), (int) Math.round(list.get(8).getWidth()) / 2, (int) Math.round(list.get(8).getHeight()), path));
-                    payment.setAmount(Float.valueOf(Outils.Recognition.recognition((int) Math.round(list.get(9).getLayoutX()), (int) Math.round(list.get(9).getLayoutY()), (int) Math.round(list.get(9).getWidth()) / 2, (int) Math.round(list.get(9).getHeight()), path)));
-                    payment.setTakerName(Outils.Recognition.recognition((int) Math.round(list.get(10).getLayoutX()), (int) Math.round(list.get(10).getLayoutY()), (int) Math.round(list.get(10).getWidth()) / 2, (int) Math.round(list.get(10).getHeight()), path));
-                    payment.setOccupationTaker(Outils.Recognition.recognition((int) Math.round(list.get(11).getLayoutX()), (int) Math.round(list.get(11).getLayoutY()), (int) Math.round(list.get(11).getWidth()), (int) Math.round(list.get(11).getHeight()), path));
-
-                    directionFld.setText(payment.getDirection());
-                    wilayaFld.setText(payment.getWilaya());
-                    inspectionFld.setText(payment.getInspection());
-                    recetteFld.setText(payment.getRecette());
-                    ProprietaireFld.setText(payment.getLessorName());
-                    proprAdressFld.setText(payment.getLessorAdress());
-                    nifFld.setText(payment.getNif().toString());
-                    articleFld.setText(payment.getNbrAtricle().toString());
-                    adresseLoueFld.setText(payment.getTakerAdress());
-                    montantFld.setText(String.valueOf(payment.getAmount()));
-                    preneurFld.setText(payment.getTakerName());
-                    System.out.println("occupation" + payment.getOccupationTaker());
-                    if (payment.getOccupationTaker() != null) {
-                        occupationCombo.setValue("Etudaint");
-                    } else {
-                        occupationCombo.setValue("Autres");
-                    }
-
-                    list.clear();
-
-                    /* AnchorPane anchorPane=FXMLLoader.load(getClass().getResource("/Paiements/Correction.fxml"));
-                    Scene scene=new Scene(anchorPane);
-                    Stage stage=new Stage();
-                    stage.setScene(scene);
-                    stage.setUserData(payment);
-                    stage.show();*/
-                } catch (TesseractException ex) {
-
-                    System.out.println(ex.getLocalizedMessage());
-
+                int i = 0;
+                for (Rectangle R : list) {
+                    System.out.println(Outils.Recognition.recognition((int) Math.round(list.get(i).getLayoutX()), (int) Math.round(list.get(i).getLayoutY()), (int) Math.round(list.get(i).getWidth()), (int) Math.round(list.get(i).getHeight()), path));
+                    i++;
                 }
-            }
-        });
-        Scanner.setTooltip(new Tooltip("Extraction de données"));
 
-        edit.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Controle controle = new Controle();
-                
-            }
+                //Champlist.add(Outils.Recognition.recognition((int)list.get(4).getX(),(int)list.get(4).getY(),(int)list.get(4).getWidth(),(int)list.get(4).getHeight(),path));
+                payment.setDirection(Outils.Recognition.recognition((int) Math.round(list.get(0).getLayoutX()), (int) Math.round(list.get(0).getLayoutY()), (int) Math.round(list.get(0).getWidth()), (int) Math.round(list.get(0).getHeight()), path));
+                payment.setWilaya(Outils.Recognition.recognition((int) Math.round(list.get(1).getLayoutX()), (int) Math.round(list.get(1).getLayoutY()), (int) Math.round(list.get(1).getWidth()), (int) Math.round(list.get(1).getHeight()), path));
+                payment.setInspection(Outils.Recognition.recognition((int) Math.round(list.get(2).getLayoutX()), (int) Math.round(list.get(2).getLayoutY()), (int) Math.round(list.get(2).getWidth()), (int) Math.round(list.get(2).getHeight()), path));
+                payment.setRecette(Outils.Recognition.recognition((int) Math.round(list.get(3).getLayoutX()), (int) Math.round(list.get(3).getLayoutY()), (int) Math.round(list.get(3).getWidth()), (int) Math.round(list.get(3).getHeight()), path));
+                payment.setLessorName(Outils.Recognition.recognition((int) Math.round(list.get(4).getLayoutX()), (int) Math.round(list.get(4).getLayoutY()), (int) Math.round(list.get(4).getWidth()), (int) Math.round(list.get(4).getHeight()), path));
+                payment.setLessorAdress(Outils.Recognition.recognition((int) Math.round(list.get(5).getLayoutX()), (int) Math.round(list.get(5).getLayoutY()), (int) Math.round(list.get(5).getWidth()), (int) Math.round(list.get(5).getHeight()), path));
+                payment.setNif(Outils.Recognition.recognition((int) Math.round(list.get(6).getLayoutX()), (int) Math.round(list.get(6).getLayoutY()), (int) Math.round(list.get(6).getWidth()), (int) Math.round(list.get(6).getHeight()), path));
+                payment.setNbrAtricle(Outils.Recognition.recognition((int) Math.round(list.get(7).getLayoutX()), (int) Math.round(list.get(7).getLayoutY()), (int) Math.round(list.get(7).getWidth()), (int) Math.round(list.get(7).getHeight()), path));
+                payment.setTakerAdress(Outils.Recognition.recognition((int) Math.round(list.get(8).getLayoutX()), (int) Math.round(list.get(8).getLayoutY()), (int) Math.round(list.get(8).getWidth()), (int) Math.round(list.get(8).getHeight()), path));
+                payment.setAmount(Float.valueOf(Outils.Recognition.recognition((int) Math.round(list.get(9).getLayoutX()), (int) Math.round(list.get(9).getLayoutY()), (int) Math.round(list.get(9).getWidth()), (int) Math.round(list.get(9).getHeight()), path)));
+                payment.setTakerName(Outils.Recognition.recognition((int) Math.round(list.get(10).getLayoutX()), (int) Math.round(list.get(10).getLayoutY()), (int) Math.round(list.get(10).getWidth()), (int) Math.round(list.get(10).getHeight()), path));
+                payment.setOccupationTaker(Outils.Recognition.recognition((int) Math.round(list.get(11).getLayoutX()), (int) Math.round(list.get(11).getLayoutY()), (int) Math.round(list.get(11).getWidth()), (int) Math.round(list.get(11).getHeight()), path));
 
-        });
-        edit.setTooltip(new Tooltip("Rectifiez les fautes"));
+                System.err.println("");
+                list.clear();
 
-        save.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (payment != null) {
-                    insert();
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setHeaderText(null);
-                    alert.setContentText("Ajouté avec succès");
-                    alert.showAndWait();
+                directionFld.setText(payment.getDirection());
+                wilayaFld.setText(payment.getWilaya());
+                inspectionFld.setText(payment.getInspection());
+                recetteFld.setText(payment.getRecette());
+                ProprietaireFld.setText(payment.getLessorName());
+                proprAdressFld.setText(payment.getLessorAdress());
+                nifFld.setText(payment.getNif());
+                articleFld.setText(payment.getNbrAtricle());
+                adresseLoueFld.setText(payment.getTakerAdress());
+                montantFld.setText(String.valueOf(payment.getAmount()));
+                preneurFld.setText(payment.getTakerName());
 
+                if (payment.getOccupationTaker() != null) {
+
+                    occupationCombo.setValue("Etudaint");
                 } else {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText(null);
-                    alert.setContentText("Veuillez remplir toutes les données");
-                    alert.showAndWait();
-                }
-            }
-        });
-        save.setTooltip(new Tooltip("La sauvegarde des données"));
-        
+                    occupationCombo.setValue("Autres");
 
+                }
+
+                /*  AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/Paiements/Correction.fxml"));
+                Scene scene = new Scene(anchorPane);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setUserData(payment);
+                stage.show();*/
+            } catch (TesseractException ex) {
+
+                System.out.println(ex.getLocalizedMessage());
+
+            }
+
+        });
+
+        save.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            String direction = directionFld.getText();
+            String wilaya = wilayaFld.getText();
+            String inspection = inspectionFld.getText();
+            String recette = recetteFld.getText();
+            String propr = ProprietaireFld.getText();
+            String proprAdress = proprAdressFld.getText();
+            String nif = nifFld.getText();
+            String article = articleFld.getText();
+            String adressLoue = adresseLoueFld.getText();
+            String montant = montantFld.getText();
+            String preneur = preneurFld.getText();
+            String occupation = occupationCombo.getValue();
+
+            if (direction.isEmpty() || wilaya.isEmpty() || inspection.isEmpty()
+                    || recette.isEmpty() || propr.isEmpty() || proprAdress.isEmpty()
+                    || nif.isEmpty() || article.isEmpty() || adressLoue.isEmpty()
+                    || montant.isEmpty() || preneur.isEmpty() || occupation.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Veuillez remplir toutes les données");
+                alert.showAndWait();
+
+            } else {
+                insert();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("Ajouté avec succès");
+                alert.showAndWait();
+
+            }
+
+        });
+
+        edit.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            String direction = directionFld.getText();
+            String wilaya = wilayaFld.getText();
+            String inspection = inspectionFld.getText();
+            String recette = recetteFld.getText();
+            String propr = ProprietaireFld.getText();
+            String proprAdress = proprAdressFld.getText();
+            String nif = nifFld.getText();
+            String article = articleFld.getText();
+            String adressLoue = adresseLoueFld.getText();
+            String montant = montantFld.getText();
+            String preneur = preneurFld.getText();
+            String occupation = occupationCombo.getValue();
+
+            if (direction.isEmpty() || wilaya.isEmpty() || inspection.isEmpty()
+                    || recette.isEmpty() || propr.isEmpty() || proprAdress.isEmpty()
+                    || nif.isEmpty() || article.isEmpty() || adressLoue.isEmpty()
+                    || montant.isEmpty() || preneur.isEmpty() || occupation.isEmpty() ) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Selectionner un document avant de la verification ");
+                alert.showAndWait();
+
+            } else {
+
+                getDataControle(article);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("verification avec succès");
+                alert.showAndWait();
+
+            }
+
+        });
     }
 
     private void insert() {
@@ -314,116 +332,89 @@ public class ScanFileController implements Initializable {
         }
         return i;
     }
-    
-    
-    public  Controle getDataControle(String article) {
-        
-        
+
+    public void getDataControle(String article) {
         try {
 
-                    query = "SELECT\n"
-                            + "    fiche_de_control.id,\n"
-                            + "    contrat.id,\n"
-                            + "    contrat.type_contr,\n"
-                            + "    contrat.date,\n"
-                            + "    contrat.date_fin,\n"
-                            + "    contrat.montant,\n"
-                            + "    contrat.n_acie,\n"
-                            + "    contrat.periodes_imposition,\n"
-                            + "    contrat.id_fiche_hab,\n"
-                            + "    proprietaire.id,\n"
-                            + "    proprietaire.nom_prenom_or_RS,\n"
-                            + "    proprietaire.date_nss,\n"
-                            + "    proprietaire.commune,\n"
-                            + "    proprietaire.wilaya,\n"
-                            + "    proprietaire.pere,\n"
-                            + "    proprietaire.mere,\n"
-                            + "    proprietaire.nationalite,\n"
-                            + "    proprietaire.telephone,\n"
-                            + "    proprietaire.adress,\n"
-                            + "    beneficiaire.id,\n"
-                            + "    beneficiaire.nom_prenom_or_RS,\n"
-                            + "    beneficiaire.date_nss,\n"
-                            + "    beneficiaire.commune,\n"
-                            + "    beneficiaire.wilaya,\n"
-                            + "    beneficiaire.prenom_pere,\n"
-                            + "    beneficiaire.nom_mere,\n"
-                            + "    beneficiaire.nationalite,\n"
-                            + "    beneficiaire.adresse_domicile,\n"
-                            + "    fiche_de_control.inscpection,\n"
-                            + "    fiche_de_control.Recette,\n"
-                            + "    fiche_de_control.Annee,\n"
-                            + "    fiche_de_control.Designation,\n"
-                            + "    fiche_de_control.NiS,\n"
-                            + "    fiche_de_control.NIF,\n"
-                            + "    fiche_de_control.Wilaya,\n"
-                            + "    fiche_de_control.Activity,\n"
-                            + "    fiche_de_control.Code_d_activity,\n"
-                            + "    fiche_de_control.Forme_Juridique,\n"
-                            + "    fiche_de_control.Adress,\n" + "    fiche_de_control.Article_imposition\n"
-                            + "FROM\n"
-                            + "    fiche_de_control\n"
-                            + "INNER JOIN contrat ON contrat.id = fiche_de_control.id_fiscal\n"
-                            + "INNER JOIN beneficiaire ON beneficiaire.id = contrat.id_benef\n"
-                            + "INNER JOIN fiche_habitation ON fiche_habitation.id = contrat.id_fiche_hab\n"
-                            + "INNER JOIN proprietaire ON fiche_habitation.id_propr = proprietaire.id\n"
-                            + "ORDER BY\n"
-                            + "    fiche_de_control.id;";
-                    preparedStatement = connection.prepareStatement(query);
-                    resultSet = preparedStatement.executeQuery();
+            String query1 = "SELECT\n"
+                    + "    fiche_de_control.id,\n"
+                    + "    contrat.id,\n"
+                    + "    contrat.type_contr,\n"
+                    + "    contrat.date,\n"
+                    + "    contrat.date_fin,\n"
+                    + "    contrat.montant,\n"
+                    + "    contrat.n_acie,\n"
+                    + "    contrat.periodes_imposition,\n"
+                    + "    contrat.id_fiche_hab,\n"
+                    + "    proprietaire.id,\n"
+                    + "    proprietaire.nom_prenom_or_RS,\n"
+                    + "    proprietaire.date_nss,\n"
+                    + "    proprietaire.commune,\n"
+                    + "    proprietaire.wilaya,\n"
+                    + "    proprietaire.pere,\n"
+                    + "    proprietaire.mere,\n"
+                    + "    proprietaire.nationalite,\n"
+                    + "    proprietaire.telephone,\n"
+                    + "    proprietaire.adress,\n"
+                    + "    beneficiaire.id,\n"
+                    + "    beneficiaire.nom_prenom_or_RS,\n"
+                    + "    beneficiaire.date_nss,\n"
+                    + "    beneficiaire.commune,\n"
+                    + "    beneficiaire.wilaya,\n"
+                    + "    beneficiaire.prenom_pere,\n"
+                    + "    beneficiaire.nom_mere,\n"
+                    + "    beneficiaire.nationalite,\n"
+                    + "    beneficiaire.adresse_domicile,\n"
+                    + "    fiche_de_control.direction,\n"
+                    + "    fiche_de_control.inscpection,\n"
+                    + "    fiche_de_control.Recette,\n"
+                    + "    fiche_de_control.Annee,\n"
+                    + "    fiche_de_control.Designation,\n"
+                    + "    fiche_de_control.NiS,\n"
+                    + "    fiche_de_control.NIF,\n"
+                    + "    fiche_de_control.Wilaya,\n"
+                    + "    fiche_de_control.Activity,\n"
+                    + "    fiche_de_control.Code_d_activity,\n"
+                    + "    fiche_de_control.Forme_Juridique,\n"
+                    + "    fiche_de_control.Adress,\n" + "    fiche_de_control.Article_imposition\n"
+                    + "FROM\n"
+                    + "    fiche_de_control\n"
+                    + "INNER JOIN contrat ON contrat.id = fiche_de_control.id_fiscal\n"
+                    + "INNER JOIN beneficiaire ON beneficiaire.id = contrat.id_benef\n"
+                    + "INNER JOIN fiche_habitation ON fiche_habitation.id = contrat.id_fiche_hab\n"
+                    + "INNER JOIN proprietaire ON fiche_habitation.id_propr = proprietaire.id\n"
+                    + "  WHERE  `Article_imposition`=" + article+";";
+            
+            
+            
+            
+            PreparedStatement preparedStatement1= connection.prepareStatement(query1);
+             ResultSet resultSet1 = preparedStatement1.executeQuery();
+            resultSet1.next();
 
-                    while (resultSet.next()) {
-                        c.setId(resultSet.getInt("fiche_de_control.id"));
-                        c.setContractId(resultSet.getInt("contrat.id"));
-                        c.setContractType(resultSet.getString("contrat.type_contr"));
-                        c.setStartDate(resultSet.getDate("contrat.date"));
-                        c.setEndDate(resultSet.getDate("contrat.date_fin"));
-                        c.setMontant(resultSet.getFloat("contrat.montant"));
-                        c.setNumAcie(resultSet.getString("contrat.n_acie"));
-                        c.setPeriodImpot(resultSet.getString("contrat.periodes_imposition"));
-                        c.setFicheHabId(resultSet.getInt("contrat.id_fiche_hab"));
+            directionFld.setText(resultSet1.getString("fiche_de_control.direction"));
+            wilayaFld.setText(resultSet1.getString("fiche_de_control.Wilaya"));
+            inspectionFld.setText(resultSet1.getString("fiche_de_control.inscpection"));
+            recetteFld.setText(resultSet1.getString("fiche_de_control.Recette"));
+            ProprietaireFld.setText(resultSet1.getString("proprietaire.nom_prenom_or_RS"));
+            proprAdressFld.setText(resultSet1.getString("proprietaire.adress"));
+            nifFld.setText(resultSet1.getString("fiche_de_control.NIF"));
+            articleFld.setText(resultSet1.getString("fiche_de_control.Article_imposition"));
+            adresseLoueFld.setText(resultSet1.getString("fiche_de_control.Adress"));
+            preneurFld.setText(resultSet1.getString("beneficiaire.nom_prenom_or_RS"));
 
-                        c.setProprId(resultSet.getInt("proprietaire.id"));
-                        c.setProprName(resultSet.getString("proprietaire.nom_prenom_or_RS"));
-                        c.setProprbirth(resultSet.getDate("proprietaire.date_nss"));
-                        c.setProprCommuneBirth(resultSet.getString("proprietaire.commune"));
-                        c.setProprWilayaBirth(resultSet.getString("proprietaire.wilaya"));
-                        c.setProprPere(resultSet.getString("proprietaire.pere"));
-                        c.setProprMere(resultSet.getString("proprietaire.mere"));
-                        c.setProprNationalite(resultSet.getString("proprietaire.nationalite"));
-                        c.setAdress(resultSet.getString("proprietaire.adress"));
-                        c.setProprPhone(resultSet.getString("proprietaire.telephone"));
+            /* c.setId(resultSet.getInt("fiche_de_control.id"));
+            c.setContractId(resultSet.getInt("contrat.id"));
+            c.setContractType(resultSet.getString("contrat.type_contr"));
+            c.setStartDate(resultSet.getDate("contrat.date"));
+            c.setEndDate(resultSet.getDate("contrat.date_fin"));
+            c.setMontant(resultSet.getFloat("contrat.montant"));
+            c.setNumAcie(resultSet.getString("contrat.n_acie"));
+            c.setPeriodImpot(resultSet.getString("contrat.periodes_imposition"));
+            c.setFicheHabId(resultSet.getInt("contrat.id_fiche_hab"));*/
+        } catch (SQLException ex) {
+            Logger.getLogger(FileControllerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-                        c.setBenefID(resultSet.getInt("beneficiaire.id"));
-                        c.setBenefName(resultSet.getString("beneficiaire.nom_prenom_or_RS"));
-                        c.setBenefBirth(resultSet.getDate("beneficiaire.date_nss"));
-                        c.setBenefCommuneBirth(resultSet.getString("beneficiaire.commune"));
-                        c.setBenefWilayaBirth(resultSet.getString("beneficiaire.wilaya"));
-                        c.setBenefPere(resultSet.getString("beneficiaire.prenom_pere"));
-                        c.setBenefMere(resultSet.getString("beneficiaire.nom_mere"));
-                        c.setBenefNationalite(resultSet.getString("beneficiaire.nationalite"));
-                        c.setBenefAdress(resultSet.getString("beneficiaire.adresse_domicile"));
-
-                        c.setInspection(resultSet.getString("fiche_de_control.inscpection"));
-                        c.setRecette(resultSet.getString("fiche_de_control.Recette"));
-                        c.setAnnee(resultSet.getString("fiche_de_control.Annee"));
-                        c.setDesignation(resultSet.getString("fiche_de_control.Designation"));
-                        c.setNis(resultSet.getString("fiche_de_control.NiS"));
-                        c.setNif(resultSet.getString("fiche_de_control.NIF"));
-                        c.setWilaya(resultSet.getString("fiche_de_control.Wilaya"));
-                        c.setActivite(resultSet.getString("fiche_de_control.Activity"));
-                        c.setCodeActivite(resultSet.getInt("fiche_de_control.Code_d_activity"));
-                        c.setFormJuridique(resultSet.getString("fiche_de_control.Forme_Juridique"));
-                        c.setAdress(resultSet.getString("fiche_de_control.Adress"));
-                        c.setArticleImpots(resultSet.getString("fiche_de_control.Article_imposition"));
-
-                    }
-
-                } catch (SQLException ex) {
-                    Logger.getLogger(FileControllerController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        return c;
-        
-       
     }
 }
