@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="580.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contract.ContractsViewController">
+<AnchorPane fx:id="anchorPane" prefHeight="580.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contract.ContractsViewController">
    <children>
-      <VBox alignment="CENTER" prefHeight="580.0" prefWidth="1000.0">
+      <VBox alignment="CENTER" prefHeight="580.0" prefWidth="1000.0" style="-fx-background-color: white;">
          <children>
-            <HBox prefHeight="49.0" prefWidth="980.0">
+            <HBox prefHeight="52.0" prefWidth="980.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contrats" wrappingWidth="162.13674926757812">
                      <font>
@@ -24,9 +23,9 @@
                   </Text>
                   <VBox prefHeight="59.0" prefWidth="153.0">
                      <children>
-                        <JFXButton alignment="BOTTOM_CENTER" onMouseClicked="#getContractsTable" prefHeight="42.0" prefWidth="152.0" styleClass="MenuBar" text="Contrats">
+                        <JFXButton fx:id="contratListBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getContractsTable" prefHeight="31.0" prefWidth="152.0" styleClass="MenuBar" text="Contrats">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Zilla Slab Medium" size="18.0" />
                            </font>
                            <padding>
                               <Insets top="10.0" />
@@ -35,12 +34,12 @@
                               <Insets />
                            </VBox.margin>
                            <graphic>
-                              <MaterialDesignIconView glyphName="FILE_DOCUMENT" scaleX="1.6" size="30" />
+                              <MaterialDesignIconView fill="#0746a7" glyphName="FILE_DOCUMENT" scaleX="1.6" size="30" />
                            </graphic>
                         </JFXButton>
-                        <Pane fx:id="editPane" prefHeight="12.0" prefWidth="142.0" style="-fx-background-color: #FFA000;">
+                        <Pane fx:id="editPane" prefHeight="10.0" prefWidth="153.0" style="-fx-background-color: #FFA000;">
                            <VBox.margin>
-                              <Insets left="5.0" right="5.0" />
+                              <Insets />
                            </VBox.margin>
                         </Pane>
                      </children>
@@ -48,41 +47,18 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox layoutX="173.0" layoutY="10.0" prefHeight="59.0" prefWidth="153.0">
-                     <children>
-                        <JFXButton alignment="BOTTOM_CENTER" onMouseClicked="#getContractsTable" prefHeight="42.0" prefWidth="152.0" styleClass="MenuBar" text="Statistiques">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets top="10.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <graphic>
-                              <FontAwesomeIconView glyphName="LINE_CHART" size="30" />
-                           </graphic>
-                        </JFXButton>
-                        <Pane fx:id="editPane1" prefHeight="12.0" prefWidth="142.0" style="-fx-background-color: #FFA000;">
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" />
-                           </VBox.margin>
-                        </Pane>
-                     </children>
-                  </VBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="507.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="658.0">
                      <HBox.margin>
                         <Insets top="3.0" />
                      </HBox.margin>
                      <children>
-                        <JFXButton alignment="CENTER_RIGHT" onMouseClicked="#getAddContractsView" prefHeight="42.0" prefWidth="39.0" style="-fx-background-color: #123456; -fx-background-radius: 8 8 0 8;" styleClass="MenuBar">
-                           <font>
-                              <Font size="1.0" />
-                           </font>
+                        <JFXButton fx:id="addContractBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#getAddContractsView" style="-fx-background-color: #0746a7; -fx-background-radius: 8 8 0 8;" styleClass="FontAwesomeIconView" stylesheets="@../home/home.css">
                            <graphic>
-                              <MaterialDesignIconView fill="WHITE" glyphName="NOTE_PLUS" size="30" translateX="-2.0" />
+                              <MaterialDesignIconView fill="WHITE" glyphName="NOTE_PLUS" size="40" wrappingWidth="40.0" />
                            </graphic>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </JFXButton>
                      </children>
                   </HBox>
@@ -91,7 +67,7 @@
                   <Insets bottom="5.0" />
                </VBox.margin>
             </HBox>
-            <AnchorPane fx:id="contractsAnchor" prefHeight="510.0" prefWidth="980.0">
+            <AnchorPane fx:id="contractsAnchor" prefHeight="510.0" prefWidth="980.0" style="-fx-background-color: white;">
                <VBox.margin>
                   <Insets top="2.0" />
                </VBox.margin>

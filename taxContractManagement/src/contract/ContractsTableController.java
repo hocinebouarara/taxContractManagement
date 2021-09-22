@@ -21,6 +21,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -188,12 +189,17 @@ public class ContractsTableController implements Initializable {
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
                             try {
+
                                 contract = propertiesTable.getSelectionModel().getSelectedItem();
                                 query = "DELETE FROM `contrat` WHERE id  =" + contract.getId();
                                 connection = DbConnect.getConnect();
                                 preparedStatement = connection.prepareStatement(query);
                                 preparedStatement.execute();
                                 refreshTable();
+                                Alert alerte = new Alert(Alert.AlertType.INFORMATION);
+                                alerte.setHeaderText(null);
+                                alerte.setContentText("supprimer avec succès");
+                                alerte.showAndWait();
 
                             } catch (SQLException ex) {
                                 Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);

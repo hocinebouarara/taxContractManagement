@@ -5,6 +5,7 @@
  */
 package contract;
 
+import com.jfoenix.controls.JFXButton;
 import helpres.Links;
 import home.HomeViewController;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -31,9 +33,11 @@ public class ContractsViewController implements Initializable {
     @FXML
     private Pane editPane;
     @FXML
-    private Pane editPane1;
-    @FXML
     private AnchorPane contractsAnchor;
+    @FXML
+    private JFXButton contratListBtn;
+    @FXML
+    private JFXButton addContractBtn;
 
     /**
      * Initializes the controller class.
@@ -42,6 +46,9 @@ public class ContractsViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         loadViews(Links.CONTRACTTABLEVIEW);
+        
+        addContractBtn.setTooltip(new Tooltip("Ajouter des nouveaux locataires"));
+        contratListBtn.setTooltip(new Tooltip("La liste des contrats de location "));
     }    
 
     @FXML
@@ -49,9 +56,6 @@ public class ContractsViewController implements Initializable {
         loadViews(Links.CONTRACTTABLEVIEW);
     }
 
-    @FXML
-    private void statView(MouseEvent event) {
-    }
 
     @FXML
     private void getAddContractsView(MouseEvent event) {

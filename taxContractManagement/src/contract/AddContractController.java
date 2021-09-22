@@ -6,6 +6,7 @@
 package contract;
 
 import beneficiaries.AddBeneficiaryController;
+import beneficiaries.BeneficiairesTableController;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -23,6 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,10 +33,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
@@ -46,6 +50,8 @@ import javafx.util.Callback;
 import models.Beneficiaire;
 import models.Property;
 import models.Proprietor;
+import properties.AddPropertyController;
+import properties.PropertiesViewController;
 import proprietors.AddProprietorController;
 import proprietors.ProprietorsViewController;
 
@@ -56,15 +62,12 @@ import proprietors.ProprietorsViewController;
  */
 public class AddContractController implements Initializable {
 
-    private Button proprietorBtn;
     @FXML
     private Button beneficiaryBtn;
     @FXML
     private Button proprietyBtn;
     @FXML
     private Button contractBtn;
-    @FXML
-    private Button scanBtn;
     @FXML
     private AnchorPane beneficiaryAnchor;
     @FXML
@@ -215,9 +218,10 @@ public class AddContractController implements Initializable {
     ResultSet resultSet = null;
     PreparedStatement preparedStatement;
     Beneficiaire beneficiaire = null;
-    private boolean update;
+    private boolean update = false;
     int propertyId, beneficiaireId;
     String type = null;
+
     boolean ground_floor = false;
 
     ObservableList<Property> propertyList = FXCollections.observableArrayList();
@@ -229,6 +233,24 @@ public class AddContractController implements Initializable {
     private TableColumn<Property, String> wilayaCol1;
     @FXML
     private JFXComboBox<String> periodeTypeCombo;
+    @FXML
+    private Button saveBtn;
+    @FXML
+    private Button viderBtn;
+    @FXML
+    private Button continerBtn2;
+    @FXML
+    private Button viderBtn3;
+    @FXML
+    private FontAwesomeIconView selectBtn;
+    @FXML
+    private FontAwesomeIconView refreshBtn;
+    @FXML
+    private FontAwesomeIconView ajouterBtn;
+    @FXML
+    private Button continuer3;
+    @FXML
+    private Button viderBtn5;
 
     /**
      * Initializes the controller class.
@@ -244,6 +266,28 @@ public class AddContractController implements Initializable {
 
         property = null;
         beneficiaire = null;
+        update = false;
+        continerBtn2.setTooltip(new Tooltip("Passer à l'étape suivante"));
+        continuer3.setTooltip(new Tooltip("Passer à l'étape suivante"));
+        viderBtn.setTooltip(new Tooltip("Vider les champs "));
+        viderBtn3.setTooltip(new Tooltip("Vider les champs "));
+        viderBtn5.setTooltip(new Tooltip("Vider les champs "));
+        saveBtn.setTooltip(new Tooltip("La sauvegarde des données"));
+        proprietyBtn.setTooltip(new Tooltip("Informations sur l'habitation "));
+        beneficiaryBtn.setTooltip(new Tooltip("Informations sur la désignation "));
+        contractBtn.setTooltip(new Tooltip("Informations sur l'affectation "));
+
+        Tooltip tooltip1 = new Tooltip();
+        tooltip1.setGraphic(new FontAwesomeIconView());
+        Tooltip.install(selectBtn, new Tooltip("Selectionner un propriétaire"));
+
+        Tooltip tooltip2 = new Tooltip();
+        tooltip2.setGraphic(new FontAwesomeIconView());
+        Tooltip.install(ajouterBtn, new Tooltip("ajouter des nouveaux propriétés "));
+
+        Tooltip tooltip3 = new Tooltip();
+        tooltip3.setGraphic(new FontAwesomeIconView());
+        Tooltip.install(refreshBtn, new Tooltip("Recharger la liste des propriétaires"));
 
     }
 
@@ -417,44 +461,71 @@ public class AddContractController implements Initializable {
                                 + "-glyph-size:14px;"
                                 + "-fx-fill:#00E676;"
                         );
+                        Tooltip tooltip = new Tooltip();
+                        tooltip.setGraphic(new FontAwesomeIconView());
+                        Tooltip.install(deleteIcon, new Tooltip("Supprimer cet élément"));
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
-                            try {
-                                property = propertiesTable.getSelectionModel().getSelectedItem();
-                                query = "DELETE FROM `fiche_habitation` WHERE id = '" + property.getId() + "'"
-                                        + " and id_propr = '" + property.getId_propr() + "'";
-                                connection = DbConnect.getConnect();
-                                preparedStatement = connection.prepareStatement(query);
-                                preparedStatement.execute();
-                                refreshProprietyTable();
-                            } catch (SQLException ex) {
-                                Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-
+                            ButtonType ok = new ButtonType("D'accord");
+                            ButtonType cancel = new ButtonType("Annuler");
+                            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Promote pawn to:", ok, cancel);
+                            a.setResizable(true);
+                            a.setContentText("Voulez-vous supprimer cet élément");
+                            a.showAndWait().ifPresent(response -> {
+                                if (response == ok) {
+                                    try {
+                                        // promote to queen...
+                                        property = propertiesTable.getSelectionModel().getSelectedItem();
+                                        query = "DELETE FROM `fiche_habitation` WHERE id = '" + property.getId() + "'"
+                                                + " and id_propr = '" + property.getId_propr() + "'";
+                                        connection = DbConnect.getConnect();
+                                        preparedStatement = connection.prepareStatement(query);
+                                        preparedStatement.execute();
+                                        refreshProprietyTable();
+                                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.setHeaderText(null);
+                                        alert.setContentText("Supprimé avec succès");
+                                        alert.showAndWait();
+                                    } catch (SQLException ex) {
+                                        Logger.getLogger(BeneficiairesTableController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                } else if (response == cancel) {
+                                    // promote to rook...
+                                }
+                            });
                         });
-                        /*editIcon.setOnMouseClicked((MouseEvent event) -> {
+                        Tooltip tooltip1 = new Tooltip();
+                        tooltip1.setGraphic(new FontAwesomeIconView());
+                        Tooltip.install(editIcon, new Tooltip("Modifier cet élément"));
+                        editIcon.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                property = propertiesTable.getSelectionModel().getSelectedItem();
 
-                            property = propertiesTable.getSelectionModel().getSelectedItem();
-                            FXMLLoader loader = new FXMLLoader();
-                            loader.setLocation(getClass().getResource(Links.ADDPROPIETORVIEW));
-                            try {
-                                loader.load();
-                            } catch (IOException ex) {
-                                Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-
-                            AddPropertyController addPropertyController = loader.getController();
-                            addPropertyController.setUpdate(true);
-                            addPropertyController.setTextField(property.getId(), property.getId_propr(),
-                                    property.getNom(),property.getArticle(),property.getTitre(),property.getCommune(),
-                                    property.getReu(),property.getAcie(),property.getDate());
-                            Parent parent = loader.getRoot();
-                            Stage stage = new Stage();
-                            stage.setScene(new Scene(parent));
-                            stage.initStyle(StageStyle.UTILITY);
-                            stage.show();
-
-                        });*/
+                                FXMLLoader loader = new FXMLLoader();
+                                loader.setLocation(getClass().getResource(Links.ADDPROPERTYVIEW));
+                                try {
+                                    loader.load();
+                                } catch (IOException ex) {
+                                    Logger.getLogger(PropertiesViewController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                AddPropertyController addPropertyController = loader.getController();
+                                addPropertyController.setUpdate(update);
+                                addPropertyController.setTextFields(property.getId(), property.getId_propr(), property.getNom(), property.getProprBirth(),
+                                        property.getArticle(), property.getTitre(), property.getCommune(), property.getInspection(),
+                                        property.getWilaya(), property.getReu(), property.getOrigin_propriete(), property.getN_terrain(),
+                                        property.getN_immeuble(), property.getN_etage(), property.getN_appartement(), property.getRez_chaussee(),
+                                        property.getNbr_etage(), property.getNbr_apparemment(), property.getType_immbeuble(), property.getSuperficie_tot(),
+                                        property.getSuperficie_batie(), property.getSuperficie_non_batie(), property.getDate_achev(), property.getUsage(),
+                                        property.getAdresse_prcpl(), property.getAcie(), property.getDate()
+                                );
+                                Parent parent = loader.getRoot();
+                                Stage stage = new Stage();
+                                stage.setScene(new Scene(parent));
+                                stage.initStyle(StageStyle.UTILITY);
+                                stage.show();
+}
+                        });
 
                         HBox managebtn = new HBox(editIcon, deleteIcon);
                         managebtn.setStyle("-fx-alignment:center");
@@ -572,20 +643,43 @@ public class AddContractController implements Initializable {
                                 + "-glyph-size:14px;"
                                 + "-fx-fill:#00E676;"
                         );
+                        Tooltip tooltip = new Tooltip();
+                        tooltip.setGraphic(new FontAwesomeIconView());
+                        Tooltip.install(deleteIcon, new Tooltip("Supprimer cet élément"));
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
-                            try {
-                                beneficiaire = beneficiairesTable.getSelectionModel().getSelectedItem();
-                                query = "DELETE FROM `beneficiaire` WHERE id  =" + beneficiaire.getId();
-                                connection = DbConnect.getConnect();
-                                preparedStatement = connection.prepareStatement(query);
-                                preparedStatement.execute();
-                                refreshBeneficiaryTable();
-                            } catch (SQLException ex) {
-                                Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                            ButtonType ok = new ButtonType("D'accord");
+                            ButtonType cancel = new ButtonType("Annuler");
+                            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Promote pawn to:", ok, cancel);
+                            a.setResizable(true);
+                            a.setContentText("Voulez-vous supprimer cet élément");
+                            a.showAndWait().ifPresent(response -> {
+                                if (response == ok) {
+                                    try {
+                                        // promote to queen...
+                                        beneficiaire = beneficiairesTable.getSelectionModel().getSelectedItem();
+                                        query = "DELETE FROM `beneficiaire` WHERE id  =" + beneficiaire.getId();
+                                        connection = DbConnect.getConnect();
+                                        preparedStatement = connection.prepareStatement(query);
+                                        preparedStatement.execute();
+                                        refreshBeneficiaryTable();
+                                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.setHeaderText(null);
+                                        alert.setContentText("Supprimé avec succès");
+                                        alert.showAndWait();
+                                    } catch (SQLException ex) {
+                                        Logger.getLogger(BeneficiairesTableController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                } else if (response == cancel) {
+                                    // promote to rook...
+                                }
+                            });
 
                         });
+
+                        Tooltip tooltip1 = new Tooltip();
+                        tooltip1.setGraphic(new FontAwesomeIconView());
+                        Tooltip.install(editIcon, new Tooltip("Modifier cet élément"));
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
 
                             beneficiaire = beneficiairesTable.getSelectionModel().getSelectedItem();
@@ -616,7 +710,6 @@ public class AddContractController implements Initializable {
                             stage.show();
 
                         });
-
                         HBox managebtn = new HBox(editIcon, deleteIcon);
                         managebtn.setStyle("-fx-alignment:center");
                         HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
@@ -755,18 +848,26 @@ public class AddContractController implements Initializable {
     private void save(MouseEvent event) {
         connection = DbConnect.getConnect();
 
+        
         if (property == null || beneficiaire == null || contractTypeCombo.getValue() == null
                 || startDateFld.getValue() == null || endDateFld.getValue() == null
                 || startDateFld.getValue() == null || montantContrFld.getText() == null
-                || nbrAcieFld.getText() == null || periodeTypeCombo.getValue()== null) {
+                || nbrAcieFld.getText() == null || periodeTypeCombo.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("Please Fill All Data");
+            alert.setContentText("Veuillez remplir toutes les données");
             alert.showAndWait();
+            
+            getProprietyView();
 
         } else {
             getQuery();
             insert();
+            Alert alerte = new Alert(Alert.AlertType.INFORMATION);
+            alerte.setHeaderText(null);
+            alerte.setContentText("Ajouté avec succès");
+            alerte.showAndWait();
+            getProprietyView();
 
         }
     }

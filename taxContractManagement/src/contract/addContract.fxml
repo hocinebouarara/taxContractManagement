@@ -55,17 +55,6 @@
                         <Insets left="4.0" right="4.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="scanBtn" alignment="CENTER" contentDisplay="TOP" layoutX="677.0" layoutY="10.0" mnemonicParsing="false" prefWidth="130.0" style="-fx-background-color: #DDD;" text="Scanner">
-                     <graphic>
-                        <FontAwesomeIconView glyphName="INFO_CIRCLE" size="40" />
-                     </graphic>
-                     <font>
-                        <Font name="Ink Free" size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="4.0" right="4.0" />
-                     </HBox.margin>
-                  </Button>
                </children>
                <VBox.margin>
                   <Insets />
@@ -144,17 +133,17 @@
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="29.0" prefWidth="182.0" style="-fx-border-width: 0 1 0 1; -fx-border-color: #565c78;">
                                        <children>
-                                          <FontAwesomeIconView fill="#6670a1" glyphName="CLONE" onMouseClicked="#selectBeneficiary" size="26">
+                                          <FontAwesomeIconView fx:id="selectBtn" fill="#6670a1" glyphName="CLONE" onMouseClicked="#selectBeneficiary" size="26">
                                              <HBox.margin>
                                                 <Insets right="11.0" />
                                              </HBox.margin>
                                           </FontAwesomeIconView>
-                                          <FontAwesomeIconView fill="#6670a1" glyphName="REFRESH" onMouseClicked="#refreshBeneficiaryTable" scaleY="1.1" size="27.5" wrappingWidth="22.785715103149414">
+                                          <FontAwesomeIconView fx:id="refreshBtn" fill="#6670a1" glyphName="REFRESH" onMouseClicked="#refreshBeneficiaryTable" scaleY="1.1" size="27.5" wrappingWidth="22.785715103149414">
                                              <HBox.margin>
                                                 <Insets right="11.0" />
                                              </HBox.margin>
                                           </FontAwesomeIconView>
-                                          <FontAwesomeIconView fill="#6670a1" glyphName="USER_PLUS" layoutX="73.0" layoutY="42.0" onMouseClicked="#addBeneficiary" size="27.5" wrappingWidth="22.785715103149414" />
+                                          <FontAwesomeIconView fx:id="ajouterBtn" fill="#6670a1" glyphName="USER_PLUS" layoutX="73.0" layoutY="42.0" onMouseClicked="#addBeneficiary" size="27.5" wrappingWidth="22.785715103149414" />
                                        </children>
                                        <HBox.margin>
                                           <Insets />
@@ -334,7 +323,7 @@
                               <Insets right="1.0" />
                            </HBox.margin>
                         </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="186.0" styleClass="buttons" text="Continuer" textFill="#123456">
+                        <Button fx:id="continuer3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#getContractDetailView" prefWidth="186.0" styleClass="buttons" text="Continuer" textFill="#123456">
                            <font>
                               <Font name="Ink Free" size="18.0" />
                            </font>
@@ -347,7 +336,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
+                        <Button fx:id="viderBtn5" alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
                            <font>
                               <Font name="Ink Free" size="18.0" />
                            </font>
@@ -366,7 +355,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="proprietyAnchor" layoutX="10.0" layoutY="114.0" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+      <AnchorPane fx:id="proprietyAnchor" layoutX="10.0" layoutY="114.0" onMouseClicked="#getBeneficiaryView" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="344.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                <children>
@@ -642,7 +631,7 @@
                               <Insets right="1.0" />
                            </HBox.margin>
                         </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="186.0" styleClass="buttons" text="Continuer" textFill="#123456">
+                        <Button fx:id="continerBtn2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="186.0" styleClass="buttons" text="Continuer" textFill="#123456">
                            <font>
                               <Font name="Ink Free" size="18.0" />
                            </font>
@@ -655,7 +644,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
+                        <Button fx:id="viderBtn3" alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
                            <font>
                               <Font name="Ink Free" size="18.0" />
                            </font>
@@ -836,7 +825,7 @@
                               <Insets right="1.0" />
                            </HBox.margin>
                         </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#save" prefWidth="186.0" styleClass="buttons" text="Enregistre" textFill="#123456">
+                        <Button fx:id="saveBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#save" prefWidth="186.0" styleClass="buttons" text="Enregistre" textFill="#123456">
                            <font>
                               <Font name="Ink Free" size="18.0" />
                            </font>
@@ -849,7 +838,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
+                        <Button fx:id="viderBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
                            <font>
                               <Font name="Ink Free" size="18.0" />
                            </font>
