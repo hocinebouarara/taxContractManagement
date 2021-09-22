@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -26,7 +27,6 @@ import javafx.scene.layout.AnchorPane;
  */
 public class HomeViewController implements Initializable {
 
-    private Button btn1;
     @FXML
     private JFXButton homeBtn;
     @FXML
@@ -50,10 +50,14 @@ public class HomeViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO    
-    }
 
-    private void btnClick(MouseEvent event) {
-        btn1.setStyle("-fx-background-color:#212121;-fx-font-size:36px;");
+        homeBtn.setTooltip(new Tooltip("Voir les statistiques"));
+        propaBtn.setTooltip(new Tooltip("La liste des locataires"));
+        proprBtn.setTooltip(new Tooltip("La gestion des propriétaires"));
+        contratBtn.setTooltip(new Tooltip("La gestion des contrats"));
+        benefiBtn.setTooltip(new Tooltip("La gestion des locataires"));
+        paymentBtn.setTooltip(new Tooltip("La gestion des paiements"));
+        documentsBtn.setTooltip(new Tooltip("Approntissage sur les documents"));
     }
 
     @FXML
@@ -160,7 +164,8 @@ public class HomeViewController implements Initializable {
             anchor.getChildren().setAll(pane);
 
         } catch (IOException ex) {
-            Logger.getLogger(HomeViewController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HomeViewController.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
 
     }
