@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="510.0" prefWidth="933.0" stylesheets="@../home/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="beneficiaries.BeneficiairesTableController">
+<AnchorPane prefHeight="510.0" prefWidth="980.0" stylesheets="@../home/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="beneficiaries.BeneficiairesTableController">
    <children>
       <VBox prefWidth="854.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -45,15 +45,15 @@
                <columns>
                   <TableColumn fx:id="checkCol" maxWidth="30.0" minWidth="0.0" prefWidth="30.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
                   <TableColumn fx:id="idCol" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="ID" />
-                  <TableColumn fx:id="nameCol" maxWidth="210.0" minWidth="140.00003051757812" prefWidth="177.66665649414062" style="-fx-alignment: center; -fx-font-size: 14px;" text="Nom et Prenom" />
+                  <TableColumn fx:id="nameCol" maxWidth="210.0" minWidth="140.00003051757812" prefWidth="190.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Nom et Prenom" />
                   <TableColumn fx:id="birthDateCol" maxWidth="229.99996948242188" prefWidth="112.66668701171875" style="-fx-alignment: center; -fx-font-size: 14px;" text="Nss" />
-                  <TableColumn fx:id="communeCol" maxWidth="150.0" minWidth="8.66668701171875" prefWidth="128.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Commune" />
-                  <TableColumn fx:id="wilayaCol" maxWidth="250.0" prefWidth="116.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Wilaya" />
+                  <TableColumn fx:id="communeCol" maxWidth="150.0" minWidth="8.66668701171875" prefWidth="135.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Commune" />
+                  <TableColumn fx:id="wilayaCol" maxWidth="250.0" prefWidth="130.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Wilaya" />
                   <TableColumn fx:id="prenom_pereCol" maxWidth="250.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
                   <TableColumn fx:id="nom_mereCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
                   <TableColumn fx:id="natCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
-                  <TableColumn fx:id="adresseCol" maxWidth="349.0" minWidth="8.66668701171875" prefWidth="172.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Adresse " />
-                  <TableColumn fx:id="dateCol" maxWidth="349.0" minWidth="8.66668701171875" prefWidth="109.33331298828125" style="-fx-alignment: center; -fx-font-size: 14px;" text="Date" />
+                  <TableColumn fx:id="adresseCol" maxWidth="349.0" minWidth="8.66668701171875" prefWidth="180.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Adresse " />
+                  <TableColumn fx:id="dateCol" maxWidth="349.0" minWidth="8.66668701171875" prefWidth="115.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Date" />
                   <TableColumn fx:id="activitePrincCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
                   <TableColumn fx:id="adresseActPrincCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
                   <TableColumn fx:id="activiteSecnCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text=" " />
