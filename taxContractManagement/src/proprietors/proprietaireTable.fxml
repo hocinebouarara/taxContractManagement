@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="proprAnchor" prefHeight="510.0" prefWidth="933.0" stylesheets="@../home/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proprietors.ProprietaireTableController">
+<AnchorPane fx:id="proprAnchor" prefHeight="510.0" prefWidth="980.0" style="-fx-background-color: white;" stylesheets="@../home/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proprietors.ProprietaireTableController">
    <children>
       <VBox prefWidth="854.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -41,20 +41,20 @@
                   <Insets bottom="5.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="proprietaireTable" maxHeight="1.7976931348623157E308" prefHeight="425.0" prefWidth="933.0" style="-fx-alignment: center;">
+            <TableView fx:id="proprietaireTable" maxHeight="1.7976931348623157E308" prefHeight="425.0" style="-fx-alignment: center;">
                <columns>
                   <TableColumn fx:id="checkCol" maxWidth="30.0" minWidth="0.0" prefWidth="30.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
                   <TableColumn fx:id="idCol" maxWidth="90.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="ID" />
-                  <TableColumn fx:id="nameCol" maxWidth="155.0" minWidth="155.0" prefWidth="155.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Nom et Prenom" />
-                  <TableColumn fx:id="birthDateCol" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Nss" />
+                  <TableColumn fx:id="nameCol" maxWidth="190.0" minWidth="155.0" prefWidth="160.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Nom et Prenom" />
+                  <TableColumn fx:id="birthDateCol" maxWidth="100.0" minWidth="90.0" prefWidth="100.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Nss" />
                   <TableColumn fx:id="communeCol" maxWidth="150.0" minWidth="8.66668701171875" prefWidth="128.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Commune" />
-                  <TableColumn fx:id="wilayaCol" maxWidth="250.0" prefWidth="116.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Wilaya" />
-                  <TableColumn fx:id="prenom_pereCol" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="nom de pere" />
+                  <TableColumn fx:id="wilayaCol" maxWidth="250.0" prefWidth="117.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Wilaya" />
+                  <TableColumn fx:id="prenom_pereCol" maxWidth="120.0" minWidth="100.0" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="nom de pere" />
                   <TableColumn fx:id="nom_mereCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
                   <TableColumn fx:id="natCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" />
-                  <TableColumn fx:id="adresseCol" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Adresse " />
-                  <TableColumn fx:id="telephoneCol" maxWidth="80.0" minWidth="80.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Telephone" />
-                  <TableColumn fx:id="operationCol" maxWidth="102.6666259765625" minWidth="0.0" prefWidth="67.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Action" />
+                  <TableColumn fx:id="adresseCol" maxWidth="170.0" minWidth="150.0" prefWidth="160.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Adresse " />
+                  <TableColumn fx:id="telephoneCol" maxWidth="120.0" minWidth="80.0" prefWidth="90.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Telephone" />
+                  <TableColumn fx:id="operationCol" maxWidth="102.6666259765625" minWidth="0.0" prefWidth="70.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Action" />
                </columns>
             </TableView>
          </children>

@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import helpres.DbConnect;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -67,7 +68,9 @@ public class AddProprietorController implements Initializable {
     @FXML
     private TextField AdressFld;
     @FXML
-    private JFXButton getDataBtn;
+    private Button enregisterBtn;
+    @FXML
+    private Button viderBtn;
 
     /**
      * Initializes the controller class.
@@ -76,7 +79,8 @@ public class AddProprietorController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
-       getDataBtn.setTooltip(new Tooltip("Coller les donnees"));
+        viderBtn.setTooltip(new Tooltip("Vider les champs  "));
+        enregisterBtn.setTooltip(new Tooltip("La sauvegarde des données"));
 
     }
 
@@ -85,9 +89,19 @@ public class AddProprietorController implements Initializable {
 
     }
 
-    public void setTextField(int id, String name, LocalDate toLocalDate, String adress, String email) {
+    public void setTextField(int id, String name, Date birthDate, String commune, String wilaya,
+            String prenom_pere, String nom_mere, String nationnalite, String adresse_domicile, String phone) {
 
         proprietorId = id;
+        nameFld.setText(name);
+        birthDateFld.setValue(birthDate.toLocalDate());
+        communeFld.setText(commune);
+        wilayaFld.setText(wilaya);
+        nameFatherFld.setText(prenom_pere);
+        nameMotherFld.setText(nom_mere);
+        nationFld.setText(nationnalite);
+        phoneFld.setText(phone);
+        AdressFld.setText(adresse_domicile);
 
     }
 
@@ -105,7 +119,7 @@ public class AddProprietorController implements Initializable {
         String phone = phoneFld.getText();
 
         if (name.isEmpty() || birth.isEmpty() || adress.isEmpty() || phone.isEmpty()
-                || commune.isEmpty()|| wilaya.isEmpty()|| father.isEmpty()
+                || commune.isEmpty() || wilaya.isEmpty() || father.isEmpty()
                 || nationalite.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -191,7 +205,6 @@ public class AddProprietorController implements Initializable {
     private void getPersonnelsView(MouseEvent event) {
     }
 
-    @FXML
     private void getData(ActionEvent event) {
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();

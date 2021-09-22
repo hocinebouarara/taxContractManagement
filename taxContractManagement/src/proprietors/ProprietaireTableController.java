@@ -5,6 +5,8 @@
  */
 package proprietors;
 
+import beneficiaries.AddBeneficiaryController;
+import beneficiaries.BeneficiairesTableController;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import helpres.DbConnect;
@@ -12,6 +14,7 @@ import helpres.Links;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,9 +29,12 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -91,8 +97,7 @@ public class ProprietaireTableController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         loadDate();
-        
-        
+
     }
 
     private void refreshTable() {
@@ -161,45 +166,75 @@ public class ProprietaireTableController implements Initializable {
 
                         deleteIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
+                                + "-glyph-size:20px;"
                                 + "-fx-fill:#ff1744;"
                         );
                         editIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
+                                + "-glyph-size:20px;"
                                 + "-fx-fill:#00E676;"
                         );
+
+                        Tooltip tooltip = new Tooltip();
+                        tooltip.setGraphic(new FontAwesomeIconView());
+                        Tooltip.install(deleteIcon, new Tooltip("Supprimer cet élément"));
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
-                            try {
-                                proprietor = proprietaireTable.getSelectionModel().getSelectedItem();
-                                query = "DELETE FROM `proprietaire` WHERE id  =" + proprietor.getId();
-                                connection = DbConnect.getConnect();
-                                preparedStatement = connection.prepareStatement(query);
-                                preparedStatement.execute();
-                                refreshTable();
-
-                            } catch (SQLException ex) {
-                                Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                            ButtonType ok = new ButtonType("D'accord");
+                            ButtonType cancel = new ButtonType("Annuler");
+                            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Promote pawn to:", ok, cancel);
+                            a.setResizable(true);
+                            a.setContentText("Voulez-vous supprimer cet élément");
+                            a.showAndWait().ifPresent(response -> {
+                                if (response == ok) {
+                                    try {
+                                        // promote to queen...
+                                        proprietor = proprietaireTable.getSelectionModel().getSelectedItem();
+                                        query = "DELETE FROM `proprietaire` WHERE id  =" + proprietor.getId();
+                                        connection = DbConnect.getConnect();
+                                        preparedStatement = connection.prepareStatement(query);
+                                        preparedStatement.execute();
+                                        refreshTable();
+                                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.setHeaderText(null);
+                                        alert.setContentText("Supprimé avec succès");
+                                        alert.showAndWait();
+                                    } catch (SQLException ex) {
+                                        Logger.getLogger(BeneficiairesTableController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                } else if (response == cancel) {
+                                    // promote to rook...
+                                }
+                            });
 
                         });
+                        Tooltip tooltip1 = new Tooltip();
+                        tooltip1.setGraphic(new FontAwesomeIconView());
+                        Tooltip.install(editIcon, new Tooltip("Modifier cet élément"));
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
 
                             proprietor = proprietaireTable.getSelectionModel().getSelectedItem();
-                            proprietor.setUpdate(true);
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(getClass().getResource(Links.ADDPROPIETORVIEW));
                             try {
-                                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource(Links.ADDPROPIETORVIEW));
-                                Scene scene = new Scene(anchorPane);
-                                Stage s = new Stage();
-                                s.setScene(scene);
-                                s.setUserData(proprietaireTable.getSelectionModel().getSelectedItem());
-                                s.initStyle(StageStyle.TRANSPARENT);
-                                s.show();
-                                stage = s;
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                                loader.load();
+                            } catch (IOException ex) {
+                                Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
                             }
+
+                            AddProprietorController addProprietorController = loader.getController();
+                            addProprietorController.setUpdate(true);
+
+                            addProprietorController.setTextField(proprietor.getId(), proprietor.getName(),
+                                    proprietor.getBirthDate(), proprietor.getCommune(),
+                                    proprietor.getWilaya(), proprietor.getPrenom_pere(), proprietor.getNom_mere(),
+                                    proprietor.getNationnalite(), proprietor.getAdresse_domicile(), proprietor.getPhone());
+                            
+                            Parent parent = loader.getRoot();
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(parent));
+                            stage.initStyle(StageStyle.UTILITY);
+                            stage.show();
 
                         });
 

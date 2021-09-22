@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
@@ -291,7 +290,7 @@
                               <Insets right="1.0" />
                            </HBox.margin>
                         </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#save" prefWidth="186.0" styleClass="buttons" text="Enregister" textFill="#123456">
+                        <Button fx:id="enregisterBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#save" prefWidth="186.0" styleClass="buttons" text="Enregister" textFill="#123456">
                            <font>
                               <Font name="MV Boli" size="18.0" />
                            </font>
@@ -304,7 +303,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
+                        <Button fx:id="viderBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
                            <font>
                               <Font name="MV Boli" size="18.0" />
                            </font>
@@ -323,10 +322,5 @@
             </VBox>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="getDataBtn" alignment="CENTER" cache="true" contentDisplay="GRAPHIC_ONLY" onAction="#getData" prefHeight="57.0" prefWidth="53.0" styleClass="FontAwesomeIconView" stylesheets="@../home/home.css" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="27.0">
-         <graphic>
-            <FontAwesomeIconView glyphName="PASTE" size="36" translateX="3.0" wrappingWidth="42.0" />
-         </graphic>
-      </JFXButton>
    </children>
 </AnchorPane>
