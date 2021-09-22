@@ -2,7 +2,9 @@
  * Empty Stylesheet file.
  */
 
-.mainFxmlClass {
+.mainFxmlClas {
+        -fx-cursor: hand;
+
 
 }
 .buttons{

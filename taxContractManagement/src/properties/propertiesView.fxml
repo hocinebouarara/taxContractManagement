@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -13,7 +15,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="580.0" prefWidth="1000.0">
          <children>
-            <HBox prefHeight="49.0" prefWidth="980.0">
+            <HBox prefWidth="980.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Propriétés" wrappingWidth="162.13674926757812">
                      <font>
@@ -22,20 +24,23 @@
                   </Text>
                   <VBox prefHeight="59.0" prefWidth="153.0">
                      <children>
-                        <JFXButton alignment="BOTTOM_CENTER" onMouseClicked="#getPropertiesTable" prefHeight="24.0" prefWidth="153.0" styleClass="MenuBar" text="Propriétés">
+                        <JFXButton fx:id="propertyBtn1" alignment="BOTTOM_CENTER" onMouseClicked="#getPropertiesTable" prefHeight="46.0" prefWidth="151.0" styleClass="MenuBar" text="Propriétés">
                            <font>
-                              <Font size="22.0" />
+                              <Font name="Zilla Slab Medium" size="18.0" />
                            </font>
-                           <padding>
-                              <Insets top="10.0" />
-                           </padding>
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                           <graphic>
+                              <FontAwesomeIconView fill="#0746a7" glyphName="BUILDING" size="30" />
+                           </graphic>
                         </JFXButton>
-                        <Pane fx:id="editPane" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #FFA000;">
+                        <Pane fx:id="editPane" prefHeight="10.0" prefWidth="141.0" style="-fx-background-color: #FFA000;">
                            <VBox.margin>
-                              <Insets left="5.0" right="5.0" />
+                              <Insets />
                            </VBox.margin>
                         </Pane>
                      </children>
@@ -43,37 +48,17 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="153.0">
-                     <children>
-                        <JFXButton alignment="BOTTOM_CENTER" onMouseClicked="#statView" prefHeight="21.0" prefWidth="153.0" styleClass="MenuBar" text="Stat">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                           <padding>
-                              <Insets top="10.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </JFXButton>
-                        <Pane fx:id="editPane1" prefHeight="38.0" prefWidth="142.0" style="-fx-background-color: #FFA000;">
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" />
-                           </VBox.margin>
-                        </Pane>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </VBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="508.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="663.0">
                      <HBox.margin>
                         <Insets top="3.0" />
                      </HBox.margin>
                      <children>
-                        <JFXButton alignment="CENTER_RIGHT" onMouseClicked="#getAddPropertiesView" style="-fx-background-color: #123456; -fx-background-radius: 100px;" styleClass="MenuBar" text="Ajouter Propriétés" textFill="WHITE">
+                        <JFXButton fx:id="addPropertyfBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#getAddPropertiesView" style="-fx-background-color: #0746a7; -fx-background-radius: 8 8 0 8;" styleClass="FontAwesomeIconView" stylesheets="@../home/home.css">
+                           <graphic>
+                              <MaterialDesignIconView fill="WHITE" glyphName="NOTE_PLUS" size="40" wrappingWidth="40.0" />
+                           </graphic>
                            <font>
-                              <Font size="16.0" />
+                              <Font size="14.0" />
                            </font>
                         </JFXButton>
                      </children>

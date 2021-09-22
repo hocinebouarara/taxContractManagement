@@ -121,20 +121,6 @@ public class AddPropertyController implements Initializable {
     String type = null;
     boolean ground_floor = false;
     int position = 0;
-    @FXML
-    private TableView<Proprietor> proprietorsTable;
-    @FXML
-    private TableColumn<Proprietor, String> idCol;
-    @FXML
-    private TableColumn<Proprietor, String> nameCol;
-    @FXML
-    private TableColumn<Proprietor, String> dateCol;
-    @FXML
-    private TableColumn<Proprietor, String> adressCol;
-    @FXML
-    private TableColumn<Proprietor, String> phoneCol;
-    @FXML
-    private TableColumn<Proprietor, String> operationCol;
 
     Proprietor proprietor = null;
 
@@ -162,7 +148,51 @@ public class AddPropertyController implements Initializable {
     @FXML
     private TextField adresseResdcPrincpFld;
     @FXML
-    private JFXButton getDataBtn;
+    private TableView<Proprietor> proprietaireTable;
+    @FXML
+    private TableColumn<Proprietor, String> idCol1;
+    @FXML
+    private TableColumn<Proprietor, String> nameCol1;
+    @FXML
+    private TableColumn<Proprietor, String> birthDateCol;
+    @FXML
+    private TableColumn<Proprietor, String> communeCol;
+    @FXML
+    private TableColumn<Proprietor, String> wilayaCol;
+    @FXML
+    private TableColumn<Proprietor, String> prenom_pereCol;
+    @FXML
+    private TableColumn<Proprietor, String> nom_mereCol;
+    @FXML
+    private TableColumn<Proprietor, String> natCol;
+    @FXML
+    private TableColumn<Proprietor, String> adresseCol;
+    @FXML
+    private TableColumn<Proprietor, String> telephoneCol;
+    @FXML
+    private TableColumn<Proprietor, String> operationCol1;
+    @FXML
+    private FontAwesomeIconView selectProprBtn;
+    @FXML
+    private FontAwesomeIconView refrechBtn;
+    @FXML
+    private FontAwesomeIconView ajouterBtn;
+    @FXML
+    private Button continuerBtn1;
+    @FXML
+    private Button viderBtn;
+    @FXML
+    private Button saveBtn;
+    @FXML
+    private Button viderBtn2;
+    @FXML
+    private Button continuerbtn3;
+    @FXML
+    private Button viderBtn3;
+    @FXML
+    private Button continuerBtn;
+    @FXML
+    private Button viderBtn5;
 
     /**
      * Initializes the controller class.
@@ -178,16 +208,34 @@ public class AddPropertyController implements Initializable {
         induvidlBtn.setToggleGroup(group);
         collectifBtn.setToggleGroup(group);
 
-        if (update == true) {
-
-        } else {
-            getDataBtn.isDisabled();
-
-        }
-
-        getDataBtn.setTooltip(new Tooltip("Coller les donnees "));
-
+        //getDataBtn.setTooltip(new Tooltip("Coller les donnees "));
         getHabitationView();
+        loadProprietorsData();
+
+        continuerBtn.setTooltip(new Tooltip("Passer à l'étape suivante"));
+        continuerBtn1.setTooltip(new Tooltip("Passer à l'étape suivante"));
+        continuerbtn3.setTooltip(new Tooltip("Passer à l'étape suivante"));
+        viderBtn.setTooltip(new Tooltip("Vider les champs "));
+        viderBtn2.setTooltip(new Tooltip("Vider les champs "));
+        viderBtn3.setTooltip(new Tooltip("Vider les champs "));
+        viderBtn5.setTooltip(new Tooltip("Vider les champs "));
+        saveBtn.setTooltip(new Tooltip("La sauvegarde des données"));
+        habitationBtn.setTooltip(new Tooltip("Informations sur l'habitation "));
+        proprietaireBtn.setTooltip(new Tooltip("Informations sur le propriétaire "));
+        designationBtn.setTooltip(new Tooltip("Informations sur la désignation "));
+        affectationBtn.setTooltip(new Tooltip("Informations sur l'affectation "));
+
+        Tooltip tooltip1 = new Tooltip();
+        tooltip1.setGraphic(new FontAwesomeIconView());
+        Tooltip.install(selectProprBtn, new Tooltip("Selectionner un propriétaire"));
+
+        Tooltip tooltip2 = new Tooltip();
+        tooltip1.setGraphic(new FontAwesomeIconView());
+        Tooltip.install(ajouterBtn, new Tooltip("ajouter des nouveaux propriétés "));
+
+        Tooltip tooltip3 = new Tooltip();
+        tooltip1.setGraphic(new FontAwesomeIconView());
+        Tooltip.install(refrechBtn, new Tooltip("Recharger la liste des propriétaires"));
 
     }
 
@@ -200,7 +248,50 @@ public class AddPropertyController implements Initializable {
         this.update = b;
     }
 
-    void setTextField(int id, int id_propr, String nom, String article, String titre, String commune, String reu, String acie, Date date) {
+    void setTextFields(int id, int id_propr, String nom, Date proprBirth, String article, String titre,
+            String commune, String inspection, String wilaya, String reu, String origin_propriete,
+            String n_terrain, String n_immeuble, String n_etage, String n_appartement, String rez_chaussee,
+            String nbr_etage, String nbr_apparemment, String type_immbeuble, Float superficie_tot,
+            Float superficie_batie, Float superficie_non_batie, Date date_achev, String usage,
+            String adresse_prcpl, String acie, Date date) {
+
+        propertyId = id;
+        proprietorId = id_propr;
+        articleFld.setText(article);
+        wilayaFld.setText(wilaya);
+        communeFld.setText(commune);
+        reuFld.setText(reu);
+        inspectionFld.setText(inspection);
+        nTerrainFld.setText(n_terrain);
+        nImmeubleFld.setText(n_immeuble);
+        if (Integer.valueOf(rez_chaussee) == 1) {
+            rezChaFld.setSelected(true);
+        } else {
+            rezChaFld.setSelected(true);
+        }
+        nEtageFld.setText(n_etage);
+        nomProprFld.setText(nom);
+        adresseProprFld.setText(adresse_prcpl);
+        orignPropCombo.setValue(origin_propriete);
+        titreFld.setText(titre);
+        acieFld.setText(acie);
+        dateAcieFld.setValue(date.toLocalDate());
+
+        if ("Cellectif".equals(type_immbeuble)) {
+
+            collectifBtn.setSelected(true);
+        } else {
+            induvidlBtn.setSelected(true);
+        }
+
+        superTotFld.setText(String.valueOf(superficie_tot));
+        SuperBatieFld.setText(String.valueOf(superficie_batie));
+        superNonBatieFLd.setText(String.valueOf(superficie_non_batie));
+        nbrPiecesFld.setText(nbr_apparemment);
+        nbrEtageFld.setText(nbr_etage);
+        dateAchevFld.setValue(date_achev.toLocalDate());
+        usageCombo.setValue(usage);
+        adresseResdcPrincpFld.setText(adresse_prcpl);
     }
 
     @FXML
@@ -246,7 +337,32 @@ public class AddPropertyController implements Initializable {
             alert.showAndWait();
 
         } else {
-
+            query = "UPDATE `fiche_habitation` SET "
+                    + "`id`=?,"
+                    + "`nbr_article`=?,"
+                    + "`inspection`=?,"
+                    + "`wilaya`=?,"
+                    + "`commune`=?,"
+                    + "`reu`=?,"
+                    + "`origin_propriete`=?,"
+                    + "`n_terrain`=?,"
+                    + "`n_immeuble`=?,"
+                    + "`n_etage`=?,"
+                    + "`n_appartement`=?,"
+                    + "`rez_chaussee`=?,"
+                    + "`nbr_etage`=?,"
+                    + "`nbr_apparemment`=?,"
+                    + "`type_immbeuble`=?,"
+                    + "`superficie_tot`=?,"
+                    + "`superficie_batie`=?,"
+                    + "`superficie_non_batie`=?,"
+                    + "`date_achev`=?,"
+                    + "`usage`=?,"
+                    + "`adresse_prcpl`=?,"
+                    + "`id_propr`=?,"
+                    + "`titre_propriete`=?,"
+                    + "`n_acie`=?,"
+                    + "`date`=?  ";
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("modifier avec succés");
@@ -279,7 +395,7 @@ public class AddPropertyController implements Initializable {
             preparedStatement.setFloat(17, Float.valueOf(superNonBatieFLd.getText()));
             preparedStatement.setString(18, String.valueOf(dateAchevFld.getValue()));
             preparedStatement.setString(19, usageCombo.getValue());
-            preparedStatement.setString(20, adresseProprFld.getText());
+            preparedStatement.setString(20, adresseResdcPrincpFld.getText());
             preparedStatement.setInt(21, proprietor.getId());
             preparedStatement.setString(22, titreFld.getText());
             preparedStatement.setString(23, acieFld.getText());
@@ -324,9 +440,9 @@ public class AddPropertyController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void refreshTable() {
+    private void refreshProprietorTable() {
         try {
+
             proprietorsList.clear();
 
             query = "SELECT * FROM `proprietaire`";
@@ -338,9 +454,15 @@ public class AddPropertyController implements Initializable {
                         resultSet.getInt("id"),
                         resultSet.getString("nom_prenom_or_RS"),
                         resultSet.getDate("date_nss"),
+                        resultSet.getString("commune"),
+                        resultSet.getString("wilaya"),
+                        resultSet.getString("pere"),
+                        resultSet.getString("mere"),
+                        resultSet.getString("nationalite"),
                         resultSet.getString("adress"),
-                        resultSet.getString("telephone")));
-                proprietorsTable.setItems(proprietorsList);
+                        resultSet.getString("telephone")
+                ));
+                proprietaireTable.setItems(proprietorsList);
 
             }
 
@@ -349,16 +471,21 @@ public class AddPropertyController implements Initializable {
         }
     }
 
-    private void loadData() {
+    private void loadProprietorsData() {
 
         connection = DbConnect.getConnect();
-        refreshTable();
+        refreshProprietorTable();
 
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-        adressCol.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        idCol1.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameCol1.setCellValueFactory(new PropertyValueFactory<>("name"));
+        birthDateCol.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+        communeCol.setCellValueFactory(new PropertyValueFactory<>("commune"));
+        wilayaCol.setCellValueFactory(new PropertyValueFactory<>("wilaya"));
+        prenom_pereCol.setCellValueFactory(new PropertyValueFactory<>("prenom_pere"));
+        nom_mereCol.setCellValueFactory(new PropertyValueFactory<>("nom_mere"));
+        natCol.setCellValueFactory(new PropertyValueFactory<>("nationnalite"));
+        adresseCol.setCellValueFactory(new PropertyValueFactory<>("adresse_domicile"));
+        telephoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
 
         //add cell of button edit 
         Callback<TableColumn<Proprietor, String>, TableCell<Proprietor, String>> cellFoctory = (TableColumn<Proprietor, String> param) -> {
@@ -390,13 +517,12 @@ public class AddPropertyController implements Initializable {
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
                             try {
-                                proprietor = proprietorsTable.getSelectionModel().getSelectedItem();
+                                proprietor = proprietaireTable.getSelectionModel().getSelectedItem();
                                 query = "DELETE FROM `proprietaire` WHERE id  =" + proprietor.getId();
                                 connection = DbConnect.getConnect();
                                 preparedStatement = connection.prepareStatement(query);
                                 preparedStatement.execute();
-                                refreshTable();
-
+                                refreshProprietorTable();
                             } catch (SQLException ex) {
                                 Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -404,9 +530,9 @@ public class AddPropertyController implements Initializable {
                         });
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
 
-                            proprietor = proprietorsTable.getSelectionModel().getSelectedItem();
+                            proprietor = proprietaireTable.getSelectionModel().getSelectedItem();
                             FXMLLoader loader = new FXMLLoader();
-                            loader.setLocation(getClass().getResource("/proprietors/addProprietor.fxml"));
+                            loader.setLocation(getClass().getResource(Links.ADDPROPIETORVIEW));
                             try {
                                 loader.load();
                             } catch (IOException ex) {
@@ -416,7 +542,9 @@ public class AddPropertyController implements Initializable {
                             AddProprietorController addProprietorController = loader.getController();
                             addProprietorController.setUpdate(true);
                             addProprietorController.setTextField(proprietor.getId(), proprietor.getName(),
-                                    proprietor.getDate().toLocalDate(), proprietor.getAdresse(), proprietor.getPhone());
+                                    proprietor.getBirthDate(), proprietor.getCommune(), proprietor.getWilaya(),
+                                    proprietor.getPrenom_pere(), proprietor.getNom_mere(), proprietor.getNationnalite(),
+                                    proprietor.getAdresse_domicile(), proprietor.getPhone());
                             Parent parent = loader.getRoot();
                             Stage stage = new Stage();
                             stage.setScene(new Scene(parent));
@@ -441,15 +569,15 @@ public class AddPropertyController implements Initializable {
 
             return cell;
         };
-        operationCol.setCellFactory(cellFoctory);
-        proprietorsTable.setItems(proprietorsList);
+        operationCol1.setCellFactory(cellFoctory);
+        proprietaireTable.setItems(proprietorsList);
 
     }
 
     @FXML
     private void selectProprietor(MouseEvent event) {
 
-        proprietor = (Proprietor) proprietorsTable.getSelectionModel().getSelectedItem();
+        proprietor = (Proprietor) proprietaireTable.getSelectionModel().getSelectedItem();
         if (proprietor == null) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -458,7 +586,7 @@ public class AddPropertyController implements Initializable {
             alert.showAndWait();
         } else {
             nomProprFld.setText(proprietor.getName());
-            adresseProprFld.setText(proprietor.getAdresse());
+            adresseProprFld.setText(proprietor.getAdresse_domicile());
 
         }
     }
@@ -511,7 +639,6 @@ public class AddPropertyController implements Initializable {
         affectationAnchor.setVisible(true);
     }
 
-    @FXML
     void getData(ActionEvent event) {
 
         Node node = (Node) event.getSource();
@@ -533,7 +660,7 @@ public class AddPropertyController implements Initializable {
         acieFld.setText(property1.getAcie());
         dateAcieFld.setValue(property1.getDate().toLocalDate());
 
-        if (property1.getType_immbeuble() == "Cellectif") {
+        if ("Cellectif".equals(property1.getType_immbeuble())) {
 
             collectifBtn.isPressed();
         } else {
@@ -548,6 +675,10 @@ public class AddPropertyController implements Initializable {
         dateAchevFld.setValue(property1.getDate_achev().toLocalDate());
         usageCombo.setValue(property1.getUsage());
 
+    }
+
+    @FXML
+    private void refreshTable(MouseEvent event) {
     }
 
 }

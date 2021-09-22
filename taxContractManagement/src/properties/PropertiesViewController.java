@@ -5,6 +5,7 @@
  */
 package properties;
 
+import com.jfoenix.controls.JFXButton;
 import helpres.Links;
 import home.HomeViewController;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -34,9 +36,11 @@ public class PropertiesViewController implements Initializable {
     @FXML
     private Pane editPane;
     @FXML
-    private Pane editPane1;
-    @FXML
     private AnchorPane PropertiesAnchor;
+    @FXML
+    private JFXButton propertyBtn1;
+    @FXML
+    private JFXButton addPropertyfBtn;
 
     /**
      * Initializes the controller class.
@@ -45,6 +49,8 @@ public class PropertiesViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         getPropertiesTable();
+        addPropertyfBtn.setTooltip(new Tooltip("Ajouter des nouveaux propriétés"));
+        propertyBtn1.setTooltip(new Tooltip("La liste des propriétés"));
     }
 
     @FXML
@@ -52,9 +58,6 @@ public class PropertiesViewController implements Initializable {
         loadViews(Links.PROPERTYTABLEVIEW);
     }
 
-    @FXML
-    private void statView(MouseEvent event) {
-    }
 
     @FXML
     private void getAddPropertiesView(MouseEvent event) {

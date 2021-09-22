@@ -5,6 +5,8 @@
  */
 package properties;
 
+import beneficiaries.AddBeneficiaryController;
+import beneficiaries.BeneficiairesTableController;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import helpres.DbConnect;
@@ -12,6 +14,7 @@ import helpres.Links;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,10 +27,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -254,73 +261,77 @@ public class PropertiesTableController implements Initializable {
 
                         deleteIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:25px;"
+                                + "-glyph-size:20px;"
                                 + "-fx-fill:#ff1744;"
                         );
                         editIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:25px;"
+                                + "-glyph-size:20px;"
                                 + "-fx-fill:#00E676;"
                         );
+                        Tooltip tooltip = new Tooltip();
+                        tooltip.setGraphic(new FontAwesomeIconView());
+                        Tooltip.install(deleteIcon, new Tooltip("Supprimer cet élément"));
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
-                            try {
-                                property = propertiesTable.getSelectionModel().getSelectedItem();
-                                query = "DELETE FROM `fiche_habitation` WHERE id = '" + property.getId() + "'"
-                                        + " and id_propr = '" + property.getId_propr() + "'";
-                                connection = DbConnect.getConnect();
-                                preparedStatement = connection.prepareStatement(query);
-                                preparedStatement.execute();
-                                refreshTable();
-
-                            } catch (SQLException ex) {
-                                Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-
+                            ButtonType ok = new ButtonType("D'accord");
+                            ButtonType cancel = new ButtonType("Annuler");
+                            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Promote pawn to:", ok, cancel);
+                            a.setResizable(true);
+                            a.setContentText("Voulez-vous supprimer cet élément");
+                            a.showAndWait().ifPresent(response -> {
+                                if (response == ok) {
+                                    try {
+                                        // promote to queen...
+                                        property = propertiesTable.getSelectionModel().getSelectedItem();
+                                        query = "DELETE FROM `fiche_habitation` WHERE id = '" + property.getId() + "'"
+                                                + " and id_propr = '" + property.getId_propr() + "'";
+                                        connection = DbConnect.getConnect();
+                                        preparedStatement = connection.prepareStatement(query);
+                                        preparedStatement.execute();
+                                        refreshTable();
+                                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.setHeaderText(null);
+                                        alert.setContentText("Supprimé avec succès");
+                                        alert.showAndWait();
+                                    } catch (SQLException ex) {
+                                        Logger.getLogger(BeneficiairesTableController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                } else if (response == cancel) {
+                                    // promote to rook...
+                                }
+                            });
                         });
+                        Tooltip tooltip1 = new Tooltip();
+                        tooltip1.setGraphic(new FontAwesomeIconView());
+                        Tooltip.install(editIcon, new Tooltip("Modifier cet élément"));
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
                             property = propertiesTable.getSelectionModel().getSelectedItem();
 
-                            proprty = new Property();
-                            proprty.setAcie(property.getAcie());
-                            proprty.setAdresse_prcpl(property.getAdresse_prcpl());
-                            proprty.setArticle(property.getArticle());
-                            proprty.setCommune(property.getCommune());
-                            proprty.setDate(property.getDate());
-                            proprty.setDate_achev(property.getDate_achev());
-                            proprty.setId(property.getId());
-                            proprty.setId_propr(property.getId_propr());
-                            proprty.setInspection(property.getInspection());
-                            proprty.setN_appartement(property.getN_appartement());
-                            proprty.setN_etage(property.getN_etage());
-                            proprty.setN_immeuble(property.getN_immeuble());
-                            proprty.setN_terrain(property.getN_terrain());
-                            proprty.setNbr_apparemment(property.getNbr_apparemment());
-                            proprty.setNbr_etage(property.getNbr_etage());
-                            proprty.setNom(property.getNom());
-                            proprty.setOrigin_propriete(property.getOrigin_propriete());
-                            proprty.setProprBirth(property.getProprBirth());
-                            proprty.setReu(property.getReu());
-                            proprty.setRez_chaussee(property.getRez_chaussee());
-                            proprty.setSuperficie_batie(property.getSuperficie_batie());
-                            proprty.setSuperficie_non_batie(property.getSuperficie_non_batie());
-                            proprty.setSuperficie_tot(property.getSuperficie_tot());
-                            proprty.setTitre(property.getTitre());
-                            proprty.setType_immbeuble(property.getType_immbeuble());
-                            proprty.setUsage(property.getUsage());
-                            proprty.setWilaya(property.getWilaya());
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(getClass().getResource(Links.ADDPROPERTYVIEW));
                             try {
-                                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource(Links.ADDPROPERTYVIEW));
-                                Scene scene = new Scene(anchorPane);
-                                Stage s = new Stage();
-                                s.setScene(scene);
-                                s.setUserData(propertiesTable.getSelectionModel().getSelectedItem());
-                                s.initStyle(StageStyle.TRANSPARENT);
-                                s.show();
-                                stage = s;
+                                loader.load();
                             } catch (IOException ex) {
-                                Logger.getLogger(PropertiesTableController.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(PropertiesViewController.class.getName()).log(Level.SEVERE, null, ex);
                             }
+
+                            AddPropertyController addPropertyController = loader.getController();
+                            addPropertyController.setUpdate(true);
+
+                            addPropertyController.setTextFields(property.getId(), property.getId_propr(), property.getNom(), property.getProprBirth(),
+                                    property.getArticle(), property.getTitre(), property.getCommune(), property.getInspection(),
+                                    property.getWilaya(), property.getReu(), property.getOrigin_propriete(), property.getN_terrain(),
+                                    property.getN_immeuble(), property.getN_etage(), property.getN_appartement(), property.getRez_chaussee(),
+                                    property.getNbr_etage(), property.getNbr_apparemment(), property.getType_immbeuble(), property.getSuperficie_tot(),
+                                    property.getSuperficie_batie(), property.getSuperficie_non_batie(), property.getDate_achev(), property.getUsage(),
+                                    property.getAdresse_prcpl(), property.getAcie(), property.getDate()
+                            );
+                            Parent parent = loader.getRoot();
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(parent));
+                            stage.initStyle(StageStyle.UTILITY);
+                            stage.show();
 
                         });
 
@@ -341,6 +352,7 @@ public class PropertiesTableController implements Initializable {
             return cell;
         };
         operationCol.setCellFactory(cellFoctory);
+
         propertiesTable.setItems(propertyList);
 
     }
