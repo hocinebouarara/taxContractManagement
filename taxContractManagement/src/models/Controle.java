@@ -27,7 +27,7 @@ public class Controle {
     Float montant;
     String periodImpot, numAcie;
 
-    String inspection,
+    String direction, inspection,
             recette, annee, designation;
     String nis, nif;
     String wilaya, activite;
@@ -35,7 +35,7 @@ public class Controle {
     String formJuridique, Adress;
     String articleImpots;
 
-    public Controle(int id, int contractId, int ficheHabId, int proprId, String proprName, int benefID, String benefName, String inspection, String recette, String annee, String designation, String nis, String nif, String wilaya, String activite, int codeActivite, String formJuridique, String Adress, String articleImpots) {
+    public Controle(int id, int contractId, int ficheHabId, int proprId, String proprName, int benefID, String benefName,String direction, String inspection, String recette, String annee, String designation, String nis, String nif, String wilaya, String activite, int codeActivite, String formJuridique, String Adress, String articleImpots) {
         this.id = id;
         this.contractId = contractId;
         this.ficheHabId = ficheHabId;
@@ -43,6 +43,7 @@ public class Controle {
         this.proprName = proprName;
         this.benefID = benefID;
         this.benefName = benefName;
+        this.direction = direction;
         this.inspection = inspection;
         this.recette = recette;
         this.annee = annee;
@@ -227,9 +228,6 @@ public class Controle {
     public void setNumAcie(String numAcie) {
         this.numAcie = numAcie;
     }
-    
-    
-    
 
     public int getId() {
         return id;
@@ -286,6 +284,16 @@ public class Controle {
     public void setBenefName(String benefName) {
         this.benefName = benefName;
     }
+
+    public String getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+    
+    
 
     public String getInspection() {
         return inspection;
