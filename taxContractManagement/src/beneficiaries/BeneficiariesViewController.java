@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -34,7 +35,7 @@ public class BeneficiariesViewController implements Initializable {
     @FXML
     private JFXButton beneficiaryBtn;
     @FXML
-    private JFXButton statBtn;
+    private JFXButton addBenefBtn;
 
     /**
      * Initializes the controller class.
@@ -43,6 +44,9 @@ public class BeneficiariesViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         getBeneficTable();
+        addBenefBtn.setTooltip(new Tooltip("Ajouter des nouveaux locataires"));
+        beneficiaryBtn.setTooltip(new Tooltip("La liste des locataires"));
+
     }
 
     private void loadViews(String viewName) {
@@ -58,15 +62,7 @@ public class BeneficiariesViewController implements Initializable {
     @FXML
     private void getBeneficTable() {
         loadViews(Links.BENEFICIAIRETABLEVIEW);
-        statBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:transparent;");
         beneficiaryBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:#FFA000;");
-    }
-
-    @FXML
-    private void statView(MouseEvent event) {
-        beneficiaryBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:transparent;");
-        statBtn.setStyle("-fx-background-radius: 10px 10px 0px 0px;-fx-border-width: 0 0 12 0;-fx-border-color:#FFA000;");
-
     }
 
     @FXML

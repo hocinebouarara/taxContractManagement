@@ -5,6 +5,7 @@
  */
 package beneficiaries;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import helpres.DbConnect;
 import java.net.URL;
@@ -17,11 +18,13 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import models.Beneficiaire;
@@ -90,6 +93,14 @@ public class AddBeneficiaryController implements Initializable {
     Beneficiaire beneficiaire = null;
     private boolean update = false;
     int beneficiaireId;
+    @FXML
+    private Button continuerBtn;
+    @FXML
+    private Button Clean;
+    @FXML
+    private Button enregistreBtn;
+    @FXML
+    private Button Clean1;
 
     /**
      * Initializes the controller class.
@@ -102,19 +113,26 @@ public class AddBeneficiaryController implements Initializable {
         /* adressField.setOnMouseClicked((event) -> {
             adressField.setStyle("-fx-border-color:#123456");
         });*/
+        personnelsBtn.setTooltip(new Tooltip("Les informations personnelles "));
+        metierBtn.setTooltip(new Tooltip("Les informations de métier"));
+        
+        continuerBtn.setTooltip(new Tooltip("Passer à l'étape suivante"));
+        Clean.setTooltip(new Tooltip("Vider les champs  "));
+        enregistreBtn.setTooltip(new Tooltip("La sauvegarde des données"));
+        Clean1.setTooltip(new Tooltip("Passer à l'étape suivante"));
     }
 
     @FXML
     private void getPersonnelsView() {
-        personnelsBtn.setStyle("-fx-background-color:white;-fx-border-width:1.6px;-fx-border-color:#123456;-fx-border-radius:5px;");
-        metierBtn.setStyle("-fx-background-color:#DDD;");
+        personnelsBtn.setStyle("-fx-background-color:white;-fx-background-radius:5px;-fx-border-width:1.6px;-fx-border-color:#0746a6;-fx-border-radius:5px;");
+        metierBtn.setStyle("-fx-background-color:#ddd;");
         metierInfoAnchor.setVisible(false);
         personnelsInfoAnchor.setVisible(true);
     }
 
     @FXML
     private void getMetierView(MouseEvent event) {
-        metierBtn.setStyle("-fx-background-color:white;-fx-border-width:1.6px;-fx-border-color:#123456;-fx-border-radius:5px;");
+        metierBtn.setStyle("-fx-background-color:white;-fx-background-radius:5px;-fx-border-width:1.6px;-fx-border-color:#0746a6;-fx-border-radius:5px;");
         personnelsBtn.setStyle("-fx-background-color:#DDD;");
         metierInfoAnchor.setVisible(true);
         personnelsInfoAnchor.setVisible(false);
@@ -158,11 +176,6 @@ public class AddBeneficiaryController implements Initializable {
             getQuery();
             insert();
             clean();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setContentText("Ajouté avec succès");
-            alert.showAndWait();
-
         }
     }
 
@@ -189,10 +202,6 @@ public class AddBeneficiaryController implements Initializable {
         dateFld.setValue(null);
         AutresFld.setText(null);
 
-    }
-
-    @FXML
-    private void next(MouseEvent event) {
     }
 
     public void setTextFields(int id, String name, Date birth, String commune, String wilaya, String fatherName,
@@ -265,11 +274,11 @@ public class AddBeneficiaryController implements Initializable {
                     + "`date_agrement`=?,"
                     + "`autres`=?,"
                     + "`date`=? WHERE id = '" + beneficiaireId + "'";
-            
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText("modifier avec succès");
-                alert.showAndWait();
+            alert.setHeaderText(null);
+            alert.setContentText("modifier avec succès");
+            alert.showAndWait();
 
         }
     }
@@ -305,4 +314,5 @@ public class AddBeneficiaryController implements Initializable {
             Logger.getLogger(AddProprietorController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }

@@ -27,19 +27,19 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import models.Beneficiaire;
-import models.Proprietor;
-import proprietors.AddProprietorController;
 import proprietors.ProprietorsViewController;
 
 /**
@@ -202,34 +202,51 @@ public class BeneficiairesTableController implements Initializable {
 
                         deleteIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
+                                + "-glyph-size:20px;"
                                 + "-fx-fill:#ff1744;"
                         );
                         editIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
+                                + "-glyph-size:20px;"
                                 + "-fx-fill:#00E676;"
                         );
+
+                        Tooltip tooltip = new Tooltip();
+                        tooltip.setGraphic(new FontAwesomeIconView());
+                        Tooltip.install(deleteIcon, new Tooltip("Supprimer cet élément"));
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
-                            try {
-
-                                beneficiaire = beneficiairesTable.getSelectionModel().getSelectedItem();
-                                query = "DELETE FROM `beneficiaire` WHERE id  =" + beneficiaire.getId();
-                                connection = DbConnect.getConnect();
-                                preparedStatement = connection.prepareStatement(query);
-                                preparedStatement.execute();
-                                refreshTable();
-                                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                                alert.setHeaderText(null);
-                                alert.setContentText("supprimé avec succès");
-                                alert.showAndWait();
-
-                            } catch (SQLException ex) {
-                                Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                            ButtonType ok = new ButtonType("d'accord");
+                            ButtonType cancel = new ButtonType("Rook");
+                            Alert a = new Alert(AlertType.CONFIRMATION, "Promote pawn to:", ok, cancel);
+                            a.setResizable(true);
+                            a.setContentText("Voulez-vous supprimer cet élément");
+                            a.showAndWait().ifPresent(response -> {
+                                if (response == ok) {
+                                    try {
+                                        // promote to queen...
+                                        beneficiaire = beneficiairesTable.getSelectionModel().getSelectedItem();
+                                        query = "DELETE FROM `beneficiaire` WHERE id  =" + beneficiaire.getId();
+                                        connection = DbConnect.getConnect();
+                                        preparedStatement = connection.prepareStatement(query);
+                                        preparedStatement.execute();
+                                        refreshTable();
+                                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.setHeaderText(null);
+                                        alert.setContentText("Supprimé avec succès");
+                                        alert.showAndWait();
+                                    } catch (SQLException ex) {
+                                        Logger.getLogger(BeneficiairesTableController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                } else if (response == cancel) {
+                                    // promote to rook...
+                                }
+                            });
 
                         });
+                        Tooltip tooltip1 = new Tooltip();
+                        tooltip1.setGraphic(new FontAwesomeIconView());
+                        Tooltip.install(editIcon, new Tooltip("Modifier cet élément"));
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
 
                             beneficiaire = beneficiairesTable.getSelectionModel().getSelectedItem();
