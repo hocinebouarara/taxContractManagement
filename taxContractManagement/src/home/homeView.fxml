@@ -59,24 +59,6 @@
                         <Font name="MV Boli" size="24.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="230.0">
-                     <children>
-                        <Button fx:id="propaBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getPropaView" prefHeight="90.0" prefWidth="288.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Propriétés" textFill="#fffffff7">
-                           <font>
-                              <Font name="MV Boli" size="22.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="BUILDING" scaleX="1.18" size="30" translateX="-8.7" />
-                           </graphic>
-                           <padding>
-                              <Insets left="34.0" />
-                           </padding>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="230.0">
                      <children>
                         <Button fx:id="proprBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getProprView" prefHeight="90.0" prefWidth="321.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Propriétaires" textFill="#fffffff7">
@@ -98,18 +80,18 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" prefHeight="60.0" prefWidth="230.0">
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="230.0">
                      <children>
-                        <Button fx:id="contratBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getContratsView" prefHeight="90.0" prefWidth="312.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Contrats" textFill="#fffffff7">
+                        <Button fx:id="propaBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getPropaView" prefHeight="90.0" prefWidth="288.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Propriétés" textFill="#fffffff7">
                            <font>
                               <Font name="MV Boli" size="22.0" />
                            </font>
-                           <padding>
-                              <Insets left="35.0" />
-                           </padding>
                            <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="FILE_TEXT" scaleX="1.1" size="30" translateX="-10.0" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="BUILDING" scaleX="1.18" size="30" translateX="-8.7" />
                            </graphic>
+                           <padding>
+                              <Insets left="34.0" />
+                           </padding>
                         </Button>
                      </children>
                      <VBox.margin>
@@ -130,6 +112,24 @@
                            </padding>
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="USERS" scaleX="1.1" size="30" translateX="-7.0" />
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" prefHeight="60.0" prefWidth="230.0">
+                     <children>
+                        <Button fx:id="contratBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getContratsView" prefHeight="90.0" prefWidth="312.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Contrats" textFill="#fffffff7">
+                           <font>
+                              <Font name="MV Boli" size="22.0" />
+                           </font>
+                           <padding>
+                              <Insets left="35.0" />
+                           </padding>
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="FILE_TEXT" scaleX="1.1" size="30" translateX="-10.0" />
                            </graphic>
                         </Button>
                      </children>
@@ -160,7 +160,7 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="415.0" prefHeight="60.0" prefWidth="230.0">
                      <children>
-                        <Button fx:id="documentsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getDocumentsView" prefHeight="90.0" prefWidth="275.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Approntisage" textFill="#fffffff7">
+                        <Button fx:id="documentsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getDocumentsView" prefHeight="90.0" prefWidth="275.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Apprentisage" textFill="#fffffff7">
                            <font>
                               <Font name="MV Boli" size="22.0" />
                            </font>
