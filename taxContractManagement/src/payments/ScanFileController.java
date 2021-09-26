@@ -58,6 +58,10 @@ public class ScanFileController implements Initializable {
     private Group group = new Group();
     FileChooser Brows = new FileChooser();
     File file;
+    int idContrat = -1;
+    int proprietorId = -1;
+    int locataireId = -1;
+    int propertyId = -1;
 
     Controle c;
 
@@ -273,7 +277,7 @@ public class ScanFileController implements Initializable {
             if (direction.isEmpty() || wilaya.isEmpty() || inspection.isEmpty()
                     || recette.isEmpty() || propr.isEmpty() || proprAdress.isEmpty()
                     || nif.isEmpty() || article.isEmpty() || adressLoue.isEmpty()
-                    || montant.isEmpty() || preneur.isEmpty() || occupation.isEmpty() ) {
+                    || montant.isEmpty() || preneur.isEmpty() || occupation.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
                 alert.setContentText("Selectionner un document avant de la verification ");
@@ -281,11 +285,11 @@ public class ScanFileController implements Initializable {
 
             } else {
 
-                getDataControle(article);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText("verification avec succès");
-                alert.showAndWait();
+                getIdControle(articleFld.getText());
+                getIds(idContrat);
+                getProprietorId();
+                getLocataireData();
+                getProprietorData();
 
             }
 
@@ -316,105 +320,115 @@ public class ScanFileController implements Initializable {
         }
     }
 
-    public static int getIdControle(String article) {
+    public int getIdControle(String article) {
         int i = -1;
+
         try {
-            String Sql = "SELECT `id` FROM `fiche_de_control` WHERE `Article_imposition`=" + article;
-            Connection connection = (Connection) DbConnect.getConnect();
-            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(Sql);
-            ResultSetImpl resultSet = (ResultSetImpl) preparedStatement.executeQuery();
-            resultSet.next();
-            i = resultSet.getInt(1);
-            System.out.println("payments.ScanFileController.getLastIdPayment()" + i);
 
-        } catch (SQLException e) {
+            String Sql = "SELECT * FROM `fiche_de_control` WHERE `Article_imposition`=" + article;
+            Connection connection2 = (Connection) DbConnect.getConnect();
+            PreparedStatement preparedStatement2 = (PreparedStatement) connection2.prepareStatement(Sql);
+            ResultSet resultSet2 = (ResultSet) preparedStatement2.executeQuery();
+            resultSet2.next();
+            i = resultSet2.getInt(1);
+            idContrat = resultSet2.getInt(15);
 
+            String direction = resultSet2.getString(2);
+            String inspection = resultSet2.getString(3);
+            String recette = resultSet2.getString(4);
+            String wilaya = resultSet2.getString(9);
+            String nif = resultSet2.getString(8);
+
+            directionFld.setText(direction);
+            inspectionFld.setText(inspection);
+            recetteFld.setText(recette);
+            wilayaFld.setText(wilaya);
+            nifFld.setText(nif);
+
+            return i;
+        } catch (SQLException ex) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Cette propriete n'existe pas vérifier le numéro d'article");
+            alert.showAndWait();
         }
         return i;
     }
 
-    public void getDataControle(String article) {
+    public void getIds(int id) {
+
         try {
+            String Sql4 = "SELECT `id`, `id_benef`, `id_fiche_hab`, `type_contr`, `date`, `date_fin`, `montant`, `n_acie`, `periodes_imposition` FROM `contrat` WHERE  `id`=" + id;
+            Connection connection4 = (Connection) DbConnect.getConnect();
+            PreparedStatement preparedStatement4 = (PreparedStatement) connection4.prepareStatement(Sql4);
+            ResultSet resultSet4 = (ResultSet) preparedStatement4.executeQuery();
+            resultSet4.next();
+            propertyId = resultSet4.getInt("id_fiche_hab");
+            locataireId = resultSet4.getInt("id_benef");
+            String period = resultSet4.getString("periodes_imposition");
 
-            String query1 = "SELECT\n"
-                    + "    fiche_de_control.id,\n"
-                    + "    contrat.id,\n"
-                    + "    contrat.type_contr,\n"
-                    + "    contrat.date,\n"
-                    + "    contrat.date_fin,\n"
-                    + "    contrat.montant,\n"
-                    + "    contrat.n_acie,\n"
-                    + "    contrat.periodes_imposition,\n"
-                    + "    contrat.id_fiche_hab,\n"
-                    + "    proprietaire.id,\n"
-                    + "    proprietaire.nom_prenom_or_RS,\n"
-                    + "    proprietaire.date_nss,\n"
-                    + "    proprietaire.commune,\n"
-                    + "    proprietaire.wilaya,\n"
-                    + "    proprietaire.pere,\n"
-                    + "    proprietaire.mere,\n"
-                    + "    proprietaire.nationalite,\n"
-                    + "    proprietaire.telephone,\n"
-                    + "    proprietaire.adress,\n"
-                    + "    beneficiaire.id,\n"
-                    + "    beneficiaire.nom_prenom_or_RS,\n"
-                    + "    beneficiaire.date_nss,\n"
-                    + "    beneficiaire.commune,\n"
-                    + "    beneficiaire.wilaya,\n"
-                    + "    beneficiaire.prenom_pere,\n"
-                    + "    beneficiaire.nom_mere,\n"
-                    + "    beneficiaire.nationalite,\n"
-                    + "    beneficiaire.adresse_domicile,\n"
-                    + "    fiche_de_control.direction,\n"
-                    + "    fiche_de_control.inscpection,\n"
-                    + "    fiche_de_control.Recette,\n"
-                    + "    fiche_de_control.Annee,\n"
-                    + "    fiche_de_control.Designation,\n"
-                    + "    fiche_de_control.NiS,\n"
-                    + "    fiche_de_control.NIF,\n"
-                    + "    fiche_de_control.Wilaya,\n"
-                    + "    fiche_de_control.Activity,\n"
-                    + "    fiche_de_control.Code_d_activity,\n"
-                    + "    fiche_de_control.Forme_Juridique,\n"
-                    + "    fiche_de_control.Adress,\n" + "    fiche_de_control.Article_imposition\n"
-                    + "FROM\n"
-                    + "    fiche_de_control\n"
-                    + "INNER JOIN contrat ON contrat.id = fiche_de_control.id_fiscal\n"
-                    + "INNER JOIN beneficiaire ON beneficiaire.id = contrat.id_benef\n"
-                    + "INNER JOIN fiche_habitation ON fiche_habitation.id = contrat.id_fiche_hab\n"
-                    + "INNER JOIN proprietaire ON fiche_habitation.id_propr = proprietaire.id\n"
-                    + "  WHERE  `Article_imposition`=" + article+";";
-            
-            
-            
-            
-            PreparedStatement preparedStatement1= connection.prepareStatement(query1);
-             ResultSet resultSet1 = preparedStatement1.executeQuery();
-            resultSet1.next();
-
-            directionFld.setText(resultSet1.getString("fiche_de_control.direction"));
-            wilayaFld.setText(resultSet1.getString("fiche_de_control.Wilaya"));
-            inspectionFld.setText(resultSet1.getString("fiche_de_control.inscpection"));
-            recetteFld.setText(resultSet1.getString("fiche_de_control.Recette"));
-            ProprietaireFld.setText(resultSet1.getString("proprietaire.nom_prenom_or_RS"));
-            proprAdressFld.setText(resultSet1.getString("proprietaire.adress"));
-            nifFld.setText(resultSet1.getString("fiche_de_control.NIF"));
-            articleFld.setText(resultSet1.getString("fiche_de_control.Article_imposition"));
-            adresseLoueFld.setText(resultSet1.getString("fiche_de_control.Adress"));
-            preneurFld.setText(resultSet1.getString("beneficiaire.nom_prenom_or_RS"));
-
-            /* c.setId(resultSet.getInt("fiche_de_control.id"));
-            c.setContractId(resultSet.getInt("contrat.id"));
-            c.setContractType(resultSet.getString("contrat.type_contr"));
-            c.setStartDate(resultSet.getDate("contrat.date"));
-            c.setEndDate(resultSet.getDate("contrat.date_fin"));
-            c.setMontant(resultSet.getFloat("contrat.montant"));
-            c.setNumAcie(resultSet.getString("contrat.n_acie"));
-            c.setPeriodImpot(resultSet.getString("contrat.periodes_imposition"));
-            c.setFicheHabId(resultSet.getInt("contrat.id_fiche_hab"));*/
         } catch (SQLException ex) {
-            Logger.getLogger(FileControllerController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ScanFileController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
+
+    public void getLocataireData() {
+        try {
+            String Sql5 = "SELECT * FROM `beneficiaire` WHERE `id`=" + locataireId;
+            Connection connection5 = (Connection) DbConnect.getConnect();
+            PreparedStatement preparedStatement5 = (PreparedStatement) connection5.prepareStatement(Sql5);
+            ResultSet resultSet5 = (ResultSet) preparedStatement5.executeQuery();
+            resultSet5.next();
+            String preneur = resultSet5.getString(2);
+            preneurFld.setText(preneur);
+        } catch (SQLException ex) {
+            Logger.getLogger(ScanFileController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void getProprietorId() {
+        try {
+            String Sql6 = "SELECT * FROM `fiche_habitation` WHERE `id` =" + propertyId;
+            Connection connection6 = (Connection) DbConnect.getConnect();
+            PreparedStatement preparedStatement6 = (PreparedStatement) connection6.prepareStatement(Sql6);
+            ResultSet resultSet6 = (ResultSet) preparedStatement6.executeQuery();
+            resultSet6.next();
+
+            proprietorId = resultSet6.getInt(22);
+            String adress = resultSet6.getString(21);
+
+            adresseLoueFld.setText(adress);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ScanFileController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void getProprietorData() {
+        try {
+            String Sql7 = "SELECT * FROM `proprietaire` WHERE `id`=" + proprietorId;
+            Connection connection7 = (Connection) DbConnect.getConnect();
+            PreparedStatement preparedStatement7 = (PreparedStatement) connection7.prepareStatement(Sql7);
+            ResultSet resultSet7 = (ResultSet) preparedStatement7.executeQuery();
+            resultSet7.next();
+
+            String proprietorName = resultSet7.getString(2);
+            String proprietorAdress = resultSet7.getString(4);
+            ProprietaireFld.setText(proprietorName);
+            proprAdressFld.setText(proprietorAdress);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("verification avec succès");
+            alert.showAndWait();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ScanFileController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 }
