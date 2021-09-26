@@ -45,12 +45,12 @@
                      </HBox.margin>
                   </Button>
                   <Button fx:id="ScanBtn" alignment="CENTER" contentDisplay="TOP" layoutX="504.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#getScanView" prefHeight="92.0" prefWidth="150.0" style="-fx-background-color: #DDD;" text="Scanner">
-                     <graphic>
-                        <FontAwesomeIconView glyphName="INFO_CIRCLE" size="40" />
-                     </graphic>
                      <font>
                         <Font name="Ink Free" size="20.0" />
                      </font>
+                     <graphic>
+                        <MaterialDesignIconView glyphName="FULLSCREEN" size="40" wrappingWidth="45.666748046875" />
+                     </graphic>
                   </Button>
                </children>
                <VBox.margin>
