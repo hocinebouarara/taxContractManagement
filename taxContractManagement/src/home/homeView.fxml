@@ -160,7 +160,7 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="415.0" prefHeight="60.0" prefWidth="230.0">
                      <children>
-                        <Button fx:id="documentsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getDocumentsView" prefHeight="90.0" prefWidth="275.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Apprentisage" textFill="#fffffff7">
+                        <Button fx:id="documentsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#getDocumentsView" prefHeight="90.0" prefWidth="275.0" style="-fx-background-color: transparent;" styleClass="btn" stylesheets="@home.css" text="Apprentissage" textFill="#fffffff7">
                            <font>
                               <Font name="MV Boli" size="22.0" />
                            </font>
