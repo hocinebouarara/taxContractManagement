@@ -22,7 +22,7 @@
          <children>
             <HBox alignment="CENTER" prefWidth="980.0" style="-fx-background-color: white;">
                <children>
-                  <Button fx:id="contractBtn" alignment="CENTER" contentDisplay="TOP" layoutX="586.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#getContractView" prefHeight="92.0" prefWidth="150.0" style="-fx-background-color: #DDD;" text="Contrat">
+                  <Button fx:id="contractBtn" alignment="CENTER" contentDisplay="TOP" layoutX="586.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#getContractView" prefHeight="92.0" prefWidth="168.0" style="-fx-background-color: #DDD;" text="Contrat">
                      <graphic>
                         <FontAwesomeIconView glyphName="INFO_CIRCLE" size="40" />
                      </graphic>
@@ -33,7 +33,7 @@
                         <Insets left="4.0" right="4.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="ficheControleBtn" alignment="CENTER" contentDisplay="TOP" layoutX="677.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#getFicheControllerView" prefHeight="92.0" prefWidth="150.0" style="-fx-background-color: #DDD;" text="Fiche Controle">
+                  <Button fx:id="ficheControleBtn" alignment="CENTER" contentDisplay="TOP" layoutX="677.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#getFicheControllerView" prefHeight="92.0" prefWidth="175.0" style="-fx-background-color: #DDD;" text="Fiche de Controle">
                      <graphic>
                         <FontAwesomeIconView glyphName="INFO_CIRCLE" size="40" />
                      </graphic>
@@ -59,6 +59,396 @@
             </AnchorPane>
          </children>
       </VBox>
+      <AnchorPane fx:id="ficheControllerAnchor" prefHeight="406.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+         <children>
+            <VBox alignment="TOP_CENTER" layoutX="50.0" layoutY="6.0" prefHeight="385.0" prefWidth="716.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="229.0" prefWidth="880.0">
+                     <children>
+                        <VBox prefHeight="280.0" prefWidth="441.0">
+                           <children>
+                              <MaterialDesignIconView glyphName="NUMERIC_1_BOX" size="32" wrappingWidth="30.66668701171875" />
+                              <HBox spacing="6.0">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <VBox prefHeight="48.0" prefWidth="360.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inspection " wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="inspectionFld" prefHeight="0.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="360.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Direction" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="directionFld" prefHeight="0.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <VBox prefHeight="58.0" prefWidth="329.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recette" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="recetteFld" prefHeight="42.0" prefWidth="395.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER">
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <VBox prefHeight="58.0" prefWidth="272.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Annee" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="anneeFld" prefHeight="0.0" prefWidth="367.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="54.0" prefWidth="400.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Designation" wrappingWidth="161.13671875">
+                                       <font>
+                                          <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Text>
+                                    <TextField fx:id="designationFld" prefHeight="33.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="21.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="280.0" prefWidth="462.0">
+                           <children>
+                              <MaterialDesignIconView glyphName="NUMERIC_2_BOX" size="32" />
+                              <HBox layoutX="10.0" layoutY="69.0" prefHeight="54.0" prefWidth="442.0">
+                                 <children>
+                                    <VBox prefHeight="17.0" prefWidth="429.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NIS" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="nisFld" prefHeight="0.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="7.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="429.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NIF" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="nifFld" prefHeight="0.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="118.0" prefHeight="19.0" prefWidth="721.0">
+                                 <children>
+                                    <VBox prefHeight="54.0" prefWidth="429.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Activite" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="activityFld" prefHeight="0.0" prefWidth="340.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="7.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="54.0" prefWidth="429.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Code de activite" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="codeActivityFld" prefHeight="0.0" prefWidth="340.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="59.0" prefHeight="19.0" prefWidth="721.0">
+                                 <children>
+                                    <VBox prefHeight="50.0" prefWidth="429.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Form juridique" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="FormJurdFld" prefHeight="0.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="7.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="429.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Article d'imposition" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="articleImpotFld" prefHeight="0.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="108.0" prefHeight="19.0" prefWidth="721.0">
+                                 <children>
+                                    <VBox prefHeight="54.0" prefWidth="429.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wilaya" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="wilayaFld" prefHeight="0.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="7.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="54.0" prefWidth="429.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="adressFld" prefHeight="0.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="39.0" prefWidth="721.0">
+                     <children>
+                        <Line endX="100.0" startX="-60.0" stroke="#123456" strokeWidth="1.6">
+                           <HBox.margin>
+                              <Insets right="1.0" />
+                           </HBox.margin>
+                        </Line>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#save" prefWidth="186.0" styleClass="buttons" text="Enregistre">
+                           <font>
+                              <Font name="MV Boli" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Line endX="100.0" layoutX="698.0" layoutY="33.0" startX="-28.0" stroke="#123456" strokeWidth="1.6">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Line>
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Annuler">
+                           <font>
+                              <Font name="MV Boli" size="18.0" />
+                           </font>
+                        </Button>
+                        <Line endX="100.0" startX="-60.0" stroke="#123456" strokeWidth="1.6">
+                           <HBox.margin>
+                              <Insets left="1.0" />
+                           </HBox.margin>
+                        </Line>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="36.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="ContractAnchor" layoutX="10.0" layoutY="114.0" prefHeight="406.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="371.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
@@ -76,10 +466,10 @@
                                     </MaterialDesignIconView>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="397.0">
                                        <children>
-                                          <FontAwesomeIconView fill="#123456" glyphName="SEARCH" size="25" wrappingWidth="31.0" />
-                                          <TextField prefWidth="248.0" promptText="Searching for Item" style="-fx-background-radius: 20px;">
+                                          <FontAwesomeIconView glyphName="SEARCH" size="25" wrappingWidth="31.0" />
+                                          <TextField prefWidth="248.0" promptText="Rechercher  " style="-fx-background-radius: 20px;">
                                              <font>
-                                                <Font name="Ink Free" size="13.0" />
+                                                <Font name="MV Boli" size="13.0" />
                                              </font>
                                              <HBox.margin>
                                                 <Insets right="12.0" />
@@ -155,15 +545,15 @@
                                  <children>
                                     <VBox prefHeight="48.0" prefWidth="360.0">
                                        <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Proprietaire" wrappingWidth="161.13671875">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Proprietaire" wrappingWidth="161.13671875">
                                              <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
                                           </Text>
-                                          <TextField fx:id="ProprietaireFld" prefHeight="0.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                          <TextField fx:id="ProprietaireFld" prefHeight="0.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
                                              <font>
                                                 <Font name="Zilla Slab Medium" size="21.0" />
                                              </font>
@@ -175,15 +565,15 @@
                                     </VBox>
                                     <VBox layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="360.0">
                                        <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Bénéficiaire" wrappingWidth="161.13671875">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bénéficiaire" wrappingWidth="161.13671875">
                                              <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
                                           </Text>
-                                          <TextField fx:id="nomBenefiFld" prefHeight="0.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                          <TextField fx:id="nomBenefiFld" prefHeight="0.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
                                              <font>
                                                 <Font name="Zilla Slab Medium" size="21.0" />
                                              </font>
@@ -197,15 +587,15 @@
                               </HBox>
                               <VBox prefHeight="54.0" prefWidth="410.0">
                                  <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Type de Contract" wrappingWidth="161.13671875">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type de Contract" wrappingWidth="161.13671875">
                                        <font>
-                                          <Font name="Zilla Slab Light Italic" size="12.0" />
+                                          <Font name="Zilla Slab Medium Italic" size="12.0" />
                                        </font>
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
                                     </Text>
-                                    <TextField fx:id="contractTypeFld" prefHeight="42.0" prefWidth="423.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                    <TextField fx:id="contractTypeFld" prefHeight="42.0" prefWidth="423.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
                                        <font>
                                           <Font name="Zilla Slab Medium" size="21.0" />
                                        </font>
@@ -222,15 +612,15 @@
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="58.0" prefWidth="216.0">
                                        <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Date  " translateY="0.6" wrappingWidth="213.8033447265625">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date  " translateY="0.6" wrappingWidth="213.8033447265625">
                                              <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
                                           </Text>
-                                          <JFXDatePicker fx:id="startDateFld" defaultColor="#066b61" prefHeight="42.0" prefWidth="216.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px; -fx-font-size: 18px; -fx-padding: 0 10 0 18; -fx-alignment: center;" styleClass="textfld" translateY="0.6">
+                                          <JFXDatePicker fx:id="startDateFld" defaultColor="#066b61" prefHeight="42.0" prefWidth="216.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px; -fx-font-size: 18px; -fx-padding: 0 10 0 18; -fx-alignment: center;" styleClass="textfld" translateY="0.6">
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
@@ -239,15 +629,15 @@
                                     </VBox>
                                     <VBox alignment="CENTER" layoutX="214.0" layoutY="10.0" prefHeight="58.0" prefWidth="216.0">
                                        <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Date  de fin " translateY="0.6" wrappingWidth="213.8033447265625">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date  de fin " translateY="0.6" wrappingWidth="213.8033447265625">
                                              <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
                                           </Text>
-                                          <JFXDatePicker fx:id="finDateFld" defaultColor="#066b61" prefHeight="42.0" prefWidth="216.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px; -fx-font-size: 18px; -fx-padding: 0 10 0 18; -fx-alignment: center;" styleClass="textfld" translateY="0.6">
+                                          <JFXDatePicker fx:id="finDateFld" defaultColor="#066b61" prefHeight="42.0" prefWidth="216.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px; -fx-font-size: 18px; -fx-padding: 0 10 0 18; -fx-alignment: center;" styleClass="textfld" translateY="0.6">
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
@@ -266,15 +656,15 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant" wrappingWidth="161.13671875">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Montant" wrappingWidth="161.13671875">
                                              <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
                                           </Text>
-                                          <TextField fx:id="montantFld" prefHeight="33.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                          <TextField fx:id="montantFld" prefHeight="33.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
                                              <font>
                                                 <Font name="Zilla Slab Medium" size="21.0" />
                                              </font>
@@ -286,15 +676,15 @@
                                     </VBox>
                                     <VBox layoutX="94.0" layoutY="10.0">
                                        <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="N° acie" wrappingWidth="161.13671875">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="N° acie" wrappingWidth="161.13671875">
                                              <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
                                           </Text>
-                                          <TextField fx:id="numAcieFld" prefHeight="33.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                          <TextField fx:id="numAcieFld" prefHeight="33.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
                                              <font>
                                                 <Font name="Zilla Slab Medium" size="21.0" />
                                              </font>
@@ -336,399 +726,9 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Annuler" textFill="#123456">
                            <font>
                               <Font name="Ink Free" size="18.0" />
-                           </font>
-                        </Button>
-                        <Line endX="100.0" startX="-60.0" stroke="#123456" strokeWidth="1.6">
-                           <HBox.margin>
-                              <Insets left="1.0" />
-                           </HBox.margin>
-                        </Line>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="36.0" />
-                     </VBox.margin>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="ficheControllerAnchor" prefHeight="406.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
-         <children>
-            <VBox alignment="TOP_CENTER" layoutX="50.0" layoutY="6.0" prefHeight="385.0" prefWidth="716.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="229.0" prefWidth="880.0">
-                     <children>
-                        <VBox prefHeight="280.0" prefWidth="441.0">
-                           <children>
-                              <MaterialDesignIconView glyphName="NUMERIC_1_BOX" size="32" wrappingWidth="30.66668701171875" />
-                              <HBox spacing="6.0">
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                                 <children>
-                                    <VBox prefHeight="48.0" prefWidth="360.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Inspection " wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="inspectionFld" prefHeight="0.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="360.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Direction" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="directionFld" prefHeight="0.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER">
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                                 <children>
-                                    <VBox prefHeight="58.0" prefWidth="329.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Recette" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="recetteFld" prefHeight="42.0" prefWidth="395.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER">
-                                 <VBox.margin>
-                                    <Insets top="4.0" />
-                                 </VBox.margin>
-                                 <children>
-                                    <VBox prefHeight="58.0" prefWidth="272.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Annee" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="anneeFld" prefHeight="0.0" prefWidth="367.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <VBox prefHeight="54.0" prefWidth="400.0">
-                                 <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Designation" wrappingWidth="161.13671875">
-                                       <font>
-                                          <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </Text>
-                                    <TextField fx:id="designationFld" prefHeight="33.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                       <font>
-                                          <Font name="Zilla Slab Medium" size="21.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </TextField>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </VBox>
-                           </children>
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </VBox>
-                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="280.0" prefWidth="462.0">
-                           <children>
-                              <MaterialDesignIconView glyphName="NUMERIC_2_BOX" size="32" />
-                              <HBox layoutX="10.0" layoutY="69.0" prefHeight="54.0" prefWidth="442.0">
-                                 <children>
-                                    <VBox prefHeight="17.0" prefWidth="429.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="nisFld" prefHeight="0.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets right="7.0" />
-                                       </HBox.margin>
-                                    </VBox>
-                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="429.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="nifFld" prefHeight="0.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox layoutX="10.0" layoutY="118.0" prefHeight="19.0" prefWidth="721.0">
-                                 <children>
-                                    <VBox prefHeight="54.0" prefWidth="429.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Activite" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="activityFld" prefHeight="0.0" prefWidth="340.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets right="7.0" />
-                                       </HBox.margin>
-                                    </VBox>
-                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="54.0" prefWidth="429.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Code de activite" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="codeActivityFld" prefHeight="0.0" prefWidth="340.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox layoutX="10.0" layoutY="59.0" prefHeight="19.0" prefWidth="721.0">
-                                 <children>
-                                    <VBox prefHeight="50.0" prefWidth="429.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Form juridique" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="FormJurdFld" prefHeight="0.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets right="7.0" />
-                                       </HBox.margin>
-                                    </VBox>
-                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="429.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Article d'imposition" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="articleImpotFld" prefHeight="0.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox layoutX="10.0" layoutY="108.0" prefHeight="19.0" prefWidth="721.0">
-                                 <children>
-                                    <VBox prefHeight="54.0" prefWidth="429.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Wilaya" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="wilayaFld" prefHeight="0.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets right="7.0" />
-                                       </HBox.margin>
-                                    </VBox>
-                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="54.0" prefWidth="429.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Medium Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="adressFld" prefHeight="0.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-border-color: #123456; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                           </children>
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </VBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="39.0" prefWidth="721.0">
-                     <children>
-                        <Line endX="100.0" startX="-60.0" stroke="#123456" strokeWidth="1.6">
-                           <HBox.margin>
-                              <Insets right="1.0" />
-                           </HBox.margin>
-                        </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#save" prefWidth="186.0" styleClass="buttons" text="Enregistre">
-                           <font>
-                              <Font name="MV Boli" size="18.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Line endX="100.0" layoutX="698.0" layoutY="33.0" startX="-28.0" stroke="#123456" strokeWidth="1.6">
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider">
-                           <font>
-                              <Font name="MV Boli" size="18.0" />
                            </font>
                         </Button>
                         <Line endX="100.0" startX="-60.0" stroke="#123456" strokeWidth="1.6">

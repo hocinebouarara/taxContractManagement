@@ -16,6 +16,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -93,11 +95,14 @@ public class FileControllerController implements Initializable {
     @FXML
     private TableColumn<Controle, String> actionsCol;
 
-    String query = null;
+    String query = null, query1 = null;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     Controle controle = null;
+
+    int years = 0, months = 0, days = 0;
+    float onlyMonths = (float) 0.0;
 
     ObservableList<Controle> controlesList = FXCollections.observableArrayList();
     @FXML
@@ -118,6 +123,10 @@ public class FileControllerController implements Initializable {
                 Controle c = new Controle();
                 try {
 
+                   
+                    
+                    
+                    
                     query = "SELECT\n"
                             + "    fiche_de_control.id,\n"
                             + "    contrat.id,\n"
@@ -405,6 +414,53 @@ public class FileControllerController implements Initializable {
         actionsCol.setCellFactory(cellFoctory);
         controleTable.setItems(controlesList);
 
+    }
+
+    public void sendNotification() {
+
+        String typePeriod = null;
+        LocalDate startDate = null, endDate = null;
+
+        try {
+            Connection conn = DbConnect.getConnect();
+            PreparedStatement preparedStatement1 = conn.prepareStatement(query1);
+            ResultSet resultSet1 = preparedStatement1.executeQuery();
+            resultSet1.next();
+            startDate = resultSet1.getDate(4).toLocalDate();
+            endDate = resultSet1.getDate(5).toLocalDate();
+             typePeriod = resultSet1.getString(8);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FileControllerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void findDifference(LocalDate start_date, LocalDate end_date) {
+
+        // find the period between
+        // the start and end date
+        Period period = Period.between(start_date, end_date);
+
+        years = period.getYears();
+        months = period.getMonths();
+        days = period.getDays();
+
+        onlyMonths = 12 * years + months + days / 30;
+
+        // Print the date difference
+        // in years, months, and days
+        System.out.print(
+                "Difference "
+                + "between two dates is: ");
+
+        // Print the result
+        System.out.printf(
+                "%d years, %d months"
+                + " and %d days ",
+                period.getYears(),
+                period.getMonths(),
+                period.getDays());
     }
 
 }

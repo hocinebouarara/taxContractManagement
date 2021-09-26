@@ -22,9 +22,9 @@
                         <Font name="Comic Sans MS Bold" size="26.0" />
                      </font>
                   </Text>
-                  <VBox prefWidth="153.0">
+                  <VBox prefHeight="52.0" prefWidth="213.0">
                      <children>
-                        <JFXButton fx:id="ficheContBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getControllerView" prefWidth="153.0" ripplerFill="#123456" styleClass="buttons" text="Fiche Controle">
+                        <JFXButton fx:id="ficheContBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getControllerView" prefHeight="41.0" prefWidth="223.0" ripplerFill="#123456" styleClass="buttons" text="Fiches des Controles">
                            <font>
                               <Font name="Zilla Slab Medium" size="18.0" />
                            </font>
@@ -35,7 +35,7 @@
                               <Insets />
                            </VBox.margin>
                            <graphic>
-                              <FontAwesomeIconView glyphName="EURO" size="30" />
+                              <FontAwesomeIconView fill="#0746a6" glyphName="FILE_TEXT" size="30" />
                            </graphic>
                         </JFXButton>
                      </children>
@@ -45,7 +45,7 @@
                   </VBox>
                   <VBox layoutX="173.0" layoutY="10.0" prefWidth="153.0">
                      <children>
-                        <JFXButton fx:id="versementBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getVersementView" prefHeight="25.0" prefWidth="153.0" ripplerFill="#123456" text="Versement">
+                        <JFXButton fx:id="versementBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getVersementView" prefHeight="25.0" prefWidth="153.0" ripplerFill="#123456" text="Versements">
                            <font>
                               <Font name="Zilla Slab Medium" size="18.0" />
                            </font>
@@ -53,7 +53,7 @@
                               <Insets />
                            </VBox.margin>
                            <graphic>
-                              <FontAwesomeIconView glyphName="LINE_CHART" size="30" />
+                              <FontAwesomeIconView fill="#0746a7" glyphName="EURO" size="30" />
                            </graphic>
                            <styleClass>
                               <String fx:value="buttons" />
@@ -70,7 +70,7 @@
                         <Insets top="3.0" />
                      </HBox.margin>
                      <children>
-                        <JFXButton alignment="CENTER_RIGHT" onMouseClicked="#getAddVersementView" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: Black; -fx-background-radius: 8 8 0 8;" styleClass="MenuBar">
+                        <JFXButton alignment="CENTER_RIGHT" onMouseClicked="#getAddVersementView" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #0746a7; -fx-background-radius: 8 8 0 8;" styleClass="MenuBar">
                            <font>
                               <Font size="1.0" />
                            </font>
