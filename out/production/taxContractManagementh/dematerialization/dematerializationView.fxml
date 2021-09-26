@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dematerialization.DematerializationViewController">
+   <children>
+      <Text layoutX="95.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selectionner Un Ber :">
+         <font>
+            <Font name="MS UI Gothic" size="23.0" />
+         </font></Text>
+      <Button fx:id="next" layoutX="348.0" layoutY="225.0" mnemonicParsing="false" onAction="#NextBtn" prefHeight="25.0" prefWidth="64.0" text="Suivant" />
+      <Button fx:id="brows" layoutX="460.0" layoutY="225.0" mnemonicParsing="false" onAction="#getDirectoryChooser" text="Parcourir" />
+      <JFXListView fx:id="listView" layoutX="92.0" layoutY="162.0" prefHeight="29.0" prefWidth="436.0" />
+      <Label fx:id="label" layoutX="92.0" layoutY="189.0" prefHeight="17.0" prefWidth="200.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

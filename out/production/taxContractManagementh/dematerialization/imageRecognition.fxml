@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.validation.NumberValidator?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="711.0" prefWidth="1343.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dematerialization.ImageRecognitionController">
+   <children>
+      <HBox fx:id="hbox1" alignment="CENTER_RIGHT" layoutX="-6.0" layoutY="5.0" prefHeight="706.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="BOTTOM_LEFT" prefHeight="706.0" prefWidth="969.0">
+               <children>
+                  <ScrollPane fx:id="scrollp1" prefHeight="651.0" prefWidth="962.0">
+                     <content>
+                        <ImageView fx:id="img" pickOnBounds="true" preserveRatio="true">
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                     </content>
+                  </ScrollPane>
+                  <HBox alignment="CENTER" prefHeight="50.0" stylesheets="@../../../../../../../Bureau/PhamacyCode/PhamacyCode/src/styling/somestyle.css">
+                     <children>
+                        <JFXButton fx:id="reset" buttonType="RAISED" styleClass="button_gray" text="Reset">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXButton fx:id="full" buttonType="RAISED" styleClass="button_gray" text="Full Screen">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+            <AnchorPane maxHeight="706.0" maxWidth="385.0" minHeight="706.0" minWidth="385.0" prefHeight="706.0" prefWidth="385.0" stylesheets="@../../../../../../../Bureau/PhamacyCode/PhamacyCode/src/styling/somestyle.css">
+               <children>
+                  <Label alignment="TOP_CENTER" layoutX="42.0" layoutY="7.0" text="Identification du Fournisseur" textAlignment="CENTER" textFill="#8a0e0e" AnchorPane.leftAnchor="42.0">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="12.0" layoutY="45.0" prefHeight="5.0" prefWidth="355.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="67.0" text="Longueur :" textFill="#8a0e0e" underline="true" AnchorPane.leftAnchor="44.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="44.0" layoutY="112.0" text="Largeur :" textFill="#8a0e0e" underline="true" AnchorPane.leftAnchor="44.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="width_field" labelFloat="true" layoutX="125.0" layoutY="58.0" opacity="0.61" prefHeight="25.0" prefWidth="53.0" promptText="W" />
+                  <JFXTextField fx:id="heith_field" labelFloat="true" layoutX="125.0" layoutY="103.0" opacity="0.61" prefHeight="25.0" prefWidth="53.0" promptText="H" />
+                  <Separator layoutX="185.0" layoutY="63.0" orientation="VERTICAL" prefHeight="77.0" prefWidth="4.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="196.0" layoutY="67.0" text="X :" underline="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="196.0" layoutY="112.0" text="Y :" underline="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField labelFloat="true" layoutX="227.0" layoutY="59.0" opacity="0.61" prefHeight="25.0" prefWidth="53.0" promptText="X " fx:id="x" />
+                  <JFXTextField fx:id="y" labelFloat="true" layoutX="227.0" layoutY="103.0" opacity="0.61" prefHeight="25.0" prefWidth="53.0" promptText="Y " />
+                  <Label alignment="CENTER" layoutX="49.0" layoutY="151.0" text="OCR :" textFill="#8a0e0e" underline="true" AnchorPane.leftAnchor="49.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXTextArea fx:id="Ocr_TextArea" layoutX="112.0" layoutY="151.0" prefHeight="86.0" prefWidth="177.0" promptText="Ocr" scrollLeft="1.0" scrollTop="1.0" styleClass="ocr" wrapText="true" />
+                  <Separator layoutX="5.0" layoutY="255.0" prefHeight="5.0" prefWidth="366.0" />
+                  <Label layoutX="8.0" layoutY="269.0" text="ID Fournisseur :" textFill="#8a0e0e" textOverrun="CENTER_ELLIPSIS" underline="true" AnchorPane.leftAnchor="8.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="four" disable="true" editable="false" layoutX="121.0" layoutY="265.0" opacity="0.72" prefHeight="25.0" prefWidth="61.0" promptText="fournisseur" />
+                  <Label layoutX="210.0" layoutY="269.0" text="ID Zone :" textFill="#8a0e0e" textOverrun="CENTER_ELLIPSIS" underline="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="zone_id" disable="true" editable="false" layoutX="276.0" layoutY="265.0" opacity="0.72" prefHeight="25.0" prefWidth="49.0" promptText="Zone" />
+                  <Label layoutX="6.0" layoutY="301.0" prefHeight="17.0" prefWidth="117.0" text="Nombre de Zones : " textFill="#8a0e0e" underline="true" AnchorPane.leftAnchor="8.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="nbr_Zone" disable="true" editable="false" layoutX="122.0" layoutY="297.0" opacity="0.72" prefHeight="25.0" prefWidth="59.0" promptText="NBR_zone" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="336.0" text="Champ de la Tble :" textFill="#8a0e0e" underline="true" AnchorPane.leftAnchor="8.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="paymentFlds" layoutX="249.0" layoutY="360.0" prefHeight="25.0" prefWidth="117.0" promptText="Champs de Av. Vers." />
+                  <JFXButton fx:id="Next" buttonType="RAISED" layoutX="137.0" layoutY="409.0" styleClass="button_gray" text="Next zone" />
+                  <JFXTextField fx:id="nbr_ligne" focusColor="#183079" labelFloat="true" layoutX="19.0" layoutY="513.0" prefHeight="18.0" prefWidth="61.0" promptText="Nbr ligne " />
+                  <JFXButton fx:id="deviser" buttonType="RAISED" layoutX="100.0" layoutY="513.0" onAction="#Devise_zone" prefHeight="25.0" prefWidth="144.0" styleClass="button_green" text="Scanner Multiple Lignes" />
+                  <JFXButton fx:id="Ajouter_four" buttonType="RAISED" layoutX="160.0" layoutY="594.0" onAction="#Ajouter_four_Action" styleClass="button_gray" text="sauvgarder four" />
+                  <Separator layoutX="47.0" layoutY="572.0" prefHeight="5.0" prefWidth="292.0" />
+                  <JFXButton fx:id="scn" buttonType="RAISED" layoutX="20.0" layoutY="422.0" ripplerFill="#d31515" styleClass="button_green" text="Scanner" />
+                  <JFXButton fx:id="demat" buttonType="RAISED" layoutX="51.0" layoutY="593.0" onAction="#HandleCorrectionButoon" prefHeight="27.0" prefWidth="99.0" ripplerFill="#d31515" styleClass="button_gray" text="Dematerialiser" />
+                  <JFXButton fx:id="open" buttonType="RAISED" layoutX="276.0" layoutY="594.0" onAction="#Parcourir" ripplerFill="#d31515" styleClass="select_button" text="Ouvrir" />
+                  <Label fx:id="lbl1" layoutX="12.0" layoutY="643.0" prefHeight="18.0" prefWidth="242.0" />
+                  <Label fx:id="lbl" layoutX="12.0" layoutY="661.0" prefHeight="18.0" prefWidth="242.0" />
+                  <Label layoutX="17.0" layoutY="577.0" prefHeight="18.0" prefWidth="35.0" text="Path :" AnchorPane.bottomAnchor="9.0" />
+                  <Label fx:id="lv1" layoutX="55.0" layoutY="679.0" prefHeight="18.0" prefWidth="315.0" />
+                  <JFXTextField fx:id="ligne_id" disable="true" editable="false" layoutX="317.0" layoutY="513.0" opacity="0.72" prefHeight="25.0" prefWidth="49.0" promptText="Zone" text="Ligne" />
+                  <Label layoutX="253.0" layoutY="517.0" text="No Ligne:" textFill="#8a0e0e" textOverrun="CENTER_ELLIPSIS" underline="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <NumberValidator layoutX="139.0" layoutY="480.0" />
+                  <Separator layoutX="44.0" layoutY="451.0" prefHeight="5.0" prefWidth="292.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="472.0" text="Table Produit :" textFill="#8a0e0e" underline="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXRadioButton fx:id="contractBtn" layoutX="132.0" layoutY="367.0" text="Contrats" />
+                  <JFXRadioButton fx:id="avisVersementBtn" layoutX="-5.0" layoutY="367.0" prefHeight="17.0" prefWidth="125.0" text="Br. avis de vers" />
+                  <JFXComboBox fx:id="contractsFlds" layoutX="249.0" layoutY="360.0" prefHeight="25.0" prefWidth="117.0" promptText="Champs de contrat" />
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
