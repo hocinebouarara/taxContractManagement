@@ -290,7 +290,7 @@
                               <Insets right="1.0" />
                            </HBox.margin>
                         </Line>
-                        <Button fx:id="enregisterBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#save" prefWidth="186.0" styleClass="buttons" text="Enregister" textFill="#123456">
+                        <Button fx:id="enregisterBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#save" prefWidth="186.0" styleClass="buttons" text="Enregister">
                            <font>
                               <Font name="MV Boli" size="18.0" />
                            </font>
@@ -303,7 +303,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Line>
-                        <Button fx:id="viderBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
+                        <Button fx:id="viderBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Annuler">
                            <font>
                               <Font name="MV Boli" size="18.0" />
                            </font>
