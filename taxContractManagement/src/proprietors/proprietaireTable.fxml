@@ -18,17 +18,17 @@
                <children>
                   <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="930.0">
                      <children>
-                        <FontAwesomeIconView fill="#6b6363" glyphName="SEARCH" size="30" wrappingWidth="31.0">
+                        <FontAwesomeIconView glyphName="SEARCH" size="30" wrappingWidth="31.0">
                            <HBox.margin>
                               <Insets left="8.0" />
                            </HBox.margin>
                         </FontAwesomeIconView>
-                        <TextField prefHeight="37.0" prefWidth="449.0" promptText="Searching for Item" style="-fx-background-radius: 20px;">
+                        <TextField prefHeight="37.0" prefWidth="449.0" promptText="Rechercher" style="-fx-background-radius: 20px;">
                            <HBox.margin>
                               <Insets right="4.0" />
                            </HBox.margin>
                            <font>
-                              <Font name="Century Gothic" size="16.0" />
+                              <Font name="MV Boli" size="16.0" />
                            </font>
                         </TextField>
                      </children>

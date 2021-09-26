@@ -56,7 +56,7 @@
                               <MaterialDesignIconView glyphName="NUMERIC_1_BOX" size="32" />
                               <VBox prefHeight="2.0" prefWidth="721.0">
                                  <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom et Prenom :" wrappingWidth="161.13671875">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom et Prenom :" wrappingWidth="161.13671875">
                                        <font>
                                           <Font name="Zilla Slab Medium Italic" size="12.0" />
                                        </font>
@@ -79,7 +79,7 @@
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="46.0" prefWidth="235.0">
                                  <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'anniversaire" translateY="0.6" wrappingWidth="189.13671875">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'anniversaire" translateY="0.6" wrappingWidth="189.13671875">
                                        <font>
                                           <Font name="Zilla Slab Medium Italic" size="12.0" />
                                        </font>
@@ -99,7 +99,7 @@
                               </VBox>
                               <VBox prefHeight="54.0" prefWidth="369.0">
                                  <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Commune de :" wrappingWidth="161.13671875">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Commune de :" wrappingWidth="161.13671875">
                                        <font>
                                           <Font name="Zilla Slab Medium Italic" size="12.0" />
                                        </font>
@@ -125,7 +125,7 @@
                               </VBox>
                               <VBox prefHeight="48.0" prefWidth="424.0">
                                  <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Wilaya de :" wrappingWidth="161.13671875">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wilaya de :" wrappingWidth="161.13671875">
                                        <font>
                                           <Font name="Zilla Slab Medium Italic" size="12.0" />
                                        </font>
@@ -156,7 +156,7 @@
                               <MaterialDesignIconView glyphName="NUMERIC_2_BOX" size="32" />
                               <VBox prefHeight="17.0" prefWidth="357.0">
                                  <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="prenom du pere" wrappingWidth="161.13671875">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="prenom du pere" wrappingWidth="161.13671875">
                                        <font>
                                           <Font name="Zilla Slab Medium Italic" size="12.0" />
                                        </font>
@@ -179,7 +179,7 @@
                               </VBox>
                               <VBox prefHeight="0.0" prefWidth="357.0">
                                  <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom et prenom de la mere" wrappingWidth="161.13671875">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom et prenom de la mere" wrappingWidth="161.13671875">
                                        <font>
                                           <Font name="Zilla Slab Medium Italic" size="12.0" />
                                        </font>
@@ -210,7 +210,7 @@
                                  <children>
                                     <VBox prefHeight="17.0" prefWidth="357.0">
                                        <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationalite" wrappingWidth="159.80337524414062">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nationalite" wrappingWidth="159.80337524414062">
                                              <font>
                                                 <Font name="Zilla Slab Medium Italic" size="12.0" />
                                              </font>
@@ -230,7 +230,7 @@
                                     </VBox>
                                     <VBox layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="357.0">
                                        <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone" wrappingWidth="159.80337524414062">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone" wrappingWidth="159.80337524414062">
                                              <font>
                                                 <Font name="Zilla Slab Medium Italic" size="12.0" />
                                              </font>
@@ -252,7 +252,7 @@
                               </HBox>
                               <VBox prefHeight="0.0" prefWidth="357.0">
                                  <children>
-                                    <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse du domicile" wrappingWidth="161.13671875">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse du domicile" wrappingWidth="161.13671875">
                                        <font>
                                           <Font name="Zilla Slab Medium Italic" size="12.0" />
                                        </font>
