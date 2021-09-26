@@ -75,23 +75,19 @@ and open the template in the editor.
 
 .buttons{
     -fx-background-radius: 10px 10px 0px 0px;
-    -fx-border-width: 0 0 12 0;
     -fx-cursor: hand;
 }
 .buttons:hover{   
     -fx-background-radius: 10px 10px 0px 0px;
-    -fx-border-width: 0 0 12 0;
     -fx-border-color:#FFA000;
 
 
 }
 .buttons:focused{
     -fx-background-radius: 10px 10px 0px 0px;
-    -fx-border-width: 0 0 12 0;
     -fx-border-color:#FFA000;
 }
 .bnt1:checked{
     -fx-background-radius: 10px 10px 0px 0px;
-    -fx-border-width: 0 0 12 0;
     -fx-border-color:#FFA000;
 }
