@@ -389,9 +389,9 @@
                               <Insets right="1.0" />
                            </HBox.margin>
                         </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="186.0" styleClass="buttons" text="Continuer" textFill="#123456">
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="186.0" styleClass="buttons" text="Continuer">
                            <font>
-                              <Font name="Ink Free" size="18.0" />
+                              <Font name="MV Boli" size="18.0" />
                            </font>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -402,9 +402,9 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Line>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Annuler" textFill="#123456">
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Annuler">
                            <font>
-                              <Font name="Ink Free" size="18.0" />
+                              <Font name="MV Boli" size="18.0" />
                            </font>
                         </Button>
                         <Line endX="100.0" startX="-60.0" stroke="#123456" strokeWidth="1.6">
@@ -699,7 +699,7 @@
                         </Line>
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#save" prefWidth="186.0" styleClass="buttons" text="Enregistre">
                            <font>
-                              <Font name="Ink Free" size="18.0" />
+                              <Font name="MV Boli" size="18.0" />
                            </font>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -712,7 +712,7 @@
                         </Line>
                         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Annuler">
                            <font>
-                              <Font name="Ink Free" size="18.0" />
+                              <Font name="MV Boli" size="18.0" />
                            </font>
                         </Button>
                         <Line endX="100.0" startX="-60.0" stroke="#123456" strokeWidth="1.6">

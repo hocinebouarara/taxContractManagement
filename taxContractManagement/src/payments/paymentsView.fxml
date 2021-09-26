@@ -70,13 +70,13 @@
                         <Insets top="3.0" />
                      </HBox.margin>
                      <children>
-                        <JFXButton alignment="CENTER_RIGHT" onMouseClicked="#getAddVersementView" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #0746a7; -fx-background-radius: 8 8 0 8;" styleClass="MenuBar">
-                           <font>
-                              <Font size="1.0" />
-                           </font>
+                        <JFXButton fx:id="addPaymentBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#getAddVersementView" style="-fx-background-color: #0746a7; -fx-background-radius: 8 8 0 8;" styleClass="FontAwesomeIconView" stylesheets="@../home/home.css">
                            <graphic>
-                              <MaterialDesignIconView fill="WHITE" glyphName="NOTE_PLUS" size="36" translateX="-2.0" />
+                              <MaterialDesignIconView fill="WHITE" glyphName="NOTE_PLUS" size="40" wrappingWidth="40.0" />
                            </graphic>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </JFXButton>
                      </children>
                   </HBox>
