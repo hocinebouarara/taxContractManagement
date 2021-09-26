@@ -178,12 +178,12 @@ public class ContractsTableController implements Initializable {
 
                         deleteIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
+                                + "-glyph-size:20px;"
                                 + "-fx-fill:#ff1744;"
                         );
                         editIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
+                                + "-glyph-size:20px;"
                                 + "-fx-fill:#00E676;"
                         );
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
