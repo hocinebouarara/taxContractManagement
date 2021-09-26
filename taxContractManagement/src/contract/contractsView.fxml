@@ -23,7 +23,7 @@
                   </Text>
                   <VBox prefHeight="59.0" prefWidth="153.0">
                      <children>
-                        <JFXButton fx:id="contratListBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getContractsTable" prefHeight="31.0" prefWidth="152.0" styleClass="MenuBar" text="Contrats">
+                        <JFXButton fx:id="contratListBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getContractsTable" prefHeight="31.0" prefWidth="152.0" styleClass="btn" stylesheets="@contractsview.css" text="Contrats">
                            <font>
                               <Font name="Zilla Slab Medium" size="18.0" />
                            </font>

@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="510.0" prefWidth="980.0" stylesheets="@../beneficiaries/beneficiariesview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contract.AddContractController">
+<AnchorPane id="AnchorPane" prefHeight="510.0" prefWidth="980.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contract.AddContractController">
    <children>
-      <VBox layoutX="305.0" layoutY="54.0" prefHeight="520.0" prefWidth="980.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+      <VBox layoutX="305.0" layoutY="54.0" prefHeight="520.0" prefWidth="980.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
          <children>
             <HBox alignment="CENTER" prefWidth="980.0">
                <children>
-                  <Button fx:id="proprietyBtn" alignment="CENTER" contentDisplay="TOP" layoutX="334.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#getProprietyView" prefWidth="130.0" style="-fx-background-color: #DDD;" text="Propriété">
+                  <Button fx:id="proprietyBtn" alignment="CENTER" contentDisplay="TOP" layoutX="334.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#getProprietyView" prefWidth="130.0" style="-fx-background-color: #DDD;" styleClass="btn" stylesheets="@contractsview.css" text="Propriété">
                      <graphic>
                         <FontAwesomeIconView glyphName="INFO_CIRCLE" size="40" />
                      </graphic>
@@ -33,9 +38,9 @@
                         <Insets left="4.0" right="4.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="beneficiaryBtn" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#getBeneficiaryView" prefWidth="130.0" style="-fx-background-color: #DDD;" text="Bénéficiaire">
+                  <Button fx:id="beneficiaryBtn" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#getBeneficiaryView" prefWidth="130.0" style="-fx-background-color: #DDD;" styleClass="btn" stylesheets="@contractsview.css" text="Locataire">
                      <graphic>
-                        <FontAwesomeIconView glyphName="SUITCASE" size="40" />
+                        <FontAwesomeIconView glyphName="USER" size="40" />
                      </graphic>
                      <font>
                         <Font name="Ink Free" size="20.0" />
@@ -44,7 +49,7 @@
                         <Insets left="4.0" right="4.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="contractBtn" alignment="CENTER" contentDisplay="TOP" layoutX="586.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#getContractDetailView" prefWidth="130.0" style="-fx-background-color: #DDD;" text="Contrat">
+                  <Button fx:id="contractBtn" alignment="CENTER" contentDisplay="TOP" layoutX="586.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#getContractDetailView" prefWidth="130.0" style="-fx-background-color: #DDD;" styleClass="btn" stylesheets="@contractsview.css" text="Contrat">
                      <graphic>
                         <FontAwesomeIconView glyphName="INFO_CIRCLE" size="40" />
                      </graphic>
@@ -70,7 +75,538 @@
             </AnchorPane>
          </children>
       </VBox>
-      <AnchorPane fx:id="beneficiaryAnchor" layoutX="10.0" layoutY="114.0" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+      <AnchorPane fx:id="contarctDetailsAnchor" layoutX="10.0" layoutY="114.0" prefHeight="406.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="356.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="245.0" prefWidth="880.0">
+                     <children>
+                        <VBox prefHeight="293.0" prefWidth="541.0">
+                           <children>
+                              <MaterialDesignIconView glyphName="NUMERIC_2_BOX" size="32" wrappingWidth="30.66668701171875" />
+                              <HBox alignment="CENTER" spacing="8.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <children>
+                                    <VBox>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <children>
+                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Type de contrat" wrappingWidth="213.8033447265625">
+                                             <font>
+                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                             </font>
+                                          </Text>
+                                          <JFXComboBox fx:id="contractTypeCombo" cache="true" focusColor="#12335400" prefHeight="41.0" prefWidth="273.0" style="-fx-background-radius: 3px; -fx-border-color: #B2B1B9; -fx-font-size: 16px; -fx-border-radius: 3px;" unFocusColor="TRANSPARENT" visibleRowCount="14">
+                                             <padding>
+                                                <Insets bottom="1.0" left="15.0" top="1.0" />
+                                             </padding>
+                                          </JFXComboBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="171.0" spacing="8.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="58.0" prefWidth="216.0">
+                                       <children>
+                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Date  de début " translateY="0.6" wrappingWidth="213.8033447265625">
+                                             <font>
+                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <JFXDatePicker fx:id="startDateFld" defaultColor="#066b61" prefHeight="42.0" prefWidth="216.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px; -fx-font-size: 18px; -fx-padding: 0 10 0 18; -fx-alignment: center;" styleClass="textfld" translateY="0.6">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </JFXDatePicker>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" layoutX="285.0" layoutY="10.0" prefHeight="58.0" prefWidth="216.0">
+                                       <children>
+                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Date  de fin" translateY="0.6" wrappingWidth="213.8033447265625">
+                                             <font>
+                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <JFXDatePicker fx:id="endDateFld" defaultColor="#066b61" prefHeight="42.0" prefWidth="216.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px; -fx-font-size: 18px; -fx-padding: 0 10 0 18; -fx-alignment: center;" styleClass="textfld" translateY="0.6">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </JFXDatePicker>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="58.0" prefWidth="492.0" spacing="8.0">
+                                 <VBox.margin>
+                                    <Insets left="25.0" right="25.0" top="5.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <VBox prefHeight="58.0" prefWidth="259.0">
+                                       <children>
+                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="montantContrFld" prefHeight="42.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="58.0" prefWidth="255.0">
+                                       <children>
+                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="N° acie" wrappingWidth="161.13671875">
+                                             <font>
+                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <TextField fx:id="nbrAcieFld" prefHeight="42.0" prefWidth="496.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
+                                             <font>
+                                                <Font name="Zilla Slab Medium" size="21.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="42.0" prefHeight="54.0" prefWidth="541.0" spacing="8.0">
+                                 <children>
+                                    <VBox>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <children>
+                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Type de peroides" wrappingWidth="213.8033447265625">
+                                             <font>
+                                                <Font name="Zilla Slab Light Italic" size="12.0" />
+                                             </font>
+                                          </Text>
+                                          <JFXComboBox fx:id="periodeTypeCombo" cache="true" focusColor="#12335400" prefHeight="41.0" prefWidth="273.0" style="-fx-background-radius: 3px; -fx-border-color: #B2B1B9; -fx-font-size: 16px; -fx-border-radius: 3px;" unFocusColor="TRANSPARENT" visibleRowCount="14">
+                                             <padding>
+                                                <Insets bottom="1.0" left="15.0" top="1.0" />
+                                             </padding>
+                                          </JFXComboBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="19.0" prefWidth="880.0">
+                     <children>
+                        <Line endX="100.0" startX="-60.0" stroke="#123456" strokeWidth="1.6">
+                           <HBox.margin>
+                              <Insets right="1.0" />
+                           </HBox.margin>
+                        </Line>
+                        <Button fx:id="saveBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#save" prefWidth="186.0" styleClass="buttons" text="Enregistre" textFill="#123456">
+                           <font>
+                              <Font name="Ink Free" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Line endX="100.0" layoutX="698.0" layoutY="33.0" startX="-28.0" stroke="#123456" strokeWidth="1.6">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Line>
+                        <Button fx:id="viderBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
+                           <font>
+                              <Font name="Ink Free" size="18.0" />
+                           </font>
+                        </Button>
+                        <Line endX="100.0" startX="-60.0" stroke="#123456" strokeWidth="1.6">
+                           <HBox.margin>
+                              <Insets left="1.0" />
+                           </HBox.margin>
+                        </Line>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="36.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="validAnchor" layoutX="137.0" prefHeight="510.0" prefWidth="728.0" style="-fx-background-color: white;">
+         <children>
+            <Line endX="423.0" layoutX="303.0" layoutY="116.0" startX="-303.0" strokeWidth="4.0" />
+            <AnchorPane prefHeight="120.0" prefWidth="155.0">
+               <children>
+                  <FontAwesomeIconView fill="#0746a6" glyphName="XING" layoutX="74.0" layoutY="62.0" size="60" />
+                  <Label alignment="CENTER" layoutY="89.0" prefHeight="23.0" prefWidth="194.0" text="des impots" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="15.0">
+                     <font>
+                        <Font name="Tahoma Bold" size="18.0" />
+                     </font>
+                     <textFill>
+                        <RadialGradient centerX="0.47222220102945967" centerY="0.46190476190476193" radius="0.5">
+                           <stops>
+                              <Stop color="#09f805" />
+                              <Stop color="#1c5657" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="-6.0" layoutY="65.0" prefHeight="23.0" prefWidth="215.0" text="Derection ">
+                     <font>
+                        <Font name="Tahoma Bold" size="24.0" />
+                     </font>
+                     <textFill>
+                        <RadialGradient centerX="0.47222220102945967" centerY="0.46190476190476193" radius="0.5">
+                           <stops>
+                              <Stop color="#09f805" />
+                              <Stop color="#1c5657" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label layoutX="203.0" layoutY="47.0" text="Fiche de recensement : habitation">
+               <font>
+                  <Font name="Zilla Slab Medium" size="22.0" />
+               </font>
+            </Label>
+            <VBox layoutX="29.0" layoutY="121.0" prefHeight="275.0" prefWidth="672.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="121.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="144.0" text="Propriete detaile  :">
+                     <font>
+                        <Font name="Zilla Slab Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox prefHeight="119.0" prefWidth="642.0" style="-fx-border-width: 1px; -fx-border-color: #B2B1B9;">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="136.0" text="Nom et prenom  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="proprNameText" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="19.0" prefWidth="115.0" text="Date  de  NSS:">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="dateNssProprTxt" layoutX="293.0" layoutY="10.0" prefHeight="25.0" prefWidth="183.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="86.0" text="N°Article  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="articleTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="233.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="25.0" prefWidth="62.0" text="Titre  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="titreTxt" layoutX="311.0" layoutY="10.0" prefHeight="25.0" prefWidth="199.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="35.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="85.0" text="Adresse  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="adressTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="482.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="60.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="91.0" text="N° Acie   :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="numAcieTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="224.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="25.0" prefWidth="101.0" text="Date  d'acie  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="dateAcieTxt" layoutX="311.0" layoutY="10.0" prefHeight="25.0" prefWidth="211.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <Label layoutX="25.0" layoutY="10.0" prefHeight="20.0" prefWidth="159.0" text="Locataire detaile  :">
+                     <font>
+                        <Font name="Zilla Slab Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="25.0" layoutY="25.0" prefHeight="109.0" prefWidth="642.0" style="-fx-border-width: 1px; -fx-border-color: #B2B1B9;">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="136.0" text="Nom et prenom  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="locataireNameText" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="19.0" prefWidth="115.0" text="Date  de  NSS:">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="dateNssLocataireTxt" layoutX="293.0" layoutY="10.0" prefHeight="25.0" prefWidth="183.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="153.0" text="Lieu de naissance  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lieuNssTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="194.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="25.0" prefWidth="122.0" text="Nom de pere  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="locatairePereTxt" layoutX="311.0" layoutY="10.0" prefHeight="25.0" prefWidth="199.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="35.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="85.0" text="Adresse  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="locataireAdressTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="242.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="25.0" prefWidth="83.0" text="Activite   :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="activityTxt" prefHeight="25.0" prefWidth="206.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <Label prefHeight="20.0" prefWidth="142.0" text="Contrat detaile  :">
+                     <font>
+                        <Font name="Zilla Slab Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="25.0" layoutY="176.0" prefHeight="109.0" prefWidth="642.0" style="-fx-border-width: 1px; -fx-border-color: #B2B1B9;">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="126.0" text="Type de contrat  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="typeContratTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="19.0" prefWidth="112.0" text="Type de periode  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="typePeriodeTxt" layoutX="293.0" layoutY="10.0" prefHeight="25.0" prefWidth="183.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="123.0" text="Date de debut  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="dateDebutTxt" layoutX="10.0" layoutY="10.0" prefHeight="19.0" prefWidth="242.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="19.0" prefWidth="101.0" text="Date de fin   :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="dateFinTxt" layoutX="311.0" layoutY="10.0" prefHeight="25.0" prefWidth="199.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="35.0">
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="74.0" text="Montant    :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="montantTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="242.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="19.0" prefWidth="70.0" text="N°Acie  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="nunAcieContratTxt" prefHeight="25.0" prefWidth="206.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="642.0" spacing="44.0">
+                     <children>
+                        <JFXButton fx:id="RevenirBtn" prefWidth="150.0" style="-fx-background-color: #28527A;" text="Revenir" textFill="#fffcfc">
+                           <font>
+                              <Font name="MV Boli" size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="Valider" layoutX="305.0" layoutY="10.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #00A19D;" text="Valider" textFill="#fffcfc">
+                           <font>
+                              <Font name="MV Boli" size="18.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="beneficiaryAnchor" layoutX="10.0" layoutY="114.0" prefHeight="406.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="344.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                <children>
@@ -133,17 +669,17 @@
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="29.0" prefWidth="182.0" style="-fx-border-width: 0 1 0 1; -fx-border-color: #565c78;">
                                        <children>
-                                          <FontAwesomeIconView fx:id="selectBtn" fill="#6670a1" glyphName="CLONE" onMouseClicked="#selectBeneficiary" size="26">
+                                          <FontAwesomeIconView fx:id="selectBtn" fill="#6670a1" glyphName="CLONE" onMouseClicked="#selectBeneficiary" size="26" styleClass="btn">
                                              <HBox.margin>
                                                 <Insets right="11.0" />
                                              </HBox.margin>
                                           </FontAwesomeIconView>
-                                          <FontAwesomeIconView fx:id="refreshBtn" fill="#6670a1" glyphName="REFRESH" onMouseClicked="#refreshBeneficiaryTable" scaleY="1.1" size="27.5" wrappingWidth="22.785715103149414">
+                                          <FontAwesomeIconView fx:id="refreshBtn" fill="#6670a1" glyphName="REFRESH" onMouseClicked="#refreshBeneficiaryTable" scaleY="1.1" size="27.5" styleClass="btn" wrappingWidth="22.785715103149414">
                                              <HBox.margin>
                                                 <Insets right="11.0" />
                                              </HBox.margin>
                                           </FontAwesomeIconView>
-                                          <FontAwesomeIconView fx:id="ajouterBtn" fill="#6670a1" glyphName="USER_PLUS" layoutX="73.0" layoutY="42.0" onMouseClicked="#addBeneficiary" size="27.5" wrappingWidth="22.785715103149414" />
+                                          <FontAwesomeIconView fx:id="ajouterBtn" fill="#6670a1" glyphName="USER_PLUS" layoutX="73.0" layoutY="42.0" onMouseClicked="#addBeneficiary" size="27.5" styleClass="btn" wrappingWidth="22.785715103149414" />
                                        </children>
                                        <HBox.margin>
                                           <Insets />
@@ -355,7 +891,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="proprietyAnchor" layoutX="10.0" layoutY="114.0" onMouseClicked="#getBeneficiaryView" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+      <AnchorPane fx:id="proprietyAnchor" layoutX="10.0" layoutY="114.0" onMouseClicked="#getBeneficiaryView" prefHeight="406.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="344.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                <children>
@@ -421,17 +957,17 @@
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="29.0" prefWidth="182.0" style="-fx-border-width: 0 1 0 1; -fx-border-color: #565c78;">
                                        <children>
-                                          <FontAwesomeIconView fill="#6670a1" glyphName="CLONE" onMouseClicked="#selectPropriety" size="26">
+                                          <FontAwesomeIconView fx:id="propSelectIcon" fill="#6670a1" glyphName="CLONE" onMouseClicked="#selectPropriety" size="26" styleClass="btn">
                                              <HBox.margin>
                                                 <Insets right="11.0" />
                                              </HBox.margin>
                                           </FontAwesomeIconView>
-                                          <FontAwesomeIconView fill="#6670a1" glyphName="REFRESH" onMouseClicked="#refreshProprietyTable" scaleY="1.1" size="27.5" wrappingWidth="22.785715103149414">
+                                          <FontAwesomeIconView fx:id="propRefreshIcon" fill="#6670a1" glyphName="REFRESH" onMouseClicked="#refreshProprietyTable" scaleY="1.1" size="27.5" styleClass="btn" wrappingWidth="22.785715103149414">
                                              <HBox.margin>
                                                 <Insets right="11.0" />
                                              </HBox.margin>
                                           </FontAwesomeIconView>
-                                          <FontAwesomeIconView fill="#6670a1" glyphName="USER_PLUS" layoutX="73.0" layoutY="42.0" onMouseClicked="#addProprietyView" size="27.5" wrappingWidth="22.785715103149414" />
+                                          <FontAwesomeIconView fx:id="propAddIcon" fill="#6670a1" glyphName="USER_PLUS" layoutX="73.0" layoutY="42.0" onMouseClicked="#addProprietyView" size="27.5" styleClass="btn" wrappingWidth="22.785715103149414" />
                                        </children>
                                        <HBox.margin>
                                           <Insets />
@@ -631,7 +1167,7 @@
                               <Insets right="1.0" />
                            </HBox.margin>
                         </Line>
-                        <Button fx:id="continerBtn2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="186.0" styleClass="buttons" text="Continuer" textFill="#123456">
+                        <Button fx:id="continerBtn2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#getBeneficiaryView" prefWidth="186.0" styleClass="buttons" text="Continuer" textFill="#123456">
                            <font>
                               <Font name="Ink Free" size="18.0" />
                            </font>
@@ -663,199 +1199,9 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="contarctDetailsAnchor" layoutX="10.0" layoutY="114.0" prefHeight="406.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
-         <children>
-            <VBox alignment="TOP_CENTER" prefHeight="356.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="245.0" prefWidth="880.0">
-                     <children>
-                        <VBox prefHeight="293.0" prefWidth="541.0">
-                           <children>
-                              <MaterialDesignIconView glyphName="NUMERIC_2_BOX" size="32" wrappingWidth="30.66668701171875" />
-                              <HBox alignment="CENTER" spacing="8.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <children>
-                                    <VBox>
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Type de contrat" wrappingWidth="213.8033447265625">
-                                             <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
-                                             </font>
-                                          </Text>
-                                          <JFXComboBox fx:id="contractTypeCombo" cache="true" focusColor="#12335400" prefHeight="41.0" prefWidth="273.0" style="-fx-background-radius: 3px; -fx-border-color: #B2B1B9; -fx-font-size: 16px; -fx-border-radius: 3px;" unFocusColor="TRANSPARENT" visibleRowCount="14">
-                                             <padding>
-                                                <Insets bottom="1.0" left="15.0" top="1.0" />
-                                             </padding>
-                                          </JFXComboBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" layoutX="10.0" layoutY="171.0" spacing="8.0">
-                                 <children>
-                                    <VBox alignment="CENTER" prefHeight="58.0" prefWidth="216.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Date  de début " translateY="0.6" wrappingWidth="213.8033447265625">
-                                             <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <JFXDatePicker fx:id="startDateFld" defaultColor="#066b61" prefHeight="42.0" prefWidth="216.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px; -fx-font-size: 18px; -fx-padding: 0 10 0 18; -fx-alignment: center;" styleClass="textfld" translateY="0.6">
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </JFXDatePicker>
-                                       </children>
-                                    </VBox>
-                                    <VBox alignment="CENTER" layoutX="285.0" layoutY="10.0" prefHeight="58.0" prefWidth="216.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Date  de fin" translateY="0.6" wrappingWidth="213.8033447265625">
-                                             <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <JFXDatePicker fx:id="endDateFld" defaultColor="#066b61" prefHeight="42.0" prefWidth="216.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px; -fx-font-size: 18px; -fx-padding: 0 10 0 18; -fx-alignment: center;" styleClass="textfld" translateY="0.6">
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </JFXDatePicker>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="58.0" prefWidth="492.0" spacing="8.0">
-                                 <VBox.margin>
-                                    <Insets left="25.0" right="25.0" top="5.0" />
-                                 </VBox.margin>
-                                 <children>
-                                    <VBox prefHeight="58.0" prefWidth="259.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="montantContrFld" prefHeight="42.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                    <VBox prefHeight="58.0" prefWidth="255.0">
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="N° acie" wrappingWidth="161.13671875">
-                                             <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Text>
-                                          <TextField fx:id="nbrAcieFld" prefHeight="42.0" prefWidth="496.0" style="-fx-background-color: transparent; -fx-border-color: #B2B1B9; -fx-border-radius: 2px; -fx-background-radius: 2px;" styleClass="textfld">
-                                             <font>
-                                                <Font name="Zilla Slab Medium" size="21.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" layoutX="10.0" layoutY="42.0" prefHeight="54.0" prefWidth="541.0" spacing="8.0">
-                                 <children>
-                                    <VBox>
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                       <children>
-                                          <Text fill="#3c3838" strokeType="OUTSIDE" strokeWidth="0.0" text="Type de peroides" wrappingWidth="213.8033447265625">
-                                             <font>
-                                                <Font name="Zilla Slab Light Italic" size="12.0" />
-                                             </font>
-                                          </Text>
-                                          <JFXComboBox fx:id="periodeTypeCombo" cache="true" focusColor="#12335400" prefHeight="41.0" prefWidth="273.0" style="-fx-background-radius: 3px; -fx-border-color: #B2B1B9; -fx-font-size: 16px; -fx-border-radius: 3px;" unFocusColor="TRANSPARENT" visibleRowCount="14">
-                                             <padding>
-                                                <Insets bottom="1.0" left="15.0" top="1.0" />
-                                             </padding>
-                                          </JFXComboBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                           </children>
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </VBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="19.0" prefWidth="880.0">
-                     <children>
-                        <Line endX="100.0" startX="-60.0" stroke="#123456" strokeWidth="1.6">
-                           <HBox.margin>
-                              <Insets right="1.0" />
-                           </HBox.margin>
-                        </Line>
-                        <Button fx:id="saveBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#save" prefWidth="186.0" styleClass="buttons" text="Enregistre" textFill="#123456">
-                           <font>
-                              <Font name="Ink Free" size="18.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Line endX="100.0" layoutX="698.0" layoutY="33.0" startX="-28.0" stroke="#123456" strokeWidth="1.6">
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </Line>
-                        <Button fx:id="viderBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clean" prefWidth="186.0" styleClass="buttons" text="Se Vider" textFill="#123456">
-                           <font>
-                              <Font name="Ink Free" size="18.0" />
-                           </font>
-                        </Button>
-                        <Line endX="100.0" startX="-60.0" stroke="#123456" strokeWidth="1.6">
-                           <HBox.margin>
-                              <Insets left="1.0" />
-                           </HBox.margin>
-                        </Line>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="36.0" />
-                     </VBox.margin>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
    </children>
+   <stylesheets>
+      <URL value="@../beneficiaries/beneficiariesview.css" />
+      <URL value="@contractsview.css" />
+   </stylesheets>
 </AnchorPane>

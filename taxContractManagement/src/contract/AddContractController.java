@@ -7,6 +7,7 @@ package contract;
 
 import beneficiaries.AddBeneficiaryController;
 import beneficiaries.BeneficiairesTableController;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -34,6 +35,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -251,6 +253,56 @@ public class AddContractController implements Initializable {
     private Button continuer3;
     @FXML
     private Button viderBtn5;
+    @FXML
+    private Label proprNameText;
+    @FXML
+    private Label articleTxt;
+    @FXML
+    private Label titreTxt;
+    @FXML
+    private Label adressTxt;
+    @FXML
+    private Label numAcieTxt;
+    @FXML
+    private Label dateAcieTxt;
+    @FXML
+    private Label typeContratTxt;
+    @FXML
+    private Label typePeriodeTxt;
+    @FXML
+    private Label dateDebutTxt;
+    @FXML
+    private Label dateFinTxt;
+    @FXML
+    private Label montantTxt;
+    @FXML
+    private Label nunAcieContratTxt;
+    @FXML
+    private JFXButton RevenirBtn;
+    @FXML
+    private JFXButton Valider;
+    @FXML
+    private Label dateNssProprTxt;
+    @FXML
+    private Label dateNssLocataireTxt;
+    @FXML
+    private Label lieuNssTxt;
+    @FXML
+    private Label locatairePereTxt;
+    @FXML
+    private Label locataireAdressTxt;
+    @FXML
+    private Label activityTxt;
+    @FXML
+    private Label locataireNameText;
+    @FXML
+    private AnchorPane validAnchor;
+    @FXML
+    private FontAwesomeIconView propSelectIcon;
+    @FXML
+    private FontAwesomeIconView propRefreshIcon;
+    @FXML
+    private FontAwesomeIconView propAddIcon;
 
     /**
      * Initializes the controller class.
@@ -258,6 +310,10 @@ public class AddContractController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        validAnchor.setVisible(false);
+        Valider.setDisable(true);
+        RevenirBtn.setDisable(true);
+
         getProprietyView();
         loadBeneficiaryData();
         loadPropertyDate();
@@ -273,21 +329,71 @@ public class AddContractController implements Initializable {
         viderBtn3.setTooltip(new Tooltip("Vider les champs "));
         viderBtn5.setTooltip(new Tooltip("Vider les champs "));
         saveBtn.setTooltip(new Tooltip("La sauvegarde des données"));
-        proprietyBtn.setTooltip(new Tooltip("Informations sur l'habitation "));
-        beneficiaryBtn.setTooltip(new Tooltip("Informations sur la désignation "));
-        contractBtn.setTooltip(new Tooltip("Informations sur l'affectation "));
+        proprietyBtn.setTooltip(new Tooltip("Informations sur la propriété "));
+        beneficiaryBtn.setTooltip(new Tooltip("Informations sur la locataire "));
+        contractBtn.setTooltip(new Tooltip("Informations sur le contrat "));
 
         Tooltip tooltip1 = new Tooltip();
         tooltip1.setGraphic(new FontAwesomeIconView());
-        Tooltip.install(selectBtn, new Tooltip("Selectionner un propriétaire"));
+        Tooltip.install(selectBtn, new Tooltip("Selectionner un locataire"));
 
         Tooltip tooltip2 = new Tooltip();
         tooltip2.setGraphic(new FontAwesomeIconView());
-        Tooltip.install(ajouterBtn, new Tooltip("ajouter des nouveaux propriétés "));
+        Tooltip.install(ajouterBtn, new Tooltip("ajouter des nouveaux locataires "));
 
         Tooltip tooltip3 = new Tooltip();
         tooltip3.setGraphic(new FontAwesomeIconView());
-        Tooltip.install(refreshBtn, new Tooltip("Recharger la liste des propriétaires"));
+        Tooltip.install(refreshBtn, new Tooltip("Recharger la liste des locataires"));
+
+        Tooltip tooltip11 = new Tooltip();
+        tooltip11.setGraphic(new FontAwesomeIconView());
+        Tooltip.install(propSelectIcon, new Tooltip("Selectionner une propriétés"));
+
+        Tooltip tooltip22 = new Tooltip();
+        tooltip22.setGraphic(new FontAwesomeIconView());
+        Tooltip.install(propAddIcon, new Tooltip("ajouter des nouveaux propriétés "));
+
+        Tooltip tooltip33 = new Tooltip();
+        tooltip33.setGraphic(new FontAwesomeIconView());
+        Tooltip.install(propRefreshIcon, new Tooltip("Recharger la liste des propriétés"));
+
+        RevenirBtn.setTooltip(new Tooltip("Revenir à l'étape précédente"));
+        RevenirBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            validAnchor.setVisible(false);
+            Valider.setDisable(true);
+            RevenirBtn.setDisable(true);
+        });
+
+        Valider.setTooltip(new Tooltip("Confirmer le processus de sauvegarde "));
+        Valider.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            connection = DbConnect.getConnect();
+
+            if (property == null || beneficiaire == null || contractTypeCombo.getValue() == null
+                    || startDateFld.getValue() == null || endDateFld.getValue() == null
+                    || startDateFld.getValue() == null || montantContrFld.getText() == null
+                    || nbrAcieFld.getText() == null || periodeTypeCombo.getValue() == null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Veuillez remplir toutes les données");
+                alert.showAndWait();
+
+                getProprietyView();
+
+            } else {
+                getQuery();
+                insert();
+                Alert alerte = new Alert(Alert.AlertType.INFORMATION);
+                alerte.setHeaderText(null);
+                alerte.setContentText("Ajouté avec succès");
+                alerte.showAndWait();
+                getProprietyView();
+
+                Valider.setDisable(true);
+                RevenirBtn.setDisable(true);
+                validAnchor.setVisible(false);
+
+            }
+        });
 
     }
 
@@ -524,7 +630,7 @@ public class AddContractController implements Initializable {
                                 stage.setScene(new Scene(parent));
                                 stage.initStyle(StageStyle.UTILITY);
                                 stage.show();
-}
+                            }
                         });
 
                         HBox managebtn = new HBox(editIcon, deleteIcon);
@@ -846,9 +952,9 @@ public class AddContractController implements Initializable {
 
     @FXML
     private void save(MouseEvent event) {
+
         connection = DbConnect.getConnect();
 
-        
         if (property == null || beneficiaire == null || contractTypeCombo.getValue() == null
                 || startDateFld.getValue() == null || endDateFld.getValue() == null
                 || startDateFld.getValue() == null || montantContrFld.getText() == null
@@ -857,17 +963,36 @@ public class AddContractController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Veuillez remplir toutes les données");
             alert.showAndWait();
-            
+
             getProprietyView();
 
         } else {
-            getQuery();
-            insert();
-            Alert alerte = new Alert(Alert.AlertType.INFORMATION);
-            alerte.setHeaderText(null);
-            alerte.setContentText("Ajouté avec succès");
-            alerte.showAndWait();
             getProprietyView();
+            Valider.setDisable(false);
+            RevenirBtn.setDisable(false);
+            validAnchor.setVisible(true);
+
+            proprNameText.setText(property.getNom());
+            dateNssProprTxt.setText(property.getProprBirth().toString());
+            articleTxt.setText(property.getArticle());
+            titreTxt.setText(property.getTitre());
+            adressTxt.setText(property.getAdresse_prcpl());
+            numAcieTxt.setText(property.getAcie());
+            dateAcieTxt.setText(property.getDate().toString());
+
+            locataireNameText.setText(beneficiaire.getName());
+            dateNssLocataireTxt.setText(beneficiaire.getBirthDate().toString());
+            lieuNssTxt.setText(beneficiaire.getCommune());
+            locatairePereTxt.setText(beneficiaire.getPrenom_pere());
+            locataireAdressTxt.setText(beneficiaire.getAdresse_domicile());
+            activityTxt.setText(beneficiaire.getActivite_prcpl());
+
+            typeContratTxt.setText(contractTypeCombo.getValue());
+            typePeriodeTxt.setText(periodeTypeCombo.getValue());
+            dateDebutTxt.setText(startDateFld.getValue().toString());
+            dateFinTxt.setText(endDateFld.getValue().toString());
+            montantTxt.setText(montantContrFld.getText());
+            nunAcieContratTxt.setText(acieFld.getText());
 
         }
     }
