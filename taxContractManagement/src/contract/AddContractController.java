@@ -967,7 +967,6 @@ public class AddContractController implements Initializable {
             getProprietyView();
 
         } else {
-            getProprietyView();
             Valider.setDisable(false);
             RevenirBtn.setDisable(false);
             validAnchor.setVisible(true);
