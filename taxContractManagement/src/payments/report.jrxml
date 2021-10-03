@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f7c50d75-19c1-447c-bd6a-633ab5ae127c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="77"/>
+	<parameter name="proprietorName" class="java.lang.String"/>
+	<parameter name="nis" class="java.lang.String"/>
+	<parameter name="nif" class="java.lang.String"/>
+	<parameter name="direction" class="java.lang.String"/>
+	<parameter name="toDay" class="java.lang.String"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="period" class="java.lang.String"/>
+	<parameter name="causeConvocation" class="java.lang.String"/>
+	<parameter name="avantLe" class="java.lang.String"/>
+	<parameter name="Mr" class="java.lang.String"/>
+	<parameter name="L&apos;" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="76" y="1" width="416" height="20" uuid="92974fdd-d5a5-43f9-8e67-59a62cbea47e"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RÉPUBLIQUE ALGÉRIENNE DÉMOCRATIQUE ET POPULAIRE
+]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="44" y="5" width="144" height="16" uuid="ab84d62b-cf9f-49e2-9869-a3367b05fe89"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ministère des Finances]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="23" width="198" height="16" uuid="7ecbc6ff-9b7c-4cfc-9dd7-3bba89995c49"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direction Générale des Impôts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="40" width="263" height="15" uuid="3e5b619f-68e6-43bc-b191-e67282d28f8a"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direction des impôts wilaya de Tissemsilt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="58" width="195" height="16" uuid="fbabc932-de12-4447-aad1-ad1ba1429389"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Inspection  : Lardjem]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="93" splitType="Stretch">
+			<staticText>
+				<reportElement x="188" y="2" width="177" height="23" uuid="1f1ac546-355d-4449-a7ad-9fc19200804d"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MISE EN DEMEURE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="30" width="23" height="18" uuid="4e4f4c3b-db50-4b3d-b44f-aa4caa841dd4"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="28" width="187" height="19" uuid="bd97cec6-d28a-4545-9c33-1f8849201833"/>
+				<textElement textAlignment="Left">
+					<font fontName="Century Gothic" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{proprietorName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="167" y="47" width="50" height="20" uuid="e2eef126-37eb-404a-8149-f5c5472bb38c"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N.I.S :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="223" y="48" width="193" height="19" uuid="697b757d-59d7-4912-882a-f9f63076e0c6"/>
+				<textElement>
+					<font fontName="Century Gothic" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="167" y="67" width="50" height="18" uuid="4b512cac-a8c1-4153-8241-89462cfdadbd"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N.I.F :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="217" y="67" width="199" height="18" uuid="be4f9d90-8c51-4f01-b72b-39d638a3acf0"/>
+				<textElement>
+					<font fontName="Century Gothic" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nif}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="500" splitType="Stretch">
+			<textField>
+				<reportElement x="216" y="6" width="196" height="28" uuid="57cd9527-2633-48be-91e5-f441cb1f7b9e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{direction}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="195" y="6" width="22" height="28" uuid="4f8bbab7-a124-4bf0-8dbe-3e5ec4f2db82"/>
+				<textElement>
+					<font fontName="Century" size="14"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="6" width="19" height="28" uuid="64d19453-ccca-46e9-98f9-79cbd0829180"/>
+				<textElement>
+					<font fontName="Century" size="14"/>
+				</textElement>
+				<text><![CDATA[le]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="438" y="6" width="115" height="28" uuid="6bef7c3b-6da5-4653-aca7-b20cad5df08e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{toDay}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="37" width="574" height="26" uuid="9d4193f6-c80f-48ef-988b-c9d8df81ad82"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[    J'ai l'honneur de vous rappeler que les contribuable relevant du régime  du réel et du ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="65" width="577" height="26" uuid="8b3d5b65-25a0-4c38-9646-98fac4becea9"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[régime général de la TVA et le les titulaires de professions libérales qui sont soumis au ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="81" width="555" height="26" uuid="aaca959f-ed6f-4043-bc1c-07466a6814d5"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[versement d'impôts et taxes payables au comptant ou par coie de retenue à la source,  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="106" width="538" height="26" uuid="9c56fa24-06b5-4e3d-b88d-13abb99eddc6"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[sont tenus de déposer auprès  du receveur des impôts de leur circonscription, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="128" width="140" height="26" uuid="e9fdb12f-6423-4f8e-9175-024299512e1f"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[la déclaration modèle ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="128" width="35" height="26" uuid="c21d7ebd-8b66-4698-9918-e9d8f8e23ae4"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="16" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[G51,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="174" y="128" width="414" height="26" uuid="8b3850cd-8a3b-41cb-9549-16db9413b9bb"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[tenant lieu de bordereau avis de versement dans les vingt (20)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="150" width="219" height="26" uuid="77c39ccf-c3a0-424c-ad96-5bc9075cbc6e"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[première jours du mois qui suit le]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="219" y="150" width="110" height="26" uuid="339b1e40-74a2-4910-9bcc-5084e51dc7da"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="328" y="150" width="228" height="26" uuid="8a51c350-575b-487c-94f4-290a505153a8"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[au titre duquel les droits sont dus,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="172" width="577" height="26" uuid="a88207b8-c955-4e0b-85e2-94ee95e66765"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ou au cours duquel les retenues à la source ont été opérées et de payer simultanément ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="176" y="194" width="201" height="26" uuid="ef02b648-0619-4881-b15e-fea70e280542"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ les montants correspondents.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="216" width="350" height="26" uuid="54d7b7fd-6545-4a96-bf24-c45b467bfb6a"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cette déclaration ne m'étant pas parvenue au titre du]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="370" y="216" width="183" height="26" uuid="83a646f3-98fc-4727-9996-78588742fa4e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Zilla Slab Medium" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{period}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="238" width="588" height="26" uuid="0db2393a-5735-4364-82f2-b6b2aaeed252"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Je vous serais obligé de vous aquitter des versements qui vous incombent en m'informant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-2" y="260" width="588" height="26" uuid="d004fe1c-cab2-429c-8987-bbe01ef5c5e4"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[de leur date ou à défaut, de me faire connaître les motifs de votre abstention au regard de :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="122" y="282" width="297" height="26" uuid="5f7ef9f1-18eb-4888-8dc9-d8eb7c02f0d5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Zilla Slab Medium" size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{causeConvocation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="304" width="577" height="26" uuid="d86854e4-99f8-4a99-b9b2-fc2d5f86e200"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Si vous entendez produire de observations à ce sujet vous aurez à me les faire parvenir ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="326" width="577" height="26" uuid="8bd46f57-1608-4ad9-a185-c615d8dedd40"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[par écrit ou me les presenter verbalement en produisant les justification dans le délai ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="348" width="98" height="26" uuid="e4689d56-6924-428e-9564-1f20519e8203"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[cité ci-après.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="370" width="261" height="26" uuid="91c3797d-0190-4e0c-8ce4-af51b2d6c634"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[J'ajoute qu'à défaut de réponse avant le]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="277" y="370" width="104" height="26" uuid="0453f8f0-e4ef-46dc-bc72-7ff5ea09b2e5"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{avantLe}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="374" y="370" width="212" height="26" uuid="50727eb6-00b2-47fd-93fd-ca37d8b55c57"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[voter situation sera régularisée]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="392" width="576" height="26" uuid="f41ef4b3-b291-4980-ba09-800a0c3fedce"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[selon la procédure de taxation d'office avec application  de la pénalité de 25 % émise par ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="414" width="261" height="26" uuid="61917c1e-189e-499e-b11f-9800dd6fc3b9"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[voie de rôle, immédiatement exigible.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="440" width="116" height="26" uuid="9c38288e-1b9f-4194-bc3d-1e4b120b4d46"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Veuillez agréer M ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="132" y="440" width="146" height="26" uuid="70d0c7ee-d825-4712-82a0-8ee507b36671"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Mr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="275" y="440" width="311" height="26" uuid="a389333a-3630-4d8f-8b67-ce802f54ccf0"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[l'expression de ma considération distinguée.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="466" width="13" height="26" uuid="e9c59499-5f61-4526-a693-271e6696ec8d"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[L']]></text>
+			</staticText>
+			<textField>
+				<reportElement x="277" y="466" width="169" height="26" uuid="c7b5cf1f-929a-452c-9c06-ebb1d65ea6c9"/>
+				<textElement>
+					<font fontName="Zilla Slab Medium" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{L'}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="449" y="466" width="116" height="26" uuid="a9e59d22-12f9-498c-940e-5214bd2dd3c7"/>
+				<textElement>
+					<font fontName="Century" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[des impôts.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
