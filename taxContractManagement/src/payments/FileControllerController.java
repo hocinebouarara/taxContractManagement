@@ -13,6 +13,7 @@ import helpres.Links;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,6 +29,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -40,7 +42,9 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import models.Controle;
+import org.controlsfx.control.Notifications;
 import proprietors.ProprietorsViewController;
 
 /**
@@ -104,6 +108,24 @@ public class FileControllerController implements Initializable {
     int years = 0, months = 0, days = 0;
     float onlyMonths = (float) 0.0;
 
+    LocalDate endDate = null, startDate = null;
+    String typePeriod = null;
+
+    String proprName1, proprAdress;
+    Date proprBirth;
+    String proprComm, propMere, nis,
+            proprPere1, proprPhone1, proprWilaya,
+            benefName1, benefAdress, proprNatio;
+    Date benefBirth;
+    String benefComm, benefMere1, benefPere1,
+            benefNatio1, benefWilaya,
+            contractType1;
+    Date startDate1, endDate1;
+    float montant;
+    String periodImpot, numAcie, nif, article;
+
+    int controleId;
+
     ObservableList<Controle> controlesList = FXCollections.observableArrayList();
     @FXML
     private TableColumn<Controle, String> directionCol;
@@ -123,10 +145,6 @@ public class FileControllerController implements Initializable {
                 Controle c = new Controle();
                 try {
 
-                   
-                    
-                    
-                    
                     query = "SELECT\n"
                             + "    fiche_de_control.id,\n"
                             + "    contrat.id,\n"
@@ -260,15 +278,35 @@ public class FileControllerController implements Initializable {
     private void refreshTable() {
         try {
             controlesList.clear();
-
             query = "SELECT\n"
                     + "    fiche_de_control.id,\n"
                     + "    contrat.id,\n"
+                    + "    contrat.type_contr,\n"
+                    + "    contrat.date,\n"
+                    + "    contrat.date_fin,\n"
+                    + "    contrat.montant,\n"
+                    + "    contrat.n_acie,\n"
+                    + "    contrat.periodes_imposition,\n"
                     + "    contrat.id_fiche_hab,\n"
                     + "    proprietaire.id,\n"
                     + "    proprietaire.nom_prenom_or_RS,\n"
-                    + "    contrat.id_benef,\n"
+                    + "    proprietaire.date_nss,\n"
+                    + "    proprietaire.commune,\n"
+                    + "    proprietaire.wilaya,\n"
+                    + "    proprietaire.pere,\n"
+                    + "    proprietaire.mere,\n"
+                    + "    proprietaire.nationalite,\n"
+                    + "    proprietaire.telephone,\n"
+                    + "    proprietaire.adress,\n"
+                    + "    beneficiaire.id,\n"
                     + "    beneficiaire.nom_prenom_or_RS,\n"
+                    + "    beneficiaire.date_nss,\n"
+                    + "    beneficiaire.commune,\n"
+                    + "    beneficiaire.wilaya,\n"
+                    + "    beneficiaire.prenom_pere,\n"
+                    + "    beneficiaire.nom_mere,\n"
+                    + "    beneficiaire.nationalite,\n"
+                    + "    beneficiaire.adresse_domicile,\n"
                     + "    fiche_de_control.direction,\n"
                     + "    fiche_de_control.inscpection,\n"
                     + "    fiche_de_control.Recette,\n"
@@ -280,7 +318,7 @@ public class FileControllerController implements Initializable {
                     + "    fiche_de_control.Activity,\n"
                     + "    fiche_de_control.Code_d_activity,\n"
                     + "    fiche_de_control.Forme_Juridique,\n"
-                    + "    fiche_de_control.Adress,\n"
+                    + "    fiche_de_control.Adress,\n" + "    "
                     + "    fiche_de_control.Article_imposition\n"
                     + "FROM\n"
                     + "    fiche_de_control\n"
@@ -288,8 +326,8 @@ public class FileControllerController implements Initializable {
                     + "INNER JOIN beneficiaire ON beneficiaire.id = contrat.id_benef\n"
                     + "INNER JOIN fiche_habitation ON fiche_habitation.id = contrat.id_fiche_hab\n"
                     + "INNER JOIN proprietaire ON fiche_habitation.id_propr = proprietaire.id\n"
-                    + "ORDER by \n"
-                    + "fiche_de_control.id;";
+                    + "ORDER BY\n"
+                    + "    fiche_de_control.id;";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
@@ -317,6 +355,128 @@ public class FileControllerController implements Initializable {
                         resultSet.getString("fiche_de_control.Article_imposition")
                 ));
                 controleTable.setItems(controlesList);
+
+                proprName1 = resultSet.getString(11);
+                proprAdress = resultSet.getString(19);
+                proprBirth = resultSet.getDate(12);
+                proprComm = resultSet.getString(13);
+                propMere = resultSet.getString(16);
+                proprPere1 = resultSet.getString(15);
+                proprNatio = resultSet.getString(17);
+                proprPhone1 = resultSet.getString(18);
+                proprWilaya = resultSet.getString(14);
+                benefName1 = resultSet.getString(21);
+                benefAdress = resultSet.getString(28);
+                benefBirth = resultSet.getDate(22);
+                benefComm = resultSet.getString(23);
+                benefMere1 = resultSet.getString(26);
+                benefPere1 = resultSet.getString(25);
+                benefNatio1 = resultSet.getString(27);
+                benefWilaya = resultSet.getString(24);
+                contractType1 = resultSet.getString(3);
+                montant = resultSet.getFloat(6);
+                numAcie = resultSet.getString(7);
+                controleId = resultSet.getInt(1);
+                startDate1 = resultSet.getDate(4);
+                endDate1 = resultSet.getDate(5);
+                article = resultSet.getString(41);
+                nif = resultSet.getString(35);
+                nis = resultSet.getString(34);
+
+                controleTable.setItems(controlesList);
+                startDate = resultSet.getDate(4).toLocalDate();
+                endDate = resultSet.getDate(5).toLocalDate();
+                typePeriod = resultSet.getString(8);
+
+                findDifference(startDate, endDate);
+                System.out.println(" the period is  : " + typePeriod);
+
+                switch (typePeriod) {
+                    case "payer en une fois":
+                        LocalDate toDayDate = LocalDate.now();
+
+                        findDifference(toDayDate, endDate);
+
+                        if (days < 4) {
+
+                            // createNotification();
+                            System.out.println("the contract is down");
+                        }
+
+                        break;
+                    case "annuel":
+                        findDifference(startDate, endDate);
+                        System.out.println("annuel   :  " + findDifference(startDate, endDate));
+
+                        if (onlyMonths >= 12) {
+
+                            LocalDate toDayDate2 = LocalDate.now();
+                            LocalDate afterYear = startDate;
+
+                            while (onlyMonths >= 12 && findDifference(afterYear, endDate) > 0) {
+
+                                afterYear = afterYear.plusYears(1);
+                                findDifference(toDayDate2, afterYear);
+                                if (days < 3) {
+                                    // createNotification();
+
+                                }
+
+                            }
+
+                        }
+
+                        break;
+                    case "trimestrielle":
+                        findDifference(startDate, endDate);
+                        System.out.println("trimestrielle   :  " + findDifference(startDate, endDate));
+
+                        LocalDate toDayDate3 = LocalDate.now();
+                        LocalDate afterTrimestre = startDate;
+
+                        System.out.println("Tri diff after date is : " + findDifference(afterTrimestre, endDate));
+                        while (onlyMonths >= 3) {
+
+                            System.out.println(" Tri diff after date is : " + findDifference(afterTrimestre, endDate));
+
+                            afterTrimestre = afterTrimestre.plusMonths(3);
+                            System.out.println("after trimester is     :" + afterTrimestre);
+                            findDifference(toDayDate3, afterTrimestre);
+                            System.out.println(" Rest Days : " + days);
+                            if (days <= 3) {
+                                //createNotification();
+                                System.out.println("once trimestre from contract ");
+
+                            }
+
+                        }
+
+                        break;
+                    case "mensuel":
+                        findDifference(startDate, endDate);
+                        System.out.println("Month   :  " + findDifference(startDate, endDate));
+
+                        LocalDate toDayDate4 = LocalDate.now();
+                        LocalDate afterMonth = startDate;
+
+                        System.out.println("Tri diff after date is : " + findDifference(afterMonth, endDate));
+                        while (onlyMonths >= 1) {
+
+                            System.out.println(" Tri diff after date is : " + findDifference(afterMonth, endDate));
+
+                            afterMonth = afterMonth.plusMonths(1);
+                            System.out.println("after month is     :" + afterMonth);
+                            findDifference(toDayDate4, afterMonth);
+                            System.out.println(" Rest Days         : " + days);
+                            if (days <= 3) {
+                                createNotification();
+                                System.out.println("once month from contract ");
+
+                            }
+
+                        }
+                        break;
+                }
 
             }
 
@@ -428,7 +588,7 @@ public class FileControllerController implements Initializable {
             resultSet1.next();
             startDate = resultSet1.getDate(4).toLocalDate();
             endDate = resultSet1.getDate(5).toLocalDate();
-             typePeriod = resultSet1.getString(8);
+            typePeriod = resultSet1.getString(8);
 
         } catch (SQLException ex) {
             Logger.getLogger(FileControllerController.class.getName()).log(Level.SEVERE, null, ex);
@@ -436,7 +596,7 @@ public class FileControllerController implements Initializable {
 
     }
 
-    public void findDifference(LocalDate start_date, LocalDate end_date) {
+    public float findDifference(LocalDate start_date, LocalDate end_date) {
 
         // find the period between
         // the start and end date
@@ -461,6 +621,49 @@ public class FileControllerController implements Initializable {
                 period.getYears(),
                 period.getMonths(),
                 period.getDays());
+
+        return onlyMonths;
+    }
+
+    private void createNotification() {
+
+        //Image notifIcon = new Image("");
+        Notifications notification = Notifications.create()
+                .title("Notification de retard")
+                .text("")
+                .graphic(null)
+                .hideAfter(Duration.seconds(5))
+                .position(Pos.BOTTOM_RIGHT)
+                .onAction((event) -> {
+
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource(Links.PERIODSVIEW));
+                    try {
+                        loader.load();
+                    } catch (IOException ex) {
+                        Logger.getLogger(ProprietorsViewController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    PeriodTaxController periodTaxController = loader.getController();
+                    periodTaxController.setControleId(controleId);
+                    periodTaxController.setTextFields(controleId, proprName1, proprAdress, proprBirth, proprComm, propMere,
+                            proprPere1,
+                            proprPhone1, proprWilaya, proprNatio,
+                            benefName1, benefAdress, benefBirth, benefComm, benefMere1, benefPere1,
+                            benefNatio1, benefWilaya,
+                            contractType1, startDate1, endDate1, montant, typePeriod, numAcie,nis, nif, article
+                    );
+                    System.out.println("the id is   :   " + controleId);
+
+                    Parent parent = loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(parent));
+                    stage.initStyle(StageStyle.UTILITY);
+                    stage.show();
+
+                });
+        notification.darkStyle();
+        notification.showConfirm();
     }
 
 }

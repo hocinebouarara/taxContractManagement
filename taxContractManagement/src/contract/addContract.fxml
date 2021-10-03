@@ -75,6 +75,343 @@
             </AnchorPane>
          </children>
       </VBox>
+      <AnchorPane fx:id="validAnchor" layoutX="137.0" prefHeight="510.0" prefWidth="728.0" style="-fx-background-color: white;">
+         <children>
+            <Line endX="423.0" layoutX="303.0" layoutY="116.0" startX="-303.0" strokeWidth="4.0" />
+            <AnchorPane prefHeight="120.0" prefWidth="155.0">
+               <children>
+                  <FontAwesomeIconView fill="#0746a6" glyphName="XING" layoutX="74.0" layoutY="62.0" size="60" />
+                  <Label alignment="CENTER" layoutY="89.0" prefHeight="23.0" prefWidth="194.0" text="des impots" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="15.0">
+                     <font>
+                        <Font name="Tahoma Bold" size="18.0" />
+                     </font>
+                     <textFill>
+                        <RadialGradient centerX="0.47222220102945967" centerY="0.46190476190476193" radius="0.5">
+                           <stops>
+                              <Stop color="#09f805" />
+                              <Stop color="#1c5657" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="-6.0" layoutY="65.0" prefHeight="23.0" prefWidth="215.0" text="Derection ">
+                     <font>
+                        <Font name="Tahoma Bold" size="24.0" />
+                     </font>
+                     <textFill>
+                        <RadialGradient centerX="0.47222220102945967" centerY="0.46190476190476193" radius="0.5">
+                           <stops>
+                              <Stop color="#09f805" />
+                              <Stop color="#1c5657" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label layoutX="203.0" layoutY="47.0" text="Fiche de recensement : habitation">
+               <font>
+                  <Font name="Zilla Slab Medium" size="22.0" />
+               </font>
+            </Label>
+            <VBox layoutX="29.0" layoutY="121.0" prefHeight="275.0" prefWidth="672.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="121.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="144.0" text="Propriete detaile  :">
+                     <font>
+                        <Font name="Zilla Slab Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox prefHeight="119.0" prefWidth="642.0" style="-fx-border-width: 1px; -fx-border-color: #B2B1B9;">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="136.0" text="Nom et prenom  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="proprNameText" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="19.0" prefWidth="115.0" text="Date  de  NSS:">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="dateNssProprTxt" layoutX="293.0" layoutY="10.0" prefHeight="25.0" prefWidth="183.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="86.0" text="N°Article  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="articleTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="233.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="25.0" prefWidth="62.0" text="Titre  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="titreTxt" layoutX="311.0" layoutY="10.0" prefHeight="25.0" prefWidth="199.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="35.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="85.0" text="Adresse  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="adressTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="482.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="60.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="91.0" text="N° Acie   :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="numAcieTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="224.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="25.0" prefWidth="101.0" text="Date  d'acie  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="dateAcieTxt" layoutX="311.0" layoutY="10.0" prefHeight="25.0" prefWidth="211.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <Label layoutX="25.0" layoutY="10.0" prefHeight="20.0" prefWidth="159.0" text="Locataire detaile  :">
+                     <font>
+                        <Font name="Zilla Slab Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="25.0" layoutY="25.0" prefHeight="109.0" prefWidth="642.0" style="-fx-border-width: 1px; -fx-border-color: #B2B1B9;">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="136.0" text="Nom et prenom  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="locataireNameText" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="19.0" prefWidth="115.0" text="Date  de  NSS:">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="dateNssLocataireTxt" layoutX="293.0" layoutY="10.0" prefHeight="25.0" prefWidth="183.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="153.0" text="Lieu de naissance  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lieuNssTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="194.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="25.0" prefWidth="122.0" text="Nom de pere  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="locatairePereTxt" layoutX="311.0" layoutY="10.0" prefHeight="25.0" prefWidth="199.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="35.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="85.0" text="Adresse  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="locataireAdressTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="242.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="25.0" prefWidth="83.0" text="Activite   :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="activityTxt" prefHeight="25.0" prefWidth="206.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <Label prefHeight="20.0" prefWidth="142.0" text="Contrat detaile  :">
+                     <font>
+                        <Font name="Zilla Slab Medium" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="25.0" layoutY="176.0" prefHeight="109.0" prefWidth="642.0" style="-fx-border-width: 1px; -fx-border-color: #B2B1B9;">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="126.0" text="Type de contrat  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="typeContratTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="19.0" prefWidth="112.0" text="Type de periode  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="typePeriodeTxt" layoutX="293.0" layoutY="10.0" prefHeight="25.0" prefWidth="183.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="123.0" text="Date de debut  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="dateDebutTxt" layoutX="10.0" layoutY="10.0" prefHeight="19.0" prefWidth="242.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="19.0" prefWidth="101.0" text="Date de fin   :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="dateFinTxt" layoutX="311.0" layoutY="10.0" prefHeight="25.0" prefWidth="199.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="35.0">
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="74.0" text="Montant    :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="montantTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="242.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="19.0" prefWidth="70.0" text="N°Acie  :">
+                                 <font>
+                                    <Font name="Zilla Slab Light" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="nunAcieContratTxt" prefHeight="25.0" prefWidth="206.0">
+                                 <font>
+                                    <Font name="Zilla Slab Medium" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="642.0" spacing="44.0">
+                     <children>
+                        <JFXButton fx:id="RevenirBtn" prefWidth="150.0" style="-fx-background-color: #28527A;" text="Revenir" textFill="#fffcfc">
+                           <font>
+                              <Font name="MV Boli" size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="Valider" layoutX="305.0" layoutY="10.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #00A19D;" text="Valider" textFill="#fffcfc">
+                           <font>
+                              <Font name="MV Boli" size="18.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="beneficiaryAnchor" layoutX="10.0" layoutY="114.0" prefHeight="406.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="344.0" prefWidth="880.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
@@ -859,343 +1196,6 @@
                      </VBox.margin>
                   </HBox>
                </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="validAnchor" layoutX="137.0" prefHeight="510.0" prefWidth="728.0" style="-fx-background-color: white;">
-         <children>
-            <Line endX="423.0" layoutX="303.0" layoutY="116.0" startX="-303.0" strokeWidth="4.0" />
-            <AnchorPane prefHeight="120.0" prefWidth="155.0">
-               <children>
-                  <FontAwesomeIconView fill="#0746a6" glyphName="XING" layoutX="74.0" layoutY="62.0" size="60" />
-                  <Label alignment="CENTER" layoutY="89.0" prefHeight="23.0" prefWidth="194.0" text="des impots" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="15.0">
-                     <font>
-                        <Font name="Tahoma Bold" size="18.0" />
-                     </font>
-                     <textFill>
-                        <RadialGradient centerX="0.47222220102945967" centerY="0.46190476190476193" radius="0.5">
-                           <stops>
-                              <Stop color="#09f805" />
-                              <Stop color="#1c5657" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </textFill>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="-6.0" layoutY="65.0" prefHeight="23.0" prefWidth="215.0" text="Derection ">
-                     <font>
-                        <Font name="Tahoma Bold" size="24.0" />
-                     </font>
-                     <textFill>
-                        <RadialGradient centerX="0.47222220102945967" centerY="0.46190476190476193" radius="0.5">
-                           <stops>
-                              <Stop color="#09f805" />
-                              <Stop color="#1c5657" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </textFill>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <Label layoutX="203.0" layoutY="47.0" text="Fiche de recensement : habitation">
-               <font>
-                  <Font name="Zilla Slab Medium" size="22.0" />
-               </font>
-            </Label>
-            <VBox layoutX="29.0" layoutY="121.0" prefHeight="275.0" prefWidth="672.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="121.0">
-               <children>
-                  <Label prefHeight="20.0" prefWidth="144.0" text="Propriete detaile  :">
-                     <font>
-                        <Font name="Zilla Slab Medium" size="16.0" />
-                     </font>
-                  </Label>
-                  <VBox prefHeight="119.0" prefWidth="642.0" style="-fx-border-width: 1px; -fx-border-color: #B2B1B9;">
-                     <children>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="136.0" text="Nom et prenom  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="proprNameText" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="19.0" prefWidth="115.0" text="Date  de  NSS:">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="dateNssProprTxt" layoutX="293.0" layoutY="10.0" prefHeight="25.0" prefWidth="183.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="86.0" text="N°Article  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="articleTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="233.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="25.0" prefWidth="62.0" text="Titre  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="titreTxt" layoutX="311.0" layoutY="10.0" prefHeight="25.0" prefWidth="199.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="35.0">
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="85.0" text="Adresse  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="adressTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="482.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="60.0">
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="91.0" text="N° Acie   :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="numAcieTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="224.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="25.0" prefWidth="101.0" text="Date  d'acie  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="dateAcieTxt" layoutX="311.0" layoutY="10.0" prefHeight="25.0" prefWidth="211.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <Label layoutX="25.0" layoutY="10.0" prefHeight="20.0" prefWidth="159.0" text="Locataire detaile  :">
-                     <font>
-                        <Font name="Zilla Slab Medium" size="16.0" />
-                     </font>
-                  </Label>
-                  <VBox layoutX="25.0" layoutY="25.0" prefHeight="109.0" prefWidth="642.0" style="-fx-border-width: 1px; -fx-border-color: #B2B1B9;">
-                     <children>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="136.0" text="Nom et prenom  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="locataireNameText" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="19.0" prefWidth="115.0" text="Date  de  NSS:">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="dateNssLocataireTxt" layoutX="293.0" layoutY="10.0" prefHeight="25.0" prefWidth="183.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="153.0" text="Lieu de naissance  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="lieuNssTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="194.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="25.0" prefWidth="122.0" text="Nom de pere  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="locatairePereTxt" layoutX="311.0" layoutY="10.0" prefHeight="25.0" prefWidth="199.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="35.0">
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="85.0" text="Adresse  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="locataireAdressTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="242.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="25.0" prefWidth="83.0" text="Activite   :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="activityTxt" prefHeight="25.0" prefWidth="206.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </VBox>
-                  <Label prefHeight="20.0" prefWidth="142.0" text="Contrat detaile  :">
-                     <font>
-                        <Font name="Zilla Slab Medium" size="16.0" />
-                     </font>
-                  </Label>
-                  <VBox layoutX="25.0" layoutY="176.0" prefHeight="109.0" prefWidth="642.0" style="-fx-border-width: 1px; -fx-border-color: #B2B1B9;">
-                     <children>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="19.0" prefWidth="126.0" text="Type de contrat  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="typeContratTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="19.0" prefWidth="112.0" text="Type de periode  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="typePeriodeTxt" layoutX="293.0" layoutY="10.0" prefHeight="25.0" prefWidth="183.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="19.0" prefWidth="123.0" text="Date de debut  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="dateDebutTxt" layoutX="10.0" layoutY="10.0" prefHeight="19.0" prefWidth="242.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="19.0" prefWidth="101.0" text="Date de fin   :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="dateFinTxt" layoutX="311.0" layoutY="10.0" prefHeight="25.0" prefWidth="199.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="35.0">
-                           <children>
-                              <Label prefHeight="19.0" prefWidth="74.0" text="Montant    :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="montantTxt" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="242.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="19.0" prefWidth="70.0" text="N°Acie  :">
-                                 <font>
-                                    <Font name="Zilla Slab Light" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="nunAcieContratTxt" prefHeight="25.0" prefWidth="206.0">
-                                 <font>
-                                    <Font name="Zilla Slab Medium" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </VBox>
-                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="642.0" spacing="44.0">
-                     <children>
-                        <JFXButton fx:id="RevenirBtn" prefWidth="150.0" style="-fx-background-color: #28527A;" text="Revenir" textFill="#fffcfc">
-                           <font>
-                              <Font name="MV Boli" size="18.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="Valider" layoutX="305.0" layoutY="10.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #00A19D;" text="Valider" textFill="#fffcfc">
-                           <font>
-                              <Font name="MV Boli" size="18.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </HBox>
-               </children>
-               <padding>
-                  <Insets bottom="15.0" left="15.0" right="15.0" />
-               </padding>
             </VBox>
          </children>
       </AnchorPane>

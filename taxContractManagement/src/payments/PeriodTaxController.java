@@ -8,11 +8,26 @@ package payments;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import helpres.DbConnect;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.print.PageFormat;
+import java.awt.print.Paper;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +48,14 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import models.Controle;
 import models.Period;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import proprietors.ProprietorsViewController;
 
 /**
@@ -44,8 +67,6 @@ public class PeriodTaxController implements Initializable {
 
     @FXML
     private TableView<Period> periodsTable;
-    @FXML
-    private TableColumn<Period, String> checkCol;
     @FXML
     private TableColumn<Period, String> idCol;
     @FXML
@@ -66,7 +87,17 @@ public class PeriodTaxController implements Initializable {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     Period period = null;
+    private int controleId;
     Controle controle = null;
+
+    int years = 0, months = 0, days = 0;
+    float onlyMonths = (float) 0.0;
+
+    LocalDate endDate1 = null, startDate1 = null;
+    String typePeriod = null;
+    int nbrPeriod;
+    int nbrItems;
+
     @FXML
     private Text proprName;
     @FXML
@@ -116,15 +147,14 @@ public class PeriodTaxController implements Initializable {
     @FXML
     private Text article;
     @FXML
-    private Text nbrPeriodPay;
-    @FXML
-    private Text montantPay;
-    @FXML
-    private Text nbrPeriodNoPay;
-    @FXML
-    private Text montantNoPay;
-    @FXML
     private Text proprPhone;
+
+    double totalAmount = 0.0;
+    double cash = 0.0;
+    double balance = 0.0;
+    double bHeight = 0.0;
+    @FXML
+    private Text nis;
 
     public Controle getControle() {
         return controle;
@@ -144,8 +174,11 @@ public class PeriodTaxController implements Initializable {
         // TODO
         loadData();
 
+        setControleId(controleId);
+
     }
 
+    @FXML
     private void refreshTable() {
         try {
             periodsList.clear();
@@ -163,7 +196,7 @@ public class PeriodTaxController implements Initializable {
                     + "INNER JOIN avis_versement ON avis_versement.id = peroide_impots.id_versement\n"
                     + "INNER JOIN fiche_de_control ON avis_versement.id_fiche_contr = fiche_de_control.id\n"
                     + "WHERE\n"
-                    + "    fiche_de_control.id = \"13\"\n"
+                    + "    fiche_de_control.id = '" + controleId + "'\n"
                     + "ORDER BY\n"
                     + "    fiche_de_control.id;";
             preparedStatement = connection.prepareStatement(query);
@@ -179,6 +212,8 @@ public class PeriodTaxController implements Initializable {
                         resultSet.getInt("peroide_impots.id_versement")
                 ));
                 periodsTable.setItems(periodsList);
+                nbrItems = periodsTable.getItems().size();
+                System.out.println(" size                       is :  " + nbrItems);
 
             }
 
@@ -264,45 +299,156 @@ public class PeriodTaxController implements Initializable {
     }
 
     void setUpdate(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void setTextFields() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setTextFields(int id, String proprName1, String proprAdress, Date proprBirth, String proprComm, String propMere,
+            String proprPere1, String proprPhone1, String proprWilaya, String proprNatio,
+            String benefName1, String benefAdress, Date benefBirth, String benefComm, String benefMere1, String benefPere1,
+            String benefNatio1, String benefWilaya,
+            String contractType1, Date startDate1, Date endDate1, float montant, String periodImpot1, String numAcie, String nis1, String nif1, String article1) {
+
+        controleId = id;
+        nif.setText(nif1);
+        nis.setText(nis1);
+        article.setText(article1);
+        proprName.setText(proprName1);
+        proprAdresse.setText(proprAdress);
+        proprBith.setText(proprBirth.toString());
+        proprCommBirth.setText(proprComm);
+        proprMere.setText(propMere);
+        proprPere.setText(proprPere1);
+        proprPhone.setText(proprPhone1);
+        proprWilayaBirth.setText(proprWilaya);
+        this.proprNatio.setText(proprNatio);
+
+        benefAdresse.setText(benefAdress);
+        benefBith.setText(benefBirth.toString());
+        benefCommBirth.setText(benefComm);
+        benefMere.setText(benefMere1);
+        benefName.setText(benefName1);
+        benefNatio.setText(benefNatio1);
+        benefPere.setText(benefPere1);
+        benefWilayaBirth.setText(benefWilaya);
+
+        contractType.setText(contractType1);
+        startDate.setText(startDate1.toString());
+        endDate.setText(endDate1.toString());
+        montantContrat.setText(String.valueOf(montant));
+        periodeImpot.setText(periodImpot1);
+        numContrat.setText(numAcie);
+
+        this.endDate1 = endDate1.toLocalDate();
+        this.startDate1 = startDate1.toLocalDate();
+        typePeriod = periodImpot1;
+
     }
 
-    @FXML
     private void getData(MouseEvent event) {
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         Controle c = (Controle) stage.getUserData();
 
-        proprName.setText(c.getProprName());
-        proprAdresse.setText(c.getProprAdress());
-        proprBith.setText(c.getProprbirth().toString());
-        proprCommBirth.setText(c.getProprCommuneBirth());
-        proprMere.setText(c.getProprNationalite());
-        proprPere.setText(c.getProprPere());
-        proprPhone.setText(c.getProprPhone());
-        proprWilayaBirth.setText(c.getProprWilayaBirth());
+    }
 
-        benefAdresse.setText(c.getBenefAdress());
-        benefBith.setText(c.getBenefBirth().toString());
-        benefCommBirth.setText(c.getBenefCommuneBirth());
-        benefMere.setText(c.getBenefMere());
-        benefName.setText(c.getBenefName());
-        benefNatio.setText(c.getBenefNationalite());
-        benefPere.setText(c.getBenefPere());
-        benefWilayaBirth.setText(c.getBenefWilayaBirth());
+    public int getControleId() {
+        return controleId;
+    }
 
-        contractType.setText(c.getContractType());
-        startDate.setText(c.getStartDate().toString());
-        endDate.setText(c.getEndDate().toString());
-        montantContrat.setText(c.getMontant().toString());
-        periodeImpot.setText(c.getPeriodImpot());
-        numContrat.setText(c.getNumAcie());
-        
+    public void setControleId(int controleId) {
+        this.controleId = controleId;
+    }
+
+    @FXML
+    private void print(MouseEvent event) {
+
+        try {
+            LocalDate toDayDate = LocalDate.now();
+            toDayDate.format(DateTimeFormatter.ISO_ORDINAL_DATE);
+
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            dtf.format(toDayDate);
+
+            JasperReport jasperReport = JasperCompileManager.compileReport("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement-main\\taxContractManagement\\src\\payments\\report.jrxml");
+            JRDataSource dataSource = new JREmptyDataSource();
+            Map<String, Object> parameters = new HashMap<String, Object>();
+            parameters.put("proprietorName", proprName.getText());
+            parameters.put("nis", nis.getText());
+            parameters.put("nif", nif.getText());
+            parameters.put("direction", "Direction d'impots de lardjem");
+            parameters.put("toDay", dtf.format(toDayDate));
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+            JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\Users\\Deeplight\\OneDrive\\Bureau\\reports\\report.pdf");
+        } catch (JRException ex) {
+            Logger.getLogger(PeriodTaxController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
+    /*public float findDifference(LocalDate start_date, LocalDate end_date) {
+
+        // find the period between
+        // the start and end date
+        java.time.Period periode = java.time.Period.between(start_date, end_date);
+
+        years = periode.getYears();
+        months = periode.getMonths();
+        days = periode.getDays();
+
+        onlyMonths = 12 * years + months + days / 30;
+
+        // Print the date difference
+        // in years, months, and days
+        System.out.print(
+                "Difference "
+                + "between two dates is: ");
+
+        // Print the result
+        System.out.printf(
+                "%d years, %d months"
+                + " and %d days ",
+                periode.getYears(),
+                periode.getMonths(),
+                periode.getDays());
+
+        return onlyMonths;
+    }
+
+    public void getNbrPeriods() {
+        findDifference(startDate1, endDate1);
+        switch (typePeriod) {
+            case "payer en une fois":
+
+                nbrItems = periodsTable.getItems().size();
+                nbrPeriodPay.setText(String.valueOf(nbrItems));
+                nbrPeriodNoPay.setText(String.valueOf(1 - nbrItems));
+
+                break;
+            case "annuel":
+
+                nbrPeriod = (int) (onlyMonths / 12);
+                nbrItems = periodsTable.getItems().size();
+                nbrPeriodPay.setText(String.valueOf(nbrItems));
+                nbrPeriodNoPay.setText(String.valueOf(nbrPeriod - nbrItems));
+
+                break;
+            case "trimestrielle":
+
+                nbrPeriod = (int) (onlyMonths / 3);
+                nbrItems = periodsTable.getItems().size();
+                nbrPeriodPay.setText(String.valueOf(nbrItems));
+                nbrPeriodNoPay.setText(String.valueOf(nbrPeriod - nbrItems));
+
+                break;
+            case "mensuel":
+
+                nbrPeriod = (int) onlyMonths;
+                nbrItems = periodsTable.getItems().size();
+                nbrPeriodPay.setText(String.valueOf(nbrItems));
+                nbrPeriodNoPay.setText(String.valueOf(nbrPeriod - nbrItems));
+
+                break;
+        }
+
+    }*/
 }

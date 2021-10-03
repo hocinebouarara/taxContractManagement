@@ -50,7 +50,7 @@
                   <TableColumn fx:id="idProprCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="proprietor ID" />
                   <TableColumn fx:id="proprNameCol" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Proprietaire" />
                   <TableColumn fx:id="idBenefCol" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="beneficiare ID" />
-                  <TableColumn fx:id="beneNameCol" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Beneficiare " />
+                  <TableColumn fx:id="beneNameCol" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Locataire" />
                   <TableColumn fx:id="directionCol" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Direction" />
                   <TableColumn fx:id="inspectionCol" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Inspection " />
                   <TableColumn fx:id="recetteCol" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: center; -fx-font-size: 14px;" text="Recette" />

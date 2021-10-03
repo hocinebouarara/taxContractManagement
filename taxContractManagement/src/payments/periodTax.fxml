@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
@@ -416,14 +416,28 @@
                      <children>
                         <VBox layoutX="14.0" layoutY="20.0" prefHeight="132.0" prefWidth="542.0" spacing="10.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="40.0" prefHeight="15.0" prefWidth="433.0" spacing="3.0">
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="37.0" prefHeight="15.0" prefWidth="433.0" spacing="3.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero d'identification fiscal  :" wrappingWidth="195.58463379740715">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numéro d'identification statistique  :" wrappingWidth="194.2513208091259">
                                        <font>
                                           <Font name="Zilla Slab Medium" size="12.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="nif" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="208.25135132670403">
+                                    <Text fx:id="nis" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="252.91809937357903">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="40.0" prefHeight="15.0" prefWidth="433.0" spacing="3.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numéro d'identification fiscal  :" wrappingWidth="188.91800782084465">
+                                       <font>
+                                          <Font name="Zilla Slab Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="nif" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="262.9180383384228">
                                        <font>
                                           <Font name="Zilla Slab Medium" size="14.0" />
                                        </font>
@@ -432,7 +446,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="15.0" prefWidth="433.0" spacing="3.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero d'article foncier   :" wrappingWidth="172.25125977396965">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numéro d'article foncier   :" wrappingWidth="159.5845727622509">
                                        <font>
                                           <Font name="Zilla Slab Medium" size="12.0" />
                                        </font>
@@ -444,109 +458,43 @@
                                     </Text>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="433.0" spacing="3.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de périodes payées   :" wrappingWidth="180.25135132670403">
-                                       <font>
-                                          <Font name="Zilla Slab Medium" size="12.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="nbrPeriodPay" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="130.25129029154778">
-                                       <font>
-                                          <Font name="Zilla Slab Medium" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Montant    :" wrappingWidth="84.25122925639153">
-                                       <font>
-                                          <Font name="Zilla Slab Medium" size="12.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="montantPay" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="118.25129029154778">
-                                       <font>
-                                          <Font name="Zilla Slab Medium" size="14.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="15.0" prefWidth="433.0" spacing="3.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de périodes impayées  :" wrappingWidth="189.58463379740715">
-                                       <font>
-                                          <Font name="Zilla Slab Medium" size="12.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="nbrPeriodNoPay" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="127.58466431498528">
-                                       <font>
-                                          <Font name="Zilla Slab Medium" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Montant    :" wrappingWidth="87.58460327982903">
-                                       <font>
-                                          <Font name="Zilla Slab Medium" size="12.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="montantNoPay" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="102.91803833842278">
-                                       <font>
-                                          <Font name="Zilla Slab Medium" size="14.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </HBox>
                            </children>
                         </VBox>
                      </children>
                   </Pane>
                </children>
             </AnchorPane>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="91.0" prefWidth="1150.0" style="-fx-background-color: #123456;">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="91.0" prefWidth="1150.0" style="-fx-background-color: #0746a6;">
                <VBox.margin>
                   <Insets bottom="12.0" />
                </VBox.margin>
                <children>
-                  <HBox alignment="CENTER" spacing="30.0">
+                  <HBox alignment="CENTER_RIGHT">
                      <children>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <FontAwesomeIconView fill="WHITE" glyphName="PRINT" onMouseClicked="#getData" size="85" />
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="imprimer" wrappingWidth="85.58462524414062">
-                                 <font>
-                                    <Font name="Ink Free" size="22.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="4.0" top="34.0" />
-                                 </HBox.margin>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
-                           <children>
-                              <FontAwesomeIconView fill="WHITE" glyphName="PRINT" size="85" />
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="imprimer" wrappingWidth="85.58462524414062">
-                                 <font>
-                                    <Font name="Ink Free" size="22.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="4.0" top="34.0" />
-                                 </HBox.margin>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <MaterialDesignIconView fill="WHITE" glyphName="NOTE_PLUS" size="85" text="" wrappingWidth="74.33331298828125" />
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter " wrappingWidth="76.25131225585938">
-                                 <font>
-                                    <Font name="Ink Free" size="22.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets top="34.0" />
-                                 </HBox.margin>
-                              </Text>
-                           </children>
-                        </HBox>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" onMouseClicked="#refreshTable" prefHeight="91.0" prefWidth="100.0">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="REFRESH" size="70" />
+                           </graphic>
+                        </JFXButton>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Recharger" wrappingWidth="98.25131225585938">
+                           <font>
+                              <Font name="Ink Free" size="22.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" layoutX="492.0" layoutY="10.0">
+                     <children>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" onMouseClicked="#print" prefHeight="91.0" prefWidth="100.0">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="PRINT" onMouseClicked="#refreshTable" size="70" />
+                           </graphic>
+                        </JFXButton>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="imprimer" wrappingWidth="85.58462524414062">
+                           <font>
+                              <Font name="Ink Free" size="22.0" />
+                           </font>
+                        </Text>
                      </children>
                   </HBox>
                </children>
