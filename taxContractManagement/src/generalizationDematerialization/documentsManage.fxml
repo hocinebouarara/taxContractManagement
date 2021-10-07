@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="580.0" prefWidth="1000.0" stylesheets="@../home/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="generalizationDematerialization.DocumentsManageController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="580.0" prefWidth="1000.0">
+         <children>
+            <HBox fx:id="addPaymentBtn" prefHeight="52.0" prefWidth="980.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Documents" wrappingWidth="162.13674926757812">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="26.0" />
+                     </font>
+                  </Text>
+                  <VBox prefHeight="52.0" prefWidth="213.0">
+                     <children>
+                        <JFXButton fx:id="ficheContBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getControllerView" prefHeight="41.0" prefWidth="223.0" ripplerFill="#123456" styleClass="buttons" text="Apprentissage">
+                           <font>
+                              <Font name="Zilla Slab Medium" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <graphic>
+                              <FontAwesomeIconView fill="#0746a6" glyphName="FILE_TEXT" size="30" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox layoutX="173.0" layoutY="10.0" prefHeight="52.0" prefWidth="213.0">
+                     <children>
+                        <JFXButton fx:id="versementBtn" alignment="BOTTOM_CENTER" onMouseClicked="#getVersementView" prefHeight="41.0" prefWidth="197.0" ripplerFill="#123456" text="Nv. Document">
+                           <font>
+                              <Font name="Zilla Slab Medium" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <graphic>
+                              <FontAwesomeIconView fill="#0746a7" glyphName="MORTAR_BOARD" size="30" />
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="buttons" />
+                              <String fx:value="bnt1" />
+                           </styleClass>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER_RIGHT" prefWidth="507.0">
+                     <HBox.margin>
+                        <Insets top="3.0" />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+            <AnchorPane fx:id="anchorPane" prefHeight="510.0" prefWidth="980.0">
+               <VBox.margin>
+                  <Insets top="2.0" />
+               </VBox.margin>
+            </AnchorPane>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -115,10 +115,10 @@ public class LinearRegression {
     }
 
     public static Rectangle posinnement(String folderName, ImageView imageView) throws IOException {
-        List<Data> listh=ConvetCSVtolist("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagementh\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+folderName+"\\Height.csv");
-        List<Data> listw=ConvetCSVtolist("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagementh\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+folderName+"\\Width.csv");
-        List<Data> listx=ConvetCSVtolist("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagementh\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+folderName+"\\Xoffset.csv");
-        List<Data> listy=ConvetCSVtolist("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagementh\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+folderName+"\\Yoffset.csv");
+        List<Data> listh=ConvetCSVtolist("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement-main\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+folderName+"\\Height.csv");
+        List<Data> listw=ConvetCSVtolist("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement-main\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+folderName+"\\Width.csv");
+        List<Data> listx=ConvetCSVtolist("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement-main\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+folderName+"\\Xoffset.csv");
+        List<Data> listy=ConvetCSVtolist("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement-main\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+folderName+"\\Yoffset.csv");
 
         final List<Integer> wimg=new ArrayList<Integer>();
         final List<Integer> Xoffset=new ArrayList<Integer>();
@@ -158,7 +158,7 @@ public class LinearRegression {
         final List<Integer> Xoffset = asList(212, 279, 352,201,185, 176, 187);
         //System.out.println(predictForValue(851,wimg,Xoffset));
 
-        List<Data> listh=ConvetCSVtolist("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagementh\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\Adress_bailleur\\Xoffset.csv");
+        List<Data> listh=ConvetCSVtolist("C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement-main\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\Adress_bailleur\\Xoffset.csv");
 
         List<Integer> listw=new ArrayList<>();
         List<Integer> listx=new ArrayList<>();

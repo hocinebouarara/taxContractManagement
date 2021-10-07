@@ -172,10 +172,10 @@ public class AddDocumentController implements Initializable {
 
             String fieldname =Combobox.getSelectionModel().getSelectedItem().toString();
 
-            CreateDataset.addtoCsv((int) imageView.getFitWidth(), (int) zone.getWidth(),"C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement\\taxContractManagement\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+fieldname+"\\Width.csv");
-            CreateDataset.addtoCsv((int) imageView.getFitWidth(), (int) zone.getX(),"C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement\\taxContractManagement\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+fieldname+"\\Xoffset.csv");
-            CreateDataset.addtoCsv((int) imageView.getFitHeight(), (int) zone.getHeight(),"C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement\\taxContractManagement\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+fieldname+"\\Height.csv");
-            CreateDataset.addtoCsv((int) imageView.getFitHeight(), (int) zone.getY(),"C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement\\taxContractManagement\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+fieldname+"\\Yoffset.csv");
+            CreateDataset.addtoCsv((int) imageView.getFitWidth(), (int) zone.getWidth(),"C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement-main\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+fieldname+"\\Width.csv");
+            CreateDataset.addtoCsv((int) imageView.getFitWidth(), (int) zone.getX(),"C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement-main\\taxContractManagement\\src\\Dataset\\G51\\Dataset\\"+fieldname+"\\Xoffset.csv");
+            CreateDataset.addtoCsv((int) imageView.getFitHeight(), (int) zone.getHeight(),"C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement-main\\taxContractManagement\\src\\Dataset\\G51\\Dataset"+fieldname+"\\Height.csv");
+            CreateDataset.addtoCsv((int) imageView.getFitHeight(), (int) zone.getY(),"C:\\Users\\Deeplight\\OneDrive\\Documents\\NetBeansProjects\\taxContractManagement-main\\taxContractManagement\\src\\Dataset\\G51\\Dataset"+fieldname+"\\Yoffset.csv");
 
         });
     }

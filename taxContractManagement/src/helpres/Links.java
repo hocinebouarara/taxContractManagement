@@ -44,6 +44,11 @@ public class Links {
     public static String PERIODSVIEW = "/payments/periodTax.fxml";
     public static String SCANVIEW = "/payments/scanFile.fxml";
 
+    public static String ADDNEWDOCUMENT = "/generalizationDematerialization/addNewDocument.fxml";
+    public static String GENERALIZATIONDOCMANAGE = "/generalizationDematerialization/documentsManage.fxml";
+        public static String LEARNDOCUMENTS = "/generalizationDematerialization/learn.fxml";
+
+
     public static String PAYMENTSDEMATERIALIZATIONVIEW = "/Paiements/Paiement.fxml";
 
 }
